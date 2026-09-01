@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        width: 1200px;
+        height: 630px;
+        font-family:
+          "Segoe UI",
+          system-ui,
+          -apple-system,
+          sans-serif;
+        background: linear-gradient(
+          135deg,
+          #1e1b18 0%,
+          #2a231e 60%,
+          #3a211b 100%
+        );
+        color: #f0ece7;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 64px 72px;
+        overflow: hidden;
+        position: relative;
+      }
+      .dots {
+        position: absolute;
+        right: -60px;
+        top: -60px;
+        width: 420px;
+        height: 420px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(224, 112, 79, 0.28) 0%,
+          rgba(224, 112, 79, 0.1) 45%,
+          transparent 70%
+        );
+      }
+      .dots2 {
+        position: absolute;
+        left: -80px;
+        bottom: -100px;
+        width: 380px;
+        height: 380px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(224, 112, 79, 0.22),
+          transparent 70%
+        );
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      .logo {
+        width: 84px;
+        height: 84px;
+        border-radius: 22px;
+        background: #c2452d;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 48px;
+        font-weight: 800;
+        color: #fff;
+        box-shadow: 0 10px 30px rgba(194, 69, 45, 0.45);
+      }
+      .name {
+        font-size: 56px;
+        font-weight: 800;
+        letter-spacing: -1px;
+      }
+      .tagline {
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 1.3;
+        max-width: 900px;
+        margin-top: 56px;
+      }
+      .tagline em {
+        color: #e0704f;
+        font-style: normal;
+      }
+      .stats {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+      }
+      .chip {
+        border: 1px solid rgba(224, 112, 79, 0.5);
+        background: rgba(224, 112, 79, 0.12);
+        padding: 12px 22px;
+        border-radius: 999px;
+        font-size: 22px;
+        font-weight: 600;
+        color: #f0ece7;
+      }
+      .chip b {
+        color: #ec8b6d;
+      }
+      .foot {
+        font-size: 19px;
+        color: #a8a09a;
+        margin-top: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="dots"></div>
+    <div class="dots2"></div>
+    <div>
+      <div class="brand">
+        <div class="logo">N</div>
+        <div class="name">Nafkah</div>
+      </div>
+      <div class="tagline">
+        Seberapa cukup gajimu<br />untuk hidup di <em>kota ini</em>?
+      </div>
+    </div>
+    <div>
+      <div class="stats">
+        <span class="chip"><b>514</b> kabupaten/kota</span>
+        <span class="chip"><b>UMK 2025</b> biaya hidup</span>
+        <span class="chip">Nyaman · Cukup · Ketat · Tak Cukup</span>
+      </div>
+      <div class="foot">
+        nafkah.adenaufal.com — peta keterjangkauan gaji Indonesia
+      </div>
+    </div>
+  </body>
+</html>

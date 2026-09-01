@@ -1,0 +1,6988 @@
+[
+ {
+  "provinceName": "Aceh",
+  "provinceCode": "11",
+  "regions": [
+   {
+    "code": "11.01",
+    "name": "Simeulue",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "11.02",
+    "name": "Aceh Singkil",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "11.03",
+    "name": "Aceh Selatan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "11.04",
+    "name": "Aceh Tenggara",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "11.05",
+    "name": "Aceh Timur",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "11.06",
+    "name": "Aceh Tengah",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "11.07",
+    "name": "Aceh Barat",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "11.08",
+    "name": "Aceh Besar",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "11.09",
+    "name": "Pidie",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "11.10",
+    "name": "Bireuen",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "11.11",
+    "name": "Aceh Utara",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "11.12",
+    "name": "Aceh Barat Daya",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "11.13",
+    "name": "Gayo Lues",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "11.14",
+    "name": "Aceh Tamiang",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "11.15",
+    "name": "Nagan Raya",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "11.16",
+    "name": "Aceh Jaya",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "11.17",
+    "name": "Bener Meriah",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "11.18",
+    "name": "Pidie Jaya",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "11.71",
+    "name": "Kota Banda Aceh",
+    "tier": "kota"
+   },
+   {
+    "code": "11.72",
+    "name": "Kota Sabang",
+    "tier": "kota"
+   },
+   {
+    "code": "11.73",
+    "name": "Kota Langsa",
+    "tier": "kota"
+   },
+   {
+    "code": "11.74",
+    "name": "Kota Lhokseumawe",
+    "tier": "kota"
+   },
+   {
+    "code": "11.75",
+    "name": "Kota Subulussalam",
+    "tier": "kota"
+   }
+  ],
+  "wages": [
+   {
+    "regionCode": "11.01",
+    "year": 2025,
+    "grossMonthly": 3685616,
+    "source": "Keputusan Gubernur Aceh Nomor 500.15.14.1/1342/2024 tentang Penetapan Upah Minimum Provinsi Aceh Tahun 2025 (Mengikuti UMP Aceh)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "11.02",
+    "year": 2025,
+    "grossMonthly": 3685616,
+    "source": "Keputusan Gubernur Aceh Nomor 500.15.14.1/1342/2024 tentang Penetapan Upah Minimum Provinsi Aceh Tahun 2025 (Mengikuti UMP Aceh)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "11.03",
+    "year": 2025,
+    "grossMonthly": 3685616,
+    "source": "Keputusan Gubernur Aceh Nomor 500.15.14.1/1342/2024 tentang Penetapan Upah Minimum Provinsi Aceh Tahun 2025 (Mengikuti UMP Aceh)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "11.04",
+    "year": 2025,
+    "grossMonthly": 3685616,
+    "source": "Keputusan Gubernur Aceh Nomor 500.15.14.1/1342/2024 tentang Penetapan Upah Minimum Provinsi Aceh Tahun 2025 (Mengikuti UMP Aceh)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "11.05",
+    "year": 2025,
+    "grossMonthly": 3685616,
+    "source": "Keputusan Gubernur Aceh Nomor 500.15.14.1/1342/2024 tentang Penetapan Upah Minimum Provinsi Aceh Tahun 2025 (Mengikuti UMP Aceh)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "11.06",
+    "year": 2025,
+    "grossMonthly": 3685616,
+    "source": "Keputusan Gubernur Aceh Nomor 500.15.14.1/1342/2024 tentang Penetapan Upah Minimum Provinsi Aceh Tahun 2025 (Mengikuti UMP Aceh)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "11.07",
+    "year": 2025,
+    "grossMonthly": 3685616,
+    "source": "Keputusan Gubernur Aceh Nomor 500.15.14.1/1342/2024 tentang Penetapan Upah Minimum Provinsi Aceh Tahun 2025 (Mengikuti UMP Aceh)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "11.08",
+    "year": 2025,
+    "grossMonthly": 3685616,
+    "source": "Keputusan Gubernur Aceh Nomor 500.15.14.1/1342/2024 tentang Penetapan Upah Minimum Provinsi Aceh Tahun 2025 (Mengikuti UMP Aceh)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "11.09",
+    "year": 2025,
+    "grossMonthly": 3685616,
+    "source": "Keputusan Gubernur Aceh Nomor 500.15.14.1/1342/2024 tentang Penetapan Upah Minimum Provinsi Aceh Tahun 2025 (Mengikuti UMP Aceh)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "11.10",
+    "year": 2025,
+    "grossMonthly": 3685616,
+    "source": "Keputusan Gubernur Aceh Nomor 500.15.14.1/1342/2024 tentang Penetapan Upah Minimum Provinsi Aceh Tahun 2025 (Mengikuti UMP Aceh)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "11.11",
+    "year": 2025,
+    "grossMonthly": 3685616,
+    "source": "Keputusan Gubernur Aceh Nomor 500.15.14.1/1342/2024 tentang Penetapan Upah Minimum Provinsi Aceh Tahun 2025 (Mengikuti UMP Aceh)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "11.12",
+    "year": 2025,
+    "grossMonthly": 3685616,
+    "source": "Keputusan Gubernur Aceh Nomor 500.15.14.1/1342/2024 tentang Penetapan Upah Minimum Provinsi Aceh Tahun 2025 (Mengikuti UMP Aceh)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "11.13",
+    "year": 2025,
+    "grossMonthly": 3685616,
+    "source": "Keputusan Gubernur Aceh Nomor 500.15.14.1/1342/2024 tentang Penetapan Upah Minimum Provinsi Aceh Tahun 2025 (Mengikuti UMP Aceh)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "11.14",
+    "year": 2025,
+    "grossMonthly": 3717948,
+    "source": "Keputusan Gubernur Aceh Nomor 500.15.14.1/1359/2024 tentang Penetapan Upah Minimum Kabupaten Aceh Tamiang Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "11.15",
+    "year": 2025,
+    "grossMonthly": 3685616,
+    "source": "Keputusan Gubernur Aceh Nomor 500.15.14.1/1342/2024 tentang Penetapan Upah Minimum Provinsi Aceh Tahun 2025 (Mengikuti UMP Aceh)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "11.16",
+    "year": 2025,
+    "grossMonthly": 3685616,
+    "source": "Keputusan Gubernur Aceh Nomor 500.15.14.1/1342/2024 tentang Penetapan Upah Minimum Provinsi Aceh Tahun 2025 (Mengikuti UMP Aceh)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "11.17",
+    "year": 2025,
+    "grossMonthly": 3685616,
+    "source": "Keputusan Gubernur Aceh Nomor 500.15.14.1/1342/2024 tentang Penetapan Upah Minimum Provinsi Aceh Tahun 2025 (Mengikuti UMP Aceh)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "11.18",
+    "year": 2025,
+    "grossMonthly": 3685616,
+    "source": "Keputusan Gubernur Aceh Nomor 500.15.14.1/1342/2024 tentang Penetapan Upah Minimum Provinsi Aceh Tahun 2025 (Mengikuti UMP Aceh)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "11.71",
+    "year": 2025,
+    "grossMonthly": 3898856,
+    "source": "Keputusan Gubernur Aceh Nomor 500.15.14.1/1358/2024 tentang Penetapan Upah Minimum Kota Banda Aceh Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "11.72",
+    "year": 2025,
+    "grossMonthly": 3685616,
+    "source": "Keputusan Gubernur Aceh Nomor 500.15.14.1/1342/2024 tentang Penetapan Upah Minimum Provinsi Aceh Tahun 2025 (Mengikuti UMP Aceh)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "11.73",
+    "year": 2025,
+    "grossMonthly": 3685616,
+    "source": "Keputusan Gubernur Aceh Nomor 500.15.14.1/1342/2024 tentang Penetapan Upah Minimum Provinsi Aceh Tahun 2025 (Mengikuti UMP Aceh)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "11.74",
+    "year": 2025,
+    "grossMonthly": 3685616,
+    "source": "Keputusan Gubernur Aceh Nomor 500.15.14.1/1342/2024 tentang Penetapan Upah Minimum Provinsi Aceh Tahun 2025 (Mengikuti UMP Aceh)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "11.75",
+    "year": 2025,
+    "grossMonthly": 3685616,
+    "source": "Keputusan Gubernur Aceh Nomor 500.15.14.1/1342/2024 tentang Penetapan Upah Minimum Provinsi Aceh Tahun 2025 (Mengikuti UMP Aceh)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   }
+  ]
+ },
+ {
+  "provinceName": "Sumatera Barat",
+  "provinceCode": "13",
+  "regions": [
+   {
+    "code": "13.07",
+    "name": "Agam",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "13.11",
+    "name": "Dharmasraya",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "13.01",
+    "name": "Kepulauan Mentawai",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "13.75",
+    "name": "Kota Bukittinggi",
+    "tier": "kota"
+   },
+   {
+    "code": "13.71",
+    "name": "Kota Padang",
+    "tier": "kota"
+   },
+   {
+    "code": "13.74",
+    "name": "Kota Padang Panjang",
+    "tier": "kota"
+   },
+   {
+    "code": "13.77",
+    "name": "Kota Pariaman",
+    "tier": "kota"
+   },
+   {
+    "code": "13.76",
+    "name": "Kota Payakumbuh",
+    "tier": "kota"
+   },
+   {
+    "code": "13.73",
+    "name": "Kota Sawah Lunto",
+    "tier": "kota"
+   },
+   {
+    "code": "13.72",
+    "name": "Kota Solok",
+    "tier": "kota"
+   },
+   {
+    "code": "13.08",
+    "name": "Lima Puluh Kota",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "13.06",
+    "name": "Padang Pariaman",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "13.09",
+    "name": "Pasaman",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "13.12",
+    "name": "Pasaman Barat",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "13.02",
+    "name": "Pesisir Selatan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "13.04",
+    "name": "Sijunjung",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "13.03",
+    "name": "Solok",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "13.10",
+    "name": "Solok Selatan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "13.05",
+    "name": "Tanah Datar",
+    "tier": "kabupaten"
+   }
+  ],
+  "wages": [
+   {
+    "regionCode": "13.07",
+    "year": 2025,
+    "grossMonthly": 2994193,
+    "source": "Keputusan Gubernur Sumatera Barat No. 562-840-2024 tentang Upah Minimum Provinsi Sumatera Barat Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "13.11",
+    "year": 2025,
+    "grossMonthly": 2994193,
+    "source": "Keputusan Gubernur Sumatera Barat No. 562-840-2024 tentang Upah Minimum Provinsi Sumatera Barat Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "13.01",
+    "year": 2025,
+    "grossMonthly": 2994193,
+    "source": "Keputusan Gubernur Sumatera Barat No. 562-840-2024 tentang Upah Minimum Provinsi Sumatera Barat Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "13.75",
+    "year": 2025,
+    "grossMonthly": 2994193,
+    "source": "Keputusan Gubernur Sumatera Barat No. 562-840-2024 tentang Upah Minimum Provinsi Sumatera Barat Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "13.71",
+    "year": 2025,
+    "grossMonthly": 2994193,
+    "source": "Keputusan Gubernur Sumatera Barat No. 562-840-2024 tentang Upah Minimum Provinsi Sumatera Barat Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "13.74",
+    "year": 2025,
+    "grossMonthly": 2994193,
+    "source": "Keputusan Gubernur Sumatera Barat No. 562-840-2024 tentang Upah Minimum Provinsi Sumatera Barat Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "13.77",
+    "year": 2025,
+    "grossMonthly": 2994193,
+    "source": "Keputusan Gubernur Sumatera Barat No. 562-840-2024 tentang Upah Minimum Provinsi Sumatera Barat Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "13.76",
+    "year": 2025,
+    "grossMonthly": 2994193,
+    "source": "Keputusan Gubernur Sumatera Barat No. 562-840-2024 tentang Upah Minimum Provinsi Sumatera Barat Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "13.73",
+    "year": 2025,
+    "grossMonthly": 2994193,
+    "source": "Keputusan Gubernur Sumatera Barat No. 562-840-2024 tentang Upah Minimum Provinsi Sumatera Barat Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "13.72",
+    "year": 2025,
+    "grossMonthly": 2994193,
+    "source": "Keputusan Gubernur Sumatera Barat No. 562-840-2024 tentang Upah Minimum Provinsi Sumatera Barat Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "13.08",
+    "year": 2025,
+    "grossMonthly": 2994193,
+    "source": "Keputusan Gubernur Sumatera Barat No. 562-840-2024 tentang Upah Minimum Provinsi Sumatera Barat Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "13.06",
+    "year": 2025,
+    "grossMonthly": 2994193,
+    "source": "Keputusan Gubernur Sumatera Barat No. 562-840-2024 tentang Upah Minimum Provinsi Sumatera Barat Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "13.09",
+    "year": 2025,
+    "grossMonthly": 2994193,
+    "source": "Keputusan Gubernur Sumatera Barat No. 562-840-2024 tentang Upah Minimum Provinsi Sumatera Barat Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "13.12",
+    "year": 2025,
+    "grossMonthly": 2994193,
+    "source": "Keputusan Gubernur Sumatera Barat No. 562-840-2024 tentang Upah Minimum Provinsi Sumatera Barat Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "13.02",
+    "year": 2025,
+    "grossMonthly": 2994193,
+    "source": "Keputusan Gubernur Sumatera Barat No. 562-840-2024 tentang Upah Minimum Provinsi Sumatera Barat Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "13.04",
+    "year": 2025,
+    "grossMonthly": 2994193,
+    "source": "Keputusan Gubernur Sumatera Barat No. 562-840-2024 tentang Upah Minimum Provinsi Sumatera Barat Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "13.03",
+    "year": 2025,
+    "grossMonthly": 2994193,
+    "source": "Keputusan Gubernur Sumatera Barat No. 562-840-2024 tentang Upah Minimum Provinsi Sumatera Barat Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "13.10",
+    "year": 2025,
+    "grossMonthly": 2994193,
+    "source": "Keputusan Gubernur Sumatera Barat No. 562-840-2024 tentang Upah Minimum Provinsi Sumatera Barat Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "13.05",
+    "year": 2025,
+    "grossMonthly": 2994193,
+    "source": "Keputusan Gubernur Sumatera Barat No. 562-840-2024 tentang Upah Minimum Provinsi Sumatera Barat Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   }
+  ]
+ },
+ {
+  "provinceName": "Nusa Tenggara Timur",
+  "provinceCode": "53",
+  "regions": [
+   {
+    "code": "53.07",
+    "name": "Alor",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "53.06",
+    "name": "Belu",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "53.11",
+    "name": "Ende",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "53.09",
+    "name": "Flores Timur",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "53.71",
+    "name": "Kota Kupang",
+    "tier": "kota"
+   },
+   {
+    "code": "53.03",
+    "name": "Kupang",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "53.08",
+    "name": "Lembata",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "53.21",
+    "name": "Malaka",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "53.13",
+    "name": "Manggarai",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "53.15",
+    "name": "Manggarai Barat",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "53.19",
+    "name": "Manggarai Timur",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "53.18",
+    "name": "Nagekeo",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "53.12",
+    "name": "Ngada",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "53.14",
+    "name": "Rote Ndao",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "53.20",
+    "name": "Sabu Raijua",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "53.10",
+    "name": "Sikka",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "53.01",
+    "name": "Sumba Barat",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "53.17",
+    "name": "Sumba Barat Daya",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "53.16",
+    "name": "Sumba Tengah",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "53.02",
+    "name": "Sumba Timur",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "53.04",
+    "name": "Timor Tengah Selatan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "53.05",
+    "name": "Timor Tengah Utara",
+    "tier": "kabupaten"
+   }
+  ],
+  "wages": [
+   {
+    "regionCode": "53.07",
+    "year": 2025,
+    "grossMonthly": 2328970,
+    "source": "Keputusan Gubernur Nusa Tenggara Timur No. 430/KEP/HK/2024 tentang Upah Minimum Provinsi Nusa Tenggara Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "53.06",
+    "year": 2025,
+    "grossMonthly": 2328970,
+    "source": "Keputusan Gubernur Nusa Tenggara Timur No. 430/KEP/HK/2024 tentang Upah Minimum Provinsi Nusa Tenggara Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "53.11",
+    "year": 2025,
+    "grossMonthly": 2328970,
+    "source": "Keputusan Gubernur Nusa Tenggara Timur No. 430/KEP/HK/2024 tentang Upah Minimum Provinsi Nusa Tenggara Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "53.09",
+    "year": 2025,
+    "grossMonthly": 2328970,
+    "source": "Keputusan Gubernur Nusa Tenggara Timur No. 430/KEP/HK/2024 tentang Upah Minimum Provinsi Nusa Tenggara Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "53.71",
+    "year": 2025,
+    "grossMonthly": 2396696,
+    "source": "Keputusan Gubernur Nusa Tenggara Timur No. 439/KEP/HK/2024 tentang Upah Minimum Kota Kupang Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "53.03",
+    "year": 2025,
+    "grossMonthly": 2328970,
+    "source": "Keputusan Gubernur Nusa Tenggara Timur No. 430/KEP/HK/2024 tentang Upah Minimum Provinsi Nusa Tenggara Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "53.08",
+    "year": 2025,
+    "grossMonthly": 2328970,
+    "source": "Keputusan Gubernur Nusa Tenggara Timur No. 430/KEP/HK/2024 tentang Upah Minimum Provinsi Nusa Tenggara Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "53.21",
+    "year": 2025,
+    "grossMonthly": 2328970,
+    "source": "Keputusan Gubernur Nusa Tenggara Timur No. 430/KEP/HK/2024 tentang Upah Minimum Provinsi Nusa Tenggara Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "53.13",
+    "year": 2025,
+    "grossMonthly": 2328970,
+    "source": "Keputusan Gubernur Nusa Tenggara Timur No. 430/KEP/HK/2024 tentang Upah Minimum Provinsi Nusa Tenggara Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "53.15",
+    "year": 2025,
+    "grossMonthly": 2328970,
+    "source": "Keputusan Gubernur Nusa Tenggara Timur No. 430/KEP/HK/2024 tentang Upah Minimum Provinsi Nusa Tenggara Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "53.19",
+    "year": 2025,
+    "grossMonthly": 2328970,
+    "source": "Keputusan Gubernur Nusa Tenggara Timur No. 430/KEP/HK/2024 tentang Upah Minimum Provinsi Nusa Tenggara Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "53.18",
+    "year": 2025,
+    "grossMonthly": 2328970,
+    "source": "Keputusan Gubernur Nusa Tenggara Timur No. 430/KEP/HK/2024 tentang Upah Minimum Provinsi Nusa Tenggara Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "53.12",
+    "year": 2025,
+    "grossMonthly": 2328970,
+    "source": "Keputusan Gubernur Nusa Tenggara Timur No. 430/KEP/HK/2024 tentang Upah Minimum Provinsi Nusa Tenggara Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "53.14",
+    "year": 2025,
+    "grossMonthly": 2328970,
+    "source": "Keputusan Gubernur Nusa Tenggara Timur No. 430/KEP/HK/2024 tentang Upah Minimum Provinsi Nusa Tenggara Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "53.20",
+    "year": 2025,
+    "grossMonthly": 2328970,
+    "source": "Keputusan Gubernur Nusa Tenggara Timur No. 430/KEP/HK/2024 tentang Upah Minimum Provinsi Nusa Tenggara Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "53.10",
+    "year": 2025,
+    "grossMonthly": 2328970,
+    "source": "Keputusan Gubernur Nusa Tenggara Timur No. 430/KEP/HK/2024 tentang Upah Minimum Provinsi Nusa Tenggara Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "53.01",
+    "year": 2025,
+    "grossMonthly": 2328970,
+    "source": "Keputusan Gubernur Nusa Tenggara Timur No. 430/KEP/HK/2024 tentang Upah Minimum Provinsi Nusa Tenggara Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "53.17",
+    "year": 2025,
+    "grossMonthly": 2328970,
+    "source": "Keputusan Gubernur Nusa Tenggara Timur No. 430/KEP/HK/2024 tentang Upah Minimum Provinsi Nusa Tenggara Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "53.16",
+    "year": 2025,
+    "grossMonthly": 2328970,
+    "source": "Keputusan Gubernur Nusa Tenggara Timur No. 430/KEP/HK/2024 tentang Upah Minimum Provinsi Nusa Tenggara Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "53.02",
+    "year": 2025,
+    "grossMonthly": 2328970,
+    "source": "Keputusan Gubernur Nusa Tenggara Timur No. 430/KEP/HK/2024 tentang Upah Minimum Provinsi Nusa Tenggara Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "53.04",
+    "year": 2025,
+    "grossMonthly": 2328970,
+    "source": "Keputusan Gubernur Nusa Tenggara Timur No. 430/KEP/HK/2024 tentang Upah Minimum Provinsi Nusa Tenggara Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "53.05",
+    "year": 2025,
+    "grossMonthly": 2328970,
+    "source": "Keputusan Gubernur Nusa Tenggara Timur No. 430/KEP/HK/2024 tentang Upah Minimum Provinsi Nusa Tenggara Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   }
+  ]
+ },
+ {
+  "provinceName": "Sumatera Utara",
+  "provinceCode": "12",
+  "regions": [
+   {
+    "code": "12.08",
+    "name": "Asahan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "12.19",
+    "name": "Batu Bara",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "12.10",
+    "name": "Dairi",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "12.12",
+    "name": "Deli Serdang",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "12.15",
+    "name": "Humbang Hasundutan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "12.11",
+    "name": "Karo",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "12.76",
+    "name": "Kota Binjai",
+    "tier": "kota"
+   },
+   {
+    "code": "12.78",
+    "name": "Kota Gunungsitoli",
+    "tier": "kota"
+   },
+   {
+    "code": "12.75",
+    "name": "Kota Medan",
+    "tier": "kota"
+   },
+   {
+    "code": "12.77",
+    "name": "Kota Padangsidimpuan",
+    "tier": "kota"
+   },
+   {
+    "code": "12.73",
+    "name": "Kota Pematang Siantar",
+    "tier": "kota"
+   },
+   {
+    "code": "12.71",
+    "name": "Kota Sibolga",
+    "tier": "kota"
+   },
+   {
+    "code": "12.72",
+    "name": "Kota Tanjung Balai",
+    "tier": "kota"
+   },
+   {
+    "code": "12.74",
+    "name": "Kota Tebing Tinggi",
+    "tier": "kota"
+   },
+   {
+    "code": "12.07",
+    "name": "Labuhan Batu",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "12.22",
+    "name": "Labuhan Batu Selatan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "12.23",
+    "name": "Labuhan Batu Utara",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "12.13",
+    "name": "Langkat",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "12.02",
+    "name": "Mandailing Natal",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "12.01",
+    "name": "Nias",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "12.25",
+    "name": "Nias Barat",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "12.14",
+    "name": "Nias Selatan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "12.24",
+    "name": "Nias Utara",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "12.21",
+    "name": "Padang Lawas",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "12.20",
+    "name": "Padang Lawas Utara",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "12.16",
+    "name": "Pakpak Bharat",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "12.17",
+    "name": "Samosir",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "12.18",
+    "name": "Serdang Bedagai",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "12.09",
+    "name": "Simalungun",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "12.03",
+    "name": "Tapanuli Selatan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "12.04",
+    "name": "Tapanuli Tengah",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "12.05",
+    "name": "Tapanuli Utara",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "12.06",
+    "name": "Toba Samosir",
+    "tier": "kabupaten"
+   }
+  ],
+  "wages": [
+   {
+    "regionCode": "12.08",
+    "year": 2025,
+    "grossMonthly": 3265908,
+    "source": "Keputusan Gubernur Sumatera Utara No. 188.44/833/KPTS/2024 tentang Penetapan Upah Minimum Kabupaten/Kota di Provinsi Sumatera Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "12.19",
+    "year": 2025,
+    "grossMonthly": 3676000,
+    "source": "Keputusan Gubernur Sumatera Utara No. 188.44/833/KPTS/2024 tentang Penetapan Upah Minimum Kabupaten/Kota di Provinsi Sumatera Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "12.10",
+    "year": 2025,
+    "grossMonthly": 2992559,
+    "source": "Keputusan Gubernur Sumatera Utara No. 188.44/833/KPTS/2024 tentang Penetapan Upah Minimum Kabupaten/Kota di Provinsi Sumatera Utara Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "12.12",
+    "year": 2025,
+    "grossMonthly": 3732906,
+    "source": "Keputusan Gubernur Sumatera Utara No. 188.44/833/KPTS/2024 tentang Penetapan Upah Minimum Kabupaten/Kota di Provinsi Sumatera Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "12.15",
+    "year": 2025,
+    "grossMonthly": 2992559,
+    "source": "Keputusan Gubernur Sumatera Utara No. 188.44/833/KPTS/2024 tentang Penetapan Upah Minimum Kabupaten/Kota di Provinsi Sumatera Utara Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "12.11",
+    "year": 2025,
+    "grossMonthly": 3577282,
+    "source": "Keputusan Gubernur Sumatera Utara No. 188.44/833/KPTS/2024 tentang Penetapan Upah Minimum Kabupaten/Kota di Provinsi Sumatera Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "12.76",
+    "year": 2025,
+    "grossMonthly": 3075365,
+    "source": "Keputusan Gubernur Sumatera Utara No. 188.44/833/KPTS/2024 tentang Penetapan Upah Minimum Kabupaten/Kota di Provinsi Sumatera Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "12.78",
+    "year": 2025,
+    "grossMonthly": 2992559,
+    "source": "Keputusan Gubernur Sumatera Utara No. 188.44/833/KPTS/2024 tentang Penetapan Upah Minimum Kabupaten/Kota di Provinsi Sumatera Utara Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "12.75",
+    "year": 2025,
+    "grossMonthly": 4014072,
+    "source": "Keputusan Gubernur Sumatera Utara No. 188.44/833/KPTS/2024 tentang Penetapan Upah Minimum Kabupaten/Kota di Provinsi Sumatera Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "12.77",
+    "year": 2025,
+    "grossMonthly": 3168235,
+    "source": "Keputusan Gubernur Sumatera Utara No. 188.44/833/KPTS/2024 tentang Penetapan Upah Minimum Kabupaten/Kota di Provinsi Sumatera Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "12.73",
+    "year": 2025,
+    "grossMonthly": 2992559,
+    "source": "Keputusan Gubernur Sumatera Utara No. 188.44/833/KPTS/2024 tentang Penetapan Upah Minimum Kabupaten/Kota di Provinsi Sumatera Utara Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "12.71",
+    "year": 2025,
+    "grossMonthly": 3419748,
+    "source": "Keputusan Gubernur Sumatera Utara No. 188.44/833/KPTS/2024 tentang Penetapan Upah Minimum Kabupaten/Kota di Provinsi Sumatera Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "12.72",
+    "year": 2025,
+    "grossMonthly": 3244606,
+    "source": "Keputusan Gubernur Sumatera Utara No. 188.44/833/KPTS/2024 tentang Penetapan Upah Minimum Kabupaten/Kota di Provinsi Sumatera Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "12.74",
+    "year": 2025,
+    "grossMonthly": 3006203,
+    "source": "Keputusan Gubernur Sumatera Utara No. 188.44/833/KPTS/2024 tentang Penetapan Upah Minimum Kabupaten/Kota di Provinsi Sumatera Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "12.07",
+    "year": 2025,
+    "grossMonthly": 3438181,
+    "source": "Keputusan Gubernur Sumatera Utara No. 188.44/833/KPTS/2024 tentang Penetapan Upah Minimum Kabupaten/Kota di Provinsi Sumatera Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "12.22",
+    "year": 2025,
+    "grossMonthly": 3404984,
+    "source": "Keputusan Gubernur Sumatera Utara No. 188.44/833/KPTS/2024 tentang Penetapan Upah Minimum Kabupaten/Kota di Provinsi Sumatera Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "12.23",
+    "year": 2025,
+    "grossMonthly": 3327621,
+    "source": "Keputusan Gubernur Sumatera Utara No. 188.44/833/KPTS/2024 tentang Penetapan Upah Minimum Kabupaten/Kota di Provinsi Sumatera Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "12.13",
+    "year": 2025,
+    "grossMonthly": 3134660,
+    "source": "Keputusan Gubernur Sumatera Utara No. 188.44/833/KPTS/2024 tentang Penetapan Upah Minimum Kabupaten/Kota di Provinsi Sumatera Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "12.02",
+    "year": 2025,
+    "grossMonthly": 3100998,
+    "source": "Keputusan Gubernur Sumatera Utara No. 188.44/833/KPTS/2024 tentang Penetapan Upah Minimum Kabupaten/Kota di Provinsi Sumatera Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "12.01",
+    "year": 2025,
+    "grossMonthly": 2992559,
+    "source": "Keputusan Gubernur Sumatera Utara No. 188.44/833/KPTS/2024 tentang Penetapan Upah Minimum Kabupaten/Kota di Provinsi Sumatera Utara Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "12.25",
+    "year": 2025,
+    "grossMonthly": 2992559,
+    "source": "Keputusan Gubernur Sumatera Utara No. 188.44/833/KPTS/2024 tentang Penetapan Upah Minimum Kabupaten/Kota di Provinsi Sumatera Utara Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "12.14",
+    "year": 2025,
+    "grossMonthly": 2992559,
+    "source": "Keputusan Gubernur Sumatera Utara No. 188.44/833/KPTS/2024 tentang Penetapan Upah Minimum Kabupaten/Kota di Provinsi Sumatera Utara Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "12.24",
+    "year": 2025,
+    "grossMonthly": 2992559,
+    "source": "Keputusan Gubernur Sumatera Utara No. 188.44/833/KPTS/2024 tentang Penetapan Upah Minimum Kabupaten/Kota di Provinsi Sumatera Utara Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "12.21",
+    "year": 2025,
+    "grossMonthly": 3195910,
+    "source": "Keputusan Gubernur Sumatera Utara No. 188.44/833/KPTS/2024 tentang Penetapan Upah Minimum Kabupaten/Kota di Provinsi Sumatera Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "12.20",
+    "year": 2025,
+    "grossMonthly": 2992559,
+    "source": "Keputusan Gubernur Sumatera Utara No. 188.44/833/KPTS/2024 tentang Penetapan Upah Minimum Kabupaten/Kota di Provinsi Sumatera Utara Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "12.16",
+    "year": 2025,
+    "grossMonthly": 2992559,
+    "source": "Keputusan Gubernur Sumatera Utara No. 188.44/833/KPTS/2024 tentang Penetapan Upah Minimum Kabupaten/Kota di Provinsi Sumatera Utara Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "12.17",
+    "year": 2025,
+    "grossMonthly": 2992559,
+    "source": "Keputusan Gubernur Sumatera Utara No. 188.44/833/KPTS/2024 tentang Penetapan Upah Minimum Kabupaten/Kota di Provinsi Sumatera Utara Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "12.18",
+    "year": 2025,
+    "grossMonthly": 3313500,
+    "source": "Keputusan Gubernur Sumatera Utara No. 188.44/833/KPTS/2024 tentang Penetapan Upah Minimum Kabupaten/Kota di Provinsi Sumatera Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "12.09",
+    "year": 2025,
+    "grossMonthly": 3088851,
+    "source": "Keputusan Gubernur Sumatera Utara No. 188.44/833/KPTS/2024 tentang Penetapan Upah Minimum Kabupaten/Kota di Provinsi Sumatera Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "12.03",
+    "year": 2025,
+    "grossMonthly": 3307324,
+    "source": "Keputusan Gubernur Sumatera Utara No. 188.44/833/KPTS/2024 tentang Penetapan Upah Minimum Kabupaten/Kota di Provinsi Sumatera Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "12.04",
+    "year": 2025,
+    "grossMonthly": 3242323,
+    "source": "Keputusan Gubernur Sumatera Utara No. 188.44/833/KPTS/2024 tentang Penetapan Upah Minimum Kabupaten/Kota di Provinsi Sumatera Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "12.05",
+    "year": 2025,
+    "grossMonthly": 3017649,
+    "source": "Keputusan Gubernur Sumatera Utara No. 188.44/833/KPTS/2024 tentang Penetapan Upah Minimum Kabupaten/Kota di Provinsi Sumatera Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "12.06",
+    "year": 2025,
+    "grossMonthly": 3151356,
+    "source": "Keputusan Gubernur Sumatera Utara No. 188.44/833/KPTS/2024 tentang Penetapan Upah Minimum Kabupaten/Kota di Provinsi Sumatera Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   }
+  ]
+ },
+ {
+  "provinceName": "Papua",
+  "provinceCode": "91",
+  "regions": [
+   {
+    "code": "94.71",
+    "name": "Kota Jayapura",
+    "tier": "kota"
+   },
+   {
+    "code": "94.03",
+    "name": "Jayapura",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "94.20",
+    "name": "Keerom",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "94.19",
+    "name": "Sarmi",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "94.28",
+    "name": "Mamberamo Raya",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "94.09",
+    "name": "Biak Numfor",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "94.27",
+    "name": "Supiori",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "94.08",
+    "name": "Kepulauan Yapen",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "94.26",
+    "name": "Waropen",
+    "tier": "kabupaten"
+   }
+  ],
+  "wages": [
+   {
+    "regionCode": "94.71",
+    "year": 2025,
+    "grossMonthly": 4285850,
+    "source": "Keputusan Gubernur Papua No. 561/420/SET tentang Penetapan Upah Minimum Kota Jayapura Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "94.03",
+    "year": 2025,
+    "grossMonthly": 4285850,
+    "source": "Keputusan Gubernur Papua Nomor 188.4/444/Tahun 2024 tentang Upah Minimum Provinsi Papua Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "94.09",
+    "year": 2025,
+    "grossMonthly": 4285850,
+    "source": "Keputusan Gubernur Papua Nomor 188.4/444/Tahun 2024 tentang Upah Minimum Provinsi Papua Tahun 2025 (Biak Numfor)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "94.20",
+    "year": 2025,
+    "grossMonthly": 4285850,
+    "source": "Keputusan Gubernur Papua Nomor 188.4/444/Tahun 2024 tentang Upah Minimum Provinsi Papua Tahun 2025 (Keerom)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "94.19",
+    "year": 2025,
+    "grossMonthly": 4285850,
+    "source": "Keputusan Gubernur Papua Nomor 188.4/444/Tahun 2024 tentang Upah Minimum Provinsi Papua Tahun 2025 (Sarmi)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "94.28",
+    "year": 2025,
+    "grossMonthly": 4285850,
+    "source": "Keputusan Gubernur Papua Nomor 188.4/444/Tahun 2024 tentang Upah Minimum Provinsi Papua Tahun 2025 (Mamberamo Raya)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "94.27",
+    "year": 2025,
+    "grossMonthly": 4285850,
+    "source": "Keputusan Gubernur Papua Nomor 188.4/444/Tahun 2024 tentang Upah Minimum Provinsi Papua Tahun 2025 (Supiori)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "94.08",
+    "year": 2025,
+    "grossMonthly": 4285850,
+    "source": "Keputusan Gubernur Papua Nomor 188.4/444/Tahun 2024 tentang Upah Minimum Provinsi Papua Tahun 2025 (Kepulauan Yapen)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "94.26",
+    "year": 2025,
+    "grossMonthly": 4285850,
+    "source": "Keputusan Gubernur Papua Nomor 188.4/444/Tahun 2024 tentang Upah Minimum Provinsi Papua Tahun 2025 (Waropen)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   }
+  ]
+ },
+ {
+  "provinceName": "Bali",
+  "provinceCode": "51",
+  "regions": [
+   {
+    "code": "51.01",
+    "name": "Jembrana",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "51.02",
+    "name": "Tabanan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "51.03",
+    "name": "Badung",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "51.04",
+    "name": "Gianyar",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "51.05",
+    "name": "Klungkung",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "51.06",
+    "name": "Bangli",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "51.07",
+    "name": "Karang Asem",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "51.08",
+    "name": "Buleleng",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "51.71",
+    "name": "Kota Denpasar",
+    "tier": "kota"
+   }
+  ],
+  "wages": [
+   {
+    "regionCode": "51.01",
+    "year": 2025,
+    "grossMonthly": 2996561,
+    "source": "Keputusan Gubernur Bali No. 946/03-M/HK/2024 tentang Upah Minimum Kabupaten/Kota dan Upah Minimum Sektoral Kabupaten/Kota Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "51.02",
+    "year": 2025,
+    "grossMonthly": 3102520,
+    "source": "Keputusan Gubernur Bali No. 946/03-M/HK/2024 tentang Upah Minimum Kabupaten/Kota dan Upah Minimum Sektoral Kabupaten/Kota Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "51.03",
+    "year": 2025,
+    "grossMonthly": 3534339,
+    "source": "Keputusan Gubernur Bali No. 946/03-M/HK/2024 tentang Upah Minimum Kabupaten/Kota dan Upah Minimum Sektoral Kabupaten/Kota Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "51.04",
+    "year": 2025,
+    "grossMonthly": 3119080,
+    "source": "Keputusan Gubernur Bali No. 946/03-M/HK/2024 tentang Upah Minimum Kabupaten/Kota dan Upah Minimum Sektoral Kabupaten/Kota Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "51.05",
+    "year": 2025,
+    "grossMonthly": 2996561,
+    "source": "Keputusan Gubernur Bali No. 946/03-M/HK/2024 tentang Upah Minimum Kabupaten/Kota dan Upah Minimum Sektoral Kabupaten/Kota Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "51.06",
+    "year": 2025,
+    "grossMonthly": 2996561,
+    "source": "Keputusan Gubernur Bali No. 946/03-M/HK/2024 tentang Upah Minimum Kabupaten/Kota dan Upah Minimum Sektoral Kabupaten/Kota Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "51.07",
+    "year": 2025,
+    "grossMonthly": 2996561,
+    "source": "Keputusan Gubernur Bali No. 946/03-M/HK/2024 tentang Upah Minimum Kabupaten/Kota dan Upah Minimum Sektoral Kabupaten/Kota Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "51.08",
+    "year": 2025,
+    "grossMonthly": 2996561,
+    "source": "Keputusan Gubernur Bali No. 946/03-M/HK/2024 tentang Upah Minimum Kabupaten/Kota dan Upah Minimum Sektoral Kabupaten/Kota Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "51.71",
+    "year": 2025,
+    "grossMonthly": 3298116,
+    "source": "Keputusan Gubernur Bali No. 946/03-M/HK/2024 tentang Upah Minimum Kabupaten/Kota dan Upah Minimum Sektoral Kabupaten/Kota Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   }
+  ]
+ },
+ {
+  "provinceName": "Kalimantan Selatan",
+  "provinceCode": "63",
+  "regions": [
+   {
+    "code": "63.01",
+    "name": "Tanah Laut",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "63.02",
+    "name": "Kota Baru",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "63.03",
+    "name": "Banjar",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "63.04",
+    "name": "Barito Kuala",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "63.05",
+    "name": "Tapin",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "63.06",
+    "name": "Hulu Sungai Selatan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "63.07",
+    "name": "Hulu Sungai Tengah",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "63.08",
+    "name": "Hulu Sungai Utara",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "63.09",
+    "name": "Tabalong",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "63.10",
+    "name": "Tanah Bumbu",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "63.11",
+    "name": "Balangan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "63.71",
+    "name": "Kota Banjarmasin",
+    "tier": "kota"
+   },
+   {
+    "code": "63.72",
+    "name": "Kota Banjar Baru",
+    "tier": "kota"
+   }
+  ],
+  "wages": [
+   {
+    "regionCode": "63.01",
+    "year": 2025,
+    "grossMonthly": 3496195,
+    "source": "Keputusan Gubernur Kalimantan Selatan Nomor 100.3.3.1/01089/KUM/2024 tentang Upah Minimum Kabupaten/Kota Tahun 2025 (Mengikuti UMP Kalsel)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "63.02",
+    "year": 2025,
+    "grossMonthly": 3643004,
+    "source": "Keputusan Gubernur Kalimantan Selatan Nomor 100.3.3.1/01089/KUM/2024 tentang Upah Minimum Kabupaten Kotabaru Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "63.03",
+    "year": 2025,
+    "grossMonthly": 3496195,
+    "source": "Keputusan Gubernur Kalimantan Selatan Nomor 100.3.3.1/01089/KUM/2024 tentang Upah Minimum Kabupaten/Kota Tahun 2025 (Mengikuti UMP Kalsel)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "63.04",
+    "year": 2025,
+    "grossMonthly": 3496195,
+    "source": "Keputusan Gubernur Kalimantan Selatan Nomor 100.3.3.1/01089/KUM/2024 tentang Upah Minimum Kabupaten/Kota Tahun 2025 (Mengikuti UMP Kalsel)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "63.05",
+    "year": 2025,
+    "grossMonthly": 3496195,
+    "source": "Keputusan Gubernur Kalimantan Selatan Nomor 100.3.3.1/01089/KUM/2024 tentang Upah Minimum Kabupaten/Kota Tahun 2025 (Mengikuti UMP Kalsel)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "63.06",
+    "year": 2025,
+    "grossMonthly": 3496195,
+    "source": "Keputusan Gubernur Kalimantan Selatan Nomor 100.3.3.1/01089/KUM/2024 tentang Upah Minimum Kabupaten/Kota Tahun 2025 (Mengikuti UMP Kalsel)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "63.07",
+    "year": 2025,
+    "grossMonthly": 3496195,
+    "source": "Keputusan Gubernur Kalimantan Selatan Nomor 100.3.3.1/01089/KUM/2024 tentang Upah Minimum Kabupaten/Kota Tahun 2025 (Mengikuti UMP Kalsel)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "63.08",
+    "year": 2025,
+    "grossMonthly": 3496195,
+    "source": "Keputusan Gubernur Kalimantan Selatan Nomor 100.3.3.1/01089/KUM/2024 tentang Upah Minimum Kabupaten/Kota Tahun 2025 (Mengikuti UMP Kalsel)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "63.09",
+    "year": 2025,
+    "grossMonthly": 3592197,
+    "source": "Keputusan Gubernur Kalimantan Selatan Nomor 100.3.3.1/01089/KUM/2024 tentang Upah Minimum Kabupaten Tabalong Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "63.10",
+    "year": 2025,
+    "grossMonthly": 3500163,
+    "source": "Keputusan Gubernur Kalimantan Selatan Nomor 100.3.3.1/01089/KUM/2024 tentang Upah Minimum Kabupaten Tanah Bumbu Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "63.11",
+    "year": 2025,
+    "grossMonthly": 3496195,
+    "source": "Keputusan Gubernur Kalimantan Selatan Nomor 100.3.3.1/01089/KUM/2024 tentang Upah Minimum Kabupaten/Kota Tahun 2025 (Mengikuti UMP Kalsel)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "63.71",
+    "year": 2025,
+    "grossMonthly": 3599182,
+    "source": "Keputusan Gubernur Kalimantan Selatan Nomor 100.3.3.1/01089/KUM/2024 tentang Upah Minimum Kota Banjarmasin Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "63.72",
+    "year": 2025,
+    "grossMonthly": 3496195,
+    "source": "Keputusan Gubernur Kalimantan Selatan Nomor 100.3.3.1/01089/KUM/2024 tentang Upah Minimum Kota Banjarbaru Tahun 2025 (Mengikuti UMP Kalsel)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   }
+  ]
+ },
+ {
+  "provinceName": "Jawa Barat",
+  "provinceCode": "32",
+  "regions": [
+   {
+    "code": "32.04",
+    "name": "Bandung",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "32.17",
+    "name": "Bandung Barat",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "32.16",
+    "name": "Bekasi",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "32.01",
+    "name": "Bogor",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "32.07",
+    "name": "Ciamis",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "32.03",
+    "name": "Cianjur",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "32.09",
+    "name": "Cirebon",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "32.05",
+    "name": "Garut",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "32.12",
+    "name": "Indramayu",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "32.15",
+    "name": "Karawang",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "32.73",
+    "name": "Kota Bandung",
+    "tier": "kota"
+   },
+   {
+    "code": "32.79",
+    "name": "Kota Banjar",
+    "tier": "kota"
+   },
+   {
+    "code": "32.75",
+    "name": "Kota Bekasi",
+    "tier": "kota"
+   },
+   {
+    "code": "32.71",
+    "name": "Kota Bogor",
+    "tier": "kota"
+   },
+   {
+    "code": "32.77",
+    "name": "Kota Cimahi",
+    "tier": "kota"
+   },
+   {
+    "code": "32.74",
+    "name": "Kota Cirebon",
+    "tier": "kota"
+   },
+   {
+    "code": "32.76",
+    "name": "Kota Depok",
+    "tier": "kota"
+   },
+   {
+    "code": "32.72",
+    "name": "Kota Sukabumi",
+    "tier": "kota"
+   },
+   {
+    "code": "32.78",
+    "name": "Kota Tasikmalaya",
+    "tier": "kota"
+   },
+   {
+    "code": "32.08",
+    "name": "Kuningan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "32.10",
+    "name": "Majalengka",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "32.18",
+    "name": "Pangandaran",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "32.14",
+    "name": "Purwakarta",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "32.13",
+    "name": "Subang",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "32.02",
+    "name": "Sukabumi",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "32.11",
+    "name": "Sumedang",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "32.06",
+    "name": "Tasikmalaya",
+    "tier": "kabupaten"
+   }
+  ],
+  "wages": [
+   {
+    "regionCode": "32.04",
+    "year": 2025,
+    "grossMonthly": 3757284,
+    "source": "Keputusan Gubernur Jawa Barat No. 561.7/Kep.798-Kesra/2024 tentang Upah Minimum Kabupaten/Kota di Daerah Provinsi Jawa Barat Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "32.17",
+    "year": 2025,
+    "grossMonthly": 3736741,
+    "source": "Keputusan Gubernur Jawa Barat No. 561.7/Kep.798-Kesra/2024 tentang Upah Minimum Kabupaten/Kota di Daerah Provinsi Jawa Barat Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "32.16",
+    "year": 2025,
+    "grossMonthly": 5558515,
+    "source": "Keputusan Gubernur Jawa Barat No. 561.7/Kep.798-Kesra/2024 tentang Upah Minimum Kabupaten/Kota di Daerah Provinsi Jawa Barat Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "32.01",
+    "year": 2025,
+    "grossMonthly": 4877211,
+    "source": "Keputusan Gubernur Jawa Barat No. 561.7/Kep.798-Kesra/2024 tentang Upah Minimum Kabupaten/Kota di Daerah Provinsi Jawa Barat Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "32.07",
+    "year": 2025,
+    "grossMonthly": 2225279,
+    "source": "Keputusan Gubernur Jawa Barat No. 561.7/Kep.798-Kesra/2024 tentang Upah Minimum Kabupaten/Kota di Daerah Provinsi Jawa Barat Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "32.03",
+    "year": 2025,
+    "grossMonthly": 3104583,
+    "source": "Keputusan Gubernur Jawa Barat No. 561.7/Kep.798-Kesra/2024 tentang Upah Minimum Kabupaten/Kota di Daerah Provinsi Jawa Barat Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "32.09",
+    "year": 2025,
+    "grossMonthly": 2681382,
+    "source": "Keputusan Gubernur Jawa Barat No. 561.7/Kep.798-Kesra/2024 tentang Upah Minimum Kabupaten/Kota di Daerah Provinsi Jawa Barat Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "32.05",
+    "year": 2025,
+    "grossMonthly": 2328555,
+    "source": "Keputusan Gubernur Jawa Barat No. 561.7/Kep.798-Kesra/2024 tentang Upah Minimum Kabupaten/Kota di Daerah Provinsi Jawa Barat Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "32.12",
+    "year": 2025,
+    "grossMonthly": 2794237,
+    "source": "Keputusan Gubernur Jawa Barat No. 561.7/Kep.798-Kesra/2024 tentang Upah Minimum Kabupaten/Kota di Daerah Provinsi Jawa Barat Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "32.15",
+    "year": 2025,
+    "grossMonthly": 5599593,
+    "source": "Keputusan Gubernur Jawa Barat No. 561.7/Kep.798-Kesra/2024 tentang Upah Minimum Kabupaten/Kota di Daerah Provinsi Jawa Barat Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "32.73",
+    "year": 2025,
+    "grossMonthly": 4482914,
+    "source": "Keputusan Gubernur Jawa Barat No. 561.7/Kep.798-Kesra/2024 tentang Upah Minimum Kabupaten/Kota di Daerah Provinsi Jawa Barat Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "32.79",
+    "year": 2025,
+    "grossMonthly": 2204754,
+    "source": "Keputusan Gubernur Jawa Barat No. 561.7/Kep.798-Kesra/2024 tentang Upah Minimum Kabupaten/Kota di Daerah Provinsi Jawa Barat Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "32.75",
+    "year": 2025,
+    "grossMonthly": 5690753,
+    "source": "Keputusan Gubernur Jawa Barat No. 561.7/Kep.798-Kesra/2024 tentang Upah Minimum Kabupaten/Kota di Daerah Provinsi Jawa Barat Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "32.71",
+    "year": 2025,
+    "grossMonthly": 5126897,
+    "source": "Keputusan Gubernur Jawa Barat No. 561.7/Kep.798-Kesra/2024 tentang Upah Minimum Kabupaten/Kota di Daerah Provinsi Jawa Barat Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "32.77",
+    "year": 2025,
+    "grossMonthly": 3863692,
+    "source": "Keputusan Gubernur Jawa Barat No. 561.7/Kep.798-Kesra/2024 tentang Upah Minimum Kabupaten/Kota di Daerah Provinsi Jawa Barat Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "32.74",
+    "year": 2025,
+    "grossMonthly": 2697685,
+    "source": "Keputusan Gubernur Jawa Barat No. 561.7/Kep.798-Kesra/2024 tentang Upah Minimum Kabupaten/Kota di Daerah Provinsi Jawa Barat Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "32.76",
+    "year": 2025,
+    "grossMonthly": 5195722,
+    "source": "Keputusan Gubernur Jawa Barat No. 561.7/Kep.798-Kesra/2024 tentang Upah Minimum Kabupaten/Kota di Daerah Provinsi Jawa Barat Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "32.72",
+    "year": 2025,
+    "grossMonthly": 3018635,
+    "source": "Keputusan Gubernur Jawa Barat No. 561.7/Kep.798-Kesra/2024 tentang Upah Minimum Kabupaten/Kota di Daerah Provinsi Jawa Barat Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "32.78",
+    "year": 2025,
+    "grossMonthly": 2801963,
+    "source": "Keputusan Gubernur Jawa Barat No. 561.7/Kep.798-Kesra/2024 tentang Upah Minimum Kabupaten/Kota di Daerah Provinsi Jawa Barat Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "32.08",
+    "year": 2025,
+    "grossMonthly": 2209519,
+    "source": "Keputusan Gubernur Jawa Barat No. 561.7/Kep.798-Kesra/2024 tentang Upah Minimum Kabupaten/Kota di Daerah Provinsi Jawa Barat Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "32.10",
+    "year": 2025,
+    "grossMonthly": 2404633,
+    "source": "Keputusan Gubernur Jawa Barat No. 561.7/Kep.798-Kesra/2024 tentang Upah Minimum Kabupaten/Kota di Daerah Provinsi Jawa Barat Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "32.18",
+    "year": 2025,
+    "grossMonthly": 2221724,
+    "source": "Keputusan Gubernur Jawa Barat No. 561.7/Kep.798-Kesra/2024 tentang Upah Minimum Kabupaten/Kota di Daerah Provinsi Jawa Barat Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "32.14",
+    "year": 2025,
+    "grossMonthly": 4792253,
+    "source": "Keputusan Gubernur Jawa Barat No. 561.7/Kep.798-Kesra/2024 tentang Upah Minimum Kabupaten/Kota di Daerah Provinsi Jawa Barat Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "32.13",
+    "year": 2025,
+    "grossMonthly": 3508627,
+    "source": "Keputusan Gubernur Jawa Barat No. 561.7/Kep.798-Kesra/2024 tentang Upah Minimum Kabupaten/Kota di Daerah Provinsi Jawa Barat Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "32.02",
+    "year": 2025,
+    "grossMonthly": 3604483,
+    "source": "Keputusan Gubernur Jawa Barat No. 561.7/Kep.798-Kesra/2024 tentang Upah Minimum Kabupaten/Kota di Daerah Provinsi Jawa Barat Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "32.11",
+    "year": 2025,
+    "grossMonthly": 3732088,
+    "source": "Keputusan Gubernur Jawa Barat No. 561.7/Kep.798-Kesra/2024 tentang Upah Minimum Kabupaten/Kota di Daerah Provinsi Jawa Barat Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "32.06",
+    "year": 2025,
+    "grossMonthly": 2699992,
+    "source": "Keputusan Gubernur Jawa Barat No. 561.7/Kep.798-Kesra/2024 tentang Upah Minimum Kabupaten/Kota di Daerah Provinsi Jawa Barat Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   }
+  ]
+ },
+ {
+  "provinceName": "Sulawesi Tengah",
+  "provinceCode": "72",
+  "regions": [
+   {
+    "code": "72.02",
+    "name": "Banggai",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "72.01",
+    "name": "Banggai Kepulauan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "72.11",
+    "name": "Banggai Laut",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "72.07",
+    "name": "Buol",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "72.05",
+    "name": "Donggala",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "72.71",
+    "name": "Kota Palu",
+    "tier": "kota"
+   },
+   {
+    "code": "72.03",
+    "name": "Morowali",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "72.12",
+    "name": "Morowali Utara",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "72.08",
+    "name": "Parigi Moutong",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "72.04",
+    "name": "Poso",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "72.10",
+    "name": "Sigi",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "72.09",
+    "name": "Tojo Una-Una",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "72.06",
+    "name": "Toli-Toli",
+    "tier": "kabupaten"
+   }
+  ],
+  "wages": [
+   {
+    "regionCode": "72.02",
+    "year": 2025,
+    "grossMonthly": 2947722,
+    "source": "Keputusan Gubernur Sulawesi Tengah Nomor 500.15.14.1/569/DIS.NAKERTRANS-G.ST/2024 tentang Upah Minimum Kabupaten Banggai Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "72.01",
+    "year": 2025,
+    "grossMonthly": 2915000,
+    "source": "Keputusan Gubernur Sulawesi Tengah Nomor 500.15.14.1/537/DIS.NAKERTRANS-G.ST/2024 tentang Upah Minimum Provinsi Sulawesi Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "72.11",
+    "year": 2025,
+    "grossMonthly": 2915000,
+    "source": "Keputusan Gubernur Sulawesi Tengah Nomor 500.15.14.1/537/DIS.NAKERTRANS-G.ST/2024 tentang Upah Minimum Provinsi Sulawesi Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "72.07",
+    "year": 2025,
+    "grossMonthly": 3002130,
+    "source": "Keputusan Gubernur Sulawesi Tengah Nomor 500.15.14.1/570/DIS.NAKERTRANS-G.ST/2024 tentang Upah Minimum Kabupaten Buol Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "72.05",
+    "year": 2025,
+    "grossMonthly": 2915000,
+    "source": "Keputusan Gubernur Sulawesi Tengah Nomor 500.15.14.1/537/DIS.NAKERTRANS-G.ST/2024 tentang Upah Minimum Provinsi Sulawesi Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "72.71",
+    "year": 2025,
+    "grossMonthly": 3386588,
+    "source": "Keputusan Gubernur Sulawesi Tengah Nomor 500.15.14.1/565/DIS.NAKERTRANS-G.ST/2024 tentang Upah Minimum Kota Palu Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "72.03",
+    "year": 2025,
+    "grossMonthly": 3716125,
+    "source": "Keputusan Gubernur Sulawesi Tengah Nomor 500.15.14.1/566/DIS.NAKERTRANS-G.ST/2024 tentang Upah Minimum Kabupaten Morowali Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "72.12",
+    "year": 2025,
+    "grossMonthly": 3925456,
+    "source": "Keputusan Gubernur Sulawesi Tengah Nomor 500.15.14.1/567/DIS.NAKERTRANS-G.ST/2024 tentang Upah Minimum Kabupaten Morowali Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "72.08",
+    "year": 2025,
+    "grossMonthly": 2915000,
+    "source": "Keputusan Gubernur Sulawesi Tengah Nomor 500.15.14.1/537/DIS.NAKERTRANS-G.ST/2024 tentang Upah Minimum Provinsi Sulawesi Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "72.04",
+    "year": 2025,
+    "grossMonthly": 3057161,
+    "source": "Keputusan Gubernur Sulawesi Tengah Nomor 500.15.14.1/568/DIS.NAKERTRANS-G.ST/2024 tentang Upah Minimum Kabupaten Poso Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "72.10",
+    "year": 2025,
+    "grossMonthly": 2915000,
+    "source": "Keputusan Gubernur Sulawesi Tengah Nomor 500.15.14.1/537/DIS.NAKERTRANS-G.ST/2024 tentang Upah Minimum Provinsi Sulawesi Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "72.09",
+    "year": 2025,
+    "grossMonthly": 2915000,
+    "source": "Keputusan Gubernur Sulawesi Tengah Nomor 500.15.14.1/537/DIS.NAKERTRANS-G.ST/2024 tentang Upah Minimum Provinsi Sulawesi Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "72.06",
+    "year": 2025,
+    "grossMonthly": 2915000,
+    "source": "Keputusan Gubernur Sulawesi Tengah Nomor 500.15.14.1/537/DIS.NAKERTRANS-G.ST/2024 tentang Upah Minimum Provinsi Sulawesi Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   }
+  ]
+ },
+ {
+  "provinceName": "Kepulauan Bangka Belitung",
+  "provinceCode": "19",
+  "regions": [
+   {
+    "code": "19.01",
+    "name": "Bangka",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "19.02",
+    "name": "Belitung",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "19.03",
+    "name": "Bangka Barat",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "19.04",
+    "name": "Bangka Tengah",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "19.05",
+    "name": "Bangka Selatan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "19.06",
+    "name": "Belitung Timur",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "19.71",
+    "name": "Kota Pangkal Pinang",
+    "tier": "kota"
+   }
+  ],
+  "wages": [
+   {
+    "regionCode": "19.01",
+    "year": 2025,
+    "grossMonthly": 3876600,
+    "source": "Keputusan Gubernur Kepulauan Bangka Belitung Nomor 188.44/628/Disnaker/2024 tentang Upah Minimum Provinsi Kepulauan Bangka Belitung Tahun 2025 (Mengikuti UMP Bangka Belitung)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "19.02",
+    "year": 2025,
+    "grossMonthly": 3876600,
+    "source": "Keputusan Gubernur Kepulauan Bangka Belitung Nomor 188.44/628/Disnaker/2024 tentang Upah Minimum Provinsi Kepulauan Bangka Belitung Tahun 2025 (Mengikuti UMP Bangka Belitung)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "19.03",
+    "year": 2025,
+    "grossMonthly": 3876600,
+    "source": "Keputusan Gubernur Kepulauan Bangka Belitung Nomor 188.44/628/Disnaker/2024 tentang Upah Minimum Provinsi Kepulauan Bangka Belitung Tahun 2025 (Mengikuti UMP Bangka Belitung)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "19.04",
+    "year": 2025,
+    "grossMonthly": 3876600,
+    "source": "Keputusan Gubernur Kepulauan Bangka Belitung Nomor 188.44/628/Disnaker/2024 tentang Upah Minimum Provinsi Kepulauan Bangka Belitung Tahun 2025 (Mengikuti UMP Bangka Belitung)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "19.05",
+    "year": 2025,
+    "grossMonthly": 3876600,
+    "source": "Keputusan Gubernur Kepulauan Bangka Belitung Nomor 188.44/628/Disnaker/2024 tentang Upah Minimum Provinsi Kepulauan Bangka Belitung Tahun 2025 (Mengikuti UMP Bangka Belitung)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "19.06",
+    "year": 2025,
+    "grossMonthly": 3876600,
+    "source": "Keputusan Gubernur Kepulauan Bangka Belitung Nomor 188.44/628/Disnaker/2024 tentang Upah Minimum Provinsi Kepulauan Bangka Belitung Tahun 2025 (Mengikuti UMP Bangka Belitung)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "19.71",
+    "year": 2025,
+    "grossMonthly": 3876600,
+    "source": "Keputusan Gubernur Kepulauan Bangka Belitung Nomor 188.44/628/Disnaker/2024 tentang Upah Minimum Provinsi Kepulauan Bangka Belitung Tahun 2025 (Mengikuti UMP Bangka Belitung)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   }
+  ]
+ },
+ {
+  "provinceName": "Jawa Timur",
+  "provinceCode": "35",
+  "regions": [
+   {
+    "code": "35.26",
+    "name": "Bangkalan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "35.10",
+    "name": "Banyuwangi",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "35.05",
+    "name": "Blitar",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "35.22",
+    "name": "Bojonegoro",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "35.11",
+    "name": "Bondowoso",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "35.25",
+    "name": "Gresik",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "35.09",
+    "name": "Jember",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "35.17",
+    "name": "Jombang",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "35.06",
+    "name": "Kediri",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "35.79",
+    "name": "Kota Batu",
+    "tier": "kota"
+   },
+   {
+    "code": "35.72",
+    "name": "Kota Blitar",
+    "tier": "kota"
+   },
+   {
+    "code": "35.71",
+    "name": "Kota Kediri",
+    "tier": "kota"
+   },
+   {
+    "code": "35.77",
+    "name": "Kota Madiun",
+    "tier": "kota"
+   },
+   {
+    "code": "35.73",
+    "name": "Kota Malang",
+    "tier": "kota"
+   },
+   {
+    "code": "35.76",
+    "name": "Kota Mojokerto",
+    "tier": "kota"
+   },
+   {
+    "code": "35.75",
+    "name": "Kota Pasuruan",
+    "tier": "kota"
+   },
+   {
+    "code": "35.74",
+    "name": "Kota Probolinggo",
+    "tier": "kota"
+   },
+   {
+    "code": "35.78",
+    "name": "Kota Surabaya",
+    "tier": "kota"
+   },
+   {
+    "code": "35.24",
+    "name": "Lamongan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "35.08",
+    "name": "Lumajang",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "35.19",
+    "name": "Madiun",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "35.20",
+    "name": "Magetan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "35.07",
+    "name": "Malang",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "35.16",
+    "name": "Mojokerto",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "35.18",
+    "name": "Nganjuk",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "35.21",
+    "name": "Ngawi",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "35.01",
+    "name": "Pacitan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "35.28",
+    "name": "Pamekasan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "35.14",
+    "name": "Pasuruan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "35.02",
+    "name": "Ponorogo",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "35.13",
+    "name": "Probolinggo",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "35.27",
+    "name": "Sampang",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "35.15",
+    "name": "Sidoarjo",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "35.12",
+    "name": "Situbondo",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "35.29",
+    "name": "Sumenep",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "35.03",
+    "name": "Trenggalek",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "35.23",
+    "name": "Tuban",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "35.04",
+    "name": "Tulungagung",
+    "tier": "kabupaten"
+   }
+  ],
+  "wages": [
+   {
+    "regionCode": "35.26",
+    "year": 2025,
+    "grossMonthly": 2397550,
+    "source": "Keputusan Gubernur Jawa Timur No. 100.3.3.1/775/KPTS/013/2024 tentang Upah Minimum Kabupaten/Kota di Jawa Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "35.10",
+    "year": 2025,
+    "grossMonthly": 2810139,
+    "source": "Keputusan Gubernur Jawa Timur No. 100.3.3.1/775/KPTS/013/2024 tentang Upah Minimum Kabupaten/Kota di Jawa Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "35.05",
+    "year": 2025,
+    "grossMonthly": 2413974,
+    "source": "Keputusan Gubernur Jawa Timur No. 100.3.3.1/775/KPTS/013/2024 tentang Upah Minimum Kabupaten/Kota di Jawa Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "35.22",
+    "year": 2025,
+    "grossMonthly": 2525132,
+    "source": "Keputusan Gubernur Jawa Timur No. 100.3.3.1/775/KPTS/013/2024 tentang Upah Minimum Kabupaten/Kota di Jawa Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "35.11",
+    "year": 2025,
+    "grossMonthly": 2347359,
+    "source": "Keputusan Gubernur Jawa Timur No. 100.3.3.1/775/KPTS/013/2024 tentang Upah Minimum Kabupaten/Kota di Jawa Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "35.25",
+    "year": 2025,
+    "grossMonthly": 4874133,
+    "source": "Keputusan Gubernur Jawa Timur No. 100.3.3.1/775/KPTS/013/2024 tentang Upah Minimum Kabupaten/Kota di Jawa Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "35.09",
+    "year": 2025,
+    "grossMonthly": 2838642,
+    "source": "Keputusan Gubernur Jawa Timur No. 100.3.3.1/775/KPTS/013/2024 tentang Upah Minimum Kabupaten/Kota di Jawa Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "35.17",
+    "year": 2025,
+    "grossMonthly": 3137004,
+    "source": "Keputusan Gubernur Jawa Timur No. 100.3.3.1/775/KPTS/013/2024 tentang Upah Minimum Kabupaten/Kota di Jawa Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "35.06",
+    "year": 2025,
+    "grossMonthly": 2492811,
+    "source": "Keputusan Gubernur Jawa Timur No. 100.3.3.1/775/KPTS/013/2024 tentang Upah Minimum Kabupaten/Kota di Jawa Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "35.79",
+    "year": 2025,
+    "grossMonthly": 3360466,
+    "source": "Keputusan Gubernur Jawa Timur No. 100.3.3.1/775/KPTS/013/2024 tentang Upah Minimum Kabupaten/Kota di Jawa Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "35.72",
+    "year": 2025,
+    "grossMonthly": 2481450,
+    "source": "Keputusan Gubernur Jawa Timur No. 100.3.3.1/775/KPTS/013/2024 tentang Upah Minimum Kabupaten/Kota di Jawa Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "35.71",
+    "year": 2025,
+    "grossMonthly": 2572361,
+    "source": "Keputusan Gubernur Jawa Timur No. 100.3.3.1/775/KPTS/013/2024 tentang Upah Minimum Kabupaten/Kota di Jawa Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "35.77",
+    "year": 2025,
+    "grossMonthly": 2422105,
+    "source": "Keputusan Gubernur Jawa Timur No. 100.3.3.1/775/KPTS/013/2024 tentang Upah Minimum Kabupaten/Kota di Jawa Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "35.73",
+    "year": 2025,
+    "grossMonthly": 3507693,
+    "source": "Keputusan Gubernur Jawa Timur No. 100.3.3.1/775/KPTS/013/2024 tentang Upah Minimum Kabupaten/Kota di Jawa Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "35.76",
+    "year": 2025,
+    "grossMonthly": 3031000,
+    "source": "Keputusan Gubernur Jawa Timur No. 100.3.3.1/775/KPTS/013/2024 tentang Upah Minimum Kabupaten/Kota di Jawa Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "35.75",
+    "year": 2025,
+    "grossMonthly": 3358557,
+    "source": "Keputusan Gubernur Jawa Timur No. 100.3.3.1/775/KPTS/013/2024 tentang Upah Minimum Kabupaten/Kota di Jawa Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "35.74",
+    "year": 2025,
+    "grossMonthly": 2876657,
+    "source": "Keputusan Gubernur Jawa Timur No. 100.3.3.1/775/KPTS/013/2024 tentang Upah Minimum Kabupaten/Kota di Jawa Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "35.78",
+    "year": 2025,
+    "grossMonthly": 4961753,
+    "source": "Keputusan Gubernur Jawa Timur No. 100.3.3.1/775/KPTS/013/2024 tentang Upah Minimum Kabupaten/Kota di Jawa Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "35.24",
+    "year": 2025,
+    "grossMonthly": 3012164,
+    "source": "Keputusan Gubernur Jawa Timur No. 100.3.3.1/775/KPTS/013/2024 tentang Upah Minimum Kabupaten/Kota di Jawa Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "35.08",
+    "year": 2025,
+    "grossMonthly": 2429764,
+    "source": "Keputusan Gubernur Jawa Timur No. 100.3.3.1/775/KPTS/013/2024 tentang Upah Minimum Kabupaten/Kota di Jawa Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "35.19",
+    "year": 2025,
+    "grossMonthly": 2400321,
+    "source": "Keputusan Gubernur Jawa Timur No. 100.3.3.1/775/KPTS/013/2024 tentang Upah Minimum Kabupaten/Kota di Jawa Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "35.20",
+    "year": 2025,
+    "grossMonthly": 2406719,
+    "source": "Keputusan Gubernur Jawa Timur No. 100.3.3.1/775/KPTS/013/2024 tentang Upah Minimum Kabupaten/Kota di Jawa Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "35.07",
+    "year": 2025,
+    "grossMonthly": 3553530,
+    "source": "Keputusan Gubernur Jawa Timur No. 100.3.3.1/775/KPTS/013/2024 tentang Upah Minimum Kabupaten/Kota di Jawa Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "35.16",
+    "year": 2025,
+    "grossMonthly": 4856026,
+    "source": "Keputusan Gubernur Jawa Timur No. 100.3.3.1/775/KPTS/013/2024 tentang Upah Minimum Kabupaten/Kota di Jawa Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "35.18",
+    "year": 2025,
+    "grossMonthly": 2405255,
+    "source": "Keputusan Gubernur Jawa Timur No. 100.3.3.1/775/KPTS/013/2024 tentang Upah Minimum Kabupaten/Kota di Jawa Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "35.21",
+    "year": 2025,
+    "grossMonthly": 2397928,
+    "source": "Keputusan Gubernur Jawa Timur No. 100.3.3.1/775/KPTS/013/2024 tentang Upah Minimum Kabupaten/Kota di Jawa Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "35.01",
+    "year": 2025,
+    "grossMonthly": 2364287,
+    "source": "Keputusan Gubernur Jawa Timur No. 100.3.3.1/775/KPTS/013/2024 tentang Upah Minimum Kabupaten/Kota di Jawa Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "35.28",
+    "year": 2025,
+    "grossMonthly": 2376614,
+    "source": "Keputusan Gubernur Jawa Timur No. 100.3.3.1/775/KPTS/013/2024 tentang Upah Minimum Kabupaten/Kota di Jawa Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "35.14",
+    "year": 2025,
+    "grossMonthly": 4866890,
+    "source": "Keputusan Gubernur Jawa Timur No. 100.3.3.1/775/KPTS/013/2024 tentang Upah Minimum Kabupaten/Kota di Jawa Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "35.02",
+    "year": 2025,
+    "grossMonthly": 2402959,
+    "source": "Keputusan Gubernur Jawa Timur No. 100.3.3.1/775/KPTS/013/2024 tentang Upah Minimum Kabupaten/Kota di Jawa Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "35.13",
+    "year": 2025,
+    "grossMonthly": 2989407,
+    "source": "Keputusan Gubernur Jawa Timur No. 100.3.3.1/775/KPTS/013/2024 tentang Upah Minimum Kabupaten/Kota di Jawa Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "35.27",
+    "year": 2025,
+    "grossMonthly": 2335661,
+    "source": "Keputusan Gubernur Jawa Timur No. 100.3.3.1/775/KPTS/013/2024 tentang Upah Minimum Kabupaten/Kota di Jawa Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "35.15",
+    "year": 2025,
+    "grossMonthly": 4870511,
+    "source": "Keputusan Gubernur Jawa Timur No. 100.3.3.1/775/KPTS/013/2024 tentang Upah Minimum Kabupaten/Kota di Jawa Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "35.12",
+    "year": 2025,
+    "grossMonthly": 2335209,
+    "source": "Keputusan Gubernur Jawa Timur No. 100.3.3.1/775/KPTS/013/2024 tentang Upah Minimum Kabupaten/Kota di Jawa Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "35.29",
+    "year": 2025,
+    "grossMonthly": 2406551,
+    "source": "Keputusan Gubernur Jawa Timur No. 100.3.3.1/775/KPTS/013/2024 tentang Upah Minimum Kabupaten/Kota di Jawa Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "35.03",
+    "year": 2025,
+    "grossMonthly": 2378784,
+    "source": "Keputusan Gubernur Jawa Timur No. 100.3.3.1/775/KPTS/013/2024 tentang Upah Minimum Kabupaten/Kota di Jawa Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "35.23",
+    "year": 2025,
+    "grossMonthly": 3050400,
+    "source": "Keputusan Gubernur Jawa Timur No. 100.3.3.1/775/KPTS/013/2024 tentang Upah Minimum Kabupaten/Kota di Jawa Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "35.04",
+    "year": 2025,
+    "grossMonthly": 2470800,
+    "source": "Keputusan Gubernur Jawa Timur No. 100.3.3.1/775/KPTS/013/2024 tentang Upah Minimum Kabupaten/Kota di Jawa Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   }
+  ]
+ },
+ {
+  "provinceName": "Jawa Tengah",
+  "provinceCode": "33",
+  "regions": [
+   {
+    "code": "33.04",
+    "name": "Banjarnegara",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "33.02",
+    "name": "Banyumas",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "33.25",
+    "name": "Batang",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "33.16",
+    "name": "Blora",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "33.09",
+    "name": "Boyolali",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "33.29",
+    "name": "Brebes",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "33.01",
+    "name": "Cilacap",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "33.21",
+    "name": "Demak",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "33.15",
+    "name": "Grobogan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "33.20",
+    "name": "Jepara",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "33.13",
+    "name": "Karanganyar",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "33.05",
+    "name": "Kebumen",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "33.24",
+    "name": "Kendal",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "33.10",
+    "name": "Klaten",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "33.71",
+    "name": "Kota Magelang",
+    "tier": "kota"
+   },
+   {
+    "code": "33.75",
+    "name": "Kota Pekalongan",
+    "tier": "kota"
+   },
+   {
+    "code": "33.73",
+    "name": "Kota Salatiga",
+    "tier": "kota"
+   },
+   {
+    "code": "33.74",
+    "name": "Kota Semarang",
+    "tier": "kota"
+   },
+   {
+    "code": "33.72",
+    "name": "Kota Surakarta",
+    "tier": "kota"
+   },
+   {
+    "code": "33.76",
+    "name": "Kota Tegal",
+    "tier": "kota"
+   },
+   {
+    "code": "33.19",
+    "name": "Kudus",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "33.08",
+    "name": "Magelang",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "33.18",
+    "name": "Pati",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "33.26",
+    "name": "Pekalongan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "33.27",
+    "name": "Pemalang",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "33.03",
+    "name": "Purbalingga",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "33.06",
+    "name": "Purworejo",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "33.17",
+    "name": "Rembang",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "33.22",
+    "name": "Semarang",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "33.14",
+    "name": "Sragen",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "33.11",
+    "name": "Sukoharjo",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "33.28",
+    "name": "Tegal",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "33.23",
+    "name": "Temanggung",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "33.12",
+    "name": "Wonogiri",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "33.07",
+    "name": "Wonosobo",
+    "tier": "kabupaten"
+   }
+  ],
+  "wages": [
+   {
+    "regionCode": "33.04",
+    "year": 2025,
+    "grossMonthly": 2170475,
+    "source": "Keputusan Gubernur Jawa Tengah No. 561/45 Tahun 2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Jawa Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "33.02",
+    "year": 2025,
+    "grossMonthly": 2338410,
+    "source": "Keputusan Gubernur Jawa Tengah No. 561/45 Tahun 2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Jawa Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "33.25",
+    "year": 2025,
+    "grossMonthly": 2534383,
+    "source": "Keputusan Gubernur Jawa Tengah No. 561/45 Tahun 2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Jawa Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "33.16",
+    "year": 2025,
+    "grossMonthly": 2238431,
+    "source": "Keputusan Gubernur Jawa Tengah No. 561/45 Tahun 2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Jawa Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "33.09",
+    "year": 2025,
+    "grossMonthly": 2396598,
+    "source": "Keputusan Gubernur Jawa Tengah No. 561/45 Tahun 2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Jawa Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "33.29",
+    "year": 2025,
+    "grossMonthly": 2239802,
+    "source": "Keputusan Gubernur Jawa Tengah No. 561/45 Tahun 2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Jawa Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "33.01",
+    "year": 2025,
+    "grossMonthly": 2640248,
+    "source": "Keputusan Gubernur Jawa Tengah No. 561/45 Tahun 2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Jawa Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "33.21",
+    "year": 2025,
+    "grossMonthly": 2940716,
+    "source": "Keputusan Gubernur Jawa Tengah No. 561/45 Tahun 2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Jawa Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "33.15",
+    "year": 2025,
+    "grossMonthly": 2254090,
+    "source": "Keputusan Gubernur Jawa Tengah No. 561/45 Tahun 2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Jawa Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "33.20",
+    "year": 2025,
+    "grossMonthly": 2610224,
+    "source": "Keputusan Gubernur Jawa Tengah No. 561/45 Tahun 2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Jawa Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "33.13",
+    "year": 2025,
+    "grossMonthly": 2437110,
+    "source": "Keputusan Gubernur Jawa Tengah No. 561/45 Tahun 2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Jawa Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "33.05",
+    "year": 2025,
+    "grossMonthly": 2259874,
+    "source": "Keputusan Gubernur Jawa Tengah No. 561/45 Tahun 2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Jawa Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "33.24",
+    "year": 2025,
+    "grossMonthly": 2783455,
+    "source": "Keputusan Gubernur Jawa Tengah No. 561/45 Tahun 2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Jawa Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "33.10",
+    "year": 2025,
+    "grossMonthly": 2389823,
+    "source": "Keputusan Gubernur Jawa Tengah No. 561/45 Tahun 2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Jawa Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "33.71",
+    "year": 2025,
+    "grossMonthly": 2281230,
+    "source": "Keputusan Gubernur Jawa Tengah No. 561/45 Tahun 2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Jawa Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "33.75",
+    "year": 2025,
+    "grossMonthly": 2545138,
+    "source": "Keputusan Gubernur Jawa Tengah No. 561/45 Tahun 2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Jawa Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "33.73",
+    "year": 2025,
+    "grossMonthly": 2533583,
+    "source": "Keputusan Gubernur Jawa Tengah No. 561/45 Tahun 2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Jawa Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "33.74",
+    "year": 2025,
+    "grossMonthly": 3454827,
+    "source": "Keputusan Gubernur Jawa Tengah No. 561/45 Tahun 2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Jawa Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "33.72",
+    "year": 2025,
+    "grossMonthly": 2416560,
+    "source": "Keputusan Gubernur Jawa Tengah No. 561/45 Tahun 2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Jawa Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "33.76",
+    "year": 2025,
+    "grossMonthly": 2376684,
+    "source": "Keputusan Gubernur Jawa Tengah No. 561/45 Tahun 2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Jawa Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "33.19",
+    "year": 2025,
+    "grossMonthly": 2680486,
+    "source": "Keputusan Gubernur Jawa Tengah No. 561/45 Tahun 2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Jawa Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "33.08",
+    "year": 2025,
+    "grossMonthly": 2467488,
+    "source": "Keputusan Gubernur Jawa Tengah No. 561/45 Tahun 2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Jawa Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "33.18",
+    "year": 2025,
+    "grossMonthly": 2332350,
+    "source": "Keputusan Gubernur Jawa Tengah No. 561/45 Tahun 2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Jawa Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "33.26",
+    "year": 2025,
+    "grossMonthly": 2486654,
+    "source": "Keputusan Gubernur Jawa Tengah No. 561/45 Tahun 2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Jawa Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "33.27",
+    "year": 2025,
+    "grossMonthly": 2296140,
+    "source": "Keputusan Gubernur Jawa Tengah No. 561/45 Tahun 2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Jawa Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "33.03",
+    "year": 2025,
+    "grossMonthly": 2338283,
+    "source": "Keputusan Gubernur Jawa Tengah No. 561/45 Tahun 2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Jawa Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "33.06",
+    "year": 2025,
+    "grossMonthly": 2265938,
+    "source": "Keputusan Gubernur Jawa Tengah No. 561/45 Tahun 2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Jawa Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "33.17",
+    "year": 2025,
+    "grossMonthly": 2236169,
+    "source": "Keputusan Gubernur Jawa Tengah No. 561/45 Tahun 2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Jawa Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "33.22",
+    "year": 2025,
+    "grossMonthly": 2750136,
+    "source": "Keputusan Gubernur Jawa Tengah No. 561/45 Tahun 2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Jawa Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "33.14",
+    "year": 2025,
+    "grossMonthly": 2182200,
+    "source": "Keputusan Gubernur Jawa Tengah No. 561/45 Tahun 2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Jawa Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "33.11",
+    "year": 2025,
+    "grossMonthly": 2359488,
+    "source": "Keputusan Gubernur Jawa Tengah No. 561/45 Tahun 2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Jawa Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "33.28",
+    "year": 2025,
+    "grossMonthly": 2333586,
+    "source": "Keputusan Gubernur Jawa Tengah No. 561/45 Tahun 2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Jawa Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "33.23",
+    "year": 2025,
+    "grossMonthly": 2246850,
+    "source": "Keputusan Gubernur Jawa Tengah No. 561/45 Tahun 2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Jawa Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "33.12",
+    "year": 2025,
+    "grossMonthly": 2180588,
+    "source": "Keputusan Gubernur Jawa Tengah No. 561/45 Tahun 2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Jawa Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "33.07",
+    "year": 2025,
+    "grossMonthly": 2299521,
+    "source": "Keputusan Gubernur Jawa Tengah No. 561/45 Tahun 2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Jawa Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   }
+  ]
+ },
+ {
+  "provinceName": "Sulawesi Selatan",
+  "provinceCode": "73",
+  "regions": [
+   {
+    "code": "73.03",
+    "name": "Bantaeng",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "73.10",
+    "name": "Barru",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "73.11",
+    "name": "Bone",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "73.02",
+    "name": "Bulukumba",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "73.16",
+    "name": "Enrekang",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "73.06",
+    "name": "Gowa",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "73.04",
+    "name": "Jeneponto",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "73.01",
+    "name": "Kepulauan Selayar",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "73.71",
+    "name": "Kota Makassar",
+    "tier": "kota"
+   },
+   {
+    "code": "73.73",
+    "name": "Kota Palopo",
+    "tier": "kota"
+   },
+   {
+    "code": "73.72",
+    "name": "Kota Parepare",
+    "tier": "kota"
+   },
+   {
+    "code": "73.17",
+    "name": "Luwu",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "73.25",
+    "name": "Luwu Timur",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "73.22",
+    "name": "Luwu Utara",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "73.08",
+    "name": "Maros",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "73.09",
+    "name": "Pangkajene Dan Kepulauan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "73.15",
+    "name": "Pinrang",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "73.14",
+    "name": "Sidenreng Rappang",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "73.07",
+    "name": "Sinjai",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "73.12",
+    "name": "Soppeng",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "73.05",
+    "name": "Takalar",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "73.18",
+    "name": "Tana Toraja",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "73.26",
+    "name": "Toraja Utara",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "73.13",
+    "name": "Wajo",
+    "tier": "kabupaten"
+   }
+  ],
+  "wages": [
+   {
+    "regionCode": "73.03",
+    "year": 2025,
+    "grossMonthly": 3657527,
+    "source": "Keputusan Gubernur Sulawesi Selatan Nomor 1423/XII/2024 tentang Penetapan Upah Minimum Provinsi Sulawesi Selatan Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "73.10",
+    "year": 2025,
+    "grossMonthly": 3657527,
+    "source": "Keputusan Gubernur Sulawesi Selatan Nomor 1423/XII/2024 tentang Penetapan Upah Minimum Provinsi Sulawesi Selatan Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "73.11",
+    "year": 2025,
+    "grossMonthly": 3657527,
+    "source": "Keputusan Gubernur Sulawesi Selatan Nomor 1423/XII/2024 tentang Penetapan Upah Minimum Provinsi Sulawesi Selatan Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "73.02",
+    "year": 2025,
+    "grossMonthly": 3657527,
+    "source": "Keputusan Gubernur Sulawesi Selatan Nomor 1423/XII/2024 tentang Penetapan Upah Minimum Provinsi Sulawesi Selatan Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "73.16",
+    "year": 2025,
+    "grossMonthly": 3657527,
+    "source": "Keputusan Gubernur Sulawesi Selatan Nomor 1423/XII/2024 tentang Penetapan Upah Minimum Provinsi Sulawesi Selatan Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "73.06",
+    "year": 2025,
+    "grossMonthly": 3657527,
+    "source": "Keputusan Gubernur Sulawesi Selatan Nomor 1423/XII/2024 tentang Penetapan Upah Minimum Provinsi Sulawesi Selatan Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "73.04",
+    "year": 2025,
+    "grossMonthly": 3657527,
+    "source": "Keputusan Gubernur Sulawesi Selatan Nomor 1423/XII/2024 tentang Penetapan Upah Minimum Provinsi Sulawesi Selatan Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "73.01",
+    "year": 2025,
+    "grossMonthly": 3657527,
+    "source": "Keputusan Gubernur Sulawesi Selatan Nomor 1423/XII/2024 tentang Penetapan Upah Minimum Provinsi Sulawesi Selatan Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "73.71",
+    "year": 2025,
+    "grossMonthly": 3880137,
+    "source": "Keputusan Gubernur Sulawesi Selatan Nomor 1461/XII/Tahun 2024 tentang Upah Minimum Kota Makassar Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "73.73",
+    "year": 2025,
+    "grossMonthly": 3657527,
+    "source": "Keputusan Gubernur Sulawesi Selatan Nomor 1423/XII/2024 tentang Penetapan Upah Minimum Provinsi Sulawesi Selatan Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "73.72",
+    "year": 2025,
+    "grossMonthly": 3657527,
+    "source": "Keputusan Gubernur Sulawesi Selatan Nomor 1423/XII/2024 tentang Penetapan Upah Minimum Provinsi Sulawesi Selatan Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "73.17",
+    "year": 2025,
+    "grossMonthly": 3657527,
+    "source": "Keputusan Gubernur Sulawesi Selatan Nomor 1423/XII/2024 tentang Penetapan Upah Minimum Provinsi Sulawesi Selatan Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "73.25",
+    "year": 2025,
+    "grossMonthly": 3761112,
+    "source": "Keputusan Gubernur Sulawesi Selatan Nomor 1460/XII/Tahun 2024 tentang Upah Minimum Kabupaten Luwu Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "73.22",
+    "year": 2025,
+    "grossMonthly": 3657527,
+    "source": "Keputusan Gubernur Sulawesi Selatan Nomor 1423/XII/2024 tentang Penetapan Upah Minimum Provinsi Sulawesi Selatan Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "73.08",
+    "year": 2025,
+    "grossMonthly": 3657527,
+    "source": "Keputusan Gubernur Sulawesi Selatan Nomor 1423/XII/2024 tentang Penetapan Upah Minimum Provinsi Sulawesi Selatan Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "73.09",
+    "year": 2025,
+    "grossMonthly": 3747233,
+    "source": "Keputusan Gubernur Sulawesi Selatan Nomor 1458/XII/Tahun 2024 tentang Penetapan Upah Minimum Kabupaten Pangkajene dan Kepulauan Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "73.15",
+    "year": 2025,
+    "grossMonthly": 3657527,
+    "source": "Keputusan Gubernur Sulawesi Selatan Nomor 1423/XII/2024 tentang Penetapan Upah Minimum Provinsi Sulawesi Selatan Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "73.14",
+    "year": 2025,
+    "grossMonthly": 3657527,
+    "source": "Keputusan Gubernur Sulawesi Selatan Nomor 1423/XII/2024 tentang Penetapan Upah Minimum Provinsi Sulawesi Selatan Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "73.07",
+    "year": 2025,
+    "grossMonthly": 3657527,
+    "source": "Keputusan Gubernur Sulawesi Selatan Nomor 1423/XII/2024 tentang Penetapan Upah Minimum Provinsi Sulawesi Selatan Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "73.12",
+    "year": 2025,
+    "grossMonthly": 3657527,
+    "source": "Keputusan Gubernur Sulawesi Selatan Nomor 1423/XII/2024 tentang Penetapan Upah Minimum Provinsi Sulawesi Selatan Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "73.05",
+    "year": 2025,
+    "grossMonthly": 3657527,
+    "source": "Keputusan Gubernur Sulawesi Selatan Nomor 1423/XII/2024 tentang Penetapan Upah Minimum Provinsi Sulawesi Selatan Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "73.18",
+    "year": 2025,
+    "grossMonthly": 3657527,
+    "source": "Keputusan Gubernur Sulawesi Selatan Nomor 1423/XII/2024 tentang Penetapan Upah Minimum Provinsi Sulawesi Selatan Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "73.26",
+    "year": 2025,
+    "grossMonthly": 3657527,
+    "source": "Keputusan Gubernur Sulawesi Selatan Nomor 1423/XII/2024 tentang Penetapan Upah Minimum Provinsi Sulawesi Selatan Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "73.13",
+    "year": 2025,
+    "grossMonthly": 3657527,
+    "source": "Keputusan Gubernur Sulawesi Selatan Nomor 1423/XII/2024 tentang Penetapan Upah Minimum Provinsi Sulawesi Selatan Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   }
+  ]
+ },
+ {
+  "provinceName": "Daerah Istimewa Yogyakarta",
+  "provinceCode": "34",
+  "regions": [
+   {
+    "code": "34.01",
+    "name": "Kulon Progo",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "34.02",
+    "name": "Bantul",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "34.03",
+    "name": "Gunung Kidul",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "34.04",
+    "name": "Sleman",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "34.71",
+    "name": "Kota Yogyakarta",
+    "tier": "kota"
+   }
+  ],
+  "wages": [
+   {
+    "regionCode": "34.01",
+    "year": 2025,
+    "grossMonthly": 2351240,
+    "source": "Keputusan Gubernur Daerah Istimewa Yogyakarta No. 483/KEP/2024 tentang Upah Minimum Kabupaten/Kota Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "34.02",
+    "year": 2025,
+    "grossMonthly": 2360533,
+    "source": "Keputusan Gubernur Daerah Istimewa Yogyakarta No. 483/KEP/2024 tentang Upah Minimum Kabupaten/Kota Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "34.03",
+    "year": 2025,
+    "grossMonthly": 2330264,
+    "source": "Keputusan Gubernur Daerah Istimewa Yogyakarta No. 483/KEP/2024 tentang Upah Minimum Kabupaten/Kota Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "34.04",
+    "year": 2025,
+    "grossMonthly": 2466515,
+    "source": "Keputusan Gubernur Daerah Istimewa Yogyakarta No. 483/KEP/2024 tentang Upah Minimum Kabupaten/Kota Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "34.71",
+    "year": 2025,
+    "grossMonthly": 2655041,
+    "source": "Keputusan Gubernur Daerah Istimewa Yogyakarta No. 483/KEP/2024 tentang Upah Minimum Kabupaten/Kota Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   }
+  ]
+ },
+ {
+  "provinceName": "Sumatera Selatan",
+  "provinceCode": "16",
+  "regions": [
+   {
+    "code": "16.01",
+    "name": "Ogan Komering Ulu",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "16.02",
+    "name": "Ogan Komering Ilir",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "16.03",
+    "name": "Muara Enim",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "16.04",
+    "name": "Lahat",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "16.05",
+    "name": "Musi Rawas",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "16.06",
+    "name": "Musi Banyuasin",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "16.07",
+    "name": "Banyu Asin",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "16.08",
+    "name": "Ogan Komering Ulu Selatan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "16.09",
+    "name": "Ogan Komering Ulu Timur",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "16.10",
+    "name": "Ogan Ilir",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "16.11",
+    "name": "Empat Lawang",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "16.12",
+    "name": "Penukal Abab Lematang Ilir",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "16.13",
+    "name": "Musi Rawas Utara",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "16.71",
+    "name": "Kota Palembang",
+    "tier": "kota"
+   },
+   {
+    "code": "16.72",
+    "name": "Kota Prabumulih",
+    "tier": "kota"
+   },
+   {
+    "code": "16.73",
+    "name": "Kota Pagar Alam",
+    "tier": "kota"
+   },
+   {
+    "code": "16.74",
+    "name": "Kota Lubuklinggau",
+    "tier": "kota"
+   }
+  ],
+  "wages": [
+   {
+    "regionCode": "16.01",
+    "year": 2025,
+    "grossMonthly": 3681571,
+    "source": "Keputusan Gubernur Sumatera Selatan Nomor 921/KPTS/DISNAKERTRANS/2024 tentang Upah Minimum Provinsi Sumatera Selatan Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "16.02",
+    "year": 2025,
+    "grossMonthly": 3681571,
+    "source": "Keputusan Gubernur Sumatera Selatan Nomor 921/KPTS/DISNAKERTRANS/2024 tentang Upah Minimum Provinsi Sumatera Selatan Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "16.03",
+    "year": 2025,
+    "grossMonthly": 3863417,
+    "source": "Keputusan Gubernur Sumatera Selatan Nomor 938/KPTS/DISNAKERTRANS/2024 tentang Penetapan Upah Minimum Kabupaten Muara Enim Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "16.04",
+    "year": 2025,
+    "grossMonthly": 3681571,
+    "source": "Keputusan Gubernur Sumatera Selatan Nomor 921/KPTS/DISNAKERTRANS/2024 tentang Upah Minimum Provinsi Sumatera Selatan Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "16.05",
+    "year": 2025,
+    "grossMonthly": 3796653,
+    "source": "Keputusan Gubernur Sumatera Selatan Nomor 940/KPTS/DISNAKERTRANS/2024 tentang Penetapan Upah Minimum Kabupaten Musi Rawas Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "16.06",
+    "year": 2025,
+    "grossMonthly": 3778348,
+    "source": "Keputusan Gubernur Sumatera Selatan Nomor 939/KPTS/DISNAKERTRANS/2024 tentang Penetapan Upah Minimum Kabupaten Musi Banyuasin Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "16.07",
+    "year": 2025,
+    "grossMonthly": 3715028,
+    "source": "Keputusan Gubernur Sumatera Selatan Nomor 943/KPTS/DISNAKERTRANS/2024 tentang Penetapan Upah Minimum Kabupaten Banyuasin Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "16.08",
+    "year": 2025,
+    "grossMonthly": 3681571,
+    "source": "Keputusan Gubernur Sumatera Selatan Nomor 921/KPTS/DISNAKERTRANS/2024 tentang Upah Minimum Provinsi Sumatera Selatan Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "16.09",
+    "year": 2025,
+    "grossMonthly": 3749696,
+    "source": "Keputusan Gubernur Sumatera Selatan Nomor 942/KPTS/DISNAKERTRANS/2024 tentang Penetapan Upah Minimum Kabupaten Ogan Komering Ulu Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "16.10",
+    "year": 2025,
+    "grossMonthly": 3681571,
+    "source": "Keputusan Gubernur Sumatera Selatan Nomor 921/KPTS/DISNAKERTRANS/2024 tentang Upah Minimum Provinsi Sumatera Selatan Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "16.11",
+    "year": 2025,
+    "grossMonthly": 3681571,
+    "source": "Keputusan Gubernur Sumatera Selatan Nomor 921/KPTS/DISNAKERTRANS/2024 tentang Upah Minimum Provinsi Sumatera Selatan Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "16.12",
+    "year": 2025,
+    "grossMonthly": 3681571,
+    "source": "Keputusan Gubernur Sumatera Selatan Nomor 921/KPTS/DISNAKERTRANS/2024 tentang Upah Minimum Provinsi Sumatera Selatan Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "16.13",
+    "year": 2025,
+    "grossMonthly": 3796654,
+    "source": "Keputusan Gubernur Sumatera Selatan Nomor 941/KPTS/DISNAKERTRANS/2024 tentang Penetapan Upah Minimum Kabupaten Musi Rawas Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "16.71",
+    "year": 2025,
+    "grossMonthly": 3916635,
+    "source": "Keputusan Gubernur Sumatera Selatan Nomor 944/KPTS/DISNAKERTRANS/2024 tentang Penetapan Upah Minimum Kota Palembang Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "16.72",
+    "year": 2025,
+    "grossMonthly": 3681571,
+    "source": "Keputusan Gubernur Sumatera Selatan Nomor 921/KPTS/DISNAKERTRANS/2024 tentang Upah Minimum Provinsi Sumatera Selatan Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "16.73",
+    "year": 2025,
+    "grossMonthly": 3681571,
+    "source": "Keputusan Gubernur Sumatera Selatan Nomor 921/KPTS/DISNAKERTRANS/2024 tentang Upah Minimum Provinsi Sumatera Selatan Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "16.74",
+    "year": 2025,
+    "grossMonthly": 3681571,
+    "source": "Keputusan Gubernur Sumatera Selatan Nomor 921/KPTS/DISNAKERTRANS/2024 tentang Upah Minimum Provinsi Sumatera Selatan Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   }
+  ]
+ },
+ {
+  "provinceName": "Kalimantan Tengah",
+  "provinceCode": "62",
+  "regions": [
+   {
+    "code": "62.01",
+    "name": "Kotawaringin Barat",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "62.02",
+    "name": "Kotawaringin Timur",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "62.03",
+    "name": "Kapuas",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "62.04",
+    "name": "Barito Selatan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "62.05",
+    "name": "Barito Utara",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "62.06",
+    "name": "Sukamara",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "62.07",
+    "name": "Lamandau",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "62.08",
+    "name": "Seruyan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "62.09",
+    "name": "Katingan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "62.10",
+    "name": "Pulang Pisau",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "62.11",
+    "name": "Gunung Mas",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "62.12",
+    "name": "Barito Timur",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "62.13",
+    "name": "Murung Raya",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "62.71",
+    "name": "Kota Palangka Raya",
+    "tier": "kota"
+   }
+  ],
+  "wages": [
+   {
+    "regionCode": "62.01",
+    "year": 2025,
+    "grossMonthly": 3700659,
+    "source": "Keputusan Gubernur Kalimantan Tengah Nomor 188.44/578/2024 tentang Upah Minimum Kabupaten/Kota dan Upah Minimum Sektoral Kabupaten/Kota Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "62.02",
+    "year": 2025,
+    "grossMonthly": 3559113,
+    "source": "Keputusan Gubernur Kalimantan Tengah Nomor 188.44/578/2024 tentang Upah Minimum Kabupaten/Kota dan Upah Minimum Sektoral Kabupaten/Kota Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "62.03",
+    "year": 2025,
+    "grossMonthly": 3473711,
+    "source": "Keputusan Gubernur Kalimantan Tengah Nomor 188.44/578/2024 tentang Upah Minimum Kabupaten/Kota dan Upah Minimum Sektoral Kabupaten/Kota Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "62.04",
+    "year": 2025,
+    "grossMonthly": 3829098,
+    "source": "Keputusan Gubernur Kalimantan Tengah Nomor 188.44/578/2024 tentang Upah Minimum Kabupaten/Kota dan Upah Minimum Sektoral Kabupaten/Kota Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "62.05",
+    "year": 2025,
+    "grossMonthly": 3900362,
+    "source": "Keputusan Gubernur Kalimantan Tengah Nomor 188.44/578/2024 tentang Upah Minimum Kabupaten/Kota dan Upah Minimum Sektoral Kabupaten/Kota Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "62.06",
+    "year": 2025,
+    "grossMonthly": 3716340,
+    "source": "Keputusan Gubernur Kalimantan Tengah Nomor 188.44/578/2024 tentang Upah Minimum Kabupaten/Kota dan Upah Minimum Sektoral Kabupaten/Kota Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "62.07",
+    "year": 2025,
+    "grossMonthly": 3781317,
+    "source": "Keputusan Gubernur Kalimantan Tengah Nomor 188.44/578/2024 tentang Upah Minimum Kabupaten/Kota dan Upah Minimum Sektoral Kabupaten/Kota Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "62.08",
+    "year": 2025,
+    "grossMonthly": 3870690,
+    "source": "Keputusan Gubernur Kalimantan Tengah Nomor 188.44/578/2024 tentang Upah Minimum Kabupaten/Kota dan Upah Minimum Sektoral Kabupaten/Kota Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "62.09",
+    "year": 2025,
+    "grossMonthly": 3561259,
+    "source": "Keputusan Gubernur Kalimantan Tengah Nomor 188.44/578/2024 tentang Upah Minimum Kabupaten/Kota dan Upah Minimum Sektoral Kabupaten/Kota Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "62.10",
+    "year": 2025,
+    "grossMonthly": 3481226,
+    "source": "Keputusan Gubernur Kalimantan Tengah Nomor 188.44/578/2024 tentang Upah Minimum Kabupaten/Kota dan Upah Minimum Sektoral Kabupaten/Kota Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "62.11",
+    "year": 2025,
+    "grossMonthly": 3544506,
+    "source": "Keputusan Gubernur Kalimantan Tengah Nomor 188.44/578/2024 tentang Upah Minimum Kabupaten/Kota dan Upah Minimum Sektoral Kabupaten/Kota Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "62.12",
+    "year": 2025,
+    "grossMonthly": 3498701,
+    "source": "Keputusan Gubernur Kalimantan Tengah Nomor 188.44/578/2024 tentang Upah Minimum Kabupaten/Kota dan Upah Minimum Sektoral Kabupaten/Kota Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "62.13",
+    "year": 2025,
+    "grossMonthly": 3793932,
+    "source": "Keputusan Gubernur Kalimantan Tengah Nomor 188.44/578/2024 tentang Upah Minimum Kabupaten/Kota dan Upah Minimum Sektoral Kabupaten/Kota Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "62.71",
+    "year": 2025,
+    "grossMonthly": 3525154,
+    "source": "Keputusan Gubernur Kalimantan Tengah Nomor 188.44/578/2024 tentang Upah Minimum Kabupaten/Kota dan Upah Minimum Sektoral Kabupaten/Kota Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   }
+  ]
+ },
+ {
+  "provinceName": "Jambi",
+  "provinceCode": "15",
+  "regions": [
+   {
+    "code": "15.01",
+    "name": "Kerinci",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "15.02",
+    "name": "Merangin",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "15.03",
+    "name": "Sarolangun",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "15.04",
+    "name": "Batang Hari",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "15.05",
+    "name": "Muaro Jambi",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "15.06",
+    "name": "Tanjung Jabung Timur",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "15.07",
+    "name": "Tanjung Jabung Barat",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "15.08",
+    "name": "Tebo",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "15.09",
+    "name": "Bungo",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "15.71",
+    "name": "Kota Jambi",
+    "tier": "kota"
+   },
+   {
+    "code": "15.72",
+    "name": "Kota Sungai Penuh",
+    "tier": "kota"
+   }
+  ],
+  "wages": [
+   {
+    "regionCode": "15.01",
+    "year": 2025,
+    "grossMonthly": 3234535,
+    "source": "Keputusan Gubernur Jambi Nomor 953/KEP.GUB/DISNAKERTRANS-3.3/2024 tentang Penetapan Upah Minimum Provinsi Jambi Tahun 2025 (Mengikuti UMP Jambi)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "15.02",
+    "year": 2025,
+    "grossMonthly": 3234535,
+    "source": "Keputusan Gubernur Jambi Nomor 953/KEP.GUB/DISNAKERTRANS-3.3/2024 tentang Penetapan Upah Minimum Provinsi Jambi Tahun 2025 (Mengikuti UMP Jambi)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "15.03",
+    "year": 2025,
+    "grossMonthly": 3322266,
+    "source": "Keputusan Gubernur Jambi Nomor 991/KEP.GUB/DISNAKERTRANS-3.3/2024 tentang Penetapan Upah Minimum Kabupaten Sarolangun Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "15.04",
+    "year": 2025,
+    "grossMonthly": 3234535,
+    "source": "Keputusan Gubernur Jambi Nomor 953/KEP.GUB/DISNAKERTRANS-3.3/2024 tentang Penetapan Upah Minimum Provinsi Jambi Tahun 2025 (Mengikuti UMP Jambi)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "15.05",
+    "year": 2025,
+    "grossMonthly": 3378620,
+    "source": "Keputusan Gubernur Jambi Nomor 989/KEP.GUB/DISNAKERTRANS-3.3/2024 tentang Penetapan Upah Minimum Kabupaten Muaro Jambi Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "15.06",
+    "year": 2025,
+    "grossMonthly": 3234535,
+    "source": "Keputusan Gubernur Jambi Nomor 953/KEP.GUB/DISNAKERTRANS-3.3/2024 tentang Penetapan Upah Minimum Provinsi Jambi Tahun 2025 (Mengikuti UMP Jambi)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "15.07",
+    "year": 2025,
+    "grossMonthly": 3329595,
+    "source": "Keputusan Gubernur Jambi Nomor 990/KEP.GUB/DISNAKERTRANS-3.3/2024 tentang Penetapan Upah Minimum Kabupaten Tanjung Jabung Barat Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "15.08",
+    "year": 2025,
+    "grossMonthly": 3234535,
+    "source": "Keputusan Gubernur Jambi Nomor 953/KEP.GUB/DISNAKERTRANS-3.3/2024 tentang Penetapan Upah Minimum Provinsi Jambi Tahun 2025 (Mengikuti UMP Jambi)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "15.09",
+    "year": 2025,
+    "grossMonthly": 3234535,
+    "source": "Keputusan Gubernur Jambi Nomor 953/KEP.GUB/DISNAKERTRANS-3.3/2024 tentang Penetapan Upah Minimum Provinsi Jambi Tahun 2025 (Mengikuti UMP Jambi)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "15.71",
+    "year": 2025,
+    "grossMonthly": 3607223,
+    "source": "Keputusan Gubernur Jambi Nomor 988/KEP.GUB/DISNAKERTRANS/2024 tentang Penetapan Upah Minimum Kota Jambi Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "15.72",
+    "year": 2025,
+    "grossMonthly": 3234535,
+    "source": "Keputusan Gubernur Jambi Nomor 953/KEP.GUB/DISNAKERTRANS-3.3/2024 tentang Penetapan Upah Minimum Provinsi Jambi Tahun 2025 (Mengikuti UMP Jambi)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   }
+  ]
+ },
+ {
+  "provinceName": "Riau",
+  "provinceCode": "14",
+  "regions": [
+   {
+    "code": "14.08",
+    "name": "Bengkalis",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "14.03",
+    "name": "Indragiri Hilir",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "14.02",
+    "name": "Indragiri Hulu",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "14.06",
+    "name": "Kampar",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "14.10",
+    "name": "Kepulauan Meranti",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "14.73",
+    "name": "Kota Dumai",
+    "tier": "kota"
+   },
+   {
+    "code": "14.71",
+    "name": "Kota Pekanbaru",
+    "tier": "kota"
+   },
+   {
+    "code": "14.01",
+    "name": "Kuantan Singingi",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "14.04",
+    "name": "Pelalawan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "14.09",
+    "name": "Rokan Hilir",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "14.07",
+    "name": "Rokan Hulu",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "14.05",
+    "name": "Siak",
+    "tier": "kabupaten"
+   }
+  ],
+  "wages": [
+   {
+    "regionCode": "14.08",
+    "year": 2025,
+    "grossMonthly": 3933620,
+    "source": "Keputusan Gubernur Riau No. Kpts. 3777/XII/2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Riau Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "14.03",
+    "year": 2025,
+    "grossMonthly": 3508776,
+    "source": "Keputusan Gubernur Riau No. Kpts. 3777/XII/2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Riau Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "14.02",
+    "year": 2025,
+    "grossMonthly": 3703206,
+    "source": "Keputusan Gubernur Riau No. Kpts. 3777/XII/2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Riau Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "14.06",
+    "year": 2025,
+    "grossMonthly": 3634594,
+    "source": "Keputusan Gubernur Riau No. Kpts. 3777/XII/2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Riau Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "14.10",
+    "year": 2025,
+    "grossMonthly": 3508776,
+    "source": "Keputusan Gubernur Riau No. Kpts. 3777/XII/2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Riau Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "14.73",
+    "year": 2025,
+    "grossMonthly": 4118659,
+    "source": "Keputusan Gubernur Riau No. Kpts. 3777/XII/2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Riau Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "14.71",
+    "year": 2025,
+    "grossMonthly": 3675937,
+    "source": "Keputusan Gubernur Riau No. Kpts. 3777/XII/2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Riau Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "14.01",
+    "year": 2025,
+    "grossMonthly": 3692797,
+    "source": "Keputusan Gubernur Riau No. Kpts. 3777/XII/2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Riau Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "14.04",
+    "year": 2025,
+    "grossMonthly": 3616057,
+    "source": "Keputusan Gubernur Riau No. Kpts. 3777/XII/2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Riau Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "14.09",
+    "year": 2025,
+    "grossMonthly": 3548818,
+    "source": "Keputusan Gubernur Riau No. Kpts. 3777/XII/2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Riau Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "14.07",
+    "year": 2025,
+    "grossMonthly": 3579381,
+    "source": "Keputusan Gubernur Riau No. Kpts. 3777/XII/2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Riau Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "14.05",
+    "year": 2025,
+    "grossMonthly": 3691216,
+    "source": "Keputusan Gubernur Riau No. Kpts. 3777/XII/2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Riau Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   }
+  ]
+ },
+ {
+  "provinceName": "Kalimantan Barat",
+  "provinceCode": "61",
+  "regions": [
+   {
+    "code": "61.02",
+    "name": "Bengkayang",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "61.08",
+    "name": "Kapuas Hulu",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "61.11",
+    "name": "Kayong Utara",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "61.06",
+    "name": "Ketapang",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "61.71",
+    "name": "Kota Pontianak",
+    "tier": "kota"
+   },
+   {
+    "code": "61.72",
+    "name": "Kota Singkawang",
+    "tier": "kota"
+   },
+   {
+    "code": "61.12",
+    "name": "Kubu Raya",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "61.03",
+    "name": "Landak",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "61.10",
+    "name": "Melawi",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "61.04",
+    "name": "Mempawah",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "61.01",
+    "name": "Sambas",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "61.05",
+    "name": "Sanggau",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "61.09",
+    "name": "Sekadau",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "61.07",
+    "name": "Sintang",
+    "tier": "kabupaten"
+   }
+  ],
+  "wages": [
+   {
+    "regionCode": "61.02",
+    "year": 2025,
+    "grossMonthly": 3062260,
+    "source": "Keputusan Gubernur Kalimantan Barat Nomor 944/NAKERTRAN/2024 tentang Upah Minimum Kabupaten Bengkayang Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "61.08",
+    "year": 2025,
+    "grossMonthly": 2924501,
+    "source": "Keputusan Gubernur Kalimantan Barat Nomor 942/NAKERTRAN/2024 tentang Upah Minimum Kabupaten Kapuas Hulu Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "61.11",
+    "year": 2025,
+    "grossMonthly": 3220756,
+    "source": "Keputusan Gubernur Kalimantan Barat Nomor 947/NAKERTRAN/2024 tentang Upah Minimum Kabupaten Kayong Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "61.06",
+    "year": 2025,
+    "grossMonthly": 3396267,
+    "source": "Keputusan Gubernur Kalimantan Barat Nomor 946/NAKERTRAN/2024 tentang Upah Minimum Kabupaten dan Upah Minimum Sektoral Kabupaten Ketapang Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "61.71",
+    "year": 2025,
+    "grossMonthly": 3024820,
+    "source": "Keputusan Gubernur Kalimantan Barat Nomor 937/NAKERTRAN/2024 tentang Upah Minimum Kota Pontianak Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "61.72",
+    "year": 2025,
+    "grossMonthly": 3074566,
+    "source": "Keputusan Gubernur Kalimantan Barat Nomor 938/NAKERTRAN/2024 tentang Upah Minimum Kota Singkawang Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "61.12",
+    "year": 2025,
+    "grossMonthly": 2878286,
+    "source": "Keputusan Gubernur Kalimantan Barat Nomor 908/NAKERTRAN/2024 tentang Upah Minimum Provinsi Kalimantan Barat Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "61.03",
+    "year": 2025,
+    "grossMonthly": 3054906,
+    "source": "Keputusan Gubernur Kalimantan Barat Nomor 945/NAKERTRAN/2024 tentang Upah Minimum Kabupaten Landak Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "61.10",
+    "year": 2025,
+    "grossMonthly": 2953711,
+    "source": "Keputusan Gubernur Kalimantan Barat Nomor 940/NAKERTRAN/2024 tentang Upah Minimum Kabupaten Melawi Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "61.04",
+    "year": 2025,
+    "grossMonthly": 2878286,
+    "source": "Keputusan Gubernur Kalimantan Barat Nomor 908/NAKERTRAN/2024 tentang Upah Minimum Provinsi Kalimantan Barat Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "61.01",
+    "year": 2025,
+    "grossMonthly": 3015520,
+    "source": "Keputusan Gubernur Kalimantan Barat Nomor 943/NAKERTRAN/2024 tentang Upah Minimum Kabupaten dan Upah Minimum Sektoral Kabupaten Sambas Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "61.05",
+    "year": 2025,
+    "grossMonthly": 2970885,
+    "source": "Keputusan Gubernur Kalimantan Barat Nomor 949/NAKERTRAN/2024 tentang Upah Minimum Kabupaten Sanggau Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "61.09",
+    "year": 2025,
+    "grossMonthly": 2878286,
+    "source": "Keputusan Gubernur Kalimantan Barat Nomor 908/NAKERTRAN/2024 tentang Upah Minimum Provinsi Kalimantan Barat Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "61.07",
+    "year": 2025,
+    "grossMonthly": 3039805,
+    "source": "Keputusan Gubernur Kalimantan Barat Nomor 941/NAKERTRAN/2024 tentang Upah Minimum Kabupaten Sintang Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   }
+  ]
+ },
+ {
+  "provinceName": "Bengkulu",
+  "provinceCode": "17",
+  "regions": [
+   {
+    "code": "17.01",
+    "name": "Bengkulu Selatan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "17.02",
+    "name": "Rejang Lebong",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "17.03",
+    "name": "Bengkulu Utara",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "17.04",
+    "name": "Kaur",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "17.05",
+    "name": "Seluma",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "17.06",
+    "name": "Mukomuko",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "17.07",
+    "name": "Lebong",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "17.08",
+    "name": "Kepahiang",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "17.09",
+    "name": "Bengkulu Tengah",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "17.71",
+    "name": "Kota Bengkulu",
+    "tier": "kota"
+   }
+  ],
+  "wages": [
+   {
+    "regionCode": "17.01",
+    "year": 2025,
+    "grossMonthly": 2670039,
+    "source": "Keputusan Gubernur Bengkulu Nomor M.632.DKKTRANS.Tahun 2024 tentang Upah Minimum Provinsi Bengkulu Tahun 2025 (Mengikuti UMP Bengkulu)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "17.02",
+    "year": 2025,
+    "grossMonthly": 2670039,
+    "source": "Keputusan Gubernur Bengkulu Nomor M.632.DKKTRANS.Tahun 2024 tentang Upah Minimum Provinsi Bengkulu Tahun 2025 (Mengikuti UMP Bengkulu)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "17.03",
+    "year": 2025,
+    "grossMonthly": 2754654,
+    "source": "Keputusan Gubernur Bengkulu Nomor M.647.DKKTRANS Tahun 2024 tentang Upah Minimum Kabupaten Bengkulu Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "17.04",
+    "year": 2025,
+    "grossMonthly": 2670039,
+    "source": "Keputusan Gubernur Bengkulu Nomor M.632.DKKTRANS.Tahun 2024 tentang Upah Minimum Provinsi Bengkulu Tahun 2025 (Mengikuti UMP Bengkulu)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "17.05",
+    "year": 2025,
+    "grossMonthly": 2670039,
+    "source": "Keputusan Gubernur Bengkulu Nomor M.632.DKKTRANS.Tahun 2024 tentang Upah Minimum Provinsi Bengkulu Tahun 2025 (Mengikuti UMP Bengkulu)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "17.06",
+    "year": 2025,
+    "grossMonthly": 3052119,
+    "source": "Keputusan Gubernur Bengkulu Nomor M.647.DKKTRANS Tahun 2024 tentang Upah Minimum Kabupaten Mukomuko Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "17.07",
+    "year": 2025,
+    "grossMonthly": 2670039,
+    "source": "Keputusan Gubernur Bengkulu Nomor M.632.DKKTRANS.Tahun 2024 tentang Upah Minimum Provinsi Bengkulu Tahun 2025 (Mengikuti UMP Bengkulu)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "17.08",
+    "year": 2025,
+    "grossMonthly": 2670039,
+    "source": "Keputusan Gubernur Bengkulu Nomor M.632.DKKTRANS.Tahun 2024 tentang Upah Minimum Provinsi Bengkulu Tahun 2025 (Mengikuti UMP Bengkulu)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "17.09",
+    "year": 2025,
+    "grossMonthly": 2816835,
+    "source": "Keputusan Gubernur Bengkulu Nomor M.647.DKKTRANS Tahun 2024 tentang Upah Minimum Kabupaten Bengkulu Tengah Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "17.71",
+    "year": 2025,
+    "grossMonthly": 2930669,
+    "source": "Keputusan Gubernur Bengkulu Nomor M.647.DKKTRANS Tahun 2024 tentang Upah Minimum Kota Bengkulu Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   }
+  ]
+ },
+ {
+  "provinceName": "Kalimantan Timur",
+  "provinceCode": "64",
+  "regions": [
+   {
+    "code": "64.05",
+    "name": "Berau",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "64.71",
+    "name": "Kota Balikpapan",
+    "tier": "kota"
+   },
+   {
+    "code": "64.74",
+    "name": "Kota Bontang",
+    "tier": "kota"
+   },
+   {
+    "code": "64.72",
+    "name": "Kota Samarinda",
+    "tier": "kota"
+   },
+   {
+    "code": "64.02",
+    "name": "Kutai Barat",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "64.03",
+    "name": "Kutai Kartanegara",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "64.04",
+    "name": "Kutai Timur",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "64.11",
+    "name": "Mahakam Hulu",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "64.01",
+    "name": "Paser",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "64.09",
+    "name": "Penajam Paser Utara",
+    "tier": "kabupaten"
+   }
+  ],
+  "wages": [
+   {
+    "regionCode": "64.05",
+    "year": 2025,
+    "grossMonthly": 4081376,
+    "source": "Keputusan Gubernur Kalimantan Timur tentang Penetapan Upah Minimum Kabupaten Berau Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "64.71",
+    "year": 2025,
+    "grossMonthly": 3701508,
+    "source": "Keputusan Gubernur Kalimantan Timur No. 561/K.821/2024 tentang Penetapan Upah Minimum Kota Balikpapan Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "64.74",
+    "year": 2025,
+    "grossMonthly": 3780012,
+    "source": "Keputusan Gubernur Kalimantan Timur tentang Penetapan Upah Minimum Kota Bontang Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "64.72",
+    "year": 2025,
+    "grossMonthly": 3724437,
+    "source": "Keputusan Gubernur Kalimantan Timur No. 561/K.822/2024 tentang Penetapan Upah Minimum Kota Samarinda Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "64.02",
+    "year": 2025,
+    "grossMonthly": 3952234,
+    "source": "Keputusan Gubernur Kalimantan Timur tentang Penetapan Upah Minimum Kabupaten Kutai Barat Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "64.03",
+    "year": 2025,
+    "grossMonthly": 3766379,
+    "source": "Keputusan Gubernur Kalimantan Timur tentang Penetapan Upah Minimum Kabupaten Kutai Kartanegara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "64.04",
+    "year": 2025,
+    "grossMonthly": 3743820,
+    "source": "Keputusan Gubernur Kalimantan Timur Nomor 100.3.3.1/558/2024 tentang Penetapan Upah Minimum Kabupaten Kutai Timur Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "64.11",
+    "year": 2025,
+    "grossMonthly": 3952234,
+    "source": "Keputusan Gubernur Kalimantan Timur tentang Penetapan Upah Minimum Kabupaten Mahakam Ulu Tahun 2025 (Mengacu UMK Kutai Barat)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "64.01",
+    "year": 2025,
+    "grossMonthly": 3591566,
+    "source": "Keputusan Gubernur Kalimantan Timur tentang Penetapan Upah Minimum Kabupaten Paser Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "64.09",
+    "year": 2025,
+    "grossMonthly": 3957346,
+    "source": "Keputusan Gubernur Kalimantan Timur tentang Penetapan Upah Minimum Kabupaten Penajam Paser Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   }
+  ]
+ },
+ {
+  "provinceName": "Nusa Tenggara Barat",
+  "provinceCode": "52",
+  "regions": [
+   {
+    "code": "52.06",
+    "name": "Bima",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "52.05",
+    "name": "Dompu",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "52.72",
+    "name": "Kota Bima",
+    "tier": "kota"
+   },
+   {
+    "code": "52.71",
+    "name": "Kota Mataram",
+    "tier": "kota"
+   },
+   {
+    "code": "52.01",
+    "name": "Lombok Barat",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "52.02",
+    "name": "Lombok Tengah",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "52.03",
+    "name": "Lombok Timur",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "52.08",
+    "name": "Lombok Utara",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "52.04",
+    "name": "Sumbawa",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "52.07",
+    "name": "Sumbawa Barat",
+    "tier": "kabupaten"
+   }
+  ],
+  "wages": [
+   {
+    "regionCode": "52.06",
+    "year": 2025,
+    "grossMonthly": 2637147,
+    "source": "Keputusan Gubernur Nusa Tenggara Barat No. 500.15.1-758 Tahun 2024 tentang Upah Minimum Kabupaten/Kota Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "52.05",
+    "year": 2025,
+    "grossMonthly": 2605734,
+    "source": "Keputusan Gubernur Nusa Tenggara Barat No. 500.15.1-758 Tahun 2024 tentang Upah Minimum Kabupaten/Kota Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "52.72",
+    "year": 2025,
+    "grossMonthly": 2662719,
+    "source": "Keputusan Gubernur Nusa Tenggara Barat No. 500.15.1-758 Tahun 2024 tentang Upah Minimum Kota Bima Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "52.71",
+    "year": 2025,
+    "grossMonthly": 2859620,
+    "source": "Keputusan Gubernur Nusa Tenggara Barat No. 561-789 Tahun 2024 tentang Upah Minimum Kota Mataram Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "52.01",
+    "year": 2025,
+    "grossMonthly": 2602931,
+    "source": "Keputusan Gubernur Nusa Tenggara Barat No. 500.15.1-758 Tahun 2024 tentang Upah Minimum Kabupaten/Kota Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "52.02",
+    "year": 2025,
+    "grossMonthly": 2610281,
+    "source": "Keputusan Gubernur Nusa Tenggara Barat No. 500.15.1-758 Tahun 2024 tentang Upah Minimum Kabupaten/Kota Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "52.03",
+    "year": 2025,
+    "grossMonthly": 2608714,
+    "source": "Keputusan Gubernur Nusa Tenggara Barat No. 500.15.1-758 Tahun 2024 tentang Upah Minimum Kabupaten/Kota Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "52.08",
+    "year": 2025,
+    "grossMonthly": 2609826,
+    "source": "Keputusan Gubernur Nusa Tenggara Barat No. 500.15.1-758 Tahun 2024 tentang Upah Minimum Kabupaten/Kota Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "52.04",
+    "year": 2025,
+    "grossMonthly": 2627607,
+    "source": "Keputusan Gubernur Nusa Tenggara Barat No. 500.15.1-758 Tahun 2024 tentang Upah Minimum Kabupaten/Kota Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "52.07",
+    "year": 2025,
+    "grossMonthly": 2823168,
+    "source": "Keputusan Gubernur Nusa Tenggara Barat No. 500.15.1-758 Tahun 2024 tentang Upah Minimum Kabupaten Sumbawa Barat Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   }
+  ]
+ },
+ {
+  "provinceName": "Kepulauan Riau",
+  "provinceCode": "21",
+  "regions": [
+   {
+    "code": "21.02",
+    "name": "Bintan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "21.01",
+    "name": "Karimun",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "21.05",
+    "name": "Kepulauan Anambas",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "21.71",
+    "name": "Kota Batam",
+    "tier": "kota"
+   },
+   {
+    "code": "21.72",
+    "name": "Kota Tanjung Pinang",
+    "tier": "kota"
+   },
+   {
+    "code": "21.04",
+    "name": "Lingga",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "21.03",
+    "name": "Natuna",
+    "tier": "kabupaten"
+   }
+  ],
+  "wages": [
+   {
+    "regionCode": "21.02",
+    "year": 2025,
+    "grossMonthly": 4207762,
+    "source": "Keputusan Gubernur Kepulauan Riau No. 1432 Tahun 2024 tentang Upah Minimum Kabupaten Bintan Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "21.01",
+    "year": 2025,
+    "grossMonthly": 3956475,
+    "source": "Keputusan Gubernur Kepulauan Riau No. 1433 Tahun 2024 tentang Upah Minimum Kabupaten Karimun Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "21.05",
+    "year": 2025,
+    "grossMonthly": 4084919,
+    "source": "Keputusan Gubernur Kepulauan Riau No. 1436 Tahun 2024 tentang Upah Minimum Kabupaten Kepulauan Anambas Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "21.71",
+    "year": 2025,
+    "grossMonthly": 4989600,
+    "source": "Keputusan Gubernur Kepulauan Riau No. 1434 Tahun 2024 tentang Upah Minimum Kota Batam Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "21.72",
+    "year": 2025,
+    "grossMonthly": 3623654,
+    "source": "Keputusan Gubernur Kepulauan Riau No. 1438 Tahun 2024 tentang Upah Minimum Kota Tanjungpinang Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "21.04",
+    "year": 2025,
+    "grossMonthly": 3623654,
+    "source": "Keputusan Gubernur Kepulauan Riau No. 1414 Tahun 2024 tentang Upah Minimum Provinsi Kepulauan Riau Tahun 2025 (Diberlakukan untuk Kab. Lingga)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "21.03",
+    "year": 2025,
+    "grossMonthly": 3628002,
+    "source": "Keputusan Gubernur Kepulauan Riau No. 1435 Tahun 2024 tentang Upah Minimum Kabupaten Natuna Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   }
+  ]
+ },
+ {
+  "provinceName": "Gorontalo",
+  "provinceCode": "75",
+  "regions": [
+   {
+    "code": "75.01",
+    "name": "Boalemo",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "75.02",
+    "name": "Gorontalo",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "75.03",
+    "name": "Pohuwato",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "75.04",
+    "name": "Bone Bolango",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "75.05",
+    "name": "Gorontalo Utara",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "75.71",
+    "name": "Kota Gorontalo",
+    "tier": "kota"
+   }
+  ],
+  "wages": [
+   {
+    "regionCode": "75.01",
+    "year": 2025,
+    "grossMonthly": 3221731,
+    "source": "Keputusan Gubernur Gorontalo Nomor 482/34/XII/2024 tentang Penetapan Upah Minimum Provinsi Gorontalo Tahun 2025 (Mengikuti UMP Gorontalo)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "75.02",
+    "year": 2025,
+    "grossMonthly": 3221731,
+    "source": "Keputusan Gubernur Gorontalo Nomor 482/34/XII/2024 tentang Penetapan Upah Minimum Provinsi Gorontalo Tahun 2025 (Mengikuti UMP Gorontalo)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "75.03",
+    "year": 2025,
+    "grossMonthly": 3221731,
+    "source": "Keputusan Gubernur Gorontalo Nomor 482/34/XII/2024 tentang Penetapan Upah Minimum Provinsi Gorontalo Tahun 2025 (Mengikuti UMP Gorontalo)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "75.04",
+    "year": 2025,
+    "grossMonthly": 3221731,
+    "source": "Keputusan Gubernur Gorontalo Nomor 482/34/XII/2024 tentang Penetapan Upah Minimum Provinsi Gorontalo Tahun 2025 (Mengikuti UMP Gorontalo)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "75.05",
+    "year": 2025,
+    "grossMonthly": 3221731,
+    "source": "Keputusan Gubernur Gorontalo Nomor 482/34/XII/2024 tentang Penetapan Upah Minimum Provinsi Gorontalo Tahun 2025 (Mengikuti UMP Gorontalo)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "75.71",
+    "year": 2025,
+    "grossMonthly": 3221731,
+    "source": "Keputusan Gubernur Gorontalo Nomor 482/34/XII/2024 tentang Penetapan Upah Minimum Provinsi Gorontalo Tahun 2025 (Diberlakukan untuk Kota Gorontalo)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   }
+  ]
+ },
+ {
+  "provinceName": "Sulawesi Utara",
+  "provinceCode": "71",
+  "regions": [
+   {
+    "code": "71.01",
+    "name": "Bolaang Mongondow",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "71.10",
+    "name": "Bolaang Mongondow Selatan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "71.11",
+    "name": "Bolaang Mongondow Timur",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "71.07",
+    "name": "Bolaang Mongondow Utara",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "71.03",
+    "name": "Kepulauan Sangihe",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "71.04",
+    "name": "Kepulauan Talaud",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "71.72",
+    "name": "Kota Bitung",
+    "tier": "kota"
+   },
+   {
+    "code": "71.74",
+    "name": "Kota Kotamobagu",
+    "tier": "kota"
+   },
+   {
+    "code": "71.71",
+    "name": "Kota Manado",
+    "tier": "kota"
+   },
+   {
+    "code": "71.73",
+    "name": "Kota Tomohon",
+    "tier": "kota"
+   },
+   {
+    "code": "71.02",
+    "name": "Minahasa",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "71.05",
+    "name": "Minahasa Selatan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "71.09",
+    "name": "Minahasa Tenggara",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "71.06",
+    "name": "Minahasa Utara",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "71.08",
+    "name": "Siau Tagulandang Biaro",
+    "tier": "kabupaten"
+   }
+  ],
+  "wages": [
+   {
+    "regionCode": "71.01",
+    "year": 2025,
+    "grossMonthly": 3775425,
+    "source": "Keputusan Gubernur Sulawesi Utara Nomor 685 Tahun 2024 tentang Upah Minimum Provinsi Sulawesi Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "71.10",
+    "year": 2025,
+    "grossMonthly": 3775425,
+    "source": "Keputusan Gubernur Sulawesi Utara Nomor 685 Tahun 2024 tentang Upah Minimum Provinsi Sulawesi Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "71.11",
+    "year": 2025,
+    "grossMonthly": 3775425,
+    "source": "Keputusan Gubernur Sulawesi Utara Nomor 685 Tahun 2024 tentang Upah Minimum Provinsi Sulawesi Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "71.07",
+    "year": 2025,
+    "grossMonthly": 3775425,
+    "source": "Keputusan Gubernur Sulawesi Utara Nomor 685 Tahun 2024 tentang Upah Minimum Provinsi Sulawesi Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "71.03",
+    "year": 2025,
+    "grossMonthly": 3775425,
+    "source": "Keputusan Gubernur Sulawesi Utara Nomor 685 Tahun 2024 tentang Upah Minimum Provinsi Sulawesi Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "71.04",
+    "year": 2025,
+    "grossMonthly": 3775425,
+    "source": "Keputusan Gubernur Sulawesi Utara Nomor 685 Tahun 2024 tentang Upah Minimum Provinsi Sulawesi Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "71.72",
+    "year": 2025,
+    "grossMonthly": 3775425,
+    "source": "Keputusan Gubernur Sulawesi Utara Nomor 685 Tahun 2024 tentang Upah Minimum Provinsi Sulawesi Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "71.74",
+    "year": 2025,
+    "grossMonthly": 3775425,
+    "source": "Keputusan Gubernur Sulawesi Utara Nomor 685 Tahun 2024 tentang Upah Minimum Provinsi Sulawesi Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "71.71",
+    "year": 2025,
+    "grossMonthly": 3824264,
+    "source": "Keputusan Gubernur Sulawesi Utara Nomor 697 Tahun 2024 tentang Upah Minimum Kota Manado Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "71.73",
+    "year": 2025,
+    "grossMonthly": 3775425,
+    "source": "Keputusan Gubernur Sulawesi Utara Nomor 685 Tahun 2024 tentang Upah Minimum Provinsi Sulawesi Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "71.02",
+    "year": 2025,
+    "grossMonthly": 3775425,
+    "source": "Keputusan Gubernur Sulawesi Utara Nomor 685 Tahun 2024 tentang Upah Minimum Provinsi Sulawesi Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "71.05",
+    "year": 2025,
+    "grossMonthly": 3775425,
+    "source": "Keputusan Gubernur Sulawesi Utara Nomor 685 Tahun 2024 tentang Upah Minimum Provinsi Sulawesi Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "71.09",
+    "year": 2025,
+    "grossMonthly": 3775425,
+    "source": "Keputusan Gubernur Sulawesi Utara Nomor 685 Tahun 2024 tentang Upah Minimum Provinsi Sulawesi Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "71.06",
+    "year": 2025,
+    "grossMonthly": 3775425,
+    "source": "Keputusan Gubernur Sulawesi Utara Nomor 685 Tahun 2024 tentang Upah Minimum Provinsi Sulawesi Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "71.08",
+    "year": 2025,
+    "grossMonthly": 3775425,
+    "source": "Keputusan Gubernur Sulawesi Utara Nomor 685 Tahun 2024 tentang Upah Minimum Provinsi Sulawesi Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   }
+  ]
+ },
+ {
+  "provinceName": "Sulawesi Tenggara",
+  "provinceCode": "74",
+  "regions": [
+   {
+    "code": "74.06",
+    "name": "Bombana",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "74.01",
+    "name": "Buton",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "74.15",
+    "name": "Buton Selatan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "74.14",
+    "name": "Buton Tengah",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "74.09",
+    "name": "Buton Utara",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "74.04",
+    "name": "Kolaka",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "74.11",
+    "name": "Kolaka Timur",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "74.08",
+    "name": "Kolaka Utara",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "74.03",
+    "name": "Konawe",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "74.12",
+    "name": "Konawe Kepulauan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "74.05",
+    "name": "Konawe Selatan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "74.10",
+    "name": "Konawe Utara",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "74.72",
+    "name": "Kota Baubau",
+    "tier": "kota"
+   },
+   {
+    "code": "74.71",
+    "name": "Kota Kendari",
+    "tier": "kota"
+   },
+   {
+    "code": "74.02",
+    "name": "Muna",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "74.13",
+    "name": "Muna Barat",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "74.07",
+    "name": "Wakatobi",
+    "tier": "kabupaten"
+   }
+  ],
+  "wages": [
+   {
+    "regionCode": "74.06",
+    "year": 2025,
+    "grossMonthly": 3073552,
+    "source": "Keputusan Gubernur Sulawesi Tenggara Nomor 100.3.3.1/470 Tahun 2024 tentang Penetapan Upah Minimum Provinsi Sulawesi Tenggara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "74.01",
+    "year": 2025,
+    "grossMonthly": 3073552,
+    "source": "Keputusan Gubernur Sulawesi Tenggara Nomor 100.3.3.1/470 Tahun 2024 tentang Penetapan Upah Minimum Provinsi Sulawesi Tenggara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "74.15",
+    "year": 2025,
+    "grossMonthly": 3073552,
+    "source": "Keputusan Gubernur Sulawesi Tenggara Nomor 100.3.3.1/470 Tahun 2024 tentang Penetapan Upah Minimum Provinsi Sulawesi Tenggara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "74.14",
+    "year": 2025,
+    "grossMonthly": 3073552,
+    "source": "Keputusan Gubernur Sulawesi Tenggara Nomor 100.3.3.1/470 Tahun 2024 tentang Penetapan Upah Minimum Provinsi Sulawesi Tenggara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "74.09",
+    "year": 2025,
+    "grossMonthly": 3073552,
+    "source": "Keputusan Gubernur Sulawesi Tenggara Nomor 100.3.3.1/470 Tahun 2024 tentang Penetapan Upah Minimum Provinsi Sulawesi Tenggara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "74.04",
+    "year": 2025,
+    "grossMonthly": 3342626,
+    "source": "Keputusan Gubernur Sulawesi Tenggara Nomor 100.3.3.1/490 Tahun 2024 tentang Penetapan Upah Minimum Kabupaten Kolaka Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "74.11",
+    "year": 2025,
+    "grossMonthly": 3073552,
+    "source": "Keputusan Gubernur Sulawesi Tenggara Nomor 100.3.3.1/470 Tahun 2024 tentang Penetapan Upah Minimum Provinsi Sulawesi Tenggara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "74.08",
+    "year": 2025,
+    "grossMonthly": 3073552,
+    "source": "Keputusan Gubernur Sulawesi Tenggara Nomor 100.3.3.1/470 Tahun 2024 tentang Penetapan Upah Minimum Provinsi Sulawesi Tenggara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "74.03",
+    "year": 2025,
+    "grossMonthly": 3073552,
+    "source": "Keputusan Gubernur Sulawesi Tenggara Nomor 100.3.3.1/470 Tahun 2024 tentang Penetapan Upah Minimum Provinsi Sulawesi Tenggara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "74.12",
+    "year": 2025,
+    "grossMonthly": 3073552,
+    "source": "Keputusan Gubernur Sulawesi Tenggara Nomor 100.3.3.1/470 Tahun 2024 tentang Penetapan Upah Minimum Provinsi Sulawesi Tenggara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "74.05",
+    "year": 2025,
+    "grossMonthly": 3073552,
+    "source": "Keputusan Gubernur Sulawesi Tenggara Nomor 100.3.3.1/470 Tahun 2024 tentang Penetapan Upah Minimum Provinsi Sulawesi Tenggara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "74.10",
+    "year": 2025,
+    "grossMonthly": 3259583,
+    "source": "Keputusan Gubernur Sulawesi Tenggara Nomor 100.3.3.1/489 Tahun 2024 tentang Penetapan Upah Minimum Kabupaten Konawe Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "74.72",
+    "year": 2025,
+    "grossMonthly": 3073552,
+    "source": "Keputusan Gubernur Sulawesi Tenggara Nomor 100.3.3.1/470 Tahun 2024 tentang Penetapan Upah Minimum Provinsi Sulawesi Tenggara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "74.71",
+    "year": 2025,
+    "grossMonthly": 3314389,
+    "source": "Keputusan Gubernur Sulawesi Tenggara Nomor 100.3.3.1/488 Tahun 2024 tentang Penetapan Upah Minimum Kota Kendari Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "74.02",
+    "year": 2025,
+    "grossMonthly": 3073552,
+    "source": "Keputusan Gubernur Sulawesi Tenggara Nomor 100.3.3.1/470 Tahun 2024 tentang Penetapan Upah Minimum Provinsi Sulawesi Tenggara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "74.13",
+    "year": 2025,
+    "grossMonthly": 3073552,
+    "source": "Keputusan Gubernur Sulawesi Tenggara Nomor 100.3.3.1/470 Tahun 2024 tentang Penetapan Upah Minimum Provinsi Sulawesi Tenggara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "74.07",
+    "year": 2025,
+    "grossMonthly": 3073552,
+    "source": "Keputusan Gubernur Sulawesi Tenggara Nomor 100.3.3.1/470 Tahun 2024 tentang Penetapan Upah Minimum Provinsi Sulawesi Tenggara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   }
+  ]
+ },
+ {
+  "provinceName": "Kalimantan Utara",
+  "provinceCode": "65",
+  "regions": [
+   {
+    "code": "65.02",
+    "name": "Bulungan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "65.71",
+    "name": "Kota Tarakan",
+    "tier": "kota"
+   },
+   {
+    "code": "65.01",
+    "name": "Malinau",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "65.04",
+    "name": "Nunukan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "65.03",
+    "name": "Tana Tidung",
+    "tier": "kabupaten"
+   }
+  ],
+  "wages": [
+   {
+    "regionCode": "65.02",
+    "year": 2025,
+    "grossMonthly": 3820000,
+    "source": "Keputusan Gubernur Kalimantan Utara Nomor 100.3.3.1/181/2024 tentang Penetapan Upah Minimum Kabupaten Bulungan Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "65.71",
+    "year": 2025,
+    "grossMonthly": 4460405,
+    "source": "Keputusan Gubernur Kalimantan Utara Nomor 100.3.3.1/182/2024 tentang Penetapan Upah Minimum Kota Tarakan Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "65.01",
+    "year": 2025,
+    "grossMonthly": 3841561,
+    "source": "Keputusan Gubernur Kalimantan Utara Nomor 100.3.3.1/184/2024 tentang Penetapan Upah Minimum Kabupaten Malinau Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "65.04",
+    "year": 2025,
+    "grossMonthly": 3652907,
+    "source": "Keputusan Gubernur Kalimantan Utara Nomor 100.3.3.1/183/2024 tentang Penetapan Upah Minimum Kabupaten Nunukan Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "65.03",
+    "year": 2025,
+    "grossMonthly": 3824598,
+    "source": "Keputusan Gubernur Kalimantan Utara Nomor 100.3.3.1/185/2024 tentang Penetapan Upah Minimum Kabupaten Tana Tidung Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   }
+  ]
+ },
+ {
+  "provinceName": "Maluku",
+  "provinceCode": "81",
+  "regions": [
+   {
+    "code": "81.01",
+    "name": "Maluku Tenggara Barat",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "81.02",
+    "name": "Maluku Tenggara",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "81.03",
+    "name": "Maluku Tengah",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "81.04",
+    "name": "Buru",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "81.05",
+    "name": "Kepulauan Aru",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "81.06",
+    "name": "Seram Bagian Barat",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "81.07",
+    "name": "Seram Bagian Timur",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "81.08",
+    "name": "Maluku Barat Daya",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "81.09",
+    "name": "Buru Selatan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "81.71",
+    "name": "Kota Ambon",
+    "tier": "kota"
+   },
+   {
+    "code": "81.72",
+    "name": "Kota Tual",
+    "tier": "kota"
+   }
+  ],
+  "wages": [
+   {
+    "regionCode": "81.01",
+    "year": 2025,
+    "grossMonthly": 3141700,
+    "source": "Keputusan Gubernur Maluku No. 1929 Tahun 2024 tentang Upah Minimum Provinsi Maluku Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "81.02",
+    "year": 2025,
+    "grossMonthly": 3141700,
+    "source": "Keputusan Gubernur Maluku No. 1929 Tahun 2024 tentang Upah Minimum Provinsi Maluku Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "81.03",
+    "year": 2025,
+    "grossMonthly": 3141700,
+    "source": "Keputusan Gubernur Maluku No. 1929 Tahun 2024 tentang Upah Minimum Provinsi Maluku Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "81.04",
+    "year": 2025,
+    "grossMonthly": 3141700,
+    "source": "Keputusan Gubernur Maluku No. 1929 Tahun 2024 tentang Upah Minimum Provinsi Maluku Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "81.05",
+    "year": 2025,
+    "grossMonthly": 3141700,
+    "source": "Keputusan Gubernur Maluku No. 1929 Tahun 2024 tentang Upah Minimum Provinsi Maluku Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "81.06",
+    "year": 2025,
+    "grossMonthly": 3141700,
+    "source": "Keputusan Gubernur Maluku No. 1929 Tahun 2024 tentang Upah Minimum Provinsi Maluku Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "81.07",
+    "year": 2025,
+    "grossMonthly": 3141700,
+    "source": "Keputusan Gubernur Maluku No. 1929 Tahun 2024 tentang Upah Minimum Provinsi Maluku Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "81.08",
+    "year": 2025,
+    "grossMonthly": 3141700,
+    "source": "Keputusan Gubernur Maluku No. 1929 Tahun 2024 tentang Upah Minimum Provinsi Maluku Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "81.09",
+    "year": 2025,
+    "grossMonthly": 3141700,
+    "source": "Keputusan Gubernur Maluku No. 1929 Tahun 2024 tentang Upah Minimum Provinsi Maluku Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "81.71",
+    "year": 2025,
+    "grossMonthly": 3185733,
+    "source": "Keputusan Gubernur Maluku No. 1955 Tahun 2024 tentang Upah Minimum Kota Ambon Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "81.72",
+    "year": 2025,
+    "grossMonthly": 3141700,
+    "source": "Keputusan Gubernur Maluku No. 1929 Tahun 2024 tentang Upah Minimum Provinsi Maluku Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   }
+  ]
+ },
+ {
+  "provinceName": "Lampung",
+  "provinceCode": "18",
+  "regions": [
+   {
+    "code": "18.71",
+    "name": "Kota Bandar Lampung",
+    "tier": "kota"
+   },
+   {
+    "code": "18.72",
+    "name": "Kota Metro",
+    "tier": "kota"
+   },
+   {
+    "code": "18.01",
+    "name": "Lampung Barat",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "18.03",
+    "name": "Lampung Selatan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "18.05",
+    "name": "Lampung Tengah",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "18.04",
+    "name": "Lampung Timur",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "18.06",
+    "name": "Lampung Utara",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "18.11",
+    "name": "Mesuji",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "18.09",
+    "name": "Pesawaran",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "18.13",
+    "name": "Pesisir Barat",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "18.10",
+    "name": "Pringsewu",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "18.02",
+    "name": "Tanggamus",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "18.12",
+    "name": "Tulang Bawang Barat",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "18.08",
+    "name": "Tulangbawang",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "18.07",
+    "name": "Way Kanan",
+    "tier": "kabupaten"
+   }
+  ],
+  "wages": [
+   {
+    "regionCode": "18.71",
+    "year": 2025,
+    "grossMonthly": 3305367,
+    "source": "Keputusan Gubernur Lampung No. G/850/V.08/HK/2024 tentang Penetapan Upah Minimum Kota Bandar Lampung Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "18.72",
+    "year": 2025,
+    "grossMonthly": 2903301,
+    "source": "Keputusan Gubernur Lampung No. G/851/V.08/HK/2024 tentang Penetapan Upah Minimum Kota Metro Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "18.01",
+    "year": 2025,
+    "grossMonthly": 2893070,
+    "source": "Keputusan Gubernur Lampung No. G/835/V.08/HK/2024 tentang Penetapan Upah Minimum Provinsi Lampung Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "18.03",
+    "year": 2025,
+    "grossMonthly": 3076990,
+    "source": "Keputusan Gubernur Lampung No. G/848/V.08/HK/2024 tentang Penetapan Upah Minimum Kabupaten Lampung Selatan Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "18.05",
+    "year": 2025,
+    "grossMonthly": 2893070,
+    "source": "Keputusan Gubernur Lampung No. G/835/V.08/HK/2024 tentang Penetapan Upah Minimum Provinsi Lampung Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "18.04",
+    "year": 2025,
+    "grossMonthly": 2893070,
+    "source": "Keputusan Gubernur Lampung No. G/835/V.08/HK/2024 tentang Penetapan Upah Minimum Provinsi Lampung Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "18.06",
+    "year": 2025,
+    "grossMonthly": 2893070,
+    "source": "Keputusan Gubernur Lampung No. G/835/V.08/HK/2024 tentang Penetapan Upah Minimum Provinsi Lampung Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "18.11",
+    "year": 2025,
+    "grossMonthly": 3092026,
+    "source": "Keputusan Gubernur Lampung No. G/849/V.08/HK/2024 tentang Penetapan Upah Minimum Kabupaten Mesuji Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "18.09",
+    "year": 2025,
+    "grossMonthly": 2893070,
+    "source": "Keputusan Gubernur Lampung No. G/835/V.08/HK/2024 tentang Penetapan Upah Minimum Provinsi Lampung Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "18.13",
+    "year": 2025,
+    "grossMonthly": 2893070,
+    "source": "Keputusan Gubernur Lampung No. G/835/V.08/HK/2024 tentang Penetapan Upah Minimum Provinsi Lampung Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "18.10",
+    "year": 2025,
+    "grossMonthly": 2893070,
+    "source": "Keputusan Gubernur Lampung No. G/835/V.08/HK/2024 tentang Penetapan Upah Minimum Provinsi Lampung Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "18.02",
+    "year": 2025,
+    "grossMonthly": 2893070,
+    "source": "Keputusan Gubernur Lampung No. G/835/V.08/HK/2024 tentang Penetapan Upah Minimum Provinsi Lampung Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "18.12",
+    "year": 2025,
+    "grossMonthly": 2893070,
+    "source": "Keputusan Gubernur Lampung No. G/835/V.08/HK/2024 tentang Penetapan Upah Minimum Provinsi Lampung Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "18.08",
+    "year": 2025,
+    "grossMonthly": 2893070,
+    "source": "Keputusan Gubernur Lampung No. G/835/V.08/HK/2024 tentang Penetapan Upah Minimum Provinsi Lampung Tahun 2025 (Mengacu UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "18.07",
+    "year": 2025,
+    "grossMonthly": 3072665,
+    "source": "Keputusan Gubernur Lampung No. G/847/V.08/HK/2024 tentang Penetapan Upah Minimum Kabupaten Way Kanan Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   }
+  ]
+ },
+ {
+  "provinceName": "Papua Barat",
+  "provinceCode": "92",
+  "regions": [
+   {
+    "code": "91.01",
+    "name": "Fakfak",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "91.02",
+    "name": "Kaimana",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "91.03",
+    "name": "Teluk Wondama",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "91.04",
+    "name": "Teluk Bintuni",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "91.05",
+    "name": "Manokwari",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "91.11",
+    "name": "Manokwari Selatan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "91.12",
+    "name": "Pegunungan Arfak",
+    "tier": "kabupaten"
+   }
+  ],
+  "wages": [
+   {
+    "regionCode": "91.05",
+    "year": 2025,
+    "grossMonthly": 3615000,
+    "source": "Keputusan Gubernur Papua Barat Nomor 314 Tahun 2024 tentang Upah Minimum Provinsi Papua Barat Tahun 2025 (UMK mandiri Tahun 2025 tidak lebih tinggi dari UMP)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "91.04",
+    "year": 2025,
+    "grossMonthly": 3680000,
+    "source": "Keputusan Gubernur Papua Barat No. 561/290/2024 tentang Upah Minimum Kabupaten Teluk Bintuni Tahun 2025 (Kawasan LNG)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "91.01",
+    "year": 2025,
+    "grossMonthly": 3615000,
+    "source": "Keputusan Gubernur Papua Barat Nomor 314 Tahun 2024 tentang Upah Minimum Provinsi Papua Barat Tahun 2025 2025 (Fakfak)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "91.02",
+    "year": 2025,
+    "grossMonthly": 3615000,
+    "source": "Keputusan Gubernur Papua Barat Nomor 314 Tahun 2024 tentang Upah Minimum Provinsi Papua Barat Tahun 2025 2025 (Kaimana)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "91.03",
+    "year": 2025,
+    "grossMonthly": 3615000,
+    "source": "Keputusan Gubernur Papua Barat Nomor 314 Tahun 2024 tentang Upah Minimum Provinsi Papua Barat Tahun 2025 2025 (Teluk Wondama)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "91.11",
+    "year": 2025,
+    "grossMonthly": 3615000,
+    "source": "Keputusan Gubernur Papua Barat Nomor 314 Tahun 2024 tentang Upah Minimum Provinsi Papua Barat Tahun 2025 2025 (Manokwari Selatan)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "91.12",
+    "year": 2025,
+    "grossMonthly": 3615000,
+    "source": "Keputusan Gubernur Papua Barat Nomor 314 Tahun 2024 tentang Upah Minimum Provinsi Papua Barat Tahun 2025 2025 (Pegunungan Arfak)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   }
+  ]
+ },
+ {
+  "provinceName": "Papua Barat Daya",
+  "provinceCode": "96",
+  "regions": [
+   {
+    "code": "91.71",
+    "name": "Kota Sorong",
+    "tier": "kota"
+   },
+   {
+    "code": "91.07",
+    "name": "Sorong",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "91.06",
+    "name": "Sorong Selatan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "91.08",
+    "name": "Raja Ampat",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "91.09",
+    "name": "Tambrauw",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "91.10",
+    "name": "Maybrat",
+    "tier": "kabupaten"
+   }
+  ],
+  "wages": [
+   {
+    "regionCode": "91.71",
+    "year": 2025,
+    "grossMonthly": 3614000,
+    "source": "Keputusan Gubernur Papua Barat Daya No. 100.3.3.1/193/12/2024 tentang Upah Minimum Provinsi Papua Barat Daya Tahun 2025 (Diberlakukan untuk Kota Sorong)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "91.07",
+    "year": 2025,
+    "grossMonthly": 3614000,
+    "source": "Keputusan Gubernur Papua Barat Daya No. 100.3.3.1/193/12/2024 tentang Upah Minimum Provinsi Papua Barat Daya Tahun 2025 (Diberlakukan untuk Kabupaten Sorong)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "91.06",
+    "year": 2025,
+    "grossMonthly": 3614000,
+    "source": "Keputusan Gubernur Papua Barat Daya No. 100.3.3.1/193/12/2024 tentang Upah Minimum Provinsi Papua Barat Daya Tahun 2025 (Diberlakukan untuk Kabupaten Sorong Selatan)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "91.08",
+    "year": 2025,
+    "grossMonthly": 3614000,
+    "source": "Keputusan Gubernur Papua Barat Daya No. 100.3.3.1/193/12/2024 tentang Upah Minimum Provinsi Papua Barat Daya Tahun 2025 (Diberlakukan untuk Kabupaten Raja Ampat)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "91.09",
+    "year": 2025,
+    "grossMonthly": 3614000,
+    "source": "Keputusan Gubernur Papua Barat Daya No. 100.3.3.1/193/12/2024 tentang Upah Minimum Provinsi Papua Barat Daya Tahun 2025 (Diberlakukan untuk Kabupaten Tambrauw)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "91.10",
+    "year": 2025,
+    "grossMonthly": 3614000,
+    "source": "Keputusan Gubernur Papua Barat Daya No. 100.3.3.1/193/12/2024 tentang Upah Minimum Provinsi Papua Barat Daya Tahun 2025 (Diberlakukan untuk Kabupaten Maybrat)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   }
+  ]
+ },
+ {
+  "provinceName": "Papua Selatan",
+  "provinceCode": "93",
+  "regions": [
+   {
+    "code": "94.01",
+    "name": "Merauke",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "94.13",
+    "name": "Boven Digoel",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "94.14",
+    "name": "Mappi",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "94.15",
+    "name": "Asmat",
+    "tier": "kabupaten"
+   }
+  ],
+  "wages": [
+   {
+    "regionCode": "94.01",
+    "year": 2025,
+    "grossMonthly": 4285850,
+    "source": "Keputusan Gubernur Papua Selatan tentang Penetapan Upah Minimum Provinsi (UMP) Papua Selatan Tahun 2025 (berlaku untuk Merauke)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "94.13",
+    "year": 2025,
+    "grossMonthly": 4285850,
+    "source": "Keputusan Gubernur Papua Selatan tentang Penetapan Upah Minimum Provinsi (UMP) Papua Selatan Tahun 2025 (berlaku untuk Boven Digoel)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "94.14",
+    "year": 2025,
+    "grossMonthly": 4285850,
+    "source": "Keputusan Gubernur Papua Selatan tentang Penetapan Upah Minimum Provinsi (UMP) Papua Selatan Tahun 2025 (berlaku untuk Mappi)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "94.15",
+    "year": 2025,
+    "grossMonthly": 4285850,
+    "source": "Keputusan Gubernur Papua Selatan tentang Penetapan Upah Minimum Provinsi (UMP) Papua Selatan Tahun 2025 (berlaku untuk Asmat)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   }
+  ]
+ },
+ {
+  "provinceName": "Papua Tengah",
+  "provinceCode": "94",
+  "regions": [
+   {
+    "code": "94.04",
+    "name": "Nabire",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "94.11",
+    "name": "Puncak Jaya",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "94.10",
+    "name": "Paniai",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "94.12",
+    "name": "Mimika",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "94.33",
+    "name": "Puncak",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "94.34",
+    "name": "Dogiyai",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "94.35",
+    "name": "Intan Jaya",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "94.36",
+    "name": "Deiyai",
+    "tier": "kabupaten"
+   }
+  ],
+  "wages": [
+   {
+    "regionCode": "94.04",
+    "year": 2025,
+    "grossMonthly": 4285848,
+    "source": "Keputusan Gubernur Papua Tengah Nomor 256 Tahun 2024 tentang Upah Minimum Provinsi Papua Tengah Tahun 2025 (Diberlakukan untuk Kabupaten Nabire)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "94.11",
+    "year": 2025,
+    "grossMonthly": 4285848,
+    "source": "Keputusan Gubernur Papua Tengah Nomor 256 Tahun 2024 tentang Upah Minimum Provinsi Papua Tengah Tahun 2025 (Kabupaten Puncak Jaya)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "94.10",
+    "year": 2025,
+    "grossMonthly": 4285848,
+    "source": "Keputusan Gubernur Papua Tengah Nomor 256 Tahun 2024 tentang Upah Minimum Provinsi Papua Tengah Tahun 2025 (Kabupaten Paniai)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "94.12",
+    "year": 2025,
+    "grossMonthly": 5005678,
+    "source": "Keputusan Gubernur Papua Tengah Nomor 258 Tahun 2024 tentang Penetapan Upah Minimum dan Upah Minimum Sektoral Kabupaten Mimika Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "94.33",
+    "year": 2025,
+    "grossMonthly": 4285848,
+    "source": "Keputusan Gubernur Papua Tengah Nomor 256 Tahun 2024 tentang Upah Minimum Provinsi Papua Tengah Tahun 2025 (Kabupaten Puncak)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "94.34",
+    "year": 2025,
+    "grossMonthly": 4285848,
+    "source": "Keputusan Gubernur Papua Tengah Nomor 256 Tahun 2024 tentang Upah Minimum Provinsi Papua Tengah Tahun 2025 (Kabupaten Dogiyai)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "94.35",
+    "year": 2025,
+    "grossMonthly": 4285848,
+    "source": "Keputusan Gubernur Papua Tengah Nomor 256 Tahun 2024 tentang Upah Minimum Provinsi Papua Tengah Tahun 2025 (Kabupaten Intan Jaya)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "94.36",
+    "year": 2025,
+    "grossMonthly": 4285848,
+    "source": "Keputusan Gubernur Papua Tengah Nomor 256 Tahun 2024 tentang Upah Minimum Provinsi Papua Tengah Tahun 2025 (Kabupaten Deiyai)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   }
+  ]
+ },
+ {
+  "provinceName": "Papua Pegunungan",
+  "provinceCode": "95",
+  "regions": [
+   {
+    "code": "94.02",
+    "name": "Jayawijaya",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "94.17",
+    "name": "Pegunungan Bintang",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "94.16",
+    "name": "Yahukimo",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "94.18",
+    "name": "Tolikara",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "94.30",
+    "name": "Lanny Jaya",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "94.29",
+    "name": "Nduga",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "94.32",
+    "name": "Yalimo",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "94.31",
+    "name": "Mamberamo Tengah",
+    "tier": "kabupaten"
+   }
+  ],
+  "wages": [
+   {
+    "regionCode": "94.02",
+    "year": 2025,
+    "grossMonthly": 4285848,
+    "source": "Keputusan Pj. Gubernur Papua Pegunungan No. 561/440/2024 tentang Upah Minimum Provinsi Papua Pegunungan & Kabupaten Jayawijaya (Wamena) Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "94.17",
+    "year": 2025,
+    "grossMonthly": 4285848,
+    "source": "Keputusan Pj. Gubernur Papua Pegunungan No. 561/440/2024 tentang Upah Minimum Provinsi Papua Pegunungan Tahun 2025 (Pegunungan Bintang / Oksibil)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "94.16",
+    "year": 2025,
+    "grossMonthly": 4285848,
+    "source": "Keputusan Pj. Gubernur Papua Pegunungan No. 561/440/2024 tentang Upah Minimum Provinsi Papua Pegunungan Tahun 2025 (Yahukimo / Dekai)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "94.18",
+    "year": 2025,
+    "grossMonthly": 4285848,
+    "source": "Keputusan Pj. Gubernur Papua Pegunungan No. 561/440/2024 tentang Upah Minimum Provinsi Papua Pegunungan Tahun 2025 (Tolikara / Karubaga)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "94.30",
+    "year": 2025,
+    "grossMonthly": 4285848,
+    "source": "Keputusan Pj. Gubernur Papua Pegunungan No. 561/440/2024 tentang Upah Minimum Provinsi Papua Pegunungan Tahun 2025 (Lanny Jaya / Tiom)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "94.29",
+    "year": 2025,
+    "grossMonthly": 4285848,
+    "source": "Keputusan Pj. Gubernur Papua Pegunungan No. 561/440/2024 tentang Upah Minimum Provinsi Papua Pegunungan Tahun 2025 (Nduga / Kenyam)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "94.32",
+    "year": 2025,
+    "grossMonthly": 4285848,
+    "source": "Keputusan Pj. Gubernur Papua Pegunungan No. 561/440/2024 tentang Upah Minimum Provinsi Papua Pegunungan Tahun 2025 (Yalimo / Elelim)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "94.31",
+    "year": 2025,
+    "grossMonthly": 4285848,
+    "source": "Keputusan Pj. Gubernur Papua Pegunungan No. 561/440/2024 tentang Upah Minimum Provinsi Papua Pegunungan Tahun 2025 (Mamberamo Tengah / Kobakma)",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   }
+  ]
+ },
+ {
+  "provinceName": "Maluku Utara",
+  "provinceCode": "82",
+  "regions": [
+   {
+    "code": "82.01",
+    "name": "Halmahera Barat",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "82.02",
+    "name": "Halmahera Tengah",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "82.03",
+    "name": "Kepulauan Sula",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "82.04",
+    "name": "Halmahera Selatan",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "82.05",
+    "name": "Halmahera Utara",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "82.06",
+    "name": "Halmahera Timur",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "82.07",
+    "name": "Pulau Morotai",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "82.08",
+    "name": "Pulau Taliabu",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "82.71",
+    "name": "Kota Ternate",
+    "tier": "kota"
+   },
+   {
+    "code": "82.72",
+    "name": "Kota Tidore Kepulauan",
+    "tier": "kota"
+   }
+  ],
+  "wages": [
+   {
+    "regionCode": "82.01",
+    "year": 2025,
+    "grossMonthly": 3408000,
+    "source": "Keputusan Gubernur Maluku Utara No. 626/KPTS/MU/2024 tentang Upah Minimum Provinsi Maluku Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "82.02",
+    "year": 2025,
+    "grossMonthly": 3408000,
+    "source": "Keputusan Gubernur Maluku Utara No. 626/KPTS/MU/2024 tentang Upah Minimum Provinsi Maluku Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "82.03",
+    "year": 2025,
+    "grossMonthly": 3408000,
+    "source": "Keputusan Gubernur Maluku Utara No. 626/KPTS/MU/2024 tentang Upah Minimum Provinsi Maluku Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "82.04",
+    "year": 2025,
+    "grossMonthly": 3408000,
+    "source": "Keputusan Gubernur Maluku Utara No. 626/KPTS/MU/2024 tentang Upah Minimum Provinsi Maluku Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "82.05",
+    "year": 2025,
+    "grossMonthly": 3408000,
+    "source": "Keputusan Gubernur Maluku Utara No. 626/KPTS/MU/2024 tentang Upah Minimum Provinsi Maluku Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "82.06",
+    "year": 2025,
+    "grossMonthly": 3408000,
+    "source": "Keputusan Gubernur Maluku Utara No. 626/KPTS/MU/2024 tentang Upah Minimum Provinsi Maluku Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "82.07",
+    "year": 2025,
+    "grossMonthly": 3408000,
+    "source": "Keputusan Gubernur Maluku Utara No. 626/KPTS/MU/2024 tentang Upah Minimum Provinsi Maluku Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "82.08",
+    "year": 2025,
+    "grossMonthly": 3408000,
+    "source": "Keputusan Gubernur Maluku Utara No. 626/KPTS/MU/2024 tentang Upah Minimum Provinsi Maluku Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "82.71",
+    "year": 2025,
+    "grossMonthly": 3461250,
+    "source": "Keputusan Gubernur Maluku Utara No. 634/KPTS/MU/2024 tentang Upah Minimum Kota Ternate Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "82.72",
+    "year": 2025,
+    "grossMonthly": 3408000,
+    "source": "Keputusan Gubernur Maluku Utara No. 626/KPTS/MU/2024 tentang Upah Minimum Provinsi Maluku Utara Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   }
+  ]
+ },
+ {
+  "provinceName": "DKI Jakarta",
+  "provinceCode": "31",
+  "regions": [
+   {
+    "code": "31.01",
+    "name": "Kepulauan Seribu",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "31.74",
+    "name": "Kota Jakarta Barat",
+    "tier": "kota"
+   },
+   {
+    "code": "31.73",
+    "name": "Kota Jakarta Pusat",
+    "tier": "kota"
+   },
+   {
+    "code": "31.71",
+    "name": "Kota Jakarta Selatan",
+    "tier": "kota"
+   },
+   {
+    "code": "31.72",
+    "name": "Kota Jakarta Timur",
+    "tier": "kota"
+   },
+   {
+    "code": "31.75",
+    "name": "Kota Jakarta Utara",
+    "tier": "kota"
+   }
+  ],
+  "wages": [
+   {
+    "regionCode": "31.01",
+    "year": 2025,
+    "grossMonthly": 5396761,
+    "source": "Keputusan Gubernur Daerah Khusus Ibukota Jakarta No. 829 Tahun 2024 tentang Upah Minimum Provinsi Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "31.74",
+    "year": 2025,
+    "grossMonthly": 5396761,
+    "source": "Keputusan Gubernur Daerah Khusus Ibukota Jakarta No. 829 Tahun 2024 tentang Upah Minimum Provinsi Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "31.73",
+    "year": 2025,
+    "grossMonthly": 5396761,
+    "source": "Keputusan Gubernur Daerah Khusus Ibukota Jakarta No. 829 Tahun 2024 tentang Upah Minimum Provinsi Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "31.71",
+    "year": 2025,
+    "grossMonthly": 5396761,
+    "source": "Keputusan Gubernur Daerah Khusus Ibukota Jakarta No. 829 Tahun 2024 tentang Upah Minimum Provinsi Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "31.72",
+    "year": 2025,
+    "grossMonthly": 5396761,
+    "source": "Keputusan Gubernur Daerah Khusus Ibukota Jakarta No. 829 Tahun 2024 tentang Upah Minimum Provinsi Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "31.75",
+    "year": 2025,
+    "grossMonthly": 5396761,
+    "source": "Keputusan Gubernur Daerah Khusus Ibukota Jakarta No. 829 Tahun 2024 tentang Upah Minimum Provinsi Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   }
+  ]
+ },
+ {
+  "provinceName": "Banten",
+  "provinceCode": "36",
+  "regions": [
+   {
+    "code": "36.72",
+    "name": "Kota Cilegon",
+    "tier": "kota"
+   },
+   {
+    "code": "36.73",
+    "name": "Kota Serang",
+    "tier": "kota"
+   },
+   {
+    "code": "36.71",
+    "name": "Kota Tangerang",
+    "tier": "kota"
+   },
+   {
+    "code": "36.74",
+    "name": "Kota Tangerang Selatan",
+    "tier": "kota"
+   },
+   {
+    "code": "36.02",
+    "name": "Lebak",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "36.01",
+    "name": "Pandeglang",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "36.04",
+    "name": "Serang",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "36.03",
+    "name": "Tangerang",
+    "tier": "kabupaten"
+   }
+  ],
+  "wages": [
+   {
+    "regionCode": "36.72",
+    "year": 2025,
+    "grossMonthly": 5128084,
+    "source": "Keputusan Gubernur Banten No. 471 Tahun 2024 tentang Penetapan Upah Minimum Kabupaten/Kota di Provinsi Banten Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "36.73",
+    "year": 2025,
+    "grossMonthly": 4418261,
+    "source": "Keputusan Gubernur Banten No. 471 Tahun 2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Banten Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "36.71",
+    "year": 2025,
+    "grossMonthly": 5069708,
+    "source": "Keputusan Gubernur Banten No. 471 Tahun 2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Banten Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "36.74",
+    "year": 2025,
+    "grossMonthly": 4974392,
+    "source": "Keputusan Gubernur Banten No. 471 Tahun 2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Banten Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "36.02",
+    "year": 2025,
+    "grossMonthly": 3172384,
+    "source": "Keputusan Gubernur Banten No. 471 Tahun 2024 tentang Penetapan Upah Minimum Kabupaten/Kota di Provinsi Banten Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "36.01",
+    "year": 2025,
+    "grossMonthly": 3206640,
+    "source": "Keputusan Gubernur Banten No. 471 Tahun 2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Banten Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "36.04",
+    "year": 2025,
+    "grossMonthly": 4857353,
+    "source": "Keputusan Gubernur Banten No. 471 Tahun 2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Banten Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "36.03",
+    "year": 2025,
+    "grossMonthly": 4901117,
+    "source": "Keputusan Gubernur Banten No. 471 Tahun 2024 tentang Upah Minimum Kabupaten/Kota di Provinsi Banten Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   }
+  ]
+ },
+ {
+  "provinceName": "Sulawesi Barat",
+  "provinceCode": "76",
+  "regions": [
+   {
+    "code": "76.01",
+    "name": "Majene",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "76.03",
+    "name": "Mamasa",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "76.04",
+    "name": "Mamuju",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "76.06",
+    "name": "Mamuju Tengah",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "76.05",
+    "name": "Mamuju Utara",
+    "tier": "kabupaten"
+   },
+   {
+    "code": "76.02",
+    "name": "Polewali Mandar",
+    "tier": "kabupaten"
+   }
+  ],
+  "wages": [
+   {
+    "regionCode": "76.01",
+    "year": 2025,
+    "grossMonthly": 3104430,
+    "source": "Keputusan Gubernur Sulawesi Barat Nomor 1377 Tahun 2024 tentang Upah Minimum Provinsi Sulawesi Barat Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "76.03",
+    "year": 2025,
+    "grossMonthly": 3104430,
+    "source": "Keputusan Gubernur Sulawesi Barat Nomor 1377 Tahun 2024 tentang Upah Minimum Provinsi Sulawesi Barat Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "76.04",
+    "year": 2025,
+    "grossMonthly": 3122680,
+    "source": "Keputusan Gubernur Sulawesi Barat Nomor 1475 Tahun 2024 tentang Upah Minimum Kabupaten Mamuju Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "76.06",
+    "year": 2025,
+    "grossMonthly": 3104430,
+    "source": "Keputusan Gubernur Sulawesi Barat Nomor 1377 Tahun 2024 tentang Upah Minimum Provinsi Sulawesi Barat Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "76.05",
+    "year": 2025,
+    "grossMonthly": 3104430,
+    "source": "Keputusan Gubernur Sulawesi Barat Nomor 1377 Tahun 2024 tentang Upah Minimum Provinsi Sulawesi Barat Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   },
+   {
+    "regionCode": "76.02",
+    "year": 2025,
+    "grossMonthly": 3104430,
+    "source": "Keputusan Gubernur Sulawesi Barat Nomor 1377 Tahun 2024 tentang Upah Minimum Provinsi Sulawesi Barat Tahun 2025",
+    "asOf": "2025-01-01",
+    "confidence": "official"
+   }
+  ]
+ }
+]

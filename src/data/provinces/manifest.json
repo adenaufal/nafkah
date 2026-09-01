@@ -1,0 +1,5960 @@
+{
+  "Aceh": {
+    "provinceName": "Aceh",
+    "provinceCode": "11",
+    "slug": "aceh",
+    "totalRegions": 23,
+    "regions": [
+      {
+        "code": "11.07",
+        "name": "Aceh Barat",
+        "prov": "Aceh",
+        "provCode": "11",
+        "centroid": [
+          96.2097,
+          4.4749
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "11.12",
+        "name": "Aceh Barat Daya",
+        "prov": "Aceh",
+        "provCode": "11",
+        "centroid": [
+          96.8546,
+          3.8311
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "11.08",
+        "name": "Aceh Besar",
+        "prov": "Aceh",
+        "provCode": "11",
+        "centroid": [
+          95.4044,
+          5.4438
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "11.16",
+        "name": "Aceh Jaya",
+        "prov": "Aceh",
+        "provCode": "11",
+        "centroid": [
+          95.6208,
+          4.8817
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "11.03",
+        "name": "Aceh Selatan",
+        "prov": "Aceh",
+        "provCode": "11",
+        "centroid": [
+          97.4186,
+          3.2045
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "11.02",
+        "name": "Aceh Singkil",
+        "prov": "Aceh",
+        "provCode": "11",
+        "centroid": [
+          97.5457,
+          2.2686
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "11.14",
+        "name": "Aceh Tamiang",
+        "prov": "Aceh",
+        "provCode": "11",
+        "centroid": [
+          98.0097,
+          4.234
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "11.06",
+        "name": "Aceh Tengah",
+        "prov": "Aceh",
+        "provCode": "11",
+        "centroid": [
+          96.8328,
+          4.5597
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "11.04",
+        "name": "Aceh Tenggara",
+        "prov": "Aceh",
+        "provCode": "11",
+        "centroid": [
+          97.7108,
+          3.3691
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "11.05",
+        "name": "Aceh Timur",
+        "prov": "Aceh",
+        "provCode": "11",
+        "centroid": [
+          97.6302,
+          4.6663
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "11.11",
+        "name": "Aceh Utara",
+        "prov": "Aceh",
+        "provCode": "11",
+        "centroid": [
+          97.2231,
+          4.9949
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "11.17",
+        "name": "Bener Meriah",
+        "prov": "Aceh",
+        "provCode": "11",
+        "centroid": [
+          97.0027,
+          4.7725
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "11.10",
+        "name": "Bireuen",
+        "prov": "Aceh",
+        "provCode": "11",
+        "centroid": [
+          96.5985,
+          5.0874
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "11.13",
+        "name": "Gayo Lues",
+        "prov": "Aceh",
+        "provCode": "11",
+        "centroid": [
+          97.3567,
+          4.0215
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "11.71",
+        "name": "Kota Banda Aceh",
+        "prov": "Aceh",
+        "provCode": "11",
+        "centroid": [
+          95.3348,
+          5.5647
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "11.73",
+        "name": "Kota Langsa",
+        "prov": "Aceh",
+        "provCode": "11",
+        "centroid": [
+          97.9948,
+          4.4879
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "11.74",
+        "name": "Kota Lhokseumawe",
+        "prov": "Aceh",
+        "provCode": "11",
+        "centroid": [
+          97.1116,
+          5.1657
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "11.72",
+        "name": "Kota Sabang",
+        "prov": "Aceh",
+        "provCode": "11",
+        "centroid": [
+          95.3013,
+          5.8491
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "11.75",
+        "name": "Kota Subulussalam",
+        "prov": "Aceh",
+        "provCode": "11",
+        "centroid": [
+          97.9562,
+          2.7282
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "11.15",
+        "name": "Nagan Raya",
+        "prov": "Aceh",
+        "provCode": "11",
+        "centroid": [
+          96.5121,
+          4.1847
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "11.09",
+        "name": "Pidie",
+        "prov": "Aceh",
+        "provCode": "11",
+        "centroid": [
+          96.0046,
+          5.0958
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "11.18",
+        "name": "Pidie Jaya",
+        "prov": "Aceh",
+        "provCode": "11",
+        "centroid": [
+          96.2091,
+          5.1105
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "11.01",
+        "name": "Simeulue",
+        "prov": "Aceh",
+        "provCode": "11",
+        "centroid": [
+          96.1468,
+          2.5692
+        ],
+        "tier": "kabupaten"
+      }
+    ]
+  },
+  "Sumatera Barat": {
+    "provinceName": "Sumatera Barat",
+    "provinceCode": "13",
+    "slug": "sumatera-barat",
+    "totalRegions": 19,
+    "regions": [
+      {
+        "code": "13.07",
+        "name": "Agam",
+        "prov": "Sumatera Barat",
+        "provCode": "13",
+        "centroid": [
+          100.1869,
+          -0.2614
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "13.11",
+        "name": "Dharmasraya",
+        "prov": "Sumatera Barat",
+        "provCode": "13",
+        "centroid": [
+          101.5268,
+          -1.1647
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "13.01",
+        "name": "Kepulauan Mentawai",
+        "prov": "Sumatera Barat",
+        "provCode": "13",
+        "centroid": [
+          99.7105,
+          -2.2795
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "13.75",
+        "name": "Kota Bukittinggi",
+        "prov": "Sumatera Barat",
+        "provCode": "13",
+        "centroid": [
+          100.368,
+          -0.2942
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "13.71",
+        "name": "Kota Padang",
+        "prov": "Sumatera Barat",
+        "provCode": "13",
+        "centroid": [
+          100.4212,
+          -0.9461
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "13.74",
+        "name": "Kota Padang Panjang",
+        "prov": "Sumatera Barat",
+        "provCode": "13",
+        "centroid": [
+          100.4028,
+          -0.4679
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "13.77",
+        "name": "Kota Pariaman",
+        "prov": "Sumatera Barat",
+        "provCode": "13",
+        "centroid": [
+          100.1426,
+          -0.6104
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "13.76",
+        "name": "Kota Payakumbuh",
+        "prov": "Sumatera Barat",
+        "provCode": "13",
+        "centroid": [
+          100.6305,
+          -0.2217
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "13.73",
+        "name": "Kota Sawah Lunto",
+        "prov": "Sumatera Barat",
+        "provCode": "13",
+        "centroid": [
+          100.7574,
+          -0.6559
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "13.72",
+        "name": "Kota Solok",
+        "prov": "Sumatera Barat",
+        "provCode": "13",
+        "centroid": [
+          100.6205,
+          -0.7881
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "13.08",
+        "name": "Lima Puluh Kota",
+        "prov": "Sumatera Barat",
+        "provCode": "13",
+        "centroid": [
+          100.6068,
+          -0.0021
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "13.06",
+        "name": "Padang Pariaman",
+        "prov": "Sumatera Barat",
+        "provCode": "13",
+        "centroid": [
+          100.2219,
+          -0.5351
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "13.09",
+        "name": "Pasaman",
+        "prov": "Sumatera Barat",
+        "provCode": "13",
+        "centroid": [
+          100.0445,
+          0.398
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "13.12",
+        "name": "Pasaman Barat",
+        "prov": "Sumatera Barat",
+        "provCode": "13",
+        "centroid": [
+          99.6608,
+          0.2375
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "13.02",
+        "name": "Pesisir Selatan",
+        "prov": "Sumatera Barat",
+        "provCode": "13",
+        "centroid": [
+          100.7615,
+          -1.5332
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "13.04",
+        "name": "Sijunjung",
+        "prov": "Sumatera Barat",
+        "provCode": "13",
+        "centroid": [
+          101.1045,
+          -0.6935
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "13.03",
+        "name": "Solok",
+        "prov": "Sumatera Barat",
+        "provCode": "13",
+        "centroid": [
+          100.7938,
+          -0.9201
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "13.10",
+        "name": "Solok Selatan",
+        "prov": "Sumatera Barat",
+        "provCode": "13",
+        "centroid": [
+          101.262,
+          -1.3524
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "13.05",
+        "name": "Tanah Datar",
+        "prov": "Sumatera Barat",
+        "provCode": "13",
+        "centroid": [
+          100.5601,
+          -0.4751
+        ],
+        "tier": "kabupaten"
+      }
+    ]
+  },
+  "Nusa Tenggara Timur": {
+    "provinceName": "Nusa Tenggara Timur",
+    "provinceCode": "53",
+    "slug": "nusa-tenggara-timur",
+    "totalRegions": 22,
+    "regions": [
+      {
+        "code": "53.07",
+        "name": "Alor",
+        "prov": "Nusa Tenggara Timur",
+        "provCode": "53",
+        "centroid": [
+          124.3977,
+          -8.3121
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "53.06",
+        "name": "Belu",
+        "prov": "Nusa Tenggara Timur",
+        "provCode": "53",
+        "centroid": [
+          124.9755,
+          -9.1518
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "53.11",
+        "name": "Ende",
+        "prov": "Nusa Tenggara Timur",
+        "provCode": "53",
+        "centroid": [
+          121.7251,
+          -8.6701
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "53.09",
+        "name": "Flores Timur",
+        "prov": "Nusa Tenggara Timur",
+        "provCode": "53",
+        "centroid": [
+          122.9406,
+          -8.3678
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "53.71",
+        "name": "Kota Kupang",
+        "prov": "Nusa Tenggara Timur",
+        "provCode": "53",
+        "centroid": [
+          123.615,
+          -10.2006
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "53.03",
+        "name": "Kupang",
+        "prov": "Nusa Tenggara Timur",
+        "provCode": "53",
+        "centroid": [
+          123.7786,
+          -9.9812
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "53.08",
+        "name": "Lembata",
+        "prov": "Nusa Tenggara Timur",
+        "provCode": "53",
+        "centroid": [
+          123.5507,
+          -8.3502
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "53.21",
+        "name": "Malaka",
+        "prov": "Nusa Tenggara Timur",
+        "provCode": "53",
+        "centroid": [
+          124.859,
+          -9.5112
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "53.13",
+        "name": "Manggarai",
+        "prov": "Nusa Tenggara Timur",
+        "provCode": "53",
+        "centroid": [
+          120.3843,
+          -8.5854
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "53.15",
+        "name": "Manggarai Barat",
+        "prov": "Nusa Tenggara Timur",
+        "provCode": "53",
+        "centroid": [
+          119.8229,
+          -8.589
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "53.19",
+        "name": "Manggarai Timur",
+        "prov": "Nusa Tenggara Timur",
+        "provCode": "53",
+        "centroid": [
+          120.6934,
+          -8.5465
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "53.18",
+        "name": "Nagekeo",
+        "prov": "Nusa Tenggara Timur",
+        "provCode": "53",
+        "centroid": [
+          121.2793,
+          -8.6862
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "53.12",
+        "name": "Ngada",
+        "prov": "Nusa Tenggara Timur",
+        "provCode": "53",
+        "centroid": [
+          120.9964,
+          -8.6532
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "53.14",
+        "name": "Rote Ndao",
+        "prov": "Nusa Tenggara Timur",
+        "provCode": "53",
+        "centroid": [
+          123.1189,
+          -10.7208
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "53.20",
+        "name": "Sabu Raijua",
+        "prov": "Nusa Tenggara Timur",
+        "provCode": "53",
+        "centroid": [
+          121.8002,
+          -10.5498
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "53.10",
+        "name": "Sikka",
+        "prov": "Nusa Tenggara Timur",
+        "provCode": "53",
+        "centroid": [
+          122.2767,
+          -8.5421
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "53.01",
+        "name": "Sumba Barat",
+        "prov": "Nusa Tenggara Timur",
+        "provCode": "53",
+        "centroid": [
+          119.3805,
+          -9.6466
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "53.17",
+        "name": "Sumba Barat Daya",
+        "prov": "Nusa Tenggara Timur",
+        "provCode": "53",
+        "centroid": [
+          119.1883,
+          -9.544
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "53.16",
+        "name": "Sumba Tengah",
+        "prov": "Nusa Tenggara Timur",
+        "provCode": "53",
+        "centroid": [
+          119.6627,
+          -9.5841
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "53.02",
+        "name": "Sumba Timur",
+        "prov": "Nusa Tenggara Timur",
+        "provCode": "53",
+        "centroid": [
+          120.189,
+          -9.8379
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "53.04",
+        "name": "Timor Tengah Selatan",
+        "prov": "Nusa Tenggara Timur",
+        "provCode": "53",
+        "centroid": [
+          124.3658,
+          -9.7727
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "53.05",
+        "name": "Timor Tengah Utara",
+        "prov": "Nusa Tenggara Timur",
+        "provCode": "53",
+        "centroid": [
+          124.4976,
+          -9.3864
+        ],
+        "tier": "kabupaten"
+      }
+    ]
+  },
+  "Sumatera Utara": {
+    "provinceName": "Sumatera Utara",
+    "provinceCode": "12",
+    "slug": "sumatera-utara",
+    "totalRegions": 33,
+    "regions": [
+      {
+        "code": "12.08",
+        "name": "Asahan",
+        "prov": "Sumatera Utara",
+        "provCode": "12",
+        "centroid": [
+          99.5328,
+          2.823
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "12.19",
+        "name": "Batu Bara",
+        "prov": "Sumatera Utara",
+        "provCode": "12",
+        "centroid": [
+          99.4495,
+          3.2282
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "12.10",
+        "name": "Dairi",
+        "prov": "Sumatera Utara",
+        "provCode": "12",
+        "centroid": [
+          98.2425,
+          2.8723
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "12.12",
+        "name": "Deli Serdang",
+        "prov": "Sumatera Utara",
+        "provCode": "12",
+        "centroid": [
+          98.6676,
+          3.507
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "12.15",
+        "name": "Humbang Hasundutan",
+        "prov": "Sumatera Utara",
+        "provCode": "12",
+        "centroid": [
+          98.5936,
+          2.2675
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "12.11",
+        "name": "Karo",
+        "prov": "Sumatera Utara",
+        "provCode": "12",
+        "centroid": [
+          98.2839,
+          3.1326
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "12.76",
+        "name": "Kota Binjai",
+        "prov": "Sumatera Utara",
+        "provCode": "12",
+        "centroid": [
+          98.4889,
+          3.6012
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "12.78",
+        "name": "Kota Gunungsitoli",
+        "prov": "Sumatera Utara",
+        "provCode": "12",
+        "centroid": [
+          97.5952,
+          1.2347
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "12.75",
+        "name": "Kota Medan",
+        "prov": "Sumatera Utara",
+        "provCode": "12",
+        "centroid": [
+          98.6711,
+          3.6381
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "12.77",
+        "name": "Kota Padangsidimpuan",
+        "prov": "Sumatera Utara",
+        "provCode": "12",
+        "centroid": [
+          99.287,
+          1.3852
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "12.73",
+        "name": "Kota Pematang Siantar",
+        "prov": "Sumatera Utara",
+        "provCode": "12",
+        "centroid": [
+          99.0564,
+          2.9585
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "12.71",
+        "name": "Kota Sibolga",
+        "prov": "Sumatera Utara",
+        "provCode": "12",
+        "centroid": [
+          98.7894,
+          1.7388
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "12.72",
+        "name": "Kota Tanjung Balai",
+        "prov": "Sumatera Utara",
+        "provCode": "12",
+        "centroid": [
+          99.7992,
+          2.9735
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "12.74",
+        "name": "Kota Tebing Tinggi",
+        "prov": "Sumatera Utara",
+        "provCode": "12",
+        "centroid": [
+          99.1586,
+          3.3331
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "12.07",
+        "name": "Labuhan Batu",
+        "prov": "Sumatera Utara",
+        "provCode": "12",
+        "centroid": [
+          99.9972,
+          2.2489
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "12.22",
+        "name": "Labuhan Batu Selatan",
+        "prov": "Sumatera Utara",
+        "provCode": "12",
+        "centroid": [
+          100.11,
+          1.7774
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "12.23",
+        "name": "Labuhan Batu Utara",
+        "prov": "Sumatera Utara",
+        "provCode": "12",
+        "centroid": [
+          99.7119,
+          2.3888
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "12.13",
+        "name": "Langkat",
+        "prov": "Sumatera Utara",
+        "provCode": "12",
+        "centroid": [
+          98.2427,
+          3.7755
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "12.02",
+        "name": "Mandailing Natal",
+        "prov": "Sumatera Utara",
+        "provCode": "12",
+        "centroid": [
+          99.3781,
+          0.7962
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "12.01",
+        "name": "Nias",
+        "prov": "Sumatera Utara",
+        "provCode": "12",
+        "centroid": [
+          97.686,
+          1.086
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "12.25",
+        "name": "Nias Barat",
+        "prov": "Sumatera Utara",
+        "provCode": "12",
+        "centroid": [
+          97.4596,
+          0.9734
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "12.14",
+        "name": "Nias Selatan",
+        "prov": "Sumatera Utara",
+        "provCode": "12",
+        "centroid": [
+          98.2462,
+          0.0975
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "12.24",
+        "name": "Nias Utara",
+        "prov": "Sumatera Utara",
+        "provCode": "12",
+        "centroid": [
+          97.3287,
+          1.3469
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "12.21",
+        "name": "Padang Lawas",
+        "prov": "Sumatera Utara",
+        "provCode": "12",
+        "centroid": [
+          99.8524,
+          1.1059
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "12.20",
+        "name": "Padang Lawas Utara",
+        "prov": "Sumatera Utara",
+        "provCode": "12",
+        "centroid": [
+          99.754,
+          1.6316
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "12.16",
+        "name": "Pakpak Bharat",
+        "prov": "Sumatera Utara",
+        "provCode": "12",
+        "centroid": [
+          98.2558,
+          2.555
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "12.17",
+        "name": "Samosir",
+        "prov": "Sumatera Utara",
+        "provCode": "12",
+        "centroid": [
+          98.7133,
+          2.5512
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "12.18",
+        "name": "Serdang Bedagai",
+        "prov": "Sumatera Utara",
+        "provCode": "12",
+        "centroid": [
+          99.036,
+          3.3181
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "12.09",
+        "name": "Simalungun",
+        "prov": "Sumatera Utara",
+        "provCode": "12",
+        "centroid": [
+          99.0285,
+          3.0008
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "12.03",
+        "name": "Tapanuli Selatan",
+        "prov": "Sumatera Utara",
+        "provCode": "12",
+        "centroid": [
+          99.2653,
+          1.4767
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "12.04",
+        "name": "Tapanuli Tengah",
+        "prov": "Sumatera Utara",
+        "provCode": "12",
+        "centroid": [
+          98.6625,
+          1.7893
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "12.05",
+        "name": "Tapanuli Utara",
+        "prov": "Sumatera Utara",
+        "provCode": "12",
+        "centroid": [
+          99.0403,
+          2.0486
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "12.06",
+        "name": "Toba Samosir",
+        "prov": "Sumatera Utara",
+        "provCode": "12",
+        "centroid": [
+          99.2187,
+          2.4268
+        ],
+        "tier": "kabupaten"
+      }
+    ]
+  },
+  "Bali": {
+    "provinceName": "Bali",
+    "provinceCode": "51",
+    "slug": "bali",
+    "totalRegions": 9,
+    "regions": [
+      {
+        "code": "51.03",
+        "name": "Badung",
+        "prov": "Bali",
+        "provCode": "51",
+        "centroid": [
+          115.1906,
+          -8.565
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "51.06",
+        "name": "Bangli",
+        "prov": "Bali",
+        "provCode": "51",
+        "centroid": [
+          115.3477,
+          -8.2991
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "51.08",
+        "name": "Buleleng",
+        "prov": "Bali",
+        "provCode": "51",
+        "centroid": [
+          114.9302,
+          -8.1976
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "51.04",
+        "name": "Gianyar",
+        "prov": "Bali",
+        "provCode": "51",
+        "centroid": [
+          115.289,
+          -8.4758
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "51.01",
+        "name": "Jembrana",
+        "prov": "Bali",
+        "provCode": "51",
+        "centroid": [
+          114.6818,
+          -8.2945
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "51.07",
+        "name": "Karang Asem",
+        "prov": "Bali",
+        "provCode": "51",
+        "centroid": [
+          115.5013,
+          -8.3744
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "51.05",
+        "name": "Klungkung",
+        "prov": "Bali",
+        "provCode": "51",
+        "centroid": [
+          115.4701,
+          -8.6403
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "51.71",
+        "name": "Kota Denpasar",
+        "prov": "Bali",
+        "provCode": "51",
+        "centroid": [
+          115.2235,
+          -8.6774
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "51.02",
+        "name": "Tabanan",
+        "prov": "Bali",
+        "provCode": "51",
+        "centroid": [
+          115.0958,
+          -8.4224
+        ],
+        "tier": "kabupaten"
+      }
+    ]
+  },
+  "Kalimantan Selatan": {
+    "provinceName": "Kalimantan Selatan",
+    "provinceCode": "63",
+    "slug": "kalimantan-selatan",
+    "totalRegions": 13,
+    "regions": [
+      {
+        "code": "63.11",
+        "name": "Balangan",
+        "prov": "Kalimantan Selatan",
+        "provCode": "63",
+        "centroid": [
+          115.6733,
+          -2.2954
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "63.03",
+        "name": "Banjar",
+        "prov": "Kalimantan Selatan",
+        "provCode": "63",
+        "centroid": [
+          115.1213,
+          -3.2766
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "63.04",
+        "name": "Barito Kuala",
+        "prov": "Kalimantan Selatan",
+        "provCode": "63",
+        "centroid": [
+          114.6122,
+          -3.0818
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "63.06",
+        "name": "Hulu Sungai Selatan",
+        "prov": "Kalimantan Selatan",
+        "provCode": "63",
+        "centroid": [
+          115.2862,
+          -2.7614
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "63.07",
+        "name": "Hulu Sungai Tengah",
+        "prov": "Kalimantan Selatan",
+        "provCode": "63",
+        "centroid": [
+          115.5288,
+          -2.6092
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "63.08",
+        "name": "Hulu Sungai Utara",
+        "prov": "Kalimantan Selatan",
+        "provCode": "63",
+        "centroid": [
+          115.1818,
+          -2.4483
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "63.72",
+        "name": "Kota Banjar Baru",
+        "prov": "Kalimantan Selatan",
+        "provCode": "63",
+        "centroid": [
+          114.8309,
+          -3.494
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "63.71",
+        "name": "Kota Banjarmasin",
+        "prov": "Kalimantan Selatan",
+        "provCode": "63",
+        "centroid": [
+          114.5992,
+          -3.3264
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "63.02",
+        "name": "Kota Baru",
+        "prov": "Kalimantan Selatan",
+        "provCode": "63",
+        "centroid": [
+          116.1181,
+          -3.1386
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "63.09",
+        "name": "Tabalong",
+        "prov": "Kalimantan Selatan",
+        "provCode": "63",
+        "centroid": [
+          115.5386,
+          -1.8225
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "63.10",
+        "name": "Tanah Bumbu",
+        "prov": "Kalimantan Selatan",
+        "provCode": "63",
+        "centroid": [
+          115.7104,
+          -3.403
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "63.01",
+        "name": "Tanah Laut",
+        "prov": "Kalimantan Selatan",
+        "provCode": "63",
+        "centroid": [
+          114.9058,
+          -3.7667
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "63.05",
+        "name": "Tapin",
+        "prov": "Kalimantan Selatan",
+        "provCode": "63",
+        "centroid": [
+          115.2016,
+          -2.9402
+        ],
+        "tier": "kabupaten"
+      }
+    ]
+  },
+  "Jawa Barat": {
+    "provinceName": "Jawa Barat",
+    "provinceCode": "32",
+    "slug": "jawa-barat",
+    "totalRegions": 27,
+    "regions": [
+      {
+        "code": "32.04",
+        "name": "Bandung",
+        "prov": "Jawa Barat",
+        "provCode": "32",
+        "centroid": [
+          107.6215,
+          -7.0674
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "32.17",
+        "name": "Bandung Barat",
+        "prov": "Jawa Barat",
+        "provCode": "32",
+        "centroid": [
+          107.4356,
+          -6.8791
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "32.16",
+        "name": "Bekasi",
+        "prov": "Jawa Barat",
+        "provCode": "32",
+        "centroid": [
+          107.1101,
+          -6.2069
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "32.01",
+        "name": "Bogor",
+        "prov": "Jawa Barat",
+        "provCode": "32",
+        "centroid": [
+          106.7948,
+          -6.5446
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "32.07",
+        "name": "Ciamis",
+        "prov": "Jawa Barat",
+        "provCode": "32",
+        "centroid": [
+          108.4554,
+          -7.3172
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "32.03",
+        "name": "Cianjur",
+        "prov": "Jawa Barat",
+        "provCode": "32",
+        "centroid": [
+          107.1618,
+          -7.0539
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "32.09",
+        "name": "Cirebon",
+        "prov": "Jawa Barat",
+        "provCode": "32",
+        "centroid": [
+          108.5696,
+          -6.7547
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "32.05",
+        "name": "Garut",
+        "prov": "Jawa Barat",
+        "provCode": "32",
+        "centroid": [
+          107.8067,
+          -7.3153
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "32.12",
+        "name": "Indramayu",
+        "prov": "Jawa Barat",
+        "provCode": "32",
+        "centroid": [
+          108.1745,
+          -6.4612
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "32.15",
+        "name": "Karawang",
+        "prov": "Jawa Barat",
+        "provCode": "32",
+        "centroid": [
+          107.3301,
+          -6.2744
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "32.73",
+        "name": "Kota Bandung",
+        "prov": "Jawa Barat",
+        "provCode": "32",
+        "centroid": [
+          107.6389,
+          -6.9072
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "32.79",
+        "name": "Kota Banjar",
+        "prov": "Jawa Barat",
+        "provCode": "32",
+        "centroid": [
+          108.5787,
+          -7.3757
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "32.75",
+        "name": "Kota Bekasi",
+        "prov": "Jawa Barat",
+        "provCode": "32",
+        "centroid": [
+          106.9741,
+          -6.2896
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "32.71",
+        "name": "Kota Bogor",
+        "prov": "Jawa Barat",
+        "provCode": "32",
+        "centroid": [
+          106.7953,
+          -6.5886
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "32.77",
+        "name": "Kota Cimahi",
+        "prov": "Jawa Barat",
+        "provCode": "32",
+        "centroid": [
+          107.547,
+          -6.8887
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "32.74",
+        "name": "Kota Cirebon",
+        "prov": "Jawa Barat",
+        "provCode": "32",
+        "centroid": [
+          108.553,
+          -6.7437
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "32.76",
+        "name": "Kota Depok",
+        "prov": "Jawa Barat",
+        "provCode": "32",
+        "centroid": [
+          106.8313,
+          -6.3955
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "32.72",
+        "name": "Kota Sukabumi",
+        "prov": "Jawa Barat",
+        "provCode": "32",
+        "centroid": [
+          106.9193,
+          -6.9354
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "32.78",
+        "name": "Kota Tasikmalaya",
+        "prov": "Jawa Barat",
+        "provCode": "32",
+        "centroid": [
+          108.2249,
+          -7.3505
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "32.08",
+        "name": "Kuningan",
+        "prov": "Jawa Barat",
+        "provCode": "32",
+        "centroid": [
+          108.5757,
+          -6.9938
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "32.10",
+        "name": "Majalengka",
+        "prov": "Jawa Barat",
+        "provCode": "32",
+        "centroid": [
+          108.2428,
+          -6.8177
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "32.18",
+        "name": "Pangandaran",
+        "prov": "Jawa Barat",
+        "provCode": "32",
+        "centroid": [
+          108.5388,
+          -7.6242
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "32.14",
+        "name": "Purwakarta",
+        "prov": "Jawa Barat",
+        "provCode": "32",
+        "centroid": [
+          107.428,
+          -6.6055
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "32.13",
+        "name": "Subang",
+        "prov": "Jawa Barat",
+        "provCode": "32",
+        "centroid": [
+          107.7444,
+          -6.4767
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "32.02",
+        "name": "Sukabumi",
+        "prov": "Jawa Barat",
+        "provCode": "32",
+        "centroid": [
+          106.7287,
+          -7.0389
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "32.11",
+        "name": "Sumedang",
+        "prov": "Jawa Barat",
+        "provCode": "32",
+        "centroid": [
+          107.9819,
+          -6.815
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "32.06",
+        "name": "Tasikmalaya",
+        "prov": "Jawa Barat",
+        "provCode": "32",
+        "centroid": [
+          108.1706,
+          -7.4289
+        ],
+        "tier": "kabupaten"
+      }
+    ]
+  },
+  "Sulawesi Tengah": {
+    "provinceName": "Sulawesi Tengah",
+    "provinceCode": "72",
+    "slug": "sulawesi-tengah",
+    "totalRegions": 13,
+    "regions": [
+      {
+        "code": "72.02",
+        "name": "Banggai",
+        "prov": "Sulawesi Tengah",
+        "provCode": "72",
+        "centroid": [
+          122.6541,
+          -0.94
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "72.01",
+        "name": "Banggai Kepulauan",
+        "prov": "Sulawesi Tengah",
+        "provCode": "72",
+        "centroid": [
+          123.1828,
+          -1.3853
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "72.11",
+        "name": "Banggai Laut",
+        "prov": "Sulawesi Tengah",
+        "provCode": "72",
+        "centroid": [
+          123.6064,
+          -1.8612
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "72.07",
+        "name": "Buol",
+        "prov": "Sulawesi Tengah",
+        "provCode": "72",
+        "centroid": [
+          121.5064,
+          0.9899
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "72.05",
+        "name": "Donggala",
+        "prov": "Sulawesi Tengah",
+        "provCode": "72",
+        "centroid": [
+          119.8273,
+          -0.4075
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "72.71",
+        "name": "Kota Palu",
+        "prov": "Sulawesi Tengah",
+        "provCode": "72",
+        "centroid": [
+          119.8888,
+          -0.7994
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "72.03",
+        "name": "Morowali",
+        "prov": "Sulawesi Tengah",
+        "provCode": "72",
+        "centroid": [
+          122.1278,
+          -2.8765
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "72.12",
+        "name": "Morowali Utara",
+        "prov": "Sulawesi Tengah",
+        "provCode": "72",
+        "centroid": [
+          121.4807,
+          -1.8046
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "72.08",
+        "name": "Parigi Moutong",
+        "prov": "Sulawesi Tengah",
+        "provCode": "72",
+        "centroid": [
+          120.3768,
+          -0.0501
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "72.04",
+        "name": "Poso",
+        "prov": "Sulawesi Tengah",
+        "provCode": "72",
+        "centroid": [
+          120.4739,
+          -1.6425
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "72.10",
+        "name": "Sigi",
+        "prov": "Sulawesi Tengah",
+        "provCode": "72",
+        "centroid": [
+          119.9781,
+          -1.4041
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "72.09",
+        "name": "Tojo Una-Una",
+        "prov": "Sulawesi Tengah",
+        "provCode": "72",
+        "centroid": [
+          121.7874,
+          -0.7481
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "72.06",
+        "name": "Toli-Toli",
+        "prov": "Sulawesi Tengah",
+        "provCode": "72",
+        "centroid": [
+          120.6545,
+          0.9429
+        ],
+        "tier": "kabupaten"
+      }
+    ]
+  },
+  "Kepulauan Bangka Belitung": {
+    "provinceName": "Kepulauan Bangka Belitung",
+    "provinceCode": "19",
+    "slug": "kepulauan-bangka-belitung",
+    "totalRegions": 7,
+    "regions": [
+      {
+        "code": "19.01",
+        "name": "Bangka",
+        "prov": "Kepulauan Bangka Belitung",
+        "provCode": "19",
+        "centroid": [
+          105.9093,
+          -1.9332
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "19.03",
+        "name": "Bangka Barat",
+        "prov": "Kepulauan Bangka Belitung",
+        "provCode": "19",
+        "centroid": [
+          105.51,
+          -1.8801
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "19.05",
+        "name": "Bangka Selatan",
+        "prov": "Kepulauan Bangka Belitung",
+        "provCode": "19",
+        "centroid": [
+          106.4826,
+          -2.795
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "19.04",
+        "name": "Bangka Tengah",
+        "prov": "Kepulauan Bangka Belitung",
+        "provCode": "19",
+        "centroid": [
+          106.2448,
+          -2.4544
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "19.02",
+        "name": "Belitung",
+        "prov": "Kepulauan Bangka Belitung",
+        "provCode": "19",
+        "centroid": [
+          107.6392,
+          -2.8959
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "19.06",
+        "name": "Belitung Timur",
+        "prov": "Kepulauan Bangka Belitung",
+        "provCode": "19",
+        "centroid": [
+          108.0878,
+          -2.929
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "19.71",
+        "name": "Kota Pangkal Pinang",
+        "prov": "Kepulauan Bangka Belitung",
+        "provCode": "19",
+        "centroid": [
+          106.1114,
+          -2.1099
+        ],
+        "tier": "kota"
+      }
+    ]
+  },
+  "Jawa Timur": {
+    "provinceName": "Jawa Timur",
+    "provinceCode": "35",
+    "slug": "jawa-timur",
+    "totalRegions": 38,
+    "regions": [
+      {
+        "code": "35.26",
+        "name": "Bangkalan",
+        "prov": "Jawa Timur",
+        "provCode": "35",
+        "centroid": [
+          112.958,
+          -7.0428
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "35.10",
+        "name": "Banyuwangi",
+        "prov": "Jawa Timur",
+        "provCode": "35",
+        "centroid": [
+          114.227,
+          -8.3926
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "35.05",
+        "name": "Blitar",
+        "prov": "Jawa Timur",
+        "provCode": "35",
+        "centroid": [
+          112.2161,
+          -8.1314
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "35.22",
+        "name": "Bojonegoro",
+        "prov": "Jawa Timur",
+        "provCode": "35",
+        "centroid": [
+          111.7946,
+          -7.2239
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "35.11",
+        "name": "Bondowoso",
+        "prov": "Jawa Timur",
+        "provCode": "35",
+        "centroid": [
+          113.9441,
+          -7.9628
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "35.25",
+        "name": "Gresik",
+        "prov": "Jawa Timur",
+        "provCode": "35",
+        "centroid": [
+          112.5543,
+          -6.8521
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "35.09",
+        "name": "Jember",
+        "prov": "Jawa Timur",
+        "provCode": "35",
+        "centroid": [
+          113.6356,
+          -8.2849
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "35.17",
+        "name": "Jombang",
+        "prov": "Jawa Timur",
+        "provCode": "35",
+        "centroid": [
+          112.264,
+          -7.5363
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "35.06",
+        "name": "Kediri",
+        "prov": "Jawa Timur",
+        "provCode": "35",
+        "centroid": [
+          112.0959,
+          -7.8127
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "35.79",
+        "name": "Kota Batu",
+        "prov": "Jawa Timur",
+        "provCode": "35",
+        "centroid": [
+          112.5286,
+          -7.831
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "35.72",
+        "name": "Kota Blitar",
+        "prov": "Jawa Timur",
+        "provCode": "35",
+        "centroid": [
+          112.1666,
+          -8.0952
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "35.71",
+        "name": "Kota Kediri",
+        "prov": "Jawa Timur",
+        "provCode": "35",
+        "centroid": [
+          112.0149,
+          -7.8244
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "35.77",
+        "name": "Kota Madiun",
+        "prov": "Jawa Timur",
+        "provCode": "35",
+        "centroid": [
+          111.5254,
+          -7.6316
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "35.73",
+        "name": "Kota Malang",
+        "prov": "Jawa Timur",
+        "provCode": "35",
+        "centroid": [
+          112.6368,
+          -7.9775
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "35.76",
+        "name": "Kota Mojokerto",
+        "prov": "Jawa Timur",
+        "provCode": "35",
+        "centroid": [
+          112.439,
+          -7.4699
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "35.75",
+        "name": "Kota Pasuruan",
+        "prov": "Jawa Timur",
+        "provCode": "35",
+        "centroid": [
+          112.9107,
+          -7.6422
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "35.74",
+        "name": "Kota Probolinggo",
+        "prov": "Jawa Timur",
+        "provCode": "35",
+        "centroid": [
+          113.2079,
+          -7.7676
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "35.78",
+        "name": "Kota Surabaya",
+        "prov": "Jawa Timur",
+        "provCode": "35",
+        "centroid": [
+          112.7027,
+          -7.2705
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "35.24",
+        "name": "Lamongan",
+        "prov": "Jawa Timur",
+        "provCode": "35",
+        "centroid": [
+          112.3195,
+          -7.1073
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "35.08",
+        "name": "Lumajang",
+        "prov": "Jawa Timur",
+        "provCode": "35",
+        "centroid": [
+          113.133,
+          -8.1155
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "35.19",
+        "name": "Madiun",
+        "prov": "Jawa Timur",
+        "provCode": "35",
+        "centroid": [
+          111.6233,
+          -7.637
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "35.20",
+        "name": "Magetan",
+        "prov": "Jawa Timur",
+        "provCode": "35",
+        "centroid": [
+          111.3588,
+          -7.6567
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "35.07",
+        "name": "Malang",
+        "prov": "Jawa Timur",
+        "provCode": "35",
+        "centroid": [
+          112.6278,
+          -8.0876
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "35.16",
+        "name": "Mojokerto",
+        "prov": "Jawa Timur",
+        "provCode": "35",
+        "centroid": [
+          112.4646,
+          -7.5155
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "35.18",
+        "name": "Nganjuk",
+        "prov": "Jawa Timur",
+        "provCode": "35",
+        "centroid": [
+          111.938,
+          -7.5962
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "35.21",
+        "name": "Ngawi",
+        "prov": "Jawa Timur",
+        "provCode": "35",
+        "centroid": [
+          111.3503,
+          -7.432
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "35.01",
+        "name": "Pacitan",
+        "prov": "Jawa Timur",
+        "provCode": "35",
+        "centroid": [
+          111.192,
+          -8.1292
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "35.28",
+        "name": "Pamekasan",
+        "prov": "Jawa Timur",
+        "provCode": "35",
+        "centroid": [
+          113.5137,
+          -7.064
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "35.14",
+        "name": "Pasuruan",
+        "prov": "Jawa Timur",
+        "provCode": "35",
+        "centroid": [
+          112.8396,
+          -7.7341
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "35.02",
+        "name": "Ponorogo",
+        "prov": "Jawa Timur",
+        "provCode": "35",
+        "centroid": [
+          111.5114,
+          -7.9396
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "35.13",
+        "name": "Probolinggo",
+        "prov": "Jawa Timur",
+        "provCode": "35",
+        "centroid": [
+          113.3118,
+          -7.8707
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "35.27",
+        "name": "Sampang",
+        "prov": "Jawa Timur",
+        "provCode": "35",
+        "centroid": [
+          113.2312,
+          -7.0486
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "35.15",
+        "name": "Sidoarjo",
+        "prov": "Jawa Timur",
+        "provCode": "35",
+        "centroid": [
+          112.7027,
+          -7.4542
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "35.12",
+        "name": "Situbondo",
+        "prov": "Jawa Timur",
+        "provCode": "35",
+        "centroid": [
+          113.9911,
+          -7.81
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "35.29",
+        "name": "Sumenep",
+        "prov": "Jawa Timur",
+        "provCode": "35",
+        "centroid": [
+          114.841,
+          -6.9148
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "35.03",
+        "name": "Trenggalek",
+        "prov": "Jawa Timur",
+        "provCode": "35",
+        "centroid": [
+          111.6385,
+          -8.1702
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "35.23",
+        "name": "Tuban",
+        "prov": "Jawa Timur",
+        "provCode": "35",
+        "centroid": [
+          111.8928,
+          -6.9729
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "35.04",
+        "name": "Tulungagung",
+        "prov": "Jawa Timur",
+        "provCode": "35",
+        "centroid": [
+          111.8838,
+          -8.117
+        ],
+        "tier": "kabupaten"
+      }
+    ]
+  },
+  "Jawa Tengah": {
+    "provinceName": "Jawa Tengah",
+    "provinceCode": "33",
+    "slug": "jawa-tengah",
+    "totalRegions": 35,
+    "regions": [
+      {
+        "code": "33.04",
+        "name": "Banjarnegara",
+        "prov": "Jawa Tengah",
+        "provCode": "33",
+        "centroid": [
+          109.6521,
+          -7.3596
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "33.02",
+        "name": "Banyumas",
+        "prov": "Jawa Tengah",
+        "provCode": "33",
+        "centroid": [
+          109.1907,
+          -7.4654
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "33.25",
+        "name": "Batang",
+        "prov": "Jawa Tengah",
+        "provCode": "33",
+        "centroid": [
+          109.8579,
+          -7.0196
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "33.16",
+        "name": "Blora",
+        "prov": "Jawa Tengah",
+        "provCode": "33",
+        "centroid": [
+          111.3887,
+          -7.0861
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "33.09",
+        "name": "Boyolali",
+        "prov": "Jawa Tengah",
+        "provCode": "33",
+        "centroid": [
+          110.6638,
+          -7.3884
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "33.29",
+        "name": "Brebes",
+        "prov": "Jawa Tengah",
+        "provCode": "33",
+        "centroid": [
+          108.953,
+          -7.0616
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "33.01",
+        "name": "Cilacap",
+        "prov": "Jawa Tengah",
+        "provCode": "33",
+        "centroid": [
+          108.8842,
+          -7.4805
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "33.21",
+        "name": "Demak",
+        "prov": "Jawa Tengah",
+        "provCode": "33",
+        "centroid": [
+          110.6332,
+          -6.9246
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "33.15",
+        "name": "Grobogan",
+        "prov": "Jawa Tengah",
+        "provCode": "33",
+        "centroid": [
+          110.8666,
+          -7.115
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "33.20",
+        "name": "Jepara",
+        "prov": "Jawa Tengah",
+        "provCode": "33",
+        "centroid": [
+          110.6863,
+          -6.3907
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "33.13",
+        "name": "Karanganyar",
+        "prov": "Jawa Tengah",
+        "provCode": "33",
+        "centroid": [
+          110.9731,
+          -7.5993
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "33.05",
+        "name": "Kebumen",
+        "prov": "Jawa Tengah",
+        "provCode": "33",
+        "centroid": [
+          109.6057,
+          -7.6106
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "33.24",
+        "name": "Kendal",
+        "prov": "Jawa Tengah",
+        "provCode": "33",
+        "centroid": [
+          110.166,
+          -7.0628
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "33.10",
+        "name": "Klaten",
+        "prov": "Jawa Tengah",
+        "provCode": "33",
+        "centroid": [
+          110.6236,
+          -7.6792
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "33.71",
+        "name": "Kota Magelang",
+        "prov": "Jawa Tengah",
+        "provCode": "33",
+        "centroid": [
+          110.2219,
+          -7.4692
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "33.75",
+        "name": "Kota Pekalongan",
+        "prov": "Jawa Tengah",
+        "provCode": "33",
+        "centroid": [
+          109.6812,
+          -6.8962
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "33.73",
+        "name": "Kota Salatiga",
+        "prov": "Jawa Tengah",
+        "provCode": "33",
+        "centroid": [
+          110.4991,
+          -7.3362
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "33.74",
+        "name": "Kota Semarang",
+        "prov": "Jawa Tengah",
+        "provCode": "33",
+        "centroid": [
+          110.3874,
+          -7.0209
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "33.72",
+        "name": "Kota Surakarta",
+        "prov": "Jawa Tengah",
+        "provCode": "33",
+        "centroid": [
+          110.8216,
+          -7.56
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "33.76",
+        "name": "Kota Tegal",
+        "prov": "Jawa Tengah",
+        "provCode": "33",
+        "centroid": [
+          109.1147,
+          -6.8738
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "33.19",
+        "name": "Kudus",
+        "prov": "Jawa Tengah",
+        "provCode": "33",
+        "centroid": [
+          110.851,
+          -6.8033
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "33.08",
+        "name": "Magelang",
+        "prov": "Jawa Tengah",
+        "provCode": "33",
+        "centroid": [
+          110.2463,
+          -7.4929
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "33.18",
+        "name": "Pati",
+        "prov": "Jawa Tengah",
+        "provCode": "33",
+        "centroid": [
+          111.0128,
+          -6.7768
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "33.26",
+        "name": "Pekalongan",
+        "prov": "Jawa Tengah",
+        "provCode": "33",
+        "centroid": [
+          109.6362,
+          -7.0617
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "33.27",
+        "name": "Pemalang",
+        "prov": "Jawa Tengah",
+        "provCode": "33",
+        "centroid": [
+          109.3909,
+          -7.0566
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "33.03",
+        "name": "Purbalingga",
+        "prov": "Jawa Tengah",
+        "provCode": "33",
+        "centroid": [
+          109.4179,
+          -7.3342
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "33.06",
+        "name": "Purworejo",
+        "prov": "Jawa Tengah",
+        "provCode": "33",
+        "centroid": [
+          109.9689,
+          -7.6645
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "33.17",
+        "name": "Rembang",
+        "prov": "Jawa Tengah",
+        "provCode": "33",
+        "centroid": [
+          111.4545,
+          -6.8002
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "33.22",
+        "name": "Semarang",
+        "prov": "Jawa Tengah",
+        "provCode": "33",
+        "centroid": [
+          110.4898,
+          -7.2943
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "33.14",
+        "name": "Sragen",
+        "prov": "Jawa Tengah",
+        "provCode": "33",
+        "centroid": [
+          110.9739,
+          -7.3761
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "33.11",
+        "name": "Sukoharjo",
+        "prov": "Jawa Tengah",
+        "provCode": "33",
+        "centroid": [
+          110.8115,
+          -7.6817
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "33.28",
+        "name": "Tegal",
+        "prov": "Jawa Tengah",
+        "provCode": "33",
+        "centroid": [
+          109.1405,
+          -7.0604
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "33.23",
+        "name": "Temanggung",
+        "prov": "Jawa Tengah",
+        "provCode": "33",
+        "centroid": [
+          110.1489,
+          -7.2452
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "33.12",
+        "name": "Wonogiri",
+        "prov": "Jawa Tengah",
+        "provCode": "33",
+        "centroid": [
+          111.0249,
+          -7.9214
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "33.07",
+        "name": "Wonosobo",
+        "prov": "Jawa Tengah",
+        "provCode": "33",
+        "centroid": [
+          109.8928,
+          -7.4344
+        ],
+        "tier": "kabupaten"
+      }
+    ]
+  },
+  "Sulawesi Selatan": {
+    "provinceName": "Sulawesi Selatan",
+    "provinceCode": "73",
+    "slug": "sulawesi-selatan",
+    "totalRegions": 24,
+    "regions": [
+      {
+        "code": "73.03",
+        "name": "Bantaeng",
+        "prov": "Sulawesi Selatan",
+        "provCode": "73",
+        "centroid": [
+          119.9729,
+          -5.4902
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "73.10",
+        "name": "Barru",
+        "prov": "Sulawesi Selatan",
+        "provCode": "73",
+        "centroid": [
+          119.6902,
+          -4.4106
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "73.11",
+        "name": "Bone",
+        "prov": "Sulawesi Selatan",
+        "provCode": "73",
+        "centroid": [
+          120.0994,
+          -4.7095
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "73.02",
+        "name": "Bulukumba",
+        "prov": "Sulawesi Selatan",
+        "provCode": "73",
+        "centroid": [
+          120.2433,
+          -5.4467
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "73.16",
+        "name": "Enrekang",
+        "prov": "Sulawesi Selatan",
+        "provCode": "73",
+        "centroid": [
+          119.8841,
+          -3.5058
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "73.06",
+        "name": "Gowa",
+        "prov": "Sulawesi Selatan",
+        "provCode": "73",
+        "centroid": [
+          119.6658,
+          -5.2997
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "73.04",
+        "name": "Jeneponto",
+        "prov": "Sulawesi Selatan",
+        "provCode": "73",
+        "centroid": [
+          119.7149,
+          -5.5448
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "73.01",
+        "name": "Kepulauan Selayar",
+        "prov": "Sulawesi Selatan",
+        "provCode": "73",
+        "centroid": [
+          120.78,
+          -6.7515
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "73.71",
+        "name": "Kota Makassar",
+        "prov": "Sulawesi Selatan",
+        "provCode": "73",
+        "centroid": [
+          119.4619,
+          -5.1459
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "73.73",
+        "name": "Kota Palopo",
+        "prov": "Sulawesi Selatan",
+        "provCode": "73",
+        "centroid": [
+          120.1531,
+          -2.9848
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "73.72",
+        "name": "Kota Parepare",
+        "prov": "Sulawesi Selatan",
+        "provCode": "73",
+        "centroid": [
+          119.662,
+          -4.0298
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "73.17",
+        "name": "Luwu",
+        "prov": "Sulawesi Selatan",
+        "provCode": "73",
+        "centroid": [
+          120.1571,
+          -3.1244
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "73.25",
+        "name": "Luwu Timur",
+        "prov": "Sulawesi Selatan",
+        "provCode": "73",
+        "centroid": [
+          121.0937,
+          -2.5853
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "73.22",
+        "name": "Luwu Utara",
+        "prov": "Sulawesi Selatan",
+        "provCode": "73",
+        "centroid": [
+          120.1563,
+          -2.3899
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "73.08",
+        "name": "Maros",
+        "prov": "Sulawesi Selatan",
+        "provCode": "73",
+        "centroid": [
+          119.7252,
+          -4.9906
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "73.09",
+        "name": "Pangkajene Dan Kepulauan",
+        "prov": "Sulawesi Selatan",
+        "provCode": "73",
+        "centroid": [
+          118.8336,
+          -5.5345
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "73.15",
+        "name": "Pinrang",
+        "prov": "Sulawesi Selatan",
+        "provCode": "73",
+        "centroid": [
+          119.5928,
+          -3.5947
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "73.14",
+        "name": "Sidenreng Rappang",
+        "prov": "Sulawesi Selatan",
+        "provCode": "73",
+        "centroid": [
+          119.9643,
+          -3.8141
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "73.07",
+        "name": "Sinjai",
+        "prov": "Sulawesi Selatan",
+        "provCode": "73",
+        "centroid": [
+          120.1079,
+          -5.2082
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "73.12",
+        "name": "Soppeng",
+        "prov": "Sulawesi Selatan",
+        "provCode": "73",
+        "centroid": [
+          119.8965,
+          -4.3156
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "73.05",
+        "name": "Takalar",
+        "prov": "Sulawesi Selatan",
+        "provCode": "73",
+        "centroid": [
+          119.4257,
+          -5.4211
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "73.18",
+        "name": "Tana Toraja",
+        "prov": "Sulawesi Selatan",
+        "provCode": "73",
+        "centroid": [
+          119.7177,
+          -3.1259
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "73.26",
+        "name": "Toraja Utara",
+        "prov": "Sulawesi Selatan",
+        "provCode": "73",
+        "centroid": [
+          119.8932,
+          -2.9142
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "73.13",
+        "name": "Wajo",
+        "prov": "Sulawesi Selatan",
+        "provCode": "73",
+        "centroid": [
+          120.1646,
+          -4.0136
+        ],
+        "tier": "kabupaten"
+      }
+    ]
+  },
+  "Daerah Istimewa Yogyakarta": {
+    "provinceName": "Daerah Istimewa Yogyakarta",
+    "provinceCode": "34",
+    "slug": "daerah-istimewa-yogyakarta",
+    "totalRegions": 5,
+    "regions": [
+      {
+        "code": "34.02",
+        "name": "Bantul",
+        "prov": "Daerah Istimewa Yogyakarta",
+        "provCode": "34",
+        "centroid": [
+          110.3655,
+          -7.8755
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "34.03",
+        "name": "Gunung Kidul",
+        "prov": "Daerah Istimewa Yogyakarta",
+        "provCode": "34",
+        "centroid": [
+          110.6033,
+          -7.986
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "34.71",
+        "name": "Kota Yogyakarta",
+        "prov": "Daerah Istimewa Yogyakarta",
+        "provCode": "34",
+        "centroid": [
+          110.3795,
+          -7.8037
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "34.01",
+        "name": "Kulon Progo",
+        "prov": "Daerah Istimewa Yogyakarta",
+        "provCode": "34",
+        "centroid": [
+          110.1717,
+          -7.7938
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "34.04",
+        "name": "Sleman",
+        "prov": "Daerah Istimewa Yogyakarta",
+        "provCode": "34",
+        "centroid": [
+          110.3761,
+          -7.7506
+        ],
+        "tier": "kabupaten"
+      }
+    ]
+  },
+  "Sumatera Selatan": {
+    "provinceName": "Sumatera Selatan",
+    "provinceCode": "16",
+    "slug": "sumatera-selatan",
+    "totalRegions": 17,
+    "regions": [
+      {
+        "code": "16.07",
+        "name": "Banyu Asin",
+        "prov": "Sumatera Selatan",
+        "provCode": "16",
+        "centroid": [
+          104.7024,
+          -2.4478
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "16.11",
+        "name": "Empat Lawang",
+        "prov": "Sumatera Selatan",
+        "provCode": "16",
+        "centroid": [
+          102.9541,
+          -3.7387
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "16.74",
+        "name": "Kota Lubuklinggau",
+        "prov": "Sumatera Selatan",
+        "provCode": "16",
+        "centroid": [
+          102.8703,
+          -3.2723
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "16.73",
+        "name": "Kota Pagar Alam",
+        "prov": "Sumatera Selatan",
+        "provCode": "16",
+        "centroid": [
+          103.2822,
+          -4.0955
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "16.71",
+        "name": "Kota Palembang",
+        "prov": "Sumatera Selatan",
+        "provCode": "16",
+        "centroid": [
+          104.7469,
+          -2.9707
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "16.72",
+        "name": "Kota Prabumulih",
+        "prov": "Sumatera Selatan",
+        "provCode": "16",
+        "centroid": [
+          104.2269,
+          -3.4595
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "16.04",
+        "name": "Lahat",
+        "prov": "Sumatera Selatan",
+        "provCode": "16",
+        "centroid": [
+          103.3304,
+          -3.9113
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "16.03",
+        "name": "Muara Enim",
+        "prov": "Sumatera Selatan",
+        "provCode": "16",
+        "centroid": [
+          104.036,
+          -3.5975
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "16.06",
+        "name": "Musi Banyuasin",
+        "prov": "Sumatera Selatan",
+        "provCode": "16",
+        "centroid": [
+          103.7076,
+          -2.5363
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "16.05",
+        "name": "Musi Rawas",
+        "prov": "Sumatera Selatan",
+        "provCode": "16",
+        "centroid": [
+          103.0729,
+          -3.1851
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "16.13",
+        "name": "Musi Rawas Utara",
+        "prov": "Sumatera Selatan",
+        "provCode": "16",
+        "centroid": [
+          102.7334,
+          -2.7123
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "16.10",
+        "name": "Ogan Ilir",
+        "prov": "Sumatera Selatan",
+        "provCode": "16",
+        "centroid": [
+          104.581,
+          -3.4228
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "16.02",
+        "name": "Ogan Komering Ilir",
+        "prov": "Sumatera Selatan",
+        "provCode": "16",
+        "centroid": [
+          105.2981,
+          -3.4846
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "16.01",
+        "name": "Ogan Komering Ulu",
+        "prov": "Sumatera Selatan",
+        "provCode": "16",
+        "centroid": [
+          104.1096,
+          -4.0741
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "16.08",
+        "name": "Ogan Komering Ulu Selatan",
+        "prov": "Sumatera Selatan",
+        "provCode": "16",
+        "centroid": [
+          103.9243,
+          -4.6351
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "16.09",
+        "name": "Ogan Komering Ulu Timur",
+        "prov": "Sumatera Selatan",
+        "provCode": "16",
+        "centroid": [
+          104.5442,
+          -4.1184
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "16.12",
+        "name": "Penukal Abab Lematang Ilir",
+        "prov": "Sumatera Selatan",
+        "provCode": "16",
+        "centroid": [
+          103.9407,
+          -3.224
+        ],
+        "tier": "kabupaten"
+      }
+    ]
+  },
+  "Kalimantan Tengah": {
+    "provinceName": "Kalimantan Tengah",
+    "provinceCode": "62",
+    "slug": "kalimantan-tengah",
+    "totalRegions": 14,
+    "regions": [
+      {
+        "code": "62.04",
+        "name": "Barito Selatan",
+        "prov": "Kalimantan Tengah",
+        "provCode": "62",
+        "centroid": [
+          114.9381,
+          -1.9084
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "62.12",
+        "name": "Barito Timur",
+        "prov": "Kalimantan Tengah",
+        "provCode": "62",
+        "centroid": [
+          115.2221,
+          -1.9491
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "62.05",
+        "name": "Barito Utara",
+        "prov": "Kalimantan Tengah",
+        "provCode": "62",
+        "centroid": [
+          115.2661,
+          -0.7821
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "62.11",
+        "name": "Gunung Mas",
+        "prov": "Kalimantan Tengah",
+        "provCode": "62",
+        "centroid": [
+          113.5205,
+          -0.9597
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "62.03",
+        "name": "Kapuas",
+        "prov": "Kalimantan Tengah",
+        "provCode": "62",
+        "centroid": [
+          114.3374,
+          -2.021
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "62.09",
+        "name": "Katingan",
+        "prov": "Kalimantan Tengah",
+        "provCode": "62",
+        "centroid": [
+          113.063,
+          -1.6593
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "62.71",
+        "name": "Kota Palangka Raya",
+        "prov": "Kalimantan Tengah",
+        "provCode": "62",
+        "centroid": [
+          113.7481,
+          -1.9849
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "62.01",
+        "name": "Kotawaringin Barat",
+        "prov": "Kalimantan Tengah",
+        "provCode": "62",
+        "centroid": [
+          111.7272,
+          -2.561
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "62.02",
+        "name": "Kotawaringin Timur",
+        "prov": "Kalimantan Tengah",
+        "provCode": "62",
+        "centroid": [
+          112.7522,
+          -2.1981
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "62.07",
+        "name": "Lamandau",
+        "prov": "Kalimantan Tengah",
+        "provCode": "62",
+        "centroid": [
+          111.2259,
+          -1.8001
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "62.13",
+        "name": "Murung Raya",
+        "prov": "Kalimantan Tengah",
+        "provCode": "62",
+        "centroid": [
+          114.2331,
+          0.1601
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "62.10",
+        "name": "Pulang Pisau",
+        "prov": "Kalimantan Tengah",
+        "provCode": "62",
+        "centroid": [
+          113.9332,
+          -2.6071
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "62.08",
+        "name": "Seruyan",
+        "prov": "Kalimantan Tengah",
+        "provCode": "62",
+        "centroid": [
+          112.0531,
+          -1.9718
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "62.06",
+        "name": "Sukamara",
+        "prov": "Kalimantan Tengah",
+        "provCode": "62",
+        "centroid": [
+          111.1317,
+          -2.5868
+        ],
+        "tier": "kabupaten"
+      }
+    ]
+  },
+  "Jambi": {
+    "provinceName": "Jambi",
+    "provinceCode": "15",
+    "slug": "jambi",
+    "totalRegions": 11,
+    "regions": [
+      {
+        "code": "15.04",
+        "name": "Batang Hari",
+        "prov": "Jambi",
+        "provCode": "15",
+        "centroid": [
+          103.0998,
+          -1.768
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "15.09",
+        "name": "Bungo",
+        "prov": "Jambi",
+        "provCode": "15",
+        "centroid": [
+          101.969,
+          -1.5676
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "15.01",
+        "name": "Kerinci",
+        "prov": "Jambi",
+        "provCode": "15",
+        "centroid": [
+          101.4737,
+          -2.0358
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "15.71",
+        "name": "Kota Jambi",
+        "prov": "Jambi",
+        "provCode": "15",
+        "centroid": [
+          103.596,
+          -1.6204
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "15.72",
+        "name": "Kota Sungai Penuh",
+        "prov": "Jambi",
+        "provCode": "15",
+        "centroid": [
+          101.3723,
+          -2.1027
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "15.02",
+        "name": "Merangin",
+        "prov": "Jambi",
+        "provCode": "15",
+        "centroid": [
+          102.0312,
+          -2.1707
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "15.05",
+        "name": "Muaro Jambi",
+        "prov": "Jambi",
+        "provCode": "15",
+        "centroid": [
+          103.5663,
+          -1.6355
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "15.03",
+        "name": "Sarolangun",
+        "prov": "Jambi",
+        "provCode": "15",
+        "centroid": [
+          102.6562,
+          -2.3161
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "15.07",
+        "name": "Tanjung Jabung Barat",
+        "prov": "Jambi",
+        "provCode": "15",
+        "centroid": [
+          103.1016,
+          -1.1283
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "15.06",
+        "name": "Tanjung Jabung Timur",
+        "prov": "Jambi",
+        "provCode": "15",
+        "centroid": [
+          103.9953,
+          -1.2054
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "15.08",
+        "name": "Tebo",
+        "prov": "Jambi",
+        "provCode": "15",
+        "centroid": [
+          102.3055,
+          -1.3006
+        ],
+        "tier": "kabupaten"
+      }
+    ]
+  },
+  "Riau": {
+    "provinceName": "Riau",
+    "provinceCode": "14",
+    "slug": "riau",
+    "totalRegions": 12,
+    "regions": [
+      {
+        "code": "14.08",
+        "name": "Bengkalis",
+        "prov": "Riau",
+        "provCode": "14",
+        "centroid": [
+          101.7457,
+          1.5134
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "14.03",
+        "name": "Indragiri Hilir",
+        "prov": "Riau",
+        "provCode": "14",
+        "centroid": [
+          103.3495,
+          -0.3183
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "14.02",
+        "name": "Indragiri Hulu",
+        "prov": "Riau",
+        "provCode": "14",
+        "centroid": [
+          102.2204,
+          -0.667
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "14.06",
+        "name": "Kampar",
+        "prov": "Riau",
+        "provCode": "14",
+        "centroid": [
+          101.0019,
+          0.247
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "14.10",
+        "name": "Kepulauan Meranti",
+        "prov": "Riau",
+        "provCode": "14",
+        "centroid": [
+          102.6885,
+          0.9875
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "14.73",
+        "name": "Kota Dumai",
+        "prov": "Riau",
+        "provCode": "14",
+        "centroid": [
+          101.3159,
+          1.8276
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "14.71",
+        "name": "Kota Pekanbaru",
+        "prov": "Riau",
+        "provCode": "14",
+        "centroid": [
+          101.4783,
+          0.549
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "14.01",
+        "name": "Kuantan Singingi",
+        "prov": "Riau",
+        "provCode": "14",
+        "centroid": [
+          101.522,
+          -0.501
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "14.04",
+        "name": "Pelalawan",
+        "prov": "Riau",
+        "provCode": "14",
+        "centroid": [
+          102.4803,
+          0.2883
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "14.09",
+        "name": "Rokan Hilir",
+        "prov": "Riau",
+        "provCode": "14",
+        "centroid": [
+          100.6916,
+          1.8942
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "14.07",
+        "name": "Rokan Hulu",
+        "prov": "Riau",
+        "provCode": "14",
+        "centroid": [
+          100.4702,
+          0.8937
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "14.05",
+        "name": "Siak",
+        "prov": "Riau",
+        "provCode": "14",
+        "centroid": [
+          101.8943,
+          0.7947
+        ],
+        "tier": "kabupaten"
+      }
+    ]
+  },
+  "Kalimantan Barat": {
+    "provinceName": "Kalimantan Barat",
+    "provinceCode": "61",
+    "slug": "kalimantan-barat",
+    "totalRegions": 14,
+    "regions": [
+      {
+        "code": "61.02",
+        "name": "Bengkayang",
+        "prov": "Kalimantan Barat",
+        "provCode": "61",
+        "centroid": [
+          109.4697,
+          0.9928
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "61.08",
+        "name": "Kapuas Hulu",
+        "prov": "Kalimantan Barat",
+        "provCode": "61",
+        "centroid": [
+          112.8869,
+          0.9434
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "61.11",
+        "name": "Kayong Utara",
+        "prov": "Kalimantan Barat",
+        "provCode": "61",
+        "centroid": [
+          109.5432,
+          -1.232
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "61.06",
+        "name": "Ketapang",
+        "prov": "Kalimantan Barat",
+        "provCode": "61",
+        "centroid": [
+          110.5752,
+          -1.6032
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "61.71",
+        "name": "Kota Pontianak",
+        "prov": "Kalimantan Barat",
+        "provCode": "61",
+        "centroid": [
+          109.3433,
+          -0.0202
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "61.72",
+        "name": "Kota Singkawang",
+        "prov": "Kalimantan Barat",
+        "provCode": "61",
+        "centroid": [
+          109.0467,
+          0.9089
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "61.12",
+        "name": "Kubu Raya",
+        "prov": "Kalimantan Barat",
+        "provCode": "61",
+        "centroid": [
+          109.5046,
+          -0.4866
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "61.03",
+        "name": "Landak",
+        "prov": "Kalimantan Barat",
+        "provCode": "61",
+        "centroid": [
+          109.7335,
+          0.5211
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "61.10",
+        "name": "Melawi",
+        "prov": "Kalimantan Barat",
+        "provCode": "61",
+        "centroid": [
+          111.7568,
+          -0.6493
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "61.04",
+        "name": "Mempawah",
+        "prov": "Kalimantan Barat",
+        "provCode": "61",
+        "centroid": [
+          109.1422,
+          0.3944
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "61.01",
+        "name": "Sambas",
+        "prov": "Kalimantan Barat",
+        "provCode": "61",
+        "centroid": [
+          109.4026,
+          1.4767
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "61.05",
+        "name": "Sanggau",
+        "prov": "Kalimantan Barat",
+        "provCode": "61",
+        "centroid": [
+          110.3589,
+          0.3485
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "61.09",
+        "name": "Sekadau",
+        "prov": "Kalimantan Barat",
+        "provCode": "61",
+        "centroid": [
+          110.9711,
+          0.0151
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "61.07",
+        "name": "Sintang",
+        "prov": "Kalimantan Barat",
+        "provCode": "61",
+        "centroid": [
+          112.0176,
+          0.1067
+        ],
+        "tier": "kabupaten"
+      }
+    ]
+  },
+  "Bengkulu": {
+    "provinceName": "Bengkulu",
+    "provinceCode": "17",
+    "slug": "bengkulu",
+    "totalRegions": 10,
+    "regions": [
+      {
+        "code": "17.01",
+        "name": "Bengkulu Selatan",
+        "prov": "Bengkulu",
+        "provCode": "17",
+        "centroid": [
+          103.0675,
+          -4.3284
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "17.09",
+        "name": "Bengkulu Tengah",
+        "prov": "Bengkulu",
+        "provCode": "17",
+        "centroid": [
+          102.4179,
+          -3.7001
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "17.03",
+        "name": "Bengkulu Utara",
+        "prov": "Bengkulu",
+        "provCode": "17",
+        "centroid": [
+          102.0915,
+          -3.8426
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "17.04",
+        "name": "Kaur",
+        "prov": "Bengkulu",
+        "provCode": "17",
+        "centroid": [
+          103.4237,
+          -4.6062
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "17.08",
+        "name": "Kepahiang",
+        "prov": "Bengkulu",
+        "provCode": "17",
+        "centroid": [
+          102.6289,
+          -3.6204
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "17.71",
+        "name": "Kota Bengkulu",
+        "prov": "Bengkulu",
+        "provCode": "17",
+        "centroid": [
+          102.3107,
+          -3.837
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "17.07",
+        "name": "Lebong",
+        "prov": "Bengkulu",
+        "provCode": "17",
+        "centroid": [
+          102.2308,
+          -3.0756
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "17.06",
+        "name": "Mukomuko",
+        "prov": "Bengkulu",
+        "provCode": "17",
+        "centroid": [
+          101.5475,
+          -2.7055
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "17.02",
+        "name": "Rejang Lebong",
+        "prov": "Bengkulu",
+        "provCode": "17",
+        "centroid": [
+          102.6942,
+          -3.4175
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "17.05",
+        "name": "Seluma",
+        "prov": "Bengkulu",
+        "provCode": "17",
+        "centroid": [
+          102.7137,
+          -4.0204
+        ],
+        "tier": "kabupaten"
+      }
+    ]
+  },
+  "Kalimantan Timur": {
+    "provinceName": "Kalimantan Timur",
+    "provinceCode": "64",
+    "slug": "kalimantan-timur",
+    "totalRegions": 10,
+    "regions": [
+      {
+        "code": "64.05",
+        "name": "Berau",
+        "prov": "Kalimantan Timur",
+        "provCode": "64",
+        "centroid": [
+          117.7971,
+          1.8929
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "64.71",
+        "name": "Kota Balikpapan",
+        "prov": "Kalimantan Timur",
+        "provCode": "64",
+        "centroid": [
+          116.8624,
+          -1.1489
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "64.74",
+        "name": "Kota Bontang",
+        "prov": "Kalimantan Timur",
+        "provCode": "64",
+        "centroid": [
+          117.4776,
+          0.1056
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "64.72",
+        "name": "Kota Samarinda",
+        "prov": "Kalimantan Timur",
+        "provCode": "64",
+        "centroid": [
+          117.2007,
+          -0.5222
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "64.02",
+        "name": "Kutai Barat",
+        "prov": "Kalimantan Timur",
+        "provCode": "64",
+        "centroid": [
+          115.7848,
+          -0.5019
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "64.03",
+        "name": "Kutai Kartanegara",
+        "prov": "Kalimantan Timur",
+        "provCode": "64",
+        "centroid": [
+          117.1175,
+          -0.3358
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "64.04",
+        "name": "Kutai Timur",
+        "prov": "Kalimantan Timur",
+        "provCode": "64",
+        "centroid": [
+          117.4452,
+          0.978
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "64.11",
+        "name": "Mahakam Hulu",
+        "prov": "Kalimantan Timur",
+        "provCode": "64",
+        "centroid": [
+          114.7657,
+          0.7051
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "64.01",
+        "name": "Paser",
+        "prov": "Kalimantan Timur",
+        "provCode": "64",
+        "centroid": [
+          116.1023,
+          -1.7788
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "64.09",
+        "name": "Penajam Paser Utara",
+        "prov": "Kalimantan Timur",
+        "provCode": "64",
+        "centroid": [
+          116.6275,
+          -1.1686
+        ],
+        "tier": "kabupaten"
+      }
+    ]
+  },
+  "Nusa Tenggara Barat": {
+    "provinceName": "Nusa Tenggara Barat",
+    "provinceCode": "52",
+    "slug": "nusa-tenggara-barat",
+    "totalRegions": 10,
+    "regions": [
+      {
+        "code": "52.06",
+        "name": "Bima",
+        "prov": "Nusa Tenggara Barat",
+        "provCode": "52",
+        "centroid": [
+          118.7108,
+          -8.4852
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "52.05",
+        "name": "Dompu",
+        "prov": "Nusa Tenggara Barat",
+        "provCode": "52",
+        "centroid": [
+          118.2043,
+          -8.4946
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "52.72",
+        "name": "Kota Bima",
+        "prov": "Nusa Tenggara Barat",
+        "provCode": "52",
+        "centroid": [
+          118.7785,
+          -8.4448
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "52.71",
+        "name": "Kota Mataram",
+        "prov": "Nusa Tenggara Barat",
+        "provCode": "52",
+        "centroid": [
+          116.1131,
+          -8.5892
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "52.01",
+        "name": "Lombok Barat",
+        "prov": "Nusa Tenggara Barat",
+        "provCode": "52",
+        "centroid": [
+          116.0732,
+          -8.6826
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "52.02",
+        "name": "Lombok Tengah",
+        "prov": "Nusa Tenggara Barat",
+        "provCode": "52",
+        "centroid": [
+          116.2955,
+          -8.7295
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "52.03",
+        "name": "Lombok Timur",
+        "prov": "Nusa Tenggara Barat",
+        "provCode": "52",
+        "centroid": [
+          116.5307,
+          -8.6049
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "52.08",
+        "name": "Lombok Utara",
+        "prov": "Nusa Tenggara Barat",
+        "provCode": "52",
+        "centroid": [
+          116.2347,
+          -8.366
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "52.04",
+        "name": "Sumbawa",
+        "prov": "Nusa Tenggara Barat",
+        "provCode": "52",
+        "centroid": [
+          117.5326,
+          -8.6094
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "52.07",
+        "name": "Sumbawa Barat",
+        "prov": "Nusa Tenggara Barat",
+        "provCode": "52",
+        "centroid": [
+          116.8878,
+          -8.7931
+        ],
+        "tier": "kabupaten"
+      }
+    ]
+  },
+  "Kepulauan Riau": {
+    "provinceName": "Kepulauan Riau",
+    "provinceCode": "21",
+    "slug": "kepulauan-riau",
+    "totalRegions": 7,
+    "regions": [
+      {
+        "code": "21.02",
+        "name": "Bintan",
+        "prov": "Kepulauan Riau",
+        "provCode": "21",
+        "centroid": [
+          105.2099,
+          0.9257
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "21.01",
+        "name": "Karimun",
+        "prov": "Kepulauan Riau",
+        "provCode": "21",
+        "centroid": [
+          103.5595,
+          0.8312
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "21.05",
+        "name": "Kepulauan Anambas",
+        "prov": "Kepulauan Riau",
+        "provCode": "21",
+        "centroid": [
+          106.1068,
+          3.0983
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "21.71",
+        "name": "Kota Batam",
+        "prov": "Kepulauan Riau",
+        "provCode": "21",
+        "centroid": [
+          104.0752,
+          0.9343
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "21.72",
+        "name": "Kota Tanjung Pinang",
+        "prov": "Kepulauan Riau",
+        "provCode": "21",
+        "centroid": [
+          104.4733,
+          0.9121
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "21.04",
+        "name": "Lingga",
+        "prov": "Kepulauan Riau",
+        "provCode": "21",
+        "centroid": [
+          104.5154,
+          -0.0878
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "21.03",
+        "name": "Natuna",
+        "prov": "Kepulauan Riau",
+        "provCode": "21",
+        "centroid": [
+          108.3333,
+          3.5692
+        ],
+        "tier": "kabupaten"
+      }
+    ]
+  },
+  "Gorontalo": {
+    "provinceName": "Gorontalo",
+    "provinceCode": "75",
+    "slug": "gorontalo",
+    "totalRegions": 6,
+    "regions": [
+      {
+        "code": "75.01",
+        "name": "Boalemo",
+        "prov": "Gorontalo",
+        "provCode": "75",
+        "centroid": [
+          122.3657,
+          0.6573
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "75.04",
+        "name": "Bone Bolango",
+        "prov": "Gorontalo",
+        "provCode": "75",
+        "centroid": [
+          123.2782,
+          0.5551
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "75.02",
+        "name": "Gorontalo",
+        "prov": "Gorontalo",
+        "provCode": "75",
+        "centroid": [
+          122.6972,
+          0.7074
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "75.05",
+        "name": "Gorontalo Utara",
+        "prov": "Gorontalo",
+        "provCode": "75",
+        "centroid": [
+          122.6625,
+          0.8917
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "75.71",
+        "name": "Kota Gorontalo",
+        "prov": "Gorontalo",
+        "provCode": "75",
+        "centroid": [
+          123.0548,
+          0.5337
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "75.03",
+        "name": "Pohuwato",
+        "prov": "Gorontalo",
+        "provCode": "75",
+        "centroid": [
+          121.6431,
+          0.6707
+        ],
+        "tier": "kabupaten"
+      }
+    ]
+  },
+  "Sulawesi Utara": {
+    "provinceName": "Sulawesi Utara",
+    "provinceCode": "71",
+    "slug": "sulawesi-utara",
+    "totalRegions": 15,
+    "regions": [
+      {
+        "code": "71.01",
+        "name": "Bolaang Mongondow",
+        "prov": "Sulawesi Utara",
+        "provCode": "71",
+        "centroid": [
+          124.0486,
+          0.7042
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "71.10",
+        "name": "Bolaang Mongondow Selatan",
+        "prov": "Sulawesi Utara",
+        "provCode": "71",
+        "centroid": [
+          123.9612,
+          0.4495
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "71.11",
+        "name": "Bolaang Mongondow Timur",
+        "prov": "Sulawesi Utara",
+        "provCode": "71",
+        "centroid": [
+          124.514,
+          0.702
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "71.07",
+        "name": "Bolaang Mongondow Utara",
+        "prov": "Sulawesi Utara",
+        "provCode": "71",
+        "centroid": [
+          123.4254,
+          0.7905
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "71.03",
+        "name": "Kepulauan Sangihe",
+        "prov": "Sulawesi Utara",
+        "provCode": "71",
+        "centroid": [
+          125.5511,
+          3.5381
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "71.04",
+        "name": "Kepulauan Talaud",
+        "prov": "Sulawesi Utara",
+        "provCode": "71",
+        "centroid": [
+          126.7957,
+          4.244
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "71.72",
+        "name": "Kota Bitung",
+        "prov": "Sulawesi Utara",
+        "provCode": "71",
+        "centroid": [
+          125.1858,
+          1.474
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "71.74",
+        "name": "Kota Kotamobagu",
+        "prov": "Sulawesi Utara",
+        "provCode": "71",
+        "centroid": [
+          124.318,
+          0.707
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "71.71",
+        "name": "Kota Manado",
+        "prov": "Sulawesi Utara",
+        "provCode": "71",
+        "centroid": [
+          124.8196,
+          1.547
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "71.73",
+        "name": "Kota Tomohon",
+        "prov": "Sulawesi Utara",
+        "provCode": "71",
+        "centroid": [
+          124.8193,
+          1.3339
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "71.02",
+        "name": "Minahasa",
+        "prov": "Sulawesi Utara",
+        "provCode": "71",
+        "centroid": [
+          124.8289,
+          1.292
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "71.05",
+        "name": "Minahasa Selatan",
+        "prov": "Sulawesi Utara",
+        "provCode": "71",
+        "centroid": [
+          124.5255,
+          1.0817
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "71.09",
+        "name": "Minahasa Tenggara",
+        "prov": "Sulawesi Utara",
+        "provCode": "71",
+        "centroid": [
+          124.7034,
+          0.9986
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "71.06",
+        "name": "Minahasa Utara",
+        "prov": "Sulawesi Utara",
+        "provCode": "71",
+        "centroid": [
+          125.0023,
+          1.6314
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "71.08",
+        "name": "Siau Tagulandang Biaro",
+        "prov": "Sulawesi Utara",
+        "provCode": "71",
+        "centroid": [
+          125.3786,
+          2.4556
+        ],
+        "tier": "kabupaten"
+      }
+    ]
+  },
+  "Sulawesi Tenggara": {
+    "provinceName": "Sulawesi Tenggara",
+    "provinceCode": "74",
+    "slug": "sulawesi-tenggara",
+    "totalRegions": 17,
+    "regions": [
+      {
+        "code": "74.06",
+        "name": "Bombana",
+        "prov": "Sulawesi Tenggara",
+        "provCode": "74",
+        "centroid": [
+          121.8708,
+          -4.9287
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "74.01",
+        "name": "Buton",
+        "prov": "Sulawesi Tenggara",
+        "provCode": "74",
+        "centroid": [
+          122.9106,
+          -5.3117
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "74.15",
+        "name": "Buton Selatan",
+        "prov": "Sulawesi Tenggara",
+        "provCode": "74",
+        "centroid": [
+          122.6341,
+          -5.679
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "74.14",
+        "name": "Buton Tengah",
+        "prov": "Sulawesi Tenggara",
+        "provCode": "74",
+        "centroid": [
+          122.3644,
+          -5.344
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "74.09",
+        "name": "Buton Utara",
+        "prov": "Sulawesi Tenggara",
+        "provCode": "74",
+        "centroid": [
+          123.0544,
+          -4.7268
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "74.04",
+        "name": "Kolaka",
+        "prov": "Sulawesi Tenggara",
+        "provCode": "74",
+        "centroid": [
+          121.5103,
+          -4.1122
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "74.11",
+        "name": "Kolaka Timur",
+        "prov": "Sulawesi Tenggara",
+        "provCode": "74",
+        "centroid": [
+          121.5675,
+          -3.7741
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "74.08",
+        "name": "Kolaka Utara",
+        "prov": "Sulawesi Tenggara",
+        "provCode": "74",
+        "centroid": [
+          121.1295,
+          -3.1954
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "74.03",
+        "name": "Konawe",
+        "prov": "Sulawesi Tenggara",
+        "provCode": "74",
+        "centroid": [
+          121.9831,
+          -3.5803
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "74.12",
+        "name": "Konawe Kepulauan",
+        "prov": "Sulawesi Tenggara",
+        "provCode": "74",
+        "centroid": [
+          123.0878,
+          -4.0998
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "74.05",
+        "name": "Konawe Selatan",
+        "prov": "Sulawesi Tenggara",
+        "provCode": "74",
+        "centroid": [
+          122.5366,
+          -4.2561
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "74.10",
+        "name": "Konawe Utara",
+        "prov": "Sulawesi Tenggara",
+        "provCode": "74",
+        "centroid": [
+          122.1409,
+          -3.4761
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "74.72",
+        "name": "Kota Baubau",
+        "prov": "Sulawesi Tenggara",
+        "provCode": "74",
+        "centroid": [
+          122.6666,
+          -5.4289
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "74.71",
+        "name": "Kota Kendari",
+        "prov": "Sulawesi Tenggara",
+        "provCode": "74",
+        "centroid": [
+          122.5543,
+          -3.9989
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "74.02",
+        "name": "Muna",
+        "prov": "Sulawesi Tenggara",
+        "provCode": "74",
+        "centroid": [
+          122.6578,
+          -4.9121
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "74.13",
+        "name": "Muna Barat",
+        "prov": "Sulawesi Tenggara",
+        "provCode": "74",
+        "centroid": [
+          122.4284,
+          -4.7507
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "74.07",
+        "name": "Wakatobi",
+        "prov": "Sulawesi Tenggara",
+        "provCode": "74",
+        "centroid": [
+          123.8398,
+          -5.6014
+        ],
+        "tier": "kabupaten"
+      }
+    ]
+  },
+  "Kalimantan Utara": {
+    "provinceName": "Kalimantan Utara",
+    "provinceCode": "65",
+    "slug": "kalimantan-utara",
+    "totalRegions": 5,
+    "regions": [
+      {
+        "code": "65.02",
+        "name": "Bulungan",
+        "prov": "Kalimantan Utara",
+        "provCode": "65",
+        "centroid": [
+          117.2964,
+          2.9834
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "65.71",
+        "name": "Kota Tarakan",
+        "prov": "Kalimantan Utara",
+        "provCode": "65",
+        "centroid": [
+          117.6054,
+          3.3528
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "65.01",
+        "name": "Malinau",
+        "prov": "Kalimantan Utara",
+        "provCode": "65",
+        "centroid": [
+          115.659,
+          2.553
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "65.04",
+        "name": "Nunukan",
+        "prov": "Kalimantan Utara",
+        "provCode": "65",
+        "centroid": [
+          116.9134,
+          3.9761
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "65.03",
+        "name": "Tana Tidung",
+        "prov": "Kalimantan Utara",
+        "provCode": "65",
+        "centroid": [
+          117.3477,
+          3.5687
+        ],
+        "tier": "kabupaten"
+      }
+    ]
+  },
+  "Maluku": {
+    "provinceName": "Maluku",
+    "provinceCode": "81",
+    "slug": "maluku",
+    "totalRegions": 11,
+    "regions": [
+      {
+        "code": "81.04",
+        "name": "Buru",
+        "prov": "Maluku",
+        "provCode": "81",
+        "centroid": [
+          126.7858,
+          -3.2519
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "81.09",
+        "name": "Buru Selatan",
+        "prov": "Maluku",
+        "provCode": "81",
+        "centroid": [
+          126.5104,
+          -3.5695
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "81.05",
+        "name": "Kepulauan Aru",
+        "prov": "Maluku",
+        "provCode": "81",
+        "centroid": [
+          134.516,
+          -6.1403
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "81.71",
+        "name": "Kota Ambon",
+        "prov": "Maluku",
+        "provCode": "81",
+        "centroid": [
+          128.1742,
+          -3.675
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "81.72",
+        "name": "Kota Tual",
+        "prov": "Maluku",
+        "provCode": "81",
+        "centroid": [
+          132.4664,
+          -5.5392
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "81.08",
+        "name": "Maluku Barat Daya",
+        "prov": "Maluku",
+        "provCode": "81",
+        "centroid": [
+          127.8513,
+          -7.791
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "81.03",
+        "name": "Maluku Tengah",
+        "prov": "Maluku",
+        "provCode": "81",
+        "centroid": [
+          129.0538,
+          -3.4389
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "81.02",
+        "name": "Maluku Tenggara",
+        "prov": "Maluku",
+        "provCode": "81",
+        "centroid": [
+          132.7945,
+          -5.7391
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "81.01",
+        "name": "Maluku Tenggara Barat",
+        "prov": "Maluku",
+        "provCode": "81",
+        "centroid": [
+          131.3168,
+          -7.5298
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "81.06",
+        "name": "Seram Bagian Barat",
+        "prov": "Maluku",
+        "provCode": "81",
+        "centroid": [
+          128.1235,
+          -3.0783
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "81.07",
+        "name": "Seram Bagian Timur",
+        "prov": "Maluku",
+        "provCode": "81",
+        "centroid": [
+          130.7766,
+          -3.6978
+        ],
+        "tier": "kabupaten"
+      }
+    ]
+  },
+  "Lampung": {
+    "provinceName": "Lampung",
+    "provinceCode": "18",
+    "slug": "lampung",
+    "totalRegions": 15,
+    "regions": [
+      {
+        "code": "18.71",
+        "name": "Kota Bandar Lampung",
+        "prov": "Lampung",
+        "provCode": "18",
+        "centroid": [
+          105.2779,
+          -5.4269
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "18.72",
+        "name": "Kota Metro",
+        "prov": "Lampung",
+        "provCode": "18",
+        "centroid": [
+          105.3042,
+          -5.1191
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "18.01",
+        "name": "Lampung Barat",
+        "prov": "Lampung",
+        "provCode": "18",
+        "centroid": [
+          104.0681,
+          -4.9794
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "18.03",
+        "name": "Lampung Selatan",
+        "prov": "Lampung",
+        "provCode": "18",
+        "centroid": [
+          105.4896,
+          -5.6156
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "18.05",
+        "name": "Lampung Tengah",
+        "prov": "Lampung",
+        "provCode": "18",
+        "centroid": [
+          105.2614,
+          -4.8692
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "18.04",
+        "name": "Lampung Timur",
+        "prov": "Lampung",
+        "provCode": "18",
+        "centroid": [
+          105.5961,
+          -5.1187
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "18.06",
+        "name": "Lampung Utara",
+        "prov": "Lampung",
+        "provCode": "18",
+        "centroid": [
+          104.7961,
+          -4.8152
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "18.11",
+        "name": "Mesuji",
+        "prov": "Lampung",
+        "provCode": "18",
+        "centroid": [
+          105.3942,
+          -4.0267
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "18.09",
+        "name": "Pesawaran",
+        "prov": "Lampung",
+        "provCode": "18",
+        "centroid": [
+          105.1559,
+          -5.5205
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "18.13",
+        "name": "Pesisir Barat",
+        "prov": "Lampung",
+        "provCode": "18",
+        "centroid": [
+          104.1526,
+          -5.3444
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "18.10",
+        "name": "Pringsewu",
+        "prov": "Lampung",
+        "provCode": "18",
+        "centroid": [
+          104.9206,
+          -5.3494
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "18.02",
+        "name": "Tanggamus",
+        "prov": "Lampung",
+        "provCode": "18",
+        "centroid": [
+          104.7542,
+          -5.5658
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "18.12",
+        "name": "Tulang Bawang Barat",
+        "prov": "Lampung",
+        "provCode": "18",
+        "centroid": [
+          105.105,
+          -4.4097
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "18.08",
+        "name": "Tulangbawang",
+        "prov": "Lampung",
+        "provCode": "18",
+        "centroid": [
+          105.5314,
+          -4.4249
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "18.07",
+        "name": "Way Kanan",
+        "prov": "Lampung",
+        "provCode": "18",
+        "centroid": [
+          104.6337,
+          -4.533
+        ],
+        "tier": "kabupaten"
+      }
+    ]
+  },
+  "Maluku Utara": {
+    "provinceName": "Maluku Utara",
+    "provinceCode": "82",
+    "slug": "maluku-utara",
+    "totalRegions": 10,
+    "regions": [
+      {
+        "code": "82.01",
+        "name": "Halmahera Barat",
+        "prov": "Maluku Utara",
+        "provCode": "82",
+        "centroid": [
+          127.598,
+          1.3512
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "82.04",
+        "name": "Halmahera Selatan",
+        "prov": "Maluku Utara",
+        "provCode": "82",
+        "centroid": [
+          127.6655,
+          -0.7167
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "82.02",
+        "name": "Halmahera Tengah",
+        "prov": "Maluku Utara",
+        "provCode": "82",
+        "centroid": [
+          128.5422,
+          0.3055
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "82.06",
+        "name": "Halmahera Timur",
+        "prov": "Maluku Utara",
+        "provCode": "82",
+        "centroid": [
+          128.2954,
+          0.9252
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "82.05",
+        "name": "Halmahera Utara",
+        "prov": "Maluku Utara",
+        "provCode": "82",
+        "centroid": [
+          127.824,
+          1.6269
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "82.03",
+        "name": "Kepulauan Sula",
+        "prov": "Maluku Utara",
+        "provCode": "82",
+        "centroid": [
+          125.8354,
+          -1.93
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "82.71",
+        "name": "Kota Ternate",
+        "prov": "Maluku Utara",
+        "provCode": "82",
+        "centroid": [
+          127.0318,
+          0.8977
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "82.72",
+        "name": "Kota Tidore Kepulauan",
+        "prov": "Maluku Utara",
+        "provCode": "82",
+        "centroid": [
+          127.6448,
+          0.4579
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "82.07",
+        "name": "Pulau Morotai",
+        "prov": "Maluku Utara",
+        "provCode": "82",
+        "centroid": [
+          128.4164,
+          2.3423
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "82.08",
+        "name": "Pulau Taliabu",
+        "prov": "Maluku Utara",
+        "provCode": "82",
+        "centroid": [
+          124.7749,
+          -1.8264
+        ],
+        "tier": "kabupaten"
+      }
+    ]
+  },
+  "Dki Jakarta": {
+    "provinceName": "Dki Jakarta",
+    "provinceCode": "31",
+    "slug": "dki-jakarta",
+    "totalRegions": 6,
+    "regions": [
+      {
+        "code": "31.01",
+        "name": "Kepulauan Seribu",
+        "prov": "Dki Jakarta",
+        "provCode": "31",
+        "centroid": [
+          106.496,
+          -5.797
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "31.74",
+        "name": "Kota Jakarta Barat",
+        "prov": "Dki Jakarta",
+        "provCode": "31",
+        "centroid": [
+          106.7566,
+          -6.1637
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "31.73",
+        "name": "Kota Jakarta Pusat",
+        "prov": "Dki Jakarta",
+        "provCode": "31",
+        "centroid": [
+          106.8277,
+          -6.1796
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "31.71",
+        "name": "Kota Jakarta Selatan",
+        "prov": "Dki Jakarta",
+        "provCode": "31",
+        "centroid": [
+          106.8063,
+          -6.2774
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "31.72",
+        "name": "Kota Jakarta Timur",
+        "prov": "Dki Jakarta",
+        "provCode": "31",
+        "centroid": [
+          106.899,
+          -6.2549
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "31.75",
+        "name": "Kota Jakarta Utara",
+        "prov": "Dki Jakarta",
+        "provCode": "31",
+        "centroid": [
+          106.8412,
+          -6.127
+        ],
+        "tier": "kota"
+      }
+    ]
+  },
+  "Banten": {
+    "provinceName": "Banten",
+    "provinceCode": "36",
+    "slug": "banten",
+    "totalRegions": 8,
+    "regions": [
+      {
+        "code": "36.72",
+        "name": "Kota Cilegon",
+        "prov": "Banten",
+        "provCode": "36",
+        "centroid": [
+          106.012,
+          -6.001
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "36.73",
+        "name": "Kota Serang",
+        "prov": "Banten",
+        "provCode": "36",
+        "centroid": [
+          106.1698,
+          -6.1239
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "36.71",
+        "name": "Kota Tangerang",
+        "prov": "Banten",
+        "provCode": "36",
+        "centroid": [
+          106.6589,
+          -6.1792
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "36.74",
+        "name": "Kota Tangerang Selatan",
+        "prov": "Banten",
+        "provCode": "36",
+        "centroid": [
+          106.6949,
+          -6.2907
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "36.02",
+        "name": "Lebak",
+        "prov": "Banten",
+        "provCode": "36",
+        "centroid": [
+          106.2158,
+          -6.6394
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "36.01",
+        "name": "Pandeglang",
+        "prov": "Banten",
+        "provCode": "36",
+        "centroid": [
+          105.6273,
+          -6.6028
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "36.04",
+        "name": "Serang",
+        "prov": "Banten",
+        "provCode": "36",
+        "centroid": [
+          106.1297,
+          -6.1141
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "36.03",
+        "name": "Tangerang",
+        "prov": "Banten",
+        "provCode": "36",
+        "centroid": [
+          106.5353,
+          -6.185
+        ],
+        "tier": "kabupaten"
+      }
+    ]
+  },
+  "Sulawesi Barat": {
+    "provinceName": "Sulawesi Barat",
+    "provinceCode": "76",
+    "slug": "sulawesi-barat",
+    "totalRegions": 6,
+    "regions": [
+      {
+        "code": "76.01",
+        "name": "Majene",
+        "prov": "Sulawesi Barat",
+        "provCode": "76",
+        "centroid": [
+          118.9212,
+          -3.2228
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "76.03",
+        "name": "Mamasa",
+        "prov": "Sulawesi Barat",
+        "provCode": "76",
+        "centroid": [
+          119.3239,
+          -2.9797
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "76.04",
+        "name": "Mamuju",
+        "prov": "Sulawesi Barat",
+        "provCode": "76",
+        "centroid": [
+          118.9723,
+          -2.5074
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "76.06",
+        "name": "Mamuju Tengah",
+        "prov": "Sulawesi Barat",
+        "provCode": "76",
+        "centroid": [
+          119.4966,
+          -2.0239
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "76.05",
+        "name": "Mamuju Utara",
+        "prov": "Sulawesi Barat",
+        "provCode": "76",
+        "centroid": [
+          119.5301,
+          -1.4253
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "76.02",
+        "name": "Polewali Mandar",
+        "prov": "Sulawesi Barat",
+        "provCode": "76",
+        "centroid": [
+          119.1879,
+          -3.3282
+        ],
+        "tier": "kabupaten"
+      }
+    ]
+  },
+  "Papua": {
+    "provinceName": "Papua",
+    "provinceCode": "91",
+    "slug": "papua",
+    "totalRegions": 9,
+    "regions": [
+      {
+        "code": "94.71",
+        "name": "Kota Jayapura",
+        "prov": "Papua",
+        "provCode": "91",
+        "centroid": [
+          140.7561,
+          -2.6228
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "94.03",
+        "name": "Jayapura",
+        "prov": "Papua",
+        "provCode": "91",
+        "centroid": [
+          140.0541,
+          -3.0989
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "94.20",
+        "name": "Keerom",
+        "prov": "Papua",
+        "provCode": "91",
+        "centroid": [
+          140.5497,
+          -3.4833
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "94.19",
+        "name": "Sarmi",
+        "prov": "Papua",
+        "provCode": "91",
+        "centroid": [
+          139.0142,
+          -2.6011
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "94.28",
+        "name": "Mamberamo Raya",
+        "prov": "Papua",
+        "provCode": "91",
+        "centroid": [
+          137.8158,
+          -2.4215
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "94.09",
+        "name": "Biak Numfor",
+        "prov": "Papua",
+        "provCode": "91",
+        "centroid": [
+          135.8936,
+          -1.0609
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "94.27",
+        "name": "Supiori",
+        "prov": "Papua",
+        "provCode": "91",
+        "centroid": [
+          135.5485,
+          -0.7396
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "94.08",
+        "name": "Kepulauan Yapen",
+        "prov": "Papua",
+        "provCode": "91",
+        "centroid": [
+          135.9894,
+          -1.7196
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "94.26",
+        "name": "Waropen",
+        "prov": "Papua",
+        "provCode": "91",
+        "centroid": [
+          136.7122,
+          -2.7126
+        ],
+        "tier": "kabupaten"
+      }
+    ]
+  },
+  "Papua Selatan": {
+    "provinceName": "Papua Selatan",
+    "provinceCode": "93",
+    "slug": "papua-selatan",
+    "totalRegions": 4,
+    "regions": [
+      {
+        "code": "94.01",
+        "name": "Merauke",
+        "prov": "Papua Selatan",
+        "provCode": "93",
+        "centroid": [
+          139.1017,
+          -8.0046
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "94.13",
+        "name": "Boven Digoel",
+        "prov": "Papua Selatan",
+        "provCode": "93",
+        "centroid": [
+          140.566,
+          -6.238
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "94.14",
+        "name": "Mappi",
+        "prov": "Papua Selatan",
+        "provCode": "93",
+        "centroid": [
+          139.021,
+          -6.6881
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "94.15",
+        "name": "Asmat",
+        "prov": "Papua Selatan",
+        "provCode": "93",
+        "centroid": [
+          138.1883,
+          -5.5749
+        ],
+        "tier": "kabupaten"
+      }
+    ]
+  },
+  "Papua Tengah": {
+    "provinceName": "Papua Tengah",
+    "provinceCode": "94",
+    "slug": "papua-tengah",
+    "totalRegions": 8,
+    "regions": [
+      {
+        "code": "94.04",
+        "name": "Nabire",
+        "prov": "Papua Tengah",
+        "provCode": "94",
+        "centroid": [
+          135.4645,
+          -3.1515
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "94.11",
+        "name": "Puncak Jaya",
+        "prov": "Papua Tengah",
+        "provCode": "94",
+        "centroid": [
+          137.9089,
+          -3.479
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "94.10",
+        "name": "Paniai",
+        "prov": "Papua Tengah",
+        "provCode": "94",
+        "centroid": [
+          136.3994,
+          -3.816
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "94.12",
+        "name": "Mimika",
+        "prov": "Papua Tengah",
+        "provCode": "94",
+        "centroid": [
+          136.4238,
+          -4.5819
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "94.33",
+        "name": "Puncak",
+        "prov": "Papua Tengah",
+        "provCode": "94",
+        "centroid": [
+          137.3602,
+          -3.4175
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "94.34",
+        "name": "Dogiyai",
+        "prov": "Papua Tengah",
+        "provCode": "94",
+        "centroid": [
+          135.7448,
+          -4.0137
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "94.35",
+        "name": "Intan Jaya",
+        "prov": "Papua Tengah",
+        "provCode": "94",
+        "centroid": [
+          136.6005,
+          -3.275
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "94.36",
+        "name": "Deiyai",
+        "prov": "Papua Tengah",
+        "provCode": "94",
+        "centroid": [
+          136.3898,
+          -4.1895
+        ],
+        "tier": "kabupaten"
+      }
+    ]
+  },
+  "Papua Pegunungan": {
+    "provinceName": "Papua Pegunungan",
+    "provinceCode": "95",
+    "slug": "papua-pegunungan",
+    "totalRegions": 8,
+    "regions": [
+      {
+        "code": "94.02",
+        "name": "Jayawijaya",
+        "prov": "Papua Pegunungan",
+        "provCode": "95",
+        "centroid": [
+          138.8364,
+          -4.0247
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "94.17",
+        "name": "Pegunungan Bintang",
+        "prov": "Papua Pegunungan",
+        "provCode": "95",
+        "centroid": [
+          140.3785,
+          -4.1951
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "94.16",
+        "name": "Yahukimo",
+        "prov": "Papua Pegunungan",
+        "provCode": "95",
+        "centroid": [
+          139.8748,
+          -4.2464
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "94.18",
+        "name": "Tolikara",
+        "prov": "Papua Pegunungan",
+        "provCode": "95",
+        "centroid": [
+          138.3148,
+          -3.4591
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "94.30",
+        "name": "Lanny Jaya",
+        "prov": "Papua Pegunungan",
+        "provCode": "95",
+        "centroid": [
+          138.2809,
+          -3.969
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "94.29",
+        "name": "Nduga",
+        "prov": "Papua Pegunungan",
+        "provCode": "95",
+        "centroid": [
+          138.3188,
+          -4.3903
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "94.32",
+        "name": "Yalimo",
+        "prov": "Papua Pegunungan",
+        "provCode": "95",
+        "centroid": [
+          139.4666,
+          -3.6666
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "94.31",
+        "name": "Mamberamo Tengah",
+        "prov": "Papua Pegunungan",
+        "provCode": "95",
+        "centroid": [
+          139.0841,
+          -3.5854
+        ],
+        "tier": "kabupaten"
+      }
+    ]
+  },
+  "Papua Barat": {
+    "provinceName": "Papua Barat",
+    "provinceCode": "92",
+    "slug": "papua-barat",
+    "totalRegions": 7,
+    "regions": [
+      {
+        "code": "91.01",
+        "name": "Fakfak",
+        "prov": "Papua Barat",
+        "provCode": "92",
+        "centroid": [
+          132.571,
+          -3.0617
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "91.02",
+        "name": "Kaimana",
+        "prov": "Papua Barat",
+        "provCode": "92",
+        "centroid": [
+          133.9513,
+          -3.7377
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "91.03",
+        "name": "Teluk Wondama",
+        "prov": "Papua Barat",
+        "provCode": "92",
+        "centroid": [
+          134.34,
+          -2.3738
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "91.04",
+        "name": "Teluk Bintuni",
+        "prov": "Papua Barat",
+        "provCode": "92",
+        "centroid": [
+          133.5615,
+          -2.2368
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "91.05",
+        "name": "Manokwari",
+        "prov": "Papua Barat",
+        "provCode": "92",
+        "centroid": [
+          133.9301,
+          -0.9668
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "91.11",
+        "name": "Manokwari Selatan",
+        "prov": "Papua Barat",
+        "provCode": "92",
+        "centroid": [
+          134.0016,
+          -1.5322
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "91.12",
+        "name": "Pegunungan Arfak",
+        "prov": "Papua Barat",
+        "provCode": "92",
+        "centroid": [
+          133.7946,
+          -1.1542
+        ],
+        "tier": "kabupaten"
+      }
+    ]
+  },
+  "Papua Barat Daya": {
+    "provinceName": "Papua Barat Daya",
+    "provinceCode": "96",
+    "slug": "papua-barat-daya",
+    "totalRegions": 6,
+    "regions": [
+      {
+        "code": "91.71",
+        "name": "Kota Sorong",
+        "prov": "Papua Barat Daya",
+        "provCode": "96",
+        "centroid": [
+          131.3238,
+          -0.8661
+        ],
+        "tier": "kota"
+      },
+      {
+        "code": "91.07",
+        "name": "Sorong",
+        "prov": "Papua Barat Daya",
+        "provCode": "96",
+        "centroid": [
+          131.3697,
+          -1.1532
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "91.06",
+        "name": "Sorong Selatan",
+        "prov": "Papua Barat Daya",
+        "provCode": "96",
+        "centroid": [
+          132.0391,
+          -1.6702
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "91.08",
+        "name": "Raja Ampat",
+        "prov": "Papua Barat Daya",
+        "provCode": "96",
+        "centroid": [
+          130.506,
+          -0.7783
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "91.09",
+        "name": "Tambrauw",
+        "prov": "Papua Barat Daya",
+        "provCode": "96",
+        "centroid": [
+          132.7651,
+          -0.7609
+        ],
+        "tier": "kabupaten"
+      },
+      {
+        "code": "91.10",
+        "name": "Maybrat",
+        "prov": "Papua Barat Daya",
+        "provCode": "96",
+        "centroid": [
+          132.3396,
+          -1.3291
+        ],
+        "tier": "kabupaten"
+      }
+    ]
+  }
+}

@@ -1,0 +1,100 @@
+@import "tailwindcss";
+@import "maplibre-gl/dist/maplibre-gl.css";
+
+/* Class-based dark mode for Tailwind v4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --accent: #c2452d;
+  --accent-strong: #a83624;
+  --accent-soft: #fbeae5;
+  --surface: #f5f4f1;
+  --card: #ffffff;
+  --ink: #1e1b18;
+  --muted: #6b6660;
+  --border: #e3dfd9;
+  --ok: #0b7a4b;
+  --danger: #a5271f;
+  --on-accent: #ffffff;
+}
+
+.dark {
+  --accent: #e0704f;
+  --accent-strong: #ec8b6d;
+  --accent-soft: #3a211b;
+  --surface: #16130f;
+  --card: #201c18;
+  --ink: #f0ece7;
+  --muted: #a8a09a;
+  --border: #38332d;
+  --ok: #64c99b;
+  --danger: #ff8b80;
+  /* Teks gelap di atas accent terang — kontras 5.6:1 (putih hanya 3:1). */
+  --on-accent: #211a14;
+}
+
+@theme inline {
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
+  --color-surface: var(--surface);
+  --color-card: var(--card);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-ok: var(--ok);
+  --color-danger: var(--danger);
+  --color-on-accent: var(--on-accent);
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden; /* app chrome scrolls internally; never the page */
+}
+
+body {
+  background-color: var(--surface);
+  color: var(--ink);
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* MapLibre chrome tuning: calm, minimal, follows theme */
+@media (min-width: 768px) {
+  /* The left map controls sit beside—not under—the search/pinned rail. */
+  .maplibregl-ctrl-top-left {
+    left: 18.5rem;
+    top: 0.25rem;
+  }
+}
+
+.maplibregl-ctrl-group {
+  background: var(--card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.12) !important;
+  overflow: hidden;
+}
+.maplibregl-ctrl-group button {
+  background-color: transparent !important;
+}
+.maplibregl-ctrl-attrib {
+  background: color-mix(in srgb, var(--card) 85%, transparent) !important;
+  color: var(--muted);
+  font-size: 10px;
+}
+.dark .maplibregl-ctrl-zoom-in .maplibregl-ctrl-icon,
+.dark .maplibregl-ctrl-zoom-out .maplibregl-ctrl-icon,
+.dark .maplibregl-ctrl-compass .maplibregl-ctrl-icon,
+.dark .maplibregl-ctrl-geolocate .maplibregl-ctrl-icon {
+  filter: invert(1);
+}
+
+/* No-data hatch pattern is drawn as a canvas image at runtime (see map component). */

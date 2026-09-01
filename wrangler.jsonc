@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "nafkah",
+  "compatibility_date": "2026-08-25",
+  "assets": {
+    "directory": "./out",
+    "not_found_handling": "404-page"
+  },
+  "routes": [
+    {
+      "pattern": "nafkah.adenaufal.com",
+      "custom_domain": true
+    }
+  ]
+}

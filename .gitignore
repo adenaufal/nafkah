@@ -1,0 +1,34 @@
+# Dependencies
+/node_modules
+
+# Next.js build / static export
+/.next
+/out
+next-env.d.ts
+*.tsbuildinfo
+
+# Cloudflare / wrangler
+/.wrangler
+
+# Dev server scratch
+.dev-server.log
+.dev.pid
+NUL
+/.playwright-mcp
+
+# Large re-downloadable source (145 MB HDX raw; see README for fetch command)
+/data-prep/idn_admin2.geojson
+
+# Private capture — do not publish
+/pi-session-*.html
+/Screenshot*.png
+/Screenshot*.jpg
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db

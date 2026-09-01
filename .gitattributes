@@ -1,0 +1,8 @@
+# Normalize line endings to LF in the repo (cross-platform friendly)
+* text=auto eol=lf
+
+# Binary assets — never touch
+*.png binary
+*.jpg binary
+*.topojson binary
+*.geojson binary
