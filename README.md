@@ -1,5 +1,9 @@
 # Nafkah — Peta Kecukupan Gaji vs Biaya Hidup Indonesia
 
+[![CI](https://github.com/adenaufal/nafkah/actions/workflows/ci.yml/badge.svg)](https://github.com/adenaufal/nafkah/actions/workflows/ci.yml)
+[![Code: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
+[![Data: CC BY 4.0](https://img.shields.io/badge/data-CC%20BY%204.0-lightgrey.svg)](LICENSE-DATA.md)
+
 Map-first web app comparing local minimum wage (UMK) against estimated monthly
 living costs across Indonesian kabupaten/kota. All displayed figures are
 **sample estimates** — clearly labeled in the UI — until verified sources are
