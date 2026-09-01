@@ -13,8 +13,11 @@ data**, bukan fitur visual. Baca `ROADMAP.md` buat arah project.
 npm install
 npm run dev        # http://localhost:3000
 npm run typecheck  # wajib lulus sebelum PR
+npm test           # wajib lulus sebelum PR
 npm run build      # wajib lulus sebelum PR
 ```
+
+Ketiganya (`typecheck`, `test`, `build`) juga dijalankan otomatis di CI tiap PR.
 
 ## Cara paling umum berkontribusi
 
@@ -42,11 +45,11 @@ wage/cost + narasi di `src/data/narratives.ts`. Gak perlu ubah kode.
 ## Aturan Pull Request
 
 1. **Setiap perubahan data wajib sertakan sumber** di deskripsi PR (link/nomor SK).
-2. `npm run typecheck` dan `npm run build` harus lulus.
+2. `npm run typecheck`, `npm test`, dan `npm run build` harus lulus.
 3. Satu topik per PR (mis. "koreksi UMK Jawa Timur 2026"), jangan gabung.
 4. Jangan tambah dependency baru tanpa alasan kuat di deskripsi PR.
-5. Kalau nambah/ubah logika perhitungan di `src/lib/calculations.ts`, sertakan
-   test (lihat ROADMAP Q1 — vitest lagi disiapkan).
+5. Kalau nambah/ubah logika perhitungan di `src/lib/calculations.ts`, tambahin
+   test di `src/lib/calculations.test.ts` (vitest).
 
 ## Yang ditolak
 

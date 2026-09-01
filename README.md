@@ -25,6 +25,7 @@ npm install
 npm run dev        # http://localhost:3000
 npm run build      # production build
 npm run typecheck
+npm test           # unit test kalkulasi (vitest)
 ```
 
 ## Geometry preparation (exact commands)
