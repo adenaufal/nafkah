@@ -2,6 +2,28 @@
   "name": "nafkah",
   "private": true,
   "version": "0.1.0",
+  "description": "Peta kecukupan UMK vs biaya hidup 514 kabupaten/kota Indonesia — map-first, provenance-first.",
+  "license": "MIT",
+  "author": "Ade Naufal",
+  "homepage": "https://nafkah.adenaufal.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adenaufal/nafkah.git"
+  },
+  "bugs": {
+    "url": "https://github.com/adenaufal/nafkah/issues"
+  },
+  "keywords": [
+    "indonesia",
+    "umk",
+    "upah-minimum",
+    "cost-of-living",
+    "biaya-hidup",
+    "choropleth",
+    "maplibre",
+    "nextjs",
+    "open-data"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
