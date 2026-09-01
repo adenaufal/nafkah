@@ -24,6 +24,12 @@ NUL
 /Screenshot*.png
 /Screenshot*.jpg
 
+# Threads / audience feedback exports — third-party PII, NEVER publish
+/*_full.txt
+/*_feedback*.json
+/threads_*.txt
+/threads_*.json
+
 # Env / secrets
 .env
 .env.*
