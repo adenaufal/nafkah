@@ -4,155 +4,160 @@
 [![Code: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
 [![Data: CC BY 4.0](https://img.shields.io/badge/data-CC%20BY%204.0-lightgrey.svg)](LICENSE-DATA.md)
 
-Map-first web app comparing local minimum wage (UMK) against estimated monthly
-living costs across Indonesian kabupaten/kota. All displayed figures are
-**sample estimates** — clearly labeled in the UI — until verified sources are
-connected (see "Data replacement" below).
+Peta interaktif yang membandingkan upah minimum daerah (UMK/UMP) dengan estimasi
+biaya hidup bulanan di **514 kabupaten/kota** Indonesia. Menjawab satu
+pertanyaan: *"apakah upah minimum di daerah ini cukup untuk hidup di sana?"*
+
+> **Angka biaya hidup adalah estimasi model, bukan survei primer** — dilabeli
+> jelas di UI. Upah bersumber dari penetapan resmi 2026. Bukan nasihat keuangan.
+> Detail di [Integritas & audit data](#integritas--audit-data).
+
+Live: **[nafkah.adenaufal.com](https://nafkah.adenaufal.com)**
+
+## Fitur (v0.1)
+
+- **Peta choropleth 514 kab/kota** — diwarnai band keterjangkauan (Nyaman /
+  Cukup / Ketat / Tak Cukup), palet colorblind-aware; wilayah tanpa data pakai
+  pola arsir (hatch), bukan hanya warna.
+- **Panel asumsi** — rumah tangga (single/pasangan/keluarga), gaya hidup,
+  hunian, transport, sertakan tabungan, basis upah (kotor / take-home).
+- **Pendapatan sendiri** — masukkan gaji sendiri untuk skenario relokasi; opsi
+  "2 upah" untuk pasangan bekerja. UMK daerah tetap tampil sebagai pembanding.
+- **Baki perbandingan** — sematkan hingga 5 wilayah, breakdown biaya per
+  kategori (grafik batang bertumpuk).
+- **Modal detail** — rincian per kategori dengan `source` / `asOf` /
+  `confidence` tiap sel, plus grafik.
+- **Basemap** — Terang / Gelap / Satelit (keyless) + mode Offline (tanpa tile).
+- **Dark mode**, pencarian wilayah, legenda numerik + filter per band.
+- **Aksesibilitas** — navigasi keyboard, `aria` label, kontras AA.
 
 ## Stack
 
-- Next.js 15 (App Router) + TypeScript + Tailwind CSS v4
-- MapLibre GL JS (client-side only via `next/dynamic` with `ssr: false`)
-- Keyless basemaps: CARTO Positron / Dark Matter (OSM-derived, attribution
-  shown) + Esri World Imagery raster
-- Recharts — only in the detail modal and pinned comparison panel
-- Geometry: HDX COD-AB Indonesia adm2 boundaries, simplified to TopoJSON
+- Next.js 15 (App Router, static export) + TypeScript + Tailwind CSS v4
+- MapLibre GL JS (client-only via `next/dynamic`, `ssr: false`)
+- Basemap keyless: CARTO Positron / Dark Matter (OSM-derived) + Esri World Imagery
+- Recharts (hanya di modal detail & baki perbandingan)
+- Geometri: HDX COD-AB Indonesia adm2, disederhanakan ke TopoJSON (≈0.6 MB)
+- Deploy: Cloudflare Workers Static Assets
 
-## Run
+## Menjalankan
 
 ```bash
 npm install
 npm run dev        # http://localhost:3000
-npm run build      # production build
+npm run build      # static export ke ./out
 npm run typecheck
 npm test           # unit test kalkulasi (vitest)
 ```
 
-## Geometry preparation (exact commands)
+## Model asumsi & formula
 
-The shipped asset `public/data/regions.topojson` (≈0.6 MB, 522 regions) was
-produced from the HDX COD-AB Indonesia dataset:
+Profil baseline: `single · moderate · studio · motorcycle · savings included`.
+Household / lifestyle / housing / transport adalah tabel multiplier per kategori
+(data, bisa diedit) di `src/data/multipliers.ts`.
+
+```text
+totalMonthlyCost   = Σ nilai kategori aktif di bawah asumsi saat ini
+wageBasisAmount    = earners × (wageBasis === 'gross' ? grossMonthly : estimatedTakeHome)
+                       earners = 2 jika pasangan bekerja (default 1)
+  dengan pendapatan sendiri (customIncome > 0):
+    wageAmount     = customIncome + (earners === 2 ? upah daerah 1 pekerja : 0)
+coveragePercent    = wageBasisAmount / totalMonthlyCost × 100
+surplusOrDeficit   = wageBasisAmount − totalMonthlyCost
+affordabilityRatio = totalMonthlyCost / wageBasisAmount
+```
+
+Band (konstanta di `src/lib/calculations.ts`):
+`Nyaman ≥ 120% · Cukup 100–119% · Ketat 80–99% · Tak Cukup < 80%`.
+
+## Data & provenance
+
+Setiap angka membawa `source`, `asOf`, dan `confidence`. Tangga keterpercayaan:
+`sample` → `estimate` (dimodelkan dari agregat BPS) → `official` (dataset resmi).
+UI menampilkan badge "Estimasi sampel" untuk apa pun di bawah `official`.
+
+**Cara mengganti data (tanpa ubah kode):**
+
+- **Upah** — edit `src/data/provinces/<provinsi>.ts`. Ganti `grossMonthly`
+  dengan UMK resmi, set `confidence: "official"`, isi `source` (nama + nomor SK)
+  dan `asOf`. Field take-home tetap dilabeli estimasi.
+- **Biaya** — edit `src/data/costs.ts`. Tiap sel kategori punya
+  `source`/`asOf`/`confidence` sendiri, jadi satu wilayah bisa punya upah
+  `official` tapi sewa `sample`.
+- **Wilayah** — tambah baris di `src/data/regions.ts` (kode wilayah, centroid,
+  tier) + baris upah/biaya + narasi di `src/data/narratives.ts`.
+- **Go live** — `src/data/loader.ts` mengembalikan `Map<kode, record>`; ganti
+  `loadRecords` dengan panggilan API dengan bentuk return yang sama.
+
+Kunci join: pcode HDX `ID3173` → kode wilayah `31.73` (lihat
+`pcodeToKodeWilayah` di `src/lib/geometry.ts`).
+
+## Penyiapan geometri (perintah persis)
+
+Aset `public/data/regions.topojson` (≈0.6 MB, 514 wilayah) dihasilkan dari
+dataset HDX COD-AB Indonesia:
 
 ```bash
-# 1. Download (436 MB zip, unzips to six GeoJSON files; adm2 = kabupaten/kota)
+# 1. Unduh (zip 436 MB → idn_admin2.geojson 143 MB; adm2 = kabupaten/kota)
 curl -L -o idn_admin_boundaries.geojson.zip \
   "https://data.humdata.org/dataset/84a1d98a-790b-4d66-9d14-bbfa48500802/resource/e1421da4-8f48-47d2-ac49-79ff5bfa4d24/download/idn_admin_boundaries.geojson.zip"
-unzip idn_admin_boundaries.geojson.zip   # -> idn_admin2.geojson (143 MB)
+unzip idn_admin_boundaries.geojson.zip   # -> idn_admin2.geojson
 
-# 2. Simplify to TopoJSON under 2 MB (exact command used, result ≈ 0.6 MB)
+# 2. Sederhanakan ke TopoJSON < 2 MB (hasil ≈ 0.6 MB)
 npx mapshaper idn_admin2.geojson \
   -filter-fields adm2_name,adm2_pcode,adm1_name,adm1_pcode \
   -simplify 2% keep-shapes -clean \
   -o format=topojson quantization=10000 regions.topojson
 
-# 3. Ship it
+# 3. Pasang
 cp regions.topojson public/data/regions.topojson
 ```
 
-Join key: HDX pcode `ID3173` → kode wilayah `31.73` (see `pcodeToKodeWilayah`
-in `src/lib/geometry.ts`). To swap in a different source, replace the file and
-adjust `topologyToFeatureCollection` if the property names differ.
+Untuk ganti sumber: ganti file dan sesuaikan `topologyToFeatureCollection` bila
+nama propertinya beda.
 
-## Data replacement
+## Integritas & audit data
 
-- Wages: edit `src/data/wages.ts`. Replace `grossMonthly` with the official UMK
-  announcement (surat keputusan gubernur / disnaker), set
-  `confidence: "official"`, update `source` (name + decree number) and `asOf`.
-  Recompute or source `estimatedTakeHomeMonthly`, keeping the field labeled as
-  an estimate.
-- Costs: edit `src/data/costs.ts`. Each category cell carries its own
-  `source`/`asOf`/`confidence` — so a region can have an official wage and a
-  sampled rent, and the provenance table in the detail modal will say exactly
-  that. Confidence ladder: `sample` → `estimate` (e.g. modeled from BPS
-  aggregates) → `official` (published dataset). The UI shows a persistent
-  "Sample estimate" badge for anything below `official`.
-- Regions: add a row to `src/data/regions.ts` (kode wilayah, centroid, tier)
-  plus matching wage/cost rows and a narrative in `src/data/narratives.ts`.
-  No code changes needed.
-- Loading: `src/data/loader.ts` fetches geometry over the network and returns
-  the local records with simulated latency. To go live, replace `loadRecords`
-  with an API call keeping the same `Map<kode, record>` return shape.
+**Cakupan:** tepat **514 kabupaten/kota definitif** (416 Kabupaten + 98 Kota)
+di 38 provinsi, sesuai Kepmendagri No. 100.1.1-6117.
 
-## Assumption model
+- **Pembersihan 8 poligon non-administratif.** Geometri HDX awal memuat 8
+  poligon badan air/hutan (`12.88` Danau Toba, `13.88` Singkarak/Maninjau,
+  `16.88` Ranau, `18.88` Danau Lampung, `32.88` Waduk Cirata, `33.88`
+  Kedungombo, `33.99` Hutan Lindung Jateng, `71.88` Tondano) — semuanya
+  difilter di modul geometri.
+- **Upah — resmi 2026.** Seluruh 514 baris memakai UMP/UMK 2026 (berlaku 1
+  Januari 2026, per PP No. 49/2025). 245 daerah pakai UMK mandiri dari
+  SK/Kepgub Desember 2025; 269 lainnya menginduk UMP provinsi (fallback
+  eksplisit berlabel). Daftar UMP 38 provinsi dirilis Kemnaker 6 Januari 2026.
+- **Biaya hidup — model estimasi.** 10 kategori dimodelkan dari agregasi
+  Susenas, IHK BPS, dan benchmark pasar lokal — **bukan** survei primer per
+  kabupaten (BPS hanya menggelar Survei Biaya Hidup di kota sampel IHK). Semua
+  dilabeli `confidence: "estimate"`; disesuaikan inflasi (IHK yoy Juli 2026
+  +2,88%), `asOf` 2026-08-01.
+- **Anti-halusinasi sitasi.** Deskripsi sumber dinormalisasi ke metodologi yang
+  jujur; nama survei fiktif dihilangkan; sumber ber-indikasi konten SEO
+  halusinasi ditolak dan didokumentasikan di `data-prep/wages-2026-research.json`.
+- **Wilayah frontier (Papua & non-IHK).** Daerah pedalaman/kepulauan (Keerom,
+  Sarmi, Mamberamo Raya, Pegunungan Arfak, dll.) tidak punya SBH primer;
+  pengeluaran dimodelkan dari Susenas perdesaan + biaya logistik perintis, dan
+  upah menginduk UMP provinsi (mis. Papua Rp4.436.283 per Kepgub No.
+  100.3.3.1/KEP.409/2025).
 
-Baseline profile: single · moderate · studio · motorcycle · savings included.
-Household / lifestyle / housing / transport scale per-category multipliers in
-`src/data/multipliers.ts` (documented, editable data). Formulas:
-
-```text
-totalMonthlyCost   = Σ active category values under current assumptions
-wageBasisAmount    = gross | estimatedTakeHome
-coveragePercent    = wageBasisAmount / totalMonthlyCost × 100
-surplusOrDeficit   = wageBasisAmount − totalMonthlyCost
-affordabilityRatio = totalMonthlyCost / wageBasisAmount
-
-Bands (constants in src/lib/calculations.ts):
-Comfortable ≥ 120% · Manageable 100–119% · Tight 80–99% · Insufficient < 80%
-```
-
-## Data Coverage & Regional Integrity
-
-Dataset mencakup tepat **514 kabupaten/kota definitif** (416 Kabupaten dan 98 Kota) di 38 provinsi di Indonesia sesuai Kepmendagri No. 100.1.1-6117.
-
-> **Catatan skema kode wilayah**: kode wilayah pada dataset mengikuti skema BPS/HDX (`admin2_pcode`), yang identik dengan kode Kemendagri untuk mayoritas daerah, namun berbeda untuk sebagian kecil kota (contoh terdokumentasi: di skema BPS/HDX, Kota Medan = `12.75` dan Kota Sibolga = `12.71`; di skema Kemendagri sebaliknya). Nilai geografis tetap konsisten dengan poligon masing-masing kota; penamaan tidak terpengaruh.
-
-### Audit & Transparansi Data (Cek Fakta)
-
-Berdasarkan hasil audit data dan cek fakta menyeluruh:
-
-1. **Pembersihan 8 Artefak Poligon Geografis Non-Administratif**:
-   Dataset geometri awal (HDX COD-AB adm2) memiliki 8 poligon badan air/hutan (`12.88` Danau Toba, `13.88` Danau Singkarak/Maninjau, `16.88` Danau Ranau Sumsel, `18.88` Danau Lampung, `32.88` Waduk Cirata, `33.88` Waduk Kedungombo, `33.99` Hutan Lindung Jateng, dan `71.88` Danau Tondano). Seluruh entitas non-wilayah ini telah dibersihkan dari dataset dan difilter dalam modul geometri sehingga data akurat merefleksikan 514 daerah otonom resmi.
-2. **Akurasi Upah Minimum (UMP/UMK 2026)**:
-   Angka UMP/UMK 2026 bersumber dari penetapan resmi Gubernur berdasarkan PP No. 49 Tahun 2025 (formula Inflasi + PDRB × alfa 0,5–0,9, berlaku efektif 1 Januari 2026; daftar UMP 38 provinsi dirilis resmi Kemnaker 6 Januari 2026). Untuk daerah yang tidak menetapkan UMK mandiri, data mengacu secara legal pada Upah Minimum Provinsi (UMP).
-3. **Status Data Biaya Hidup (Cost of Living)**:
-   - Angka rincian biaya hidup (10 kategori) merupakan **model estimasi berbasis agregasi Susenas, data IHK BPS, dan benchmark pasar lokal**, bukan survei primer langsung per-kabupaten (karena BPS hanya menggelar Survei Biaya Hidup di kota sampel IHK).
-   - Seluruh kategori biaya hidup secara jujur dilabeli `confidence: "estimate"`, dan deskripsi sitasi telah dinormalisasi untuk mencerminkan metodologi permodelan tanpa mencatut nama survei fiktif.
-
-### Pembaruan Data 2026 (per 1 September 2026)
-
-Seluruh 514 baris upah diperbarui ke UMP/UMK 2026 resmi (berlaku 1 Januari
-2026): 245 kabupaten/kota memakai UMK mandiri dari SK/Keputusan Gubernur
-Desember 2025 (contoh: Kepgub Jabar No. 561.7/Kep.862-Kesra/2025, Kepgub
-Jateng No. 100.3.3.1/505/2025, Kepgub Jatim No. 100.3.3.1/937/013/2025,
-Kepgub Banten No. 703/2025), 269 daerah lainnya menginduk UMP 2026
-provinsinya. Riset lapangan dilakukan via web research (Exa, Brave, Tavily)
-terhadap rilis resmi Kemnaker/Disnaker dan media tepercaya; sumber yang
-terindikasi konten halusinasi SEO ditolak dan didokumentasikan di
-`data-prep/wages-2026-research.json`. Estimasi biaya hidup disesuaikan dengan
-inflasi nasional (IHK yoy Juli 2026 +2,88%, BPS) dan `asOf` biaya di-set ke
-2026-08-01; label `confidence: "estimate"` tetap dipertahankan.
-
-### Wilayah Khusus (Papua & Daerah Non-IHK)
-
-Pada daerah pedalaman/hinterland di Papua & Papua Barat (*Keerom, Sarmi, Mamberamo Raya, Pegunungan Arfak, dll.*):
-
-- **Bukan Kota IHK BPS**: Tidak ada data SBH primer mandiri; pengeluaran dimodelkan dari data Susenas perdesaan dan biaya logistik perintis.
-- **Regulasi Upah**: Menginduk pada Keputusan Gubernur tentang **Upah
-  Minimum Provinsi (UMP)** 2026 (Papua: Rp4.436.283 per Kepgub Papua No.
-  100.3.3.1/KEP.409/2025; Papua Barat: Rp3.841.000 per Kepgub Papua Barat No.
-  563/220/2025; Papua Barat Daya: Rp3.766.000).
-
-### Verifikasi Data Lapangan (Audit 2025 & Pembaruan 2026)
-
-Seluruh 514 baris upah dan 514 baris biaya hidup diaudit konsistensi internal (duplikasi, cakupan, formula, rentang sewa vs estimasi hunian, centroid). Verifikasi lapangan terhadap sumber resmi (Kepgub/Disnaker/media tepercaya) dilakukan untuk 148 + 168 klaim upah via Exa Agent (`agent_run`):
-
-- **316 klaim upah terverifikasi**: 97% cocok dengan SK resmi; koreksi yang diterapkan: 8 daerah di Provinsi Papua yang masih memakai UMP 2024 (Rp4.024.270) dinaikkan ke UMP 2025 (Rp4.285.850, Kepgub No. 188.4/444/2024); Papua Barat (5 daerah + Manokwari) disesuaikan ke UMP 2025 Rp3.615.000 (Kepgub No. 314/2024) karena nilai lama berada di bawah UMP; 7 koreksi presisi ±1 rupiah (Denpasar, Yogyakarta, Balikpapan, Bontang, Pekanbaru, Kab. Bandung, Cianjur).
-- **Tier 31.01 Kepulauan Seribu & 63.02 Kota Baru** dikoreksi menjadi `kabupaten` (sebelumnya salah label `kota`), sehingga hitungan 416/98 konsisten.
-- **Benchmark biaya hidup 12 kota besar** (rentang sewa kost/pekerja vs `housing` repo): estimasi sewa repo berada dalam rentang lapangan pada mayoritas kota ases; total anggaran repo memang profil "moderat-hemat pekerja UMK" — lebih rendah dari standar gaya hidup Numbeo (eksat/urban modern) dan di atas baseline Susenas per kapita, sesuai label `confidence: "estimate"`.
-
-Disclaimer shown throughout: these are estimates, not financial advice.
+> **Catatan kode wilayah:** dataset mengikuti skema BPS/HDX (`admin2_pcode`),
+> identik dengan kode Kemendagri untuk mayoritas daerah namun berbeda untuk
+> sebagian kecil kota (mis. Kota Medan `12.75`, Kota Sibolga `12.71` di skema
+> BPS/HDX). Nilai geografis tetap konsisten dengan poligon masing-masing.
 
 ## Kontribusi
 
 Lihat [`CONTRIBUTING.md`](CONTRIBUTING.md). Prinsip inti: setiap angka wajib
 punya `source`, `asOf`, dan `confidence`. Kontribusi paling berharga adalah
-koreksi & peningkatan kualitas data.
+koreksi & peningkatan kualitas data. Arah pengembangan di [`ROADMAP.md`](ROADMAP.md).
 
 ## Lisensi
 
-Dual-license:
-
 - **Code** (`src/**`, config) — [MIT](LICENSE)
 - **Data** (`src/data/**`, `public/data/**`, `data-prep/**`) —
-  [CC-BY-4.0](LICENSE-DATA.md), atribusi wajib; atribusi sumber hulu
-  (HDX, BPS, Kemnaker, CARTO/Esri) dipertahankan.
+  [CC-BY-4.0](LICENSE-DATA.md); atribusi wajib, atribusi sumber hulu (HDX, BPS,
+  Kemnaker, CARTO/Esri) dipertahankan.
