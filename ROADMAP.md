@@ -84,6 +84,37 @@ mendahului fondasi data Q1.
 
 ---
 
+## Masukan komunitas (gelombang viral Threads, 1 September 2026)
+
+Intisari dari ~ribuan interaksi publik (mentions, replies, quotes) saat rilis
+viral. Diringkas **anonim** — tanpa handle atau kutipan personal; apresiasi
+disaring, hanya masukan actionable yang dicatat. Sentimen mayoritas positif;
+akurasi estimasi divalidasi warga lokal di beberapa daerah (mis. Sleman,
+Surakarta, Jawa Tengah).
+
+**Angka yang paling dibahas** — distribusi band pada asumsi default:
+Comfortable **0** · Manageable **69** · Tight **302** · Insufficient **143**.
+"Tidak ada yang hijau" jadi keluhan berulang → sinyal ganda: kalibrasi
+band/asumsi mungkin terlalu ketat, atau kondisi memang suram. Keduanya menuntut
+halaman metodologi yang terlihat + fitur filter/urut band.
+
+| Tema | Sinyal dari komunitas | Klasifikasi & tindakan |
+| --- | --- | --- |
+| Realisme upah (UMK vs upah riil) | Kritik metodologis terkuat: UMKM menyerap ~90% tenaga kerja tapi banyak menggaji **di bawah** UMK; toko/kafe/warkop mentok ~3jt. "UMK bukan patokan nyata." | **Prioritas naik.** Pertegas disclaimer "UMK = batas legal, bukan upah riil"; eksplor indikator *realized wage*. Memvalidasi kuat item **Indeks kepatuhan UMK** (dari Q4 nice-to-have → pertimbangkan lebih awal, tetap sebagai badge kualitatif bersumber, bukan skor numerik). |
+| Koreksi data (crowdsource) | "Angka nggak masuk akal" muncul puluhan kali; permintaan "boleh submit data?". Contoh konkret: Kab. Kepulauan Meranti dapat band tinggi, warga menilai harusnya lebih rendah (pulau, petani karet ± 2jt/rumah tangga, logistik & BBM mahal). | **Tarik maju.** Percepat **form koreksi publik** (semula Q4) — seed antrean review dengan daerah yang sudah dilaporkan. Konsisten dengan prinsip "setiap angka punya sumber". |
+| Transparansi metodologi | Pertanyaan berulang: "estimasi dari mana?", "per kapita / untuk berapa orang?", "asumsi *leisure* tiap daerah beda tidak?". Estimasi transport dinilai kurang tepat. | Halaman **metodologi publik** yang mudah ditemukan + bongkar asumsi per kategori di modal detail. Review model biaya transport. Menguatkan deliverable provenance Q1. |
+| Personalisasi | Minta: jumlah anak, override cicilan/KPR, input pendapatan sendiri (**sudah ada** — ini isu *discoverability*, bukan fitur baru). | Perjelas kontrol "Pendapatan sendiri" (jadikan lebih menonjol); tambah komposisi rumah tangga (jumlah anak) + override cicilan sebagai kategori. |
+| Integrasi & use-case | "desil" disebut berkali-kali — minta overlay/perbandingan dengan desil BPS/DTKS sebagai faktor. Use-case nyata yang muncul: pertimbangan relokasi kerja, riset daya beli untuk buka usaha, bahan skripsi. | Kandidat layer perbandingan **desil BPS** (Q3 analitik). Angkat use-case relokasi & riset di positioning produk. |
+| UX & jangkauan | Filter/urutkan "tampilkan yang comfortable" (agar hijau ketemu); dark mode; export/share; ekspansi ke negara lain (untuk yang mau pindah luar negeri). | Filter by band → dekat dengan aksesibilitas legend Q2. Dark mode & export → Q3 (sharing/ekspor). Ekspansi lintas negara → jangka sangat panjang, di luar cakupan tahun ini. |
+
+**Konsekuensi ke prioritas (usulan, belum mengubah komitmen Q1):**
+
+1. Item **kepatuhan UMK** dan **form koreksi publik** naik daun — keduanya paling diminta; pertimbangkan menariknya lebih awal tanpa mendahului fondasi data Q1.
+2. **Halaman metodologi publik** jadi kebutuhan mendesak (banyak salah paham soal per kapita & sumber estimasi) — lekatkan ke pekerjaan provenance Q1.
+3. **Review kalibrasi band + model transport** masuk daftar audit data Q1 (distribusi "0 comfortable" perlu dipastikan benar, bukan artefak asumsi).
+
+---
+
 ## Matriks prioritas (jika sumber daya menyempit)
 
 Urutan potong jika terpaksa: PWA → embed → Koreksi publik → kecamatan drill-down.
