@@ -218,6 +218,21 @@ export function AboutPanel() {
                 provenance di modal detail wilayah. Tidak ada angka yang tampil
                 tanpa sumber.
               </p>
+              <p className="mt-2 rounded-lg border border-border bg-surface p-3 text-[13px] leading-relaxed">
+                <strong className="text-ink">UMK itu patokan resmi, bukan gaji
+                nyata.</strong>{" "}
+                <span className="text-muted">
+                  Upah minimum adalah <em>lantai</em> yang ditetapkan pemerintah
+                  — bukan potret gaji rata-rata yang benar-benar dibayar. Banyak
+                  usaha (terutama UMKM yang menyerap mayoritas tenaga kerja)
+                  menggaji di bawah UMK, dan sebagian pekerja bergaji jauh di
+                  atasnya. Baca warna peta sebagai “apakah lantai upah resmi
+                  cukup di sini”, bukan “berapa yang orang benar-benar terima”.
+                  Untuk mengujinya dengan angkamu sendiri, pakai kolom{" "}
+                  <strong className="text-ink">Pendapatan sendiri</strong> di
+                  panel asumsi.
+                </span>
+              </p>
             </section>
 
             <section className="mt-4">

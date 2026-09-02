@@ -209,6 +209,17 @@ export function DetailModal() {
                   />
                 </dl>
 
+                {metric.wageSource === "region" && (
+                  <p className="-mt-2 text-[11px] leading-relaxed text-muted">
+                    UMK adalah lantai upah resmi, bukan gaji rata-rata yang
+                    benar-benar dibayar di lapangan. Isi{" "}
+                    <span className="font-medium text-ink">
+                      Pendapatan sendiri
+                    </span>{" "}
+                    di panel asumsi untuk menghitung dengan gajimu.
+                  </p>
+                )}
+
                 {/* Band + interpretation */}
                 <div
                   className="rounded-xl border p-4"
