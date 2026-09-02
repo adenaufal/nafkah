@@ -1,0 +1,9 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 🗺️ Laporkan angka yang meleset (untuk non-dev)
+    # Ganti URL ini dengan link Airtable form setelah dibuat (lihat docs/feedback-channels.md).
+    url: https://github.com/adenaufal/nafkah/discussions/categories/koreksi-data
+    about: Angka biaya/upah di daerahmu terasa salah? Lapor di sini — tak perlu paham kode. Sertakan sumber kalau ada.
+  - name: 💡 Saran fitur & diskusi
+    url: https://github.com/adenaufal/nafkah/discussions
+    about: Ide fitur, pertanyaan, atau diskusi umum. Voting lewat reaction 👍.

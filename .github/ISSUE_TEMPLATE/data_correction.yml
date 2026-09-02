@@ -1,0 +1,57 @@
+name: 🔢 Koreksi data (teknis)
+description: Untuk yang nyaman lewat GitHub. Non-dev: pakai form di config → lebih mudah.
+labels: [data-correction]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Aturan tunggal proyek ini: **setiap angka wajib punya sumber yang bisa diverifikasi.**
+        Laporan tanpa sumber tetap ditinjau, tapi sumber resmi (SK/Kepgub/rilis BPS) mempercepat verifikasi.
+        Biaya hidup di peta adalah **estimasi model**, bukan survei resmi — wajar kalau meleset.
+  - type: input
+    id: region
+    attributes:
+      label: Wilayah
+      placeholder: mis. Kota Bandung (32.73) — sebut kode wilayah kalau tahu
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Kategori
+      options:
+        - Upah (UMK/UMP)
+        - "Biaya: Hunian"
+        - "Biaya: Makanan"
+        - "Biaya: Transport"
+        - "Biaya: Utilitas"
+        - "Biaya: Konektivitas"
+        - "Biaya: Kesehatan"
+        - "Biaya: Perawatan diri"
+        - "Biaya: Rekreasi"
+        - "Biaya: Pendidikan"
+        - "Biaya: Kontingensi/tabungan"
+        - Warna/band wilayah
+        - Lainnya
+    validations:
+      required: true
+  - type: input
+    id: current
+    attributes:
+      label: Angka di situs sekarang
+      placeholder: mis. Rp1.389.000 (opsional)
+    validations:
+      required: false
+  - type: input
+    id: proposed
+    attributes:
+      label: Angka menurut kamu
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Sumber / bukti
+      description: Link SK, berita, data BPS, atau konteks. Wajib untuk naik ke confidence "official".
+    validations:
+      required: true

@@ -1,0 +1,31 @@
+name: 🐛 Bug
+description: Laporkan yang rusak — peta, kalkulasi, atau tampilan.
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: Apa yang terjadi
+      description: Jelaskan bug-nya. Sertakan langkah untuk memunculkannya kalau bisa.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Yang seharusnya terjadi
+    validations:
+      required: false
+  - type: input
+    id: env
+    attributes:
+      label: Perangkat / browser
+      placeholder: mis. Chrome Android, Firefox desktop
+    validations:
+      required: false
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Sebelum submit
+      options:
+        - label: Aku sudah cek issue lain dan ini belum dilaporkan.
+          required: true
