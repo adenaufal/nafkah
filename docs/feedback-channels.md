@@ -24,22 +24,26 @@ maintainer/agent (sembunyikan dari form publik).
 
 > **Import cepat:** [`airtable-koreksi-data.csv`](airtable-koreksi-data.csv)
 > berisi semua header + 2 baris contoh. Di Airtable: *Add a table → Import data
-> → CSV*. Import bikin semua kolom **text** — setelah itu ubah tipe:
-> `Status` / `Kategori` / `Provinsi` / `Jenis bukti` → **Single select**,
-> `Kontak` → **Email**, `Dibuat` → tambah field **Created time**. Hapus 2 baris
-> contoh setelah selesai.
+> → CSV*. Setelah import:
+> 1. **Primary field → `Kabupaten/Kota`** (kolom pertama). Single select **tidak
+>    bisa** jadi primary, jadi `Provinsi` tak bisa jadi primary — pakai Kab/Kota
+>    (text) sebagai judul record.
+> 2. Ubah tipe: `Provinsi` / `Kategori` / `Status` → **Single select**;
+>    `Jenis bukti` → **Multiple select**; `Kontak` → **Email**; tambah field
+>    `Dibuat` → **Created time**.
+> 3. Hapus 2 baris contoh (dan field dobel bila ada, mis. "Provinsi 2").
 
 ### Field yang diisi pelapor (form publik)
 
 | Field | Tipe Airtable | Catatan |
 | --- | --- | --- |
-| Provinsi | Single select (38 provinsi) | Bantu pemetaan ke kode wilayah |
-| Kabupaten/Kota | Single line text | Nama wilayah; agent normalisasi ke kode |
-| Kategori | Single select | `Upah (UMK/UMP)`, `Biaya: Hunian`, `Biaya: Makan`, `Biaya: Transport`, `Biaya: Utilitas`, `Biaya: Konektivitas`, `Biaya: Kesehatan`, `Biaya: Perawatan`, `Biaya: Hiburan`, `Biaya: Pendidikan`, `Biaya: Kontingensi`, `Warna/Band wilayah`, `Lainnya` |
-| Angka di situs sekarang | Single line text | Opsional — apa yang pelapor lihat |
+| Provinsi | Single select (38 provinsi) | Bantu pemetaan ke kode wilayah. Bukan primary (single select tak bisa primary). |
+| Kabupaten/Kota | Single line text · **primary field** | Judul record. Agent normalisasi ke kode wilayah. |
+| Kategori | **Single** select | **Single, bukan multiple** — tiap record hanya satu pasang angka; multi-kategori bikin angka usulan ambigu (lapor banyak kategori → submit ulang). Opsi: `Upah (UMK/UMP)`, `Biaya: Hunian`, `Biaya: Makan`, `Biaya: Transport`, `Biaya: Utilitas`, `Biaya: Konektivitas`, `Biaya: Kesehatan`, `Biaya: Perawatan`, `Biaya: Hiburan`, `Biaya: Pendidikan`, `Biaya: Kontingensi`, `Warna/Band wilayah`, `Lainnya` |
+| Angka di situs sekarang | Single line text | Opsional — apa yang pelapor lihat. **Text, bukan number** (kategori band isinya "harusnya merah"). |
 | Angka menurut pelapor | Single line text | Usulan koreksi |
 | Periode data | Single line text | mis. `2026`, `Agu 2026` |
-| Jenis bukti | Single select | `Link/dokumen resmi`, `Berita`, `Pengalaman pribadi`, `Lainnya` |
+| Jenis bukti | **Multiple** select | Satu laporan bisa >1 jenis (mis. pengalaman pribadi + berita). Opsi: `Link/dokumen resmi`, `Berita`, `Pengalaman pribadi`, `Lainnya` |
 | Sumber / bukti | Long text (atau URL) | **Penting untuk provenance.** SK/link/konteks |
 | Penjelasan | Long text | Konteks tambahan |
 | Kontak (opsional) | Email | Untuk credit/klarifikasi. Sertakan catatan privasi di form |
@@ -57,13 +61,24 @@ maintainer/agent (sembunyikan dari form publik).
 
 ### Konfigurasi form
 
-- Airtable **Form view** dari tabel `Koreksi Data`, tampilkan hanya field
-  pelapor di atas. Sembunyikan field 🔒.
-- Prefill `Status = New`.
-- Aktifkan Airtable **Automation**: *When record created → Send email* ke
-  maintainer. Ini menutup celah antar-run agent tanpa biaya.
-- Sematkan link form di situs (footer / tombol "Laporkan angka") dan di bio/pos
-  Threads.
+- **Form view** dari tabel `Koreksi Data`; tampilkan hanya field pelapor,
+  sembunyikan field 🔒. Prefill `Status = New`.
+- **Title:** `Laporkan Angka — Nafkah`
+- **Description:** "Bantu perbaiki data Nafkah. Angka biaya hidup di peta adalah
+  estimasi model, bukan survei resmi. Kalau ada angka yang meleset di daerahmu,
+  laporkan di sini. Setiap laporan direview manual; sumber resmi (SK/link)
+  mempercepat verifikasi. Bukan nasihat keuangan."
+- **Pesan terima kasih:** "Makasih! Laporanmu masuk antrean review. Kalau kamu
+  cantumin sumber resmi, makin cepat kami verifikasi."
+- **Settings:** *See who submitted* **OFF** (tanpa login), *Accepting
+  submissions* **ON**, *Submit another response* **ON**, *high-contrast borders*
+  **ON**.
+- **Required:** Provinsi, Kabupaten/Kota, Kategori, Angka menurut pelapor, Jenis
+  bukti, Sumber. Opsional: angka sekarang, periode, penjelasan, kontak (beri
+  catatan privasi: "tidak dipublikasikan").
+- **Automation:** *record created → Send email* ke maintainer (menutup celah
+  antar-run agent, gratis).
+- Sematkan link form di situs (footer / tombol "Laporkan angka") + bio/pos Threads.
 
 ---
 
