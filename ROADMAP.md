@@ -148,6 +148,12 @@ memvalidasi kuat ide produk; risiko terbesar kini adalah **angka disalahpahami
 atau dianggap terlalu presisi**. Owner default: maintainer repo. Effort S/M/L
 indikatif, sesuaikan dengan kapasitas.
 
+**Kanal feedback (keputusan 2 Sep 2026):** koreksi data publik → **Airtable
+form** (audiens non-dev, tanpa login); saran fitur/bug teknis → **GitHub
+Discussions**; **tidak** self-host (situs tetap static-assets-only). Ingestion
+lewat agent terjadwal, bukan endpoint web. Setup lengkap:
+[`docs/feedback-channels.md`](docs/feedback-channels.md).
+
 ### Now — komitmen berikutnya
 
 | ID | Inisiatif | Action konkret | Output / selesai | Prioritas |
@@ -155,7 +161,7 @@ indikatif, sesuaikan dengan kapasitas.
 | AP-01 | Lapisan metodologi publik | Panel/tombol metodologi dekat map & modal detail. Jelaskan baseline 1 orang, komponen asumsi, arti band, dan bahwa **UMK = benchmark resmi, bukan gaji aktual**. | Tiap region tampil `source`/`asOf`/`confidence` + ringkasan asumsi; tidak ada label band tanpa penjelasan; disclaimer terlihat sebelum pengguna menyimpulkan. | P0 · S |
 | AP-02 | Data versioning sebagai reliability gate | Pindahkan dataset ke JSON berversi + validasi skema **sebelum** menerima koreksi komunitas. Simpan jejak versi + changelog. (= item **Zod/versioning Q1** yang masih ❌.) | `loadRecords()` baca dataset terversi; CI menolak skema invalid; tiap perubahan tertelusur ke sumber, tanggal, alasan. | P0 · M |
 | AP-03 | Personalisasi rumah tangga v1.1 | Perluas kontrol pendapatan sendiri/2-upah yang **sudah ada** dengan jumlah anak + override cicilan/KPR. Tampilkan profil aktif + reset ke baseline. | Perhitungan/peta/modal/baki mengikuti profil sama; unit test mencakup anak, cicilan, kombinasi pendapatan; UI tak menyamarkan hasil sebagai angka pasti. | P0 · M |
-| AP-04 | Form koreksi publik per region | "Laporkan angka ini" per region/kategori. Minta nilai, periode, konteks, sumber → antrean review manual berlabel `community report`. | Laporan **tidak** mengubah dataset otomatis; ada status review, keputusan, provenance, credit pada rilis bila diterima. | P0 · M |
+| AP-04 | Form koreksi publik per region | **Airtable form → base** ("Laporkan angka ini"): wilayah, kategori, nilai lama/usulan, periode, jenis bukti, sumber, kontak opsional → antrean review manual (Status `New`). Skema lengkap di [`docs/feedback-channels.md`](docs/feedback-channels.md). Saran fitur dev → **GitHub Discussions**. Tidak self-host (situs tetap static-only). | Laporan **tidak** mengubah dataset otomatis; ada status review, keputusan, provenance, credit pada rilis bila diterima. | P0 · M |
 | AP-05 | Audit wilayah yang diperdebatkan | Audit terfokus: Kep. Meranti, Samosir, Bandung + komponen transport/logistik & kesehatan. Bandingkan sumber model vs laporan lokal. | Tiap kasus punya keputusan terdokumentasi: pertahankan / ubah / beri rentang / turunkan `confidence`. Satu komentar tak cukup mengubah angka. | P0 · S/M |
 | AP-06 | Discoverability & regression UX | Uji ulang fitur yang sudah ada (Pendapatan sendiri, filter band, dark mode, legenda, link) di mobile & keyboard. Perjelas CTA + kontras/teks status. | Pengguna menemukan Pendapatan sendiri & paham legenda tanpa bantuan; tak ada regression a11y; event penggunaan utama tercatat tanpa data pribadi. | P1 · S |
 
@@ -166,7 +172,7 @@ indikatif, sesuaikan dengan kapasitas.
 | AP-07 | Compare & share untuk relokasi | Bandingkan gaji di Kota A dengan biaya hidup di Kota B (gaji custom, multi-region, state di URL). | Dahulukan sebelum embed penuh. Bergantung pada state kalkulasi stabil + AP-02 agar link lama tetap terbaca. |
 | AP-08 | Community data layer | Survei ringan per kategori biaya; tampilkan median/rentang komunitas **terpisah** dari estimasi utama. | Jangan campur opini/anekdot dengan data resmi; tampilkan ukuran sampel, periode, confidence, aturan moderasi. |
 | AP-09 | Sinyal kepatuhan UMK / gaji aktual | Kumpulkan sumber yang dapat dipertanggungjawabkan; mulai dari badge kualitatif bersumber, bukan skor numerik. | Jangan ganti UMK dengan "gaji nyata" tanpa coverage & metodologi kuat. Butuh sumber eksternal + review hukum/metodologi. |
-| AP-10 | Feedback-to-release loop | Setelah AP-04 jalan, terbitkan changelog: laporan diterima/ditolak/ditinjau; bagikan transparan di Threads. | Tujuan: bangun kepercayaan & dorong laporan berkualitas, bukan kejar volume komentar. |
+| AP-10 | Feedback-to-release loop | Setelah AP-04 jalan, terbitkan changelog: laporan diterima/ditolak/ditinjau; bagikan transparan di Threads. **Ingestion:** Routine/Scheduled task di agent (Claude/ChatGPT) menarik `Status=New` via Airtable API (read-only PAT) + Discussions baru; cadence **harian-noop saat viral → mingguan**; agent hanya **draft PR**, manusia approve. Detail di [`docs/feedback-channels.md`](docs/feedback-channels.md). | Tujuan: bangun kepercayaan & dorong laporan berkualitas, bukan kejar volume komentar. Bukan endpoint di situs — job terpisah, web tetap static. |
 
 ### Later — taruhan strategis
 
