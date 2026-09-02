@@ -4,6 +4,8 @@
 [![Code: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
 [![Data: CC BY 4.0](https://img.shields.io/badge/data-CC%20BY%204.0-lightgrey.svg)](LICENSE-DATA.md)
 
+![Peta choropleth Nafkah — 514 kabupaten/kota Indonesia diwarnai band keterjangkauan UMK vs biaya hidup](docs/hero.png)
+
 Peta interaktif yang membandingkan upah minimum daerah (UMK/UMP) dengan estimasi
 biaya hidup bulanan di **514 kabupaten/kota** Indonesia. Menjawab satu
 pertanyaan: *"apakah upah minimum di daerah ini cukup untuk hidup di sana?"*
