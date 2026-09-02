@@ -22,6 +22,13 @@ membangun apa pun yang always-on.
 Satu base, tabel utama **`Koreksi Data`**. Field bertanda 🔒 diisi
 maintainer/agent (sembunyikan dari form publik).
 
+> **Import cepat:** [`airtable-koreksi-data.csv`](airtable-koreksi-data.csv)
+> berisi semua header + 2 baris contoh. Di Airtable: *Add a table → Import data
+> → CSV*. Import bikin semua kolom **text** — setelah itu ubah tipe:
+> `Status` / `Kategori` / `Provinsi` / `Jenis bukti` → **Single select**,
+> `Kontak` → **Email**, `Dibuat` → tambah field **Created time**. Hapus 2 baris
+> contoh setelah selesai.
+
 ### Field yang diisi pelapor (form publik)
 
 | Field | Tipe Airtable | Catatan |
@@ -42,7 +49,7 @@ maintainer/agent (sembunyikan dari form publik).
 | Field | Tipe | Catatan |
 | --- | --- | --- |
 | Status | Single select | `New` (default), `In review`, `Need more info`, `Accepted`, `Rejected` |
-| Kode wilayah | Single line text | Normalisasi agent, mis. `14.03` (Kep. Meranti) |
+| Kode wilayah | Single line text | Normalisasi agent, mis. `14.10` (Kep. Meranti) |
 | Keputusan & alasan | Long text | Kenapa diterima/ditolak/diberi rentang |
 | Rilis dataset | Single line text | Versi rilis tempat koreksi mendarat |
 | Credit | Checkbox | Cantumkan pelapor di changelog bila setuju |
