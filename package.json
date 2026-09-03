@@ -28,6 +28,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "deploy": "next build && wrangler deploy",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "hooks:install": "node scripts/install-git-hooks.mjs",
