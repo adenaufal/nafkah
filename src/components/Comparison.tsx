@@ -14,9 +14,13 @@ import {
 import { useApp } from "@/state/AppContext";
 import { EXPENSE_CATEGORIES } from "@/data/costs";
 import { REGION_BY_CODE } from "@/data/regions";
-import { BAND_LABEL } from "@/lib/calculations";
+import { BAND_LABEL, bandColors } from "@/lib/calculations";
 import { formatIDR, formatIDRCompact, formatPct } from "@/lib/format";
-import type { ExpenseCategoryKey, RegionMetrics } from "@/lib/types";
+import type {
+  Assumptions,
+  ExpenseCategoryKey,
+  RegionMetrics,
+} from "@/lib/types";
 
 /**
  * Baki perbandingan wilayah tersemat + panel perbandingan berdampingan.
@@ -25,10 +29,11 @@ import type { ExpenseCategoryKey, RegionMetrics } from "@/lib/types";
  */
 
 export function PinnedTray() {
-  const { state, unpin, select } = useApp();
+  const { state, metrics, unpin, select } = useApp();
+  const palette = bandColors(state.darkMode);
 
   return (
-    <div className="w-full">
+    <div data-tour="pins" className="w-full">
       {state.pinMessage && (
         <p
           role="alert"
@@ -37,14 +42,16 @@ export function PinnedTray() {
           {state.pinMessage}
         </p>
       )}
-      {state.pinned.length > 0 && (
+      {state.pinned.length > 0 ? (
         <section
           aria-label="Wilayah yang disematkan untuk perbandingan"
-          className="overflow-hidden rounded-xl border border-border bg-card/95 shadow-md backdrop-blur"
+          className="overflow-hidden rounded-2xl border border-border bg-card shadow-[0_6px_22px_rgba(0,0,0,0.10)]"
         >
-          <header className="flex items-center justify-between border-b border-border px-3 py-2">
-            <h2 className="text-xs font-semibold">Wilayah disematkan</h2>
-            <span className="rounded-full bg-accent-soft px-2 py-0.5 text-[11px] font-semibold text-accent">
+          <header className="flex items-center justify-between border-b border-border px-3.5 py-2.5">
+            <h2 className="text-[10.5px] font-bold uppercase tracking-[0.09em] text-muted">
+              Disematkan
+            </h2>
+            <span className="rounded-full bg-accent-soft px-2 py-0.5 text-[11px] font-bold tabular-nums text-accent">
               {state.pinned.length}/5
             </span>
           </header>
@@ -52,24 +59,51 @@ export function PinnedTray() {
             {state.pinned.map((code) => {
               const region = REGION_BY_CODE.get(code);
               const name = region?.name ?? code;
+              const m = metrics.get(code);
               return (
                 <li
                   key={code}
-                  className="flex min-w-0 items-center gap-1 rounded-lg border border-border bg-surface pl-2.5 text-xs font-medium"
+                  className="flex min-w-0 items-center gap-2.5 rounded-[10px] bg-surface py-2 pl-2.5 pr-1"
                 >
+                  <span
+                    aria-hidden="true"
+                    className="h-2.5 w-2.5 shrink-0 rounded-[3px]"
+                    style={{
+                      backgroundColor: m ? palette[m.band] : "var(--border)",
+                    }}
+                  />
                   <button
                     type="button"
                     onClick={() => select(code)}
-                    className="min-w-0 flex-1 truncate py-1.5 text-left hover:text-accent"
+                    className="min-w-0 flex-1 text-left"
                     title={`Buka detail ${name}`}
                   >
-                    {name}
+                    <span className="block truncate text-[13px] font-semibold hover:text-accent">
+                      {name}
+                    </span>
+                    <span className="block truncate text-[11px] text-muted">
+                      {region?.province ?? ""}
+                    </span>
                   </button>
+                  {m && (
+                    <span className="shrink-0 text-right leading-tight">
+                      <span className="block text-[13.5px] font-bold tabular-nums">
+                        {formatPct(m.coveragePercent)}
+                      </span>
+                      <span
+                        className={`block text-[11px] font-semibold tabular-nums ${
+                          m.surplusOrDeficit >= 0 ? "text-ok" : "text-danger"
+                        }`}
+                      >
+                        {formatSignedCompact(m.surplusOrDeficit)}
+                      </span>
+                    </span>
+                  )}
                   <button
                     type="button"
                     onClick={() => unpin(code)}
                     aria-label={`Hapus ${name} dari perbandingan`}
-                    className="m-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-md text-muted transition-colors hover:bg-red-500/10 hover:text-danger"
+                    className="flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-md text-muted transition-colors hover:bg-red-500/10 hover:text-danger"
                   >
                     ✕
                   </button>
@@ -77,6 +111,17 @@ export function PinnedTray() {
               );
             })}
           </ul>
+        </section>
+      ) : (
+        <section
+          aria-label="Wilayah disematkan"
+          className="rounded-2xl border border-dashed border-border bg-card p-3.5 text-xs leading-relaxed text-muted"
+        >
+          <p className="font-semibold text-ink">Belum ada wilayah disematkan.</p>
+          <p className="mt-1">
+            Klik wilayah di peta lalu <strong className="text-ink">Pin</strong> —
+            dua wilayah sudah cukup untuk membandingkan.
+          </p>
         </section>
       )}
     </div>
@@ -112,20 +157,26 @@ export function ComparisonPanel() {
 
   return (
     <section
+      data-tour="compare"
       aria-label="Perbandingan wilayah tersemat"
-      className={`rounded-xl border border-border bg-card/95 shadow-lg backdrop-blur ${
-        open ? "" : "max-h-11 overflow-hidden"
+      className={`rounded-2xl border border-border bg-card shadow-[0_-2px_34px_rgba(0,0,0,0.16)] ${
+        open ? "" : "max-h-12 overflow-hidden"
       }`}
     >
-      <header className="flex items-center justify-between border-b border-border px-4 py-2.5">
-        <h2 className="text-sm font-semibold">
-          Bandingkan {pinnedMetrics.length} wilayah tersemat
-        </h2>
+      <header className="flex items-center justify-between gap-3 border-b border-border px-4 py-2.5">
+        <div className="min-w-0">
+          <h2 className="text-[14.5px] font-bold">
+            Bandingkan {pinnedMetrics.length} wilayah
+          </h2>
+          <p className="truncate text-[11.5px] text-muted">
+            {assumptionSummary(state.assumptions)}
+          </p>
+        </div>
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
-          className="rounded-lg border border-border px-2.5 py-1 text-xs text-muted hover:border-accent"
+          className="h-8 shrink-0 rounded-lg border border-border px-3 text-xs font-semibold text-muted hover:border-accent"
         >
           {open ? "Sembunyikan" : "Tampilkan"}
         </button>
@@ -404,4 +455,25 @@ function MobileMetric({
 
 function formatSignedCompact(value: number): string {
   return `${value >= 0 ? "+" : "−"}${formatIDRCompact(Math.abs(value))}`;
+}
+
+/** "asumsi: single · standar · rumah KPR · motor" for the compare header. */
+function assumptionSummary(a: Assumptions): string {
+  const household = { single: "single", couple: "pasangan", family: "keluarga" };
+  const lifestyle = {
+    budget: "hemat",
+    moderate: "standar",
+    comfortable: "nyaman",
+  };
+  const housing = {
+    room: "rusun/kost",
+    studio: "rumah KPR",
+    oneBedroom: "apartemen",
+  };
+  const transport = {
+    motorcycle: "motor",
+    publicTransport: "kend. umum",
+    rideHailing: "ojol",
+  };
+  return `asumsi: ${household[a.householdType]} · ${lifestyle[a.lifestyle]} · ${housing[a.housing]} · ${transport[a.transport]}`;
 }

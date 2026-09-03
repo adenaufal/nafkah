@@ -4,14 +4,15 @@ import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { AppProvider, useApp } from "@/state/AppContext";
 import { SearchBox } from "./SearchBox";
-import { LegendDock } from "./LegendDock";
-import { LayerPanel } from "./LayerPanel";
-import { AssumptionsPanel } from "./AssumptionsPanel";
+import { InsightCard, RankCard } from "./RightPanels";
+import { AssumptionsDrawer } from "./AssumptionsPanel";
 import { PinnedTray, ComparisonPanel } from "./Comparison";
 import { DetailModal } from "./DetailModal";
-import { BottomSheet } from "./BottomSheet";
+import { MobileDock } from "./MobileDock";
 import { StatusChips } from "./StatusChips";
-import { AboutPanel } from "./AboutPanel";
+import { AboutDrawer } from "./AboutPanel";
+import { Onboarding } from "./onboarding/Onboarding";
+import { ThreeStepCard } from "./onboarding/ThreeStepCard";
 
 // MapLibre must never run during SSR.
 const MapCanvas = dynamic(() => import("./map/MapCanvas"), {
@@ -24,38 +25,64 @@ const MapCanvas = dynamic(() => import("./map/MapCanvas"), {
 });
 
 function TopBar() {
-  const { state, setDarkMode, resetView } = useApp();
+  const {
+    state,
+    setDarkMode,
+    resetView,
+    openGuide,
+    setAboutOpen,
+    setAsumsiOpen,
+  } = useApp();
   return (
     <header className="relative z-30 flex h-14 items-center gap-3 border-b border-border bg-card px-3 sm:px-4">
       <div className="flex min-w-0 items-center gap-2.5">
         <span
           aria-hidden="true"
-          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-accent font-bold text-on-accent shadow-sm"
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-accent text-[17px] font-extrabold text-on-accent"
         >
           N
         </span>
         <div className="min-w-0 leading-tight">
-          <p className="truncate text-sm font-bold tracking-tight sm:text-base">
-            Nafkah
-          </p>
-          <p className="hidden text-[11px] text-muted sm:block">
+          <p className="truncate text-base font-bold tracking-tight">Nafkah</p>
+          <p className="hidden text-[11.5px] text-muted sm:block">
             Seberapa cukup gajimu untuk hidup di kota ini?
           </p>
         </div>
       </div>
 
-      <span className="hidden items-center gap-1 rounded-full border border-amber-500/40 bg-amber-500/10 px-2.5 py-1 text-[11px] font-medium text-amber-700 lg:inline-flex dark:text-amber-400">
+      <span className="hidden items-center gap-1 rounded-full border border-amber-500/40 bg-amber-500/10 px-2.5 py-1 text-[11px] font-semibold text-amber-700 lg:inline-flex dark:text-amber-400">
         <span aria-hidden="true">⚠</span> Estimasi sampel
       </span>
 
       <div className="ml-auto flex shrink-0 items-center gap-1.5 sm:gap-2">
-        <AboutPanel />
-        <AssumptionsPanel desktop />
+        <button
+          type="button"
+          onClick={openGuide}
+          aria-label="Buka panduan"
+          className="inline-flex h-9 items-center rounded-[9px] border border-accent bg-accent-soft px-2.5 text-[12.5px] font-bold text-accent transition-colors hover:brightness-95 sm:px-3"
+        >
+          <span aria-hidden="true" className="sm:mr-1.5">
+            ?
+          </span>
+          <span className="hidden sm:inline">Panduan</span>
+        </button>
+        <button
+          type="button"
+          onClick={() => setAboutOpen(true)}
+          aria-haspopup="dialog"
+          className="inline-flex h-9 items-center rounded-[9px] border border-border px-2.5 text-[12.5px] font-medium text-muted transition-colors hover:bg-accent-soft hover:text-ink sm:px-3"
+        >
+          <span aria-hidden="true" className="sm:mr-1.5">
+            ⓘ
+          </span>
+          <span className="hidden sm:inline">Tentang</span>
+          <span className="sr-only sm:hidden">Tentang Nafkah</span>
+        </button>
         <button
           type="button"
           onClick={resetView}
-          className="inline-flex h-9 items-center rounded-lg border border-border px-2.5 text-xs font-medium text-muted transition-colors hover:bg-accent-soft hover:text-ink sm:px-3"
           aria-label="Atur ulang tampilan peta ke Indonesia"
+          className="hidden h-9 items-center rounded-[9px] border border-border px-2.5 text-[12.5px] font-medium text-muted transition-colors hover:bg-accent-soft hover:text-ink sm:inline-flex sm:px-3"
         >
           <span aria-hidden="true" className="sm:mr-1.5">
             ↻
@@ -69,14 +96,21 @@ function TopBar() {
           aria-label={
             state.darkMode ? "Ganti ke mode terang" : "Ganti ke mode gelap"
           }
-          className="inline-flex h-9 items-center rounded-lg border border-border px-2.5 text-xs font-medium text-muted transition-colors hover:bg-accent-soft hover:text-ink sm:px-3"
+          className="inline-flex h-9 w-9 items-center justify-center rounded-[9px] border border-border text-[12.5px] font-medium text-muted transition-colors hover:bg-accent-soft hover:text-ink"
         >
-          <span aria-hidden="true" className="sm:mr-1.5">
-            {state.darkMode ? "☀" : "☾"}
+          <span aria-hidden="true">{state.darkMode ? "☀" : "☾"}</span>
+        </button>
+        <button
+          type="button"
+          data-tour="asumsi"
+          onClick={() => setAsumsiOpen(true)}
+          aria-haspopup="dialog"
+          className="inline-flex h-9 items-center rounded-[9px] bg-accent px-3 text-[12.5px] font-bold text-on-accent transition-colors hover:bg-accent-strong"
+        >
+          <span aria-hidden="true" className="mr-1.5">
+            ⚙
           </span>
-          <span className="hidden sm:inline">
-            {state.darkMode ? "Terang" : "Gelap"}
-          </span>
+          Asumsi
         </button>
       </div>
     </header>
@@ -101,32 +135,44 @@ function Shell() {
       <TopBar />
 
       {/* Map canvas is the product: it fills everything below the top bar. */}
-      <main className="relative flex-1 overflow-hidden">
+      <main data-tour="map" className="relative flex-1 overflow-hidden">
         <MapCanvas />
 
-        {/* Desktop overlays use two stable side rails, leaving the bottom clear
-            for comparison. This prevents controls from competing for space. */}
         {desktop ? (
           <div className="pointer-events-none absolute inset-0">
-            <div className="pointer-events-auto absolute left-4 top-4 w-72 space-y-3">
-              <SearchBox />
+            <div className="pointer-events-auto absolute left-4 top-4 grid w-[296px] gap-3 min-[1800px]:w-[340px]">
+              <div data-tour="search">
+                <SearchBox />
+              </div>
               <PinnedTray />
+              <ThreeStepCard />
             </div>
-            <div className="pointer-events-auto absolute right-4 top-4 w-72 space-y-3">
-              <LayerPanel />
-              <LegendDock />
+            <div className="pointer-events-auto absolute right-4 top-4 grid max-h-[calc(100%-2rem)] w-[296px] gap-3 overflow-y-auto min-[1800px]:w-[360px]">
+              <InsightCard />
+              <div className="hidden min-[1800px]:block">
+                <RankCard />
+              </div>
             </div>
-            <div className="pointer-events-auto absolute bottom-2 left-1/2 w-[min(calc(100%-2rem),1280px)] -translate-x-1/2">
+            <div className="pointer-events-auto absolute bottom-4 left-1/2 w-[min(calc(100%-680px),1180px)] -translate-x-1/2 min-[1800px]:w-[min(calc(100%-780px),1600px)]">
               <ComparisonPanel />
             </div>
           </div>
         ) : (
-          <BottomSheet />
+          <>
+            <ThreeStepCard className="pointer-events-auto absolute inset-x-3 top-3 z-20" />
+            <MobileDock />
+          </>
         )}
 
         <StatusChips />
         <DetailModal />
       </main>
+
+      {/* Overlays live at the shell root so their fixed positioning and z-index
+          stack cleanly above the whole app, header included. */}
+      <AssumptionsDrawer />
+      <AboutDrawer />
+      <Onboarding narrow={!desktop} />
     </div>
   );
 }

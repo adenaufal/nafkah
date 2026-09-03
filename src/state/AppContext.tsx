@@ -27,10 +27,15 @@ import {
 } from "@/lib/calculations";
 import { REGIONS } from "@/data/regions";
 import { loadGeometry, loadRecords } from "@/data/loader";
+import { loadPersisted, savePersisted } from "./persist";
 import type { FeatureCollection, Geometry } from "geojson";
 
 export const MAX_PINS = 5;
 
+/**
+ * tourIdx models the guided onboarding: null = off, -1 = opening card,
+ * 0..steps-1 = spotlight steps, and `steps` (== length) = closing card.
+ */
 interface AppState {
   geometryStatus: LoadStatus;
   geometryError: string | null;
@@ -50,6 +55,13 @@ interface AppState {
   darkMode: boolean;
   /** Bumped when the map should refit to Indonesia. */
   resetViewToken: number;
+  // Overlays (single-owner so header, mobile tab bar and about all agree).
+  asumsiOpen: boolean;
+  aboutOpen: boolean;
+  // Onboarding.
+  tourIdx: number | null;
+  onboarded: boolean;
+  onboardCardOpen: boolean;
 }
 
 const initialState: AppState = {
@@ -70,7 +82,28 @@ const initialState: AppState = {
   basemapUserSet: false,
   darkMode: false,
   resetViewToken: 0,
+  asumsiOpen: false,
+  aboutOpen: false,
+  tourIdx: null,
+  onboarded: false,
+  onboardCardOpen: true,
 };
+
+/** Client-only: pull persisted preferences over the static defaults. */
+function initState(base: AppState): AppState {
+  const p = loadPersisted();
+  const onboarded = p.onboarded ?? false;
+  return {
+    ...base,
+    darkMode: p.darkMode ?? base.darkMode,
+    assumptions: p.assumptions ?? base.assumptions,
+    pinned: p.pinned ?? base.pinned,
+    onboarded,
+    onboardCardOpen: !p.onboardCardDismissed,
+    // First visit opens the guide; returning visitors land straight on the map.
+    tourIdx: onboarded ? null : -1,
+  };
+}
 
 type Action =
   | { type: "geometry/loading" }
@@ -93,7 +126,11 @@ type Action =
   | { type: "legendFilter/set"; band: AffordabilityBand | null }
   | { type: "basemap/set"; basemap: BasemapId }
   | { type: "theme/set"; dark: boolean }
-  | { type: "view/reset" };
+  | { type: "view/reset" }
+  | { type: "overlay/asumsi"; open: boolean }
+  | { type: "overlay/about"; open: boolean }
+  | { type: "tour/set"; idx: number | null }
+  | { type: "onboardCard/set"; open: boolean };
 
 function reducer(state: AppState, action: Action): AppState {
   switch (action.type) {
@@ -171,6 +208,34 @@ function reducer(state: AppState, action: Action): AppState {
     }
     case "view/reset":
       return { ...state, resetViewToken: state.resetViewToken + 1 };
+    case "overlay/asumsi":
+      // Opening one drawer closes the other and any mobile sheet owner reacts.
+      return {
+        ...state,
+        asumsiOpen: action.open,
+        aboutOpen: action.open ? false : state.aboutOpen,
+      };
+    case "overlay/about":
+      return {
+        ...state,
+        aboutOpen: action.open,
+        asumsiOpen: action.open ? false : state.asumsiOpen,
+      };
+    case "tour/set": {
+      // Leaving the intro means the user has seen onboarding at least once.
+      const onboarded = action.idx === null || action.idx >= 0;
+      return {
+        ...state,
+        tourIdx: action.idx,
+        onboarded: state.onboarded || onboarded,
+        // The tour never drives app state — it only highlights — so close any
+        // open drawer/sheet when a run starts to avoid covering its targets.
+        asumsiOpen: action.idx !== null ? false : state.asumsiOpen,
+        aboutOpen: action.idx !== null ? false : state.aboutOpen,
+      };
+    }
+    case "onboardCard/set":
+      return { ...state, onboardCardOpen: action.open };
     default:
       return state;
   }
@@ -192,12 +257,20 @@ interface AppContextValue {
   resetView: () => void;
   retryGeometry: () => void;
   retryData: () => void;
+  setAsumsiOpen: (open: boolean) => void;
+  setAboutOpen: (open: boolean) => void;
+  /** Open the guide at the intro card (? Panduan, About "replay"). */
+  openGuide: () => void;
+  /** Jump straight into the highlighted steps ("Tunjukkan caranya"). */
+  beginTourSteps: () => void;
+  setTourIdx: (idx: number | null) => void;
+  setOnboardCard: (open: boolean) => void;
 }
 
 const AppContext = createContext<AppContextValue | null>(null);
 
 export function AppProvider({ children }: { children: ReactNode }) {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState, initState);
 
   const loadGeo = useCallback(async () => {
     dispatch({ type: "geometry/loading" });
@@ -228,13 +301,32 @@ export function AppProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     void loadGeo();
     void loadData();
-    const mq = window.matchMedia("(prefers-color-scheme: dark)");
-    dispatch({ type: "theme/set", dark: mq.matches });
+    // Respect a saved theme; otherwise follow the OS preference on first visit.
+    if (loadPersisted().darkMode == null) {
+      const mq = window.matchMedia("(prefers-color-scheme: dark)");
+      dispatch({ type: "theme/set", dark: mq.matches });
+    }
   }, [loadGeo, loadData]);
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", state.darkMode);
   }, [state.darkMode]);
+
+  // Persist preferences (client-only; guarded inside savePersisted).
+  useEffect(() => savePersisted({ darkMode: state.darkMode }), [state.darkMode]);
+  useEffect(
+    () => savePersisted({ assumptions: state.assumptions }),
+    [state.assumptions],
+  );
+  useEffect(() => savePersisted({ pinned: state.pinned }), [state.pinned]);
+  useEffect(
+    () => savePersisted({ onboarded: state.onboarded }),
+    [state.onboarded],
+  );
+  useEffect(
+    () => savePersisted({ onboardCardDismissed: !state.onboardCardOpen }),
+    [state.onboardCardOpen],
+  );
 
   // Auto-dismiss pin refusal messages.
   useEffect(() => {
@@ -274,6 +366,12 @@ export function AppProvider({ children }: { children: ReactNode }) {
     resetView: () => dispatch({ type: "view/reset" }),
     retryGeometry: () => void loadGeo(),
     retryData: () => void loadData(),
+    setAsumsiOpen: (open) => dispatch({ type: "overlay/asumsi", open }),
+    setAboutOpen: (open) => dispatch({ type: "overlay/about", open }),
+    openGuide: () => dispatch({ type: "tour/set", idx: -1 }),
+    beginTourSteps: () => dispatch({ type: "tour/set", idx: 0 }),
+    setTourIdx: (idx) => dispatch({ type: "tour/set", idx }),
+    setOnboardCard: (open) => dispatch({ type: "onboardCard/set", open }),
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
