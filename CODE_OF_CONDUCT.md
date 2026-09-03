@@ -1,65 +1,63 @@
 # Kode Etik Kontributor
 
-## Ikrar kami
+## Komitmen kami
 
-Demi membangun lingkungan yang terbuka dan ramah, kami sebagai kontributor dan
-pengelola berjanji menjadikan partisipasi dalam proyek dan komunitas kami
-sebagai pengalaman yang bebas dari pelecehan bagi semua orang, tanpa memandang
+Kami, kontributor dan pengelola, berkomitmen menjaga proyek dan komunitas ini
+agar terbuka, ramah, dan bebas dari pelecehan bagi siapa pun, tanpa memandang
 usia, ukuran tubuh, disabilitas, suku, identitas dan ekspresi gender, tingkat
 pengalaman, pendidikan, status sosial-ekonomi, kebangsaan, penampilan pribadi,
 ras, agama, atau identitas dan orientasi seksual.
 
 ## Standar kami
 
-Perilaku yang mendukung lingkungan positif meliputi:
+Saat berinteraksi di komunitas ini:
 
-- Menggunakan bahasa yang ramah dan inklusif.
-- Menghormati sudut pandang dan pengalaman yang berbeda.
-- Menerima kritik yang membangun dengan lapang dada.
-- Mengutamakan kepentingan komunitas.
-- Menunjukkan empati kepada anggota komunitas lain.
+- Gunakan bahasa yang ramah dan tidak mengucilkan siapa pun.
+- Hormati perbedaan sudut pandang dan pengalaman.
+- Terima kritik yang membangun dengan lapang dada.
+- Utamakan kepentingan komunitas.
+- Perlakukan anggota lain dengan empati.
 
-Perilaku yang tidak dapat diterima meliputi:
+Perilaku berikut tidak diperbolehkan:
 
 - Penggunaan bahasa atau citra seksual, serta perhatian atau rayuan seksual
   yang tidak diinginkan.
 - Komentar menghina/merendahkan (*trolling*), dan serangan pribadi atau politis.
 - Pelecehan publik maupun pribadi.
-- Menerbitkan informasi pribadi orang lain — seperti alamat fisik atau
-  elektronik — tanpa izin eksplisit.
+- Menyebarkan informasi pribadi orang lain, seperti alamat rumah atau email,
+  tanpa izin tegas dari pemiliknya.
 - Perilaku lain yang secara wajar dianggap tidak pantas dalam lingkungan
   profesional.
 
-Khusus untuk proyek ini: mengirim data atau angka **tanpa sumber yang dapat
-diverifikasi**, memalsukan sitasi, atau sengaja menyesatkan soal provenance data
-juga dianggap pelanggaran — integritas data adalah inti proyek ini.
+Di Nafkah, mengirim data tanpa sumber yang bisa diperiksa juga termasuk
+pelanggaran. Begitu pula memalsukan rujukan atau sengaja memberi keterangan
+menyesatkan tentang asal data.
 
 ## Tanggung jawab kami
 
-Pengelola proyek bertanggung jawab memperjelas standar perilaku yang dapat
-diterima dan diharapkan mengambil tindakan korektif yang adil dan sesuai atas
-setiap perilaku yang tidak dapat diterima.
+Pengelola bertanggung jawab menjelaskan aturan perilaku dan diharapkan
+menangani setiap pelanggaran dengan tindakan yang adil dan sesuai.
 
 Pengelola berhak dan bertanggung jawab menghapus, menyunting, atau menolak
 komentar, *commit*, kode, suntingan wiki, *issue*, dan kontribusi lain yang tidak
-sejalan dengan Kode Etik ini, serta memblokir sementara atau permanen kontributor
-atas perilaku yang dianggap tidak pantas, mengancam, ofensif, atau merugikan.
+sesuai dengan Kode Etik ini. Pengelola juga dapat memblokir kontributor untuk
+sementara atau selamanya jika perilakunya dianggap tidak pantas, mengancam,
+menyinggung, atau merugikan.
 
 ## Cakupan
 
 Kode Etik ini berlaku di ruang proyek maupun ruang publik ketika seseorang
-mewakili proyek atau komunitasnya — misalnya menggunakan alamat email resmi
-proyek, memposting lewat akun media sosial resmi, atau bertindak sebagai
-perwakilan yang ditunjuk dalam acara daring/luring.
+mewakili proyek atau komunitasnya. Contohnya, saat menggunakan email resmi
+proyek, mengunggah lewat akun media sosial resmi, atau menjadi perwakilan yang
+ditunjuk untuk acara daring maupun luring.
 
 ## Penegakan
 
-Perilaku kasar, melecehkan, atau tidak dapat diterima lainnya dapat dilaporkan
-dengan menghubungi pengelola proyek di **ade.naufal@gmail.com**. Semua laporan
-akan ditinjau dan diselidiki, menghasilkan respons yang dianggap perlu dan sesuai
-keadaan. Pengelola wajib menjaga kerahasiaan pihak pelapor. Pengelola yang tidak
-menegakkan Kode Etik dengan itikad baik dapat menghadapi konsekuensi yang
-ditentukan anggota kepemimpinan proyek lain.
+Laporkan perilaku kasar, pelecehan, atau pelanggaran lain kepada pengelola di
+**ade.naufal@gmail.com**. Setiap laporan akan diperiksa dan diselidiki, lalu
+ditindaklanjuti sesuai keadaan. Pengelola wajib menjaga kerahasiaan pelapor.
+Jika pengelola tidak menegakkan Kode Etik dengan itikad baik, anggota pimpinan
+proyek lainnya dapat menentukan konsekuensi bagi pengelola tersebut.
 
 ## Atribusi
 

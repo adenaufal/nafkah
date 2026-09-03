@@ -1,38 +1,38 @@
-# Lisensi Data — CC-BY-4.0
+# Lisensi Data (CC-BY-4.0)
 
-Seluruh **data** dalam repositori ini dilisensikan di bawah
+Seluruh data dalam repositori ini memakai lisensi
 [Creative Commons Attribution 4.0 International (CC-BY-4.0)](https://creativecommons.org/licenses/by/4.0/).
 
-Cakupan (semua file data dan turunannya):
+Lisensi ini mencakup semua file data berikut beserta turunannya:
 
-- `src/data/**` — records upah, biaya hidup, region, narasi, multiplier
-- `public/data/**` — geometri TopoJSON
-- `data-prep/**` — output riset & intermediate dataset
+- `src/data/**` berisi upah, biaya hidup, wilayah, narasi, dan faktor pengali.
+- `public/data/**` berisi geometri TopoJSON.
+- `data-prep/**` berisi hasil riset dan dataset dalam proses pengolahan.
 
 ## Kamu boleh
 
-Menyalin, mendistribusikan, memodifikasi, dan memakai untuk tujuan apa pun
-(termasuk komersial) — **asal memberi atribusi**.
+Kamu boleh menyalin, membagikan, mengubah, dan menggunakan data untuk tujuan
+apa pun, termasuk komersial, selama mencantumkan atribusi.
 
 ## Atribusi minimum
 
 > Data: Nafkah (nafkah.adenaufal.com), CC-BY-4.0.
 
-## Sumber hulu (wajib dipertahankan atribusinya)
+## Atribusi sumber asal
 
-Dataset ini adalah turunan/model dari sumber publik berikut. Atribusi hulu
-tidak boleh dihapus:
+Dataset ini diolah atau dimodelkan dari sumber publik berikut. Atribusi untuk
+sumber-sumber ini wajib dipertahankan.
 
-- **Geometri wilayah**: HDX COD-AB Indonesia adm2 (Humanitarian Data Exchange)
-- **Upah minimum (UMP/UMK 2026)**: Kemnaker / Disnaker / Keputusan Gubernur,
-  per PP No. 49 Tahun 2025
-- **Biaya hidup (model estimasi)**: agregasi BPS (Susenas, IHK) + benchmark
-  pasar lokal
-- **Basemap**: CARTO (OSM-derived) & Esri World Imagery — tunduk pada syarat
-  atribusi masing-masing (lihat UI peta)
+- Geometri wilayah berasal dari HDX COD-AB Indonesia adm2 (Humanitarian Data Exchange).
+- Upah minimum (UMP/UMK 2026) mengacu pada Kemnaker, Disnaker, dan Keputusan
+  Gubernur, sesuai PP No. 49 Tahun 2025.
+- Estimasi biaya hidup memakai agregasi BPS (Susenas, IHK) dan acuan harga
+  pasar lokal.
+- Peta dasar memakai CARTO (berbasis OSM) dan Esri World Imagery. Syarat
+  atribusi masing-masing tetap berlaku dan tercantum di tampilan peta.
 
-## Disclaimer
+## Catatan penggunaan
 
-Angka biaya hidup berlabel `confidence: "estimate"` adalah **model estimasi**,
-bukan survei primer. Bukan nasihat finansial. Lihat `README.md` untuk
-metodologi lengkap.
+Biaya hidup berlabel `confidence: "estimate"` dihitung dari model estimasi,
+bukan survei primer. Angka ini bukan nasihat keuangan. Penjelasan metodenya
+ada di [README](README.md#integritas--audit-data).

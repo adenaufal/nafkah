@@ -29,7 +29,16 @@
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run"
+    "test": "vitest run",
+    "hooks:install": "node scripts/install-git-hooks.mjs",
+    "version:preview": "node scripts/versioning.mjs preview",
+    "version:baseline": "node scripts/versioning.mjs baseline",
+    "version:patch": "npm version patch",
+    "version:minor": "npm version minor",
+    "version:major": "npm version major",
+    "preversion": "node scripts/versioning.mjs preversion",
+    "version": "node scripts/versioning.mjs version",
+    "postversion": "node scripts/versioning.mjs postversion"
   },
   "dependencies": {
     "maplibre-gl": "^4.7.1",

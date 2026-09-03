@@ -1,0 +1,5 @@
+#!/bin/sh
+set -eu
+
+# Git menjalankan hook ini dari root working tree.
+exec node scripts/commit-msg.mjs "$1"

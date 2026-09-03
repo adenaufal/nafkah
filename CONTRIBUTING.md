@@ -1,63 +1,110 @@
 # Kontribusi ke Nafkah
 
-Makasih mau bantu. Project ini punya satu prinsip yang gak bisa ditawar:
+Terima kasih sudah mau membantu Nafkah. Setiap angka yang kamu kirim wajib
+disertai `source`, `asOf`, dan `confidence`, tanpa pengecualian.
 
-> **Setiap angka punya `source`, `asOf`, dan `confidence`. Tidak ada pengecualian.**
+Koreksi dan perbaikan kualitas data lebih diprioritaskan daripada fitur visual.
+Rencana pengembangannya bisa kamu baca di [roadmap](ROADMAP.md).
 
-Kontribusi paling berharga di sini adalah **koreksi & peningkatan kualitas
-data**, bukan fitur visual. Baca `ROADMAP.md` buat arah project.
-
-## Setup
+## Menyiapkan proyek
 
 ```bash
 npm install
+npm run hooks:install  # aktifkan validasi commit lokal (sekali per clone)
 npm run dev        # http://localhost:3000
 npm run typecheck  # wajib lulus sebelum PR
 npm test           # wajib lulus sebelum PR
 npm run build      # wajib lulus sebelum PR
 ```
 
-Ketiganya (`typecheck`, `test`, `build`) juga dijalankan otomatis di CI tiap PR.
+CI juga menjalankan `typecheck`, `test`, dan `build` secara otomatis pada setiap PR.
 
-## Cara paling umum berkontribusi
+## Versioning dan changelog
 
-### 1. Koreksi / perbarui data upah
+PR tetap boleh di-merge satu per satu. Perubahan yang sudah di-merge akan
+dikumpulkan sampai jadwal versioning mingguan atau sampai ada alasan penting
+untuk membuat versi lebih awal. Versioning ini hanya memperbarui nomor versi
+dan `CHANGELOG.md`; tidak membuat executable atau GitHub Release.
 
-Edit province file di `src/data/provinces/<provinsi>.ts`.
+Gunakan Conventional Commits pada judul PR atau commit hasil squash agar jenis
+perubahan bisa dihitung otomatis:
+
+- `fix(...)` atau `perf(...)` → `PATCH`
+- `feat(...)` → `MINOR`
+- `feat!:` atau `feat(scope)!:` atau footer `BREAKING CHANGE:` → `MAJOR`
+- `docs`, `chore`, `test`, dan `ci` → tidak menaikkan versi otomatis
+
+Hook `commit-msg` akan memeriksa format commit saat bekerja lokal dan
+menampilkan dampak versinya. Hook ini perlu diaktifkan sekali pada setiap clone
+dengan `npm run hooks:install`. Commit dari editor GitHub tidak menjalankan hook
+lokal, jadi judul PR tetap harus mengikuti format yang sama.
+
+Sebelum versioning, lihat dulu kumpulan perubahan dan rekomendasinya:
+
+```bash
+npm run version:preview
+```
+
+Project ini belum memiliki tag versi awal. Setelah setup versioning sudah
+di-commit, tandai kondisi tersebut sebagai baseline satu kali:
+
+```bash
+npm run version:baseline
+```
+
+Saat siap membuat versi, gunakan level yang ditampilkan oleh preview:
+
+```bash
+npm run version:patch
+npm run version:minor
+npm run version:major
+```
+
+Perintah versioning menjalankan `typecheck`, test, dan build terlebih dahulu,
+lalu memperbarui `package.json`, `package-lock.json`, dan `CHANGELOG.md`.
+`npm version` juga membuat commit serta Git tag seperti `v0.1.1`; tag tersebut
+hanya penanda versi di repository, bukan GitHub Release.
+
+## Memperbaiki data
+
+### Data upah
+
+Edit file provinsi di `src/data/provinces/<provinsi>.ts`.
 
 - Ganti `grossMonthly` dengan angka UMP/UMK resmi.
-- Set `confidence: "official"` **hanya** kalau ada SK/Kepgub/rilis Disnaker.
-- Isi `source` = nama + nomor keputusan (mis. `"Kepgub Jabar No. 561.7/Kep.862-Kesra/2025"`).
-- Set `asOf` = tanggal berlaku data.
-- **Jangan** naikin `confidence` tanpa sumber yang bisa diverifikasi.
+- Gunakan `confidence: "official"` hanya jika ada SK, Kepgub, atau rilis Disnaker.
+- Isi `source` dengan nama dan nomor keputusan, misalnya `"Kepgub Jabar No. 561.7/Kep.862-Kesra/2025"`.
+- Isi `asOf` dengan tanggal mulai berlakunya data.
+- Jangan menaikkan `confidence` tanpa sumber yang bisa diperiksa.
 
-### 2. Koreksi biaya hidup
+### Biaya hidup
 
-Edit `src/data/costs.ts`. Tiap kategori punya `source`/`asOf`/`confidence`
-sendiri. Data model tetap dilabeli `confidence: "estimate"` — jangan diklaim
-`official` kecuali beneran dari survei primer per-kabupaten.
+Edit `src/data/costs.ts`. Setiap kategori punya `source`, `asOf`, dan `confidence`
+sendiri. Hasil model tetap memakai `confidence: "estimate"`. Label `official`
+hanya boleh dipakai untuk data dari survei primer per kabupaten.
 
-### 3. Tambah / perbaiki region
+### Wilayah
 
-Tambah baris di `src/data/regions.ts` (kode wilayah, centroid, tier) + baris
-wage/cost + narasi di `src/data/narratives.ts`. Gak perlu ubah kode.
+Tambahkan atau perbaiki baris di `src/data/regions.ts`, termasuk kode wilayah,
+centroid, dan tier. Lengkapi data upah dan biayanya, lalu isi narasi di
+`src/data/narratives.ts`. Perubahan ini cukup dilakukan di file data.
 
 ## Aturan Pull Request
 
-1. **Setiap perubahan data wajib sertakan sumber** di deskripsi PR (link/nomor SK).
+1. Sertakan sumber di deskripsi setiap PR yang mengubah data, berupa tautan atau nomor SK.
 2. `npm run typecheck`, `npm test`, dan `npm run build` harus lulus.
-3. Satu topik per PR (mis. "koreksi UMK Jawa Timur 2026"), jangan gabung.
-4. Jangan tambah dependency baru tanpa alasan kuat di deskripsi PR.
-5. Kalau nambah/ubah logika perhitungan di `src/lib/calculations.ts`, tambahin
+3. Batasi satu topik per PR, misalnya "koreksi UMK Jawa Timur 2026".
+4. Kalau perlu menambah dependency, jelaskan alasan yang kuat di deskripsi PR.
+5. Kalau menambah atau mengubah logika di `src/lib/calculations.ts`, tambahkan
    test di `src/lib/calculations.test.ts` (vitest).
 
 ## Yang ditolak
 
 - Angka tanpa sumber yang bisa dicek.
-- Sitasi survei/dataset fiktif (project ini pernah audit anti-halusinasi — lihat README).
-- Menaikkan `confidence` biar keliatan kredibel tanpa dasar.
+- Rujukan ke survei atau dataset fiktif. Audit sumber sebelumnya dicatat di [README](README.md#integritas--audit-data).
+- Menaikkan `confidence` tanpa bukti yang sesuai.
 
 ## Lisensi kontribusi
 
-Code kamu masuk di bawah **MIT** (`LICENSE`); data di bawah **CC-BY-4.0**
-(`LICENSE-DATA.md`). Dengan submit PR kamu setuju ke lisensi tersebut.
+Kode yang kamu kirim memakai lisensi [MIT](LICENSE), sedangkan data memakai
+[CC-BY-4.0](LICENSE-DATA.md). Mengirim PR berarti menyetujui lisensi tersebut.

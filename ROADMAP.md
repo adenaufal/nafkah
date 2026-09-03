@@ -1,234 +1,246 @@
-# Nafkah — Roadmap
+# Roadmap Nafkah
 
-**Visi:** referensi publik yang kredibel untuk pertanyaan *"apakah UMK daerah
-ini cukup untuk hidup layak di sana?"* — dari prototipe peta choropleth berbasis
-estimasi menjadi platform berbasis data terverifikasi.
+Nafkah membantu orang membandingkan upah minimum dengan biaya hidup di suatu
+daerah. Saat ini, biaya hidupnya masih berupa estimasi. Pengembangan berikutnya
+berfokus pada pemeriksaan data agar hasil perbandingan bisa lebih diandalkan.
 
-**Prinsip (tidak bisa ditawar):**
+Aturan pengembangannya tetap:
 
-1. **Data sebelum fitur** — tak ada fitur visual baru yang mendahului kualitas &
-   provenance data di baliknya.
-2. **Map-first** — peta tetap kanvas utama; fitur lain mendukung.
-3. **Aksesibilitas & offline** — jalan di koneksi lambat, terbaca screen reader.
-4. **Setiap angka punya `source`, `asOf`, `confidence`.** Tanpa pengecualian.
+1. Periksa kualitas dan asal data sebelum menambah fitur visual yang memakainya.
+2. Peta tetap menjadi tampilan utama, dengan fitur lain melengkapinya.
+3. Aplikasi harus bisa dipakai lewat koneksi lambat, secara offline, dan dengan pembaca layar.
+4. Setiap angka wajib punya `source`, `asOf`, dan `confidence`, tanpa pengecualian.
 
 Legenda: ✅ selesai · 🟡 sebagian · ❌ belum.
 
-**Urutan investasi:** trust → personalisasi → kontribusi data → analitik. Risiko
-terbesar: **angka disalahpahami / dianggap terlalu presisi.** Semua rilis lawan
-itu dulu. Owner default: maintainer repo. Effort S/M/L indikatif.
+Prioritasnya dimulai dari kepercayaan terhadap data, lalu personalisasi,
+kontribusi data, dan analitik. Angka estimasi mudah disalahpahami sebagai angka
+pasti, jadi setiap rilis perlu memperjelas batasannya. Penanggung jawabnya
+maintainer repo, kecuali disebutkan lain. S/M/L menunjukkan perkiraan beban
+kerja kecil, sedang, dan besar.
 
 ---
 
 ## Status v0.1 (per 2 September 2026)
 
-**✅ Sudah jalan**
+### ✅ Sudah tersedia
 
-- Peta choropleth **514 kab/kota**, band keterjangkauan + arsir no-data, palet
-  colorblind-aware; basemap Terang/Gelap/Satelit + Offline; dark mode; pencarian;
-  legenda numerik + filter per band.
-- Panel asumsi lengkap (rumah tangga, gaya hidup, hunian, transport, tabungan,
-  basis upah) + **Pendapatan sendiri** & opsi **2 upah**.
-- Baki perbandingan (maks 5) + breakdown per kategori; modal detail dengan
-  provenance per sel.
-- Aksesibilitas keyboard + `aria` + kontras AA.
-- Data: 514 upah `official` 2026, 514×10 biaya `estimate`, provenance jujur.
-- **Governance:** unit test kalkulasi (vitest) + **gate integritas data (Zod)**,
-  CI (typecheck/test/build), dual license, CONTRIBUTING, **Code of Conduct**,
-  **issue/PR templates**, SEO (robots/sitemap/OpenGraph).
+- Peta 514 kabupaten/kota dengan warna tingkat keterjangkauan, arsir untuk
+  wilayah tanpa data, dan palet yang mempertimbangkan buta warna. Pilihan peta
+  dasar Terang/Gelap/Satelit dan Offline, mode gelap, pencarian, legenda angka,
+  serta filter tingkat keterjangkauan juga sudah tersedia.
+- Panel asumsi rumah tangga, gaya hidup, hunian, transportasi, tabungan, dan
+  basis upah. Ada kolom "Pendapatan sendiri" serta opsi "2 upah".
+- Baki perbandingan hingga 5 wilayah dengan rincian biaya per kategori.
+  Jendela detail mencantumkan asal setiap angka.
+- Navigasi keyboard, label `aria`, dan kontras AA.
+- Data upah 2026 untuk 514 wilayah berlabel `official`, serta 514×10 nilai
+  biaya berlabel `estimate`, dengan keterangan sumber sesuai asalnya.
+- Unit test perhitungan (vitest), pemeriksaan integritas data (Zod), dan CI
+  untuk typecheck/test/build. Repo juga punya dua lisensi, CONTRIBUTING,
+  Code of Conduct, template issue/PR, serta robots/sitemap/OpenGraph untuk SEO.
 
-**❌ Belum**
+### ❌ Belum tersedia
 
-- Data masih modul TypeScript — belum dipecah ke **JSON fisik berversi**
-  (`/data/vYYYY/…`); skema Zod sudah memvalidasinya di CI (lihat **AP-02**).
-- Basemap offline masih background polos — belum PMTiles self-hosted.
-- Belum ada: share/embed via URL, ekspor CSV/PNG, PWA, time series, drill-down
-  kecamatan, form koreksi publik aktif, API publik, E2E Playwright, Lighthouse CI.
+- Data masih tersimpan dalam modul TypeScript. File JSON terpisah dengan
+  versi (`/data/vYYYY/…`) belum tersedia, tetapi skema Zod sudah memeriksa data
+  di CI (AP-02).
+- Peta dasar offline masih berupa latar polos. PMTiles yang dihosting sendiri
+  belum tersedia.
+- Berbagi atau menyematkan peta lewat URL, ekspor CSV/PNG, PWA, data lintas
+  tahun, detail kecamatan, form koreksi publik aktif, API publik, E2E
+  Playwright, dan Lighthouse CI masih dalam rencana.
 
 ---
 
-## Sebelum go public — checklist pre-OSS
+## Persiapan membuka repo ke publik
 
-Gerbang sebelum repo di-flip publik. Sisi teknis sudah tuntas; sisa aksi manual
-maintainer.
+Persiapan teknis sudah selesai. Maintainer masih perlu menjalankan langkah
+manual berikut sebelum mengubah repo menjadi publik.
 
 | Item | Status |
 | --- | --- |
-| Dual license (MIT code + CC-BY-4.0 data) | ✅ |
+| Dua lisensi: MIT untuk kode, CC-BY-4.0 untuk data | ✅ |
 | CONTRIBUTING + CI (typecheck/test/build) | ✅ |
-| **Code of Conduct** (Contributor Covenant 2.1) | ✅ |
-| **Issue/PR templates + routing Discussions** (`.github/`) | ✅ |
-| **Reliability gate:** skema Zod + validasi 514×3 di CI | ✅ (AP-02 sebagian) |
-| **Metodologi terlihat + disclaimer "UMK = patokan, bukan gaji nyata"** | ✅ (AP-01) |
-| File scratch/PII (screenshot, feedback dump, log) di-`gitignore` | ✅ |
-| **Push repo ke GitHub + aktifkan Discussions** | ❌ manual |
-| **Buat Airtable form + tempel link** di `config.yml` & situs | ❌ manual (lihat [`docs/feedback-channels.md`](docs/feedback-channels.md)) |
-| `SECURITY.md` (opsional — situs static, attack surface nol) | ❌ opsional |
+| Code of Conduct (Contributor Covenant 2.1) | ✅ |
+| Template issue/PR dan arahan ke Discussions (`.github/`) | ✅ |
+| Pemeriksaan data dengan skema Zod dan validasi 514×3 di CI | ✅ (AP-02 sebagian) |
+| Penjelasan metode dan catatan bahwa UMK adalah patokan, bukan gaji nyata | ✅ (AP-01) |
+| File sementara dan data pribadi (screenshot, salinan masukan, log) masuk `.gitignore` | ✅ |
+| Push repo ke GitHub dan aktifkan Discussions | ❌ manual |
+| Buat form Airtable dan pasang tautannya di `config.yml` serta situs | ❌ manual (lihat [panduan kanal masukan](docs/feedback-channels.md)) |
+| `SECURITY.md` untuk situs statis | ❌ opsional |
 
-> Setelah publik: item **AP-02 (JSON fisik berversi)** dan **AP-04 (form koreksi)**
-> jadi prasyarat menerima koreksi komunitas dengan aman.
+> Setelah repo publik, AP-02 (file JSON dengan versi) dan AP-04 (form koreksi)
+> menjadi prasyarat untuk menerima koreksi komunitas dengan aman.
 
 ---
 
-## Now / Next / Later
+## Rencana pengerjaan
 
-**Kanal feedback (keputusan 2 Sep 2026):** koreksi data publik → **Airtable form**
-(non-dev, tanpa login); saran fitur/bug teknis → **GitHub Discussions**; **tidak**
-self-host (situs tetap static-assets-only). Ingestion lewat agent terjadwal, bukan
-endpoint web. Setup: [`docs/feedback-channels.md`](docs/feedback-channels.md).
+Keputusan 2 September 2026 menetapkan form Airtable untuk koreksi data publik
+tanpa login, terutama bagi pengguna nonteknis. Saran fitur dan bug teknis masuk
+ke GitHub Discussions. Situs tetap menyajikan aset statis, tanpa layanan form
+yang dihosting sendiri. Pengumpulan laporan nantinya memakai agent terjadwal
+di luar situs. Langkah penyiapannya ada di [panduan kanal masukan](docs/feedback-channels.md).
 
-### Now — komitmen berikutnya
+### Dikerjakan berikutnya
 
-| ID | Inisiatif | Action konkret | Status | Prioritas |
+| ID | Pekerjaan | Yang perlu dilakukan | Status | Prioritas |
 | --- | --- | --- | --- | --- |
-| AP-01 | Metodologi publik + disclaimer | Panel metodologi dekat map & modal detail; baseline 1 orang, arti band, **UMK = benchmark resmi bukan gaji aktual**. | 🟡 core ✅ (disclaimer di panel Tentang + modal; provenance `source`/`asOf`/`confidence` tampil). Sisa: analytics event (→ AP-06). | P0 · S |
-| AP-02 | Data versioning sbg reliability gate | Skema Zod + CI menolak data invalid **sebelum** menerima koreksi komunitas. Lalu pecah dataset ke JSON fisik berversi + changelog. | 🟡 gate Zod ✅ (`src/data/schema.ts` + `dataset.test.ts`, `DATASET_VERSION`). ❌ migrasi TS→JSON fisik `/data/vYYYY/`. | P0 · M |
-| AP-03 | Personalisasi rumah tangga v1.1 | Perluas kontrol pendapatan/2-upah yang **sudah ada** dengan jumlah anak + override cicilan/KPR; tampilkan profil aktif + reset. | ❌ (multiplier + tipe rumah tangga ✅). Unit test wajib mencakup anak/cicilan. | P0 · M |
-| AP-04 | Form koreksi publik per region | Airtable form → base ("Laporkan angka ini"): wilayah, kategori, nilai lama/usulan, periode, jenis bukti, sumber, kontak opsional → antrean review manual (`Status=New`). **Tidak** auto-ubah dataset. | ❌ (skema di [`docs/feedback-channels.md`](docs/feedback-channels.md); templates GitHub ✅). | P0 · M |
-| AP-05 | Audit wilayah yang diperdebatkan | Audit terfokus: Kep. Meranti, Samosir, Bandung + transport/logistik & kesehatan. Bandingkan model vs laporan lokal. Keputusan terdokumentasi per kasus. | ❌ | P0 · S/M |
-| AP-06 | Discoverability & regression UX | Uji ulang fitur (Pendapatan sendiri, filter band, dark mode, legenda) di mobile & keyboard; perjelas CTA; event penggunaan tanpa PII. | ❌ | P1 · S |
+| AP-01 | Penjelasan metode dan batasan | Tampilkan metode dekat peta dan di jendela detail. Jelaskan asumsi awal 1 orang, arti tingkat keterjangkauan, serta UMK sebagai acuan resmi, bukan gaji aktual. | 🟡 Bagian utama ✅: catatan di panel Tentang dan jendela detail; `source`/`asOf`/`confidence` sudah tampil. Pencatatan penggunaan masih menunggu AP-06. | P0 · S |
+| AP-02 | Versi dataset dan pemeriksaan data | Gunakan skema Zod dan CI untuk menolak data tidak valid sebelum menerima koreksi komunitas. Setelah itu, pindahkan dataset ke file JSON dengan versi dan catatan perubahan. | 🟡 Pemeriksaan Zod ✅ (`src/data/schema.ts`, `dataset.test.ts`, `DATASET_VERSION`). Migrasi TS ke JSON di `/data/vYYYY/` masih ❌. | P0 · M |
+| AP-03 | Personalisasi rumah tangga v1.1 | Tambahkan jumlah anak dan isian cicilan/KPR pada kontrol pendapatan dan 2 upah yang sudah ada. Tampilkan profil aktif dan tombol reset. | ❌ (faktor pengali dan tipe rumah tangga ✅). Unit test wajib mencakup anak dan cicilan. | P0 · M |
+| AP-04 | Form koreksi per wilayah | Buat form Airtable "Laporkan angka ini" dengan wilayah, kategori, nilai lama/usulan, periode, jenis bukti, sumber, dan kontak opsional. Laporan masuk ke antrean pemeriksaan manual (`Status=New`), tanpa mengubah dataset otomatis. | ❌ (skema ada di [panduan kanal masukan](docs/feedback-channels.md); template GitHub ✅). | P0 · M |
+| AP-05 | Audit wilayah yang diperdebatkan | Periksa Kep. Meranti, Samosir, Bandung, serta biaya transportasi/logistik dan kesehatan. Bandingkan hasil model dengan laporan lokal, lalu catat keputusan tiap kasus. | ❌ | P0 · S/M |
+| AP-06 | Kemudahan menemukan dan memakai fitur | Uji ulang Pendapatan sendiri, filter tingkat keterjangkauan, mode gelap, dan legenda di ponsel serta lewat keyboard. Perjelas tombol tindakan dan catat penggunaan tanpa data pribadi. | ❌ | P1 · S |
 
-### Next — setelah fondasi stabil
+### Setelah data dan alur dasar stabil
 
-| ID | Inisiatif | Arah & dependensi |
+| ID | Pekerjaan | Rencana dan prasyarat |
 | --- | --- | --- |
-| AP-07 | Compare & share untuk relokasi | Gaji di Kota A vs biaya hidup di Kota B (gaji custom, multi-region, state di URL). Dahulukan sebelum embed penuh; butuh AP-02 agar link lama tetap terbaca. |
-| AP-08 | Community data layer | Survei ringan per kategori; tampilkan median/rentang komunitas **terpisah** dari estimasi utama (ukuran sampel, periode, confidence, aturan moderasi). |
-| AP-09 | Sinyal kepatuhan UMK / gaji aktual | Mulai dari badge kualitatif bersumber (putusan/berita), **bukan** skor numerik. Jangan ganti UMK dengan "gaji nyata" tanpa coverage & metodologi kuat. Butuh review hukum/metodologi. |
-| AP-10 | Feedback-to-release loop | Setelah AP-04 jalan: changelog laporan diterima/ditolak/ditinjau. Ingestion = scheduled agent tarik `Status=New` (Airtable read-only PAT) + Discussions baru; cadence harian-noop saat viral → mingguan; agent **draft PR** saja, manusia approve. |
+| AP-07 | Perbandingan dan berbagi hasil untuk relokasi | Bandingkan gaji di Kota A dengan biaya hidup di Kota B memakai pendapatan sendiri, beberapa wilayah, dan pengaturan tersimpan di URL. Kerjakan sebelum fitur embed penuh. Memerlukan AP-02 agar tautan lama tetap bisa dibaca. |
+| AP-08 | Lapisan data komunitas | Buat survei singkat per kategori. Tampilkan median atau rentangnya terpisah dari estimasi utama, lengkap dengan ukuran sampel, periode, confidence, dan aturan moderasi. |
+| AP-09 | Informasi kepatuhan UMK dan gaji aktual | Mulai dengan label kualitatif bersumber dari putusan atau berita; skor numerik belum dipakai. UMK baru bisa diganti dengan data gaji aktual jika cakupan dan metodenya memadai. Perlu tinjauan hukum dan metodologi. |
+| AP-10 | Tindak lanjut laporan sampai rilis | Setelah AP-04 berjalan, catat laporan yang diterima, ditolak, atau masih ditinjau. Agent terjadwal mengambil `Status=New` lewat PAT Airtable read-only dan Discussions baru. Jalankan harian saat ramai, berhenti bila kosong, lalu mingguan setelah reda. Agent hanya membuat draft PR; persetujuan tetap oleh manusia. |
 
-### Later — taruhan strategis
+### Rencana jangka panjang
 
-| ID | Inisiatif | Arah |
+| ID | Pekerjaan | Rencana |
 | --- | --- | --- |
-| AP-11 | Relocation planner | Gabung pendapatan, profil rumah tangga, pilihan kota, biaya, surplus/defisit, link hasil. |
-| AP-12 | Layer desil & analitik kebijakan | Overlay desil BPS, daya beli regional, sektor pekerjaan — setelah data dasar kuat. |
-| AP-13 | Ekosistem open data | API read-only versioned, schema publik, template kontribusi, rilis dataset berkala — setelah versioning & moderasi matang. |
-| AP-14 | Ekspansi lintas negara | Di luar cakupan tahun ini; evaluasi hanya setelah model Indonesia, provenance & workflow koreksi terbukti stabil. |
+| AP-11 | Perencanaan relokasi | Gabungkan pendapatan, profil rumah tangga, pilihan kota, biaya, dan surplus/defisit. Hasilnya bisa dibagikan lewat tautan. |
+| AP-12 | Lapisan desil dan analisis kebijakan | Tambahkan desil BPS, daya beli daerah, dan sektor pekerjaan setelah data dasar bisa diandalkan. |
+| AP-13 | Akses data terbuka | Sediakan API read-only dengan versi, skema publik, template kontribusi, dan rilis dataset berkala setelah pengelolaan versi serta moderasi berjalan baik. |
+| AP-14 | Cakupan lintas negara | Di luar rencana tahun ini. Evaluasi setelah model Indonesia, pencatatan sumber, dan alur koreksi terbukti stabil. |
 
 ### Urutan eksekusi untuk satu maintainer
 
-1. **Publish** — tuntaskan checklist pre-OSS manual (push, Discussions, Airtable form).
-2. **Trust** — metodologi/disclaimer (AP-01 ✅ core) + audit Meranti/Samosir/Bandung/transport/kesehatan (AP-05).
-3. **Kontribusi** — form koreksi + antrean review + changelog (AP-04, AP-10), lalu JSON fisik berversi (sisa AP-02).
-4. **Personalisasi** — jumlah anak/cicilan (AP-03) + regression test, lalu mulai compare/share (AP-07).
+1. Selesaikan persiapan publikasi: push repo, aktifkan Discussions, dan buat form Airtable.
+2. Perjelas metode dan batasan (bagian utama AP-01 ✅), lalu audit Meranti, Samosir, Bandung, biaya transportasi, dan kesehatan (AP-05).
+3. Siapkan form koreksi, antrean pemeriksaan, dan catatan perubahan (AP-04, AP-10), lalu file JSON dengan versi (sisa AP-02).
+4. Tambahkan jumlah anak dan cicilan (AP-03) beserta uji regresi, kemudian kerjakan perbandingan dan berbagi hasil (AP-07).
 
 ---
 
 ## Backlog tematik
 
-Deliverable jangka menengah, dikelompokkan per track (bukan kuartal kalender —
-ini proyek eksperimen satu maintainer). Referensi ke AP-xx bila sudah tercakup.
+Pekerjaan jangka menengah dikelompokkan berdasarkan topik. Jadwalnya belum
+dibagi per kuartal karena proyek eksperimen ini dikelola satu maintainer.
+Nomor AP-xx merujuk ke rencana di atas.
 
 ### Data & integritas
 
-| Deliverable | Status |
+| Pekerjaan | Status |
 | --- | --- |
-| Integritas 514 wilayah otonom (validasi kode vs Kepmendagri 100.1.1-6117; buang 8 poligon air/hutan `.88`/`.99`) | ✅ |
-| Anti-halusinasi & provenance honesty (eliminasi survei fiktif; label `estimate` untuk model) | ✅ |
-| Pipeline UMK resmi (UMP/UMK 2026 dari SK/Kepgub + rekap 38 provinsi) | ✅ |
-| Validasi frontier/non-IHK (kalibrasi Papua/kepulauan via Susenas + logistik perintis) | ✅ |
-| Uji perhitungan + **gate integritas data (Zod di CI)** | ✅ |
-| Pipeline biaya hidup naik ke sumber primer/`official` (BPS SBH hanya di kota sampel) | 🟡 |
-| **Data versioning JSON fisik** `/data/vYYYY/` + changelog | ❌ (→ AP-02) |
+| Pemeriksaan 514 wilayah otonom (kode sesuai Kepmendagri 100.1.1-6117; hapus 8 poligon air/hutan `.88`/`.99`) | ✅ |
+| Pemeriksaan sumber (hapus survei fiktif; beri label `estimate` pada hasil model) | ✅ |
+| Pengolahan upah resmi (UMP/UMK 2026 dari SK/Kepgub dan rekap 38 provinsi) | ✅ |
+| Pemeriksaan wilayah pedalaman dan non-IHK (kalibrasi Papua/kepulauan lewat Susenas dan logistik perintis) | ✅ |
+| Uji perhitungan dan pemeriksaan integritas data dengan Zod di CI | ✅ |
+| Penggantian estimasi biaya hidup dengan sumber primer/`official` (SBH BPS hanya mencakup kota sampel) | 🟡 |
+| File JSON dengan versi di `/data/vYYYY/` dan catatan perubahan | ❌ (→ AP-02) |
 
 ### Peta & cakupan
 
-| Deliverable | Status |
+| Pekerjaan | Status |
 | --- | --- |
-| Cakupan 514 kab/kota terwarna (fallback multiplier provinsi & frontier) | ✅ |
-| Aksesibilitas (keyboard, legenda numerik, hatch no-data, kontras AA) | 🟡 audit axe terdokumentasi ❌ |
-| Kinerja (bundle JS **104 KB** ✅; laporan Lighthouse CI di repo ❌) | 🟡 |
-| Basemap offline PMTiles self-hosted (< 150 MB) | ❌ |
-| Geometri kecamatan (adm3) drill-down 10 kota metro | ❌ |
-| E2E Playwright (keyboard, baki pin maks 5, recolor asumsi) | ❌ |
+| Warna peta untuk 514 kabupaten/kota (memakai faktor pengali provinsi dan pedalaman saat diperlukan) | ✅ |
+| Aksesibilitas lewat keyboard, legenda angka, arsir wilayah tanpa data, dan kontras AA | 🟡 dokumentasi audit axe masih ❌ |
+| Kinerja: bundle JS 104 KB ✅; laporan Lighthouse CI di repo ❌ | 🟡 |
+| Peta dasar offline dengan PMTiles yang dihosting sendiri (< 150 MB) | ❌ |
+| Detail geometri kecamatan (adm3) untuk 10 kota metropolitan | ❌ |
+| E2E Playwright untuk keyboard, batas sematan 5 wilayah, dan perubahan warna setelah asumsi diubah | ❌ |
 
 ### Analitik & kegunaan
 
-| Deliverable | Status |
+| Pekerjaan | Status |
 | --- | --- |
-| Bahasa Indonesia (single-locale; toggle i18n belum perlu) | ✅ |
-| Dark mode & filter legenda per band (diminta komunitas, sudah ada di v0.1) | ✅ |
-| Sharing & embed (state di URL; mode `<iframe>`) | ❌ (→ AP-07) |
-| Ekspor CSV/PNG (sertakan sumber + asOf + disclaimer) | ❌ |
-| Profil rumah tangga nyata (preset tervalidasi Susenas) | 🟡 (→ AP-03) |
-| PWA (installable, cache geometry+data, shell offline) | ❌ |
-| Time series UMK & biaya 2020–kini (slider tahun) | ❌ |
+| Bahasa Indonesia sebagai satu-satunya bahasa (pilihan i18n belum diperlukan) | ✅ |
+| Mode gelap dan filter legenda per tingkat keterjangkauan (diminta komunitas, tersedia sejak v0.1) | ✅ |
+| Berbagi dan menyematkan peta (pengaturan di URL; mode `<iframe>`) | ❌ (→ AP-07) |
+| Ekspor CSV/PNG dengan sumber, `asOf`, dan catatan batasan | ❌ |
+| Profil rumah tangga dengan pilihan awal yang divalidasi lewat Susenas | 🟡 (→ AP-03) |
+| PWA yang bisa dipasang, menyimpan geometri dan data di cache, serta membuka kerangka aplikasi secara offline | ❌ |
+| Data upah dan biaya hidup dari 2020 sampai sekarang, dengan penggeser tahun | ❌ |
 
-### Komunitas & keberlanjutan
+### Komunitas dan pengelolaan proyek
 
-| Deliverable | Status |
+| Pekerjaan | Status |
 | --- | --- |
-| Tata kelola repo (CONTRIBUTING, CoC, templates, CI) | ✅ |
-| Koreksi publik + antrean review | ❌ (→ AP-04) |
-| Feedback-to-release loop + changelog | ❌ (→ AP-10) |
-| Rilis data triwulanan + halaman metodologi auto dari metadata | ❌ |
-| API publik read-only + OpenAPI | ❌ (→ AP-13) |
-| Evaluasi dampak (survei singkat + analytics privacy-respecting) | ❌ |
+| Panduan dan pemeriksaan repo (CONTRIBUTING, CoC, template, CI) | ✅ |
+| Koreksi publik dan antrean pemeriksaan | ❌ (→ AP-04) |
+| Tindak lanjut laporan sampai rilis beserta catatan perubahannya | ❌ (→ AP-10) |
+| Rilis data triwulanan dan halaman metode yang dibuat otomatis dari metadata | ❌ |
+| API publik read-only dengan OpenAPI | ❌ (→ AP-13) |
+| Evaluasi dampak lewat survei singkat dan analitik yang menjaga privasi | ❌ |
 
-### Triase usulan komunitas
+### Tindak lanjut usulan komunitas
 
 | Usulan | Klasifikasi |
 | --- | --- |
-| Input pendapatan custom ("apakah gaji saya cukup di daerah X?") | ✅ **Selesai (Sep 2026)** — kontrol "Pendapatan sendiri"; rasio, warna peta, modal & baki mengikuti; UMK tetap jadi pembanding. |
-| Indeks kepatuhan UMK pemberi kerja per wilayah | **Later** (→ AP-09). Data nyaris nihil di level kab/kota; bentuk paling jujur = badge kualitatif bersumber, bukan skor numerik. |
+| Isian pendapatan sendiri ("apakah gaji saya cukup di daerah X?") | ✅ Selesai (Sep 2026). Kolom "Pendapatan sendiri" mengubah rasio, warna peta, jendela detail, dan baki perbandingan. UMK tetap tampil sebagai pembanding. |
+| Indeks kepatuhan UMK pemberi kerja per wilayah | Ditunda (→ AP-09). Data di tingkat kabupaten/kota nyaris belum ada. Mulai dengan label kualitatif bersumber; skor numerik belum bisa dipertanggungjawabkan. |
 
 ---
 
 ## Masukan komunitas (gelombang Threads, 1 September 2026)
 
-Intisari feedback publik saat rilis. **Dianalisis:** ~300 interaksi tekstual
-(277 replies, 1 mention, 35 quotes; ≈301 relevan setelah menyaring notifikasi).
-Sampel audiens Threads yang **directional, bukan survei representatif.** Diringkas
-**anonim** (tanpa handle/kutipan personal). Sentimen mayoritas positif; akurasi
-divalidasi warga lokal di beberapa daerah (Sleman, Surakarta, Jateng).
+Catatan ini merangkum sekitar 300 interaksi tertulis saat rilis: 277 balasan,
+1 mention, dan 35 kutipan postingan, dengan sekitar 301 interaksi relevan
+setelah notifikasi disaring. Masukan dari audiens Threads dipakai untuk
+menentukan arah, bukan sebagai survei yang mewakili seluruh pengguna.
+Ringkasannya anonim, tanpa nama akun atau kutipan pribadi. Sebagian besar
+tanggapan positif; warga di Sleman, Surakarta, dan Jawa Tengah ikut mengecek
+kecocokan angka dengan kondisi setempat.
 
-**Distribusi band pada asumsi default:** Comfortable **0** · Manageable **69** ·
-Tight **302** · Insufficient **143**. "Tidak ada yang hijau" jadi keluhan berulang
-→ sinyal ganda: kalibrasi mungkin terlalu ketat, atau kondisi memang suram.
-Keduanya menuntut metodologi terlihat (AP-01) + filter/urut band (✅ ada).
+Dengan asumsi awal, 0 wilayah masuk kategori Nyaman (Comfortable), 69 Cukup
+(Manageable), 302 Ketat (Tight), dan 143 Tak Cukup (Insufficient). Keluhan
+"tidak ada yang hijau" muncul berulang. Kalibrasinya mungkin terlalu ketat,
+atau kondisi upah dan biaya hidup memang berat. Penjelasan metode perlu lebih
+mudah ditemukan (AP-01), bersama filter/urutan tingkat keterjangkauan yang
+sudah tersedia (✅).
 
-| Tema | Sinyal | Ditindaklanjuti |
+| Tema | Masukan | Tindak lanjut |
 | --- | --- | --- |
-| Realisme upah (UMK vs riil) | Kritik terkuat: UMKM serap ~90% tenaga kerja tapi banyak gaji **di bawah** UMK; "UMK bukan patokan nyata". | AP-01 (disclaimer ✅), AP-09 |
-| Koreksi data (crowdsource) | "Angka nggak masuk akal" berulang; "boleh submit data?". Contoh: Kep. Meranti, Samosir. | AP-04, AP-05 |
-| Transparansi metodologi | "Estimasi dari mana?", "per kapita / berapa orang?". Transport dinilai kurang tepat. | AP-01, AP-05 |
-| Personalisasi | Minta jumlah anak, override cicilan/KPR (pendapatan sendiri **sudah ada** — isu discoverability). | AP-03, AP-06 |
-| Integrasi & use-case | "desil" (overlay BPS/DTKS); relokasi kerja, riset daya beli, skripsi. | AP-07, AP-12 |
-| UX & jangkauan | Filter "tampilkan comfortable", dark mode, export/share, ekspansi negara. | Filter & dark mode ✅; AP-06, AP-07; ekspansi → AP-14 |
+| Upah minimum dan gaji aktual | Kritik utama menyinggung UMKM yang disebut menyerap sekitar 90% tenaga kerja, sementara banyak gaji masih di bawah UMK. Pengguna mempertanyakan UMK sebagai patokan gaji nyata. | AP-01 (catatan batasan ✅), AP-09 |
+| Koreksi data dari pengguna | Pengguna berulang kali mempertanyakan angka dan meminta cara mengirim koreksi, antara lain untuk Kep. Meranti dan Samosir. | AP-04, AP-05 |
+| Kejelasan metode | Pengguna menanyakan sumber estimasi dan jumlah orang dalam perhitungan. Biaya transportasi juga dinilai kurang tepat. | AP-01, AP-05 |
+| Personalisasi | Ada permintaan jumlah anak dan isian cicilan/KPR. Pendapatan sendiri sudah tersedia, tetapi belum mudah ditemukan. | AP-03, AP-06 |
+| Kebutuhan penggunaan | Lapisan desil BPS/DTKS, relokasi kerja, riset daya beli, dan skripsi. | AP-07, AP-12 |
+| Tampilan dan cakupan | Filter kategori Nyaman, mode gelap, ekspor/berbagi hasil, dan penambahan negara. | Filter dan mode gelap ✅; AP-06, AP-07; penambahan negara → AP-14 |
 
-### Metrik validasi feedback
+### Ukuran perbaikan dari masukan pengguna
 
-- 100% region-detail menampilkan sumber, periode, confidence, asumsi terlihat.
-- Target: pertanyaan berulang "estimasi/per orang/UMK vs gaji nyata" turun 50% di gelombang berikutnya.
-- Ukur funnel `open region → ubah asumsi → compare/share → laporkan angka`.
-- Review laporan komunitas maks 7 hari kerja; ukur rasio actionable, bukan volume.
+- Semua jendela detail wilayah (100%) menampilkan sumber, periode, confidence, dan asumsi.
+- Pertanyaan berulang tentang estimasi, jumlah orang, serta UMK dan gaji nyata ditargetkan turun 50% pada gelombang masukan berikutnya.
+- Ukur alur penggunaan `open region → ubah asumsi → compare/share → laporkan angka`.
+- Tinjau laporan komunitas paling lambat 7 hari kerja. Ukur proporsi laporan yang bisa ditindaklanjuti, bukan sekadar jumlahnya.
 
-### Trade-off yang disepakati
+### Pertimbangan yang disepakati
 
-- Form koreksi menaikkan kualitas data tapi menambah beban moderasi → mulai antrean manual + kategori utama.
-- Personalisasi menaikkan relevansi tapi berisiko *false precision* → selalu tampilkan asumsi, pakai rentang bila tak pasti.
-- Gaji aktual sangat bernilai tapi dependensinya paling berat → jangan jadikan blocker untuk metodologi/koreksi/personalisasi.
+- Form koreksi membantu memperbaiki data, tetapi menambah pekerjaan moderasi. Mulai dengan antrean manual dan kategori utama.
+- Personalisasi membuat perhitungan lebih sesuai kebutuhan pengguna, tetapi bisa memberi kesan hasilnya terlalu pasti. Tampilkan asumsi dan gunakan rentang jika nilainya belum pasti.
+- Data gaji aktual berguna, tetapi kebutuhan data dan metodenya paling berat. Penjelasan metode, koreksi data, dan personalisasi tetap bisa dikerjakan lebih dulu.
 
 ---
 
 ## Prioritas, dependensi & metrik
 
-**Urutan potong (jika sumber daya menyempit):** PWA → embed → koreksi publik →
-kecamatan drill-down. **Tidak boleh dipotong:** pipeline data resmi, unit test +
-gate integritas (✅), aksesibilitas keyboard & legenda numerik (✅), disclaimer
-berbasis provenance (AP-01 ✅).
+Kalau waktu atau tenaga terbatas, tunda pekerjaan dalam urutan ini: PWA,
+embed, koreksi publik, lalu detail kecamatan. Pengolahan data resmi, unit test
+dan pemeriksaan integritas (✅), akses keyboard dan legenda angka (✅), serta
+catatan batasan berdasarkan sumber data (AP-01 ✅) tetap wajib dikerjakan.
 
-**Dependensi eksternal & risiko:**
+Jadwal dan sumber di luar proyek yang perlu diperhatikan:
 
-- Rilis UMK tahunan (Nov–Des) → jadwalkan rilis data mengikuti.
-- Data biaya BPS rilis dengan jeda 6–18 bulan → `asOf` wajib jujur, jangan dipaksa "terbaru".
-- Geometri HDX COD-AB diperbarui periodik → pin versi topology per rilis dataset.
-- Lisensi atribusi OSM/CARTO/Esri/Protomaps berbeda → audit sebelum mode embed dibuka.
+- Sesuaikan jadwal rilis data dengan penetapan UMK tahunan pada November sampai Desember.
+- Data biaya BPS terbit dengan jeda 6 sampai 18 bulan. Isi `asOf` sesuai periode sebenarnya.
+- Geometri HDX COD-AB diperbarui berkala. Tetapkan versi topologi untuk setiap rilis dataset.
+- Syarat atribusi OSM/CARTO/Esri/Protomaps berbeda. Periksa sebelum membuka mode embed.
 
-**Metrik keberhasilan tahunan:**
+Target tahunan:
 
-1. ≥ 90% region ber-`confidence` official/estimate untuk wage **dan** cost.
-2. Koreksi publik terverifikasi < 5% dari total field (proxy keakuratan).
-3. NPS/kepuasan ≥ 40 dari survei pengguna akhir.
-4. 0 isu aksesibilitas level A/AA terbuka > 30 hari.
+1. Sedikitnya 90% wilayah punya data upah dan biaya dengan `confidence` berupa `official` atau `estimate`.
+2. Koreksi publik terverifikasi kurang dari 5% total field, sebagai ukuran pendekatan untuk keakuratan.
+3. NPS/kepuasan pengguna mencapai setidaknya 40 dari survei pengguna akhir.
+4. Tidak ada masalah aksesibilitas tingkat A/AA yang belum ditangani lebih dari 30 hari.
