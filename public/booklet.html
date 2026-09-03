@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Booklet Resmi: Nafkah — Peta Kecukupan Gaji & Biaya Hidup 514 Daerah Indonesia</title>
+  <meta name="description" content="Booklet resmi pengenalan proyek Nafkah, metodologi living cost index, dan katalog lengkap fitur maps ekonomi 514 kabupaten/kota Indonesia." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    :root {
+      --accent: #c2452d;
+      --accent-hover: #a83624;
+      --accent-soft: #fbeae5;
+      --bg: #f4f2ee;
+      --card: #ffffff;
+      --ink: #1c1917;
+      --muted: #66615b;
+      --border: #e3dfd8;
+      --ok: #0b7a4b;
+      --ok-bg: #eaf6ed;
+      --info: #1d6fa5;
+      --info-bg: #e9f2f8;
+      --warn: #b26b00;
+      --warn-bg: #fef6e7;
+      --danger: #a5271f;
+      --danger-bg: #fbeae8;
+    }
+    body {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--ink);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      padding: 0;
+      margin: 0;
+    }
+    /* Toolbar (Screen Only) */
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 16px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    .toolbar-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .brand-tag {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .brand-logo {
+      width: 26px;
+      height: 26px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 800;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+    }
+    .brand-title {
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: -0.01em;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.15s ease;
+      border: 1px solid transparent;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+    .btn-primary:hover {
+      background: var(--accent-hover);
+    }
+    .btn-secondary {
+      background: #f5f4f1;
+      border-color: var(--border);
+      color: var(--ink);
+    }
+    .btn-secondary:hover {
+      background: #e9e6e0;
+    }
+    .page-nav {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      overflow-x: auto;
+      max-width: 100%;
+    }
+    .nav-pill {
+      background: #f5f4f1;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 8px;
+      border-radius: 999px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .nav-pill.active {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    /* Booklet Paper Sheet */
+    .booklet-container {
+      max-width: 210mm;
+      margin: 24px auto;
+      padding: 0 12px;
+    }
+    .sheet {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 40px;
+      margin-bottom: 28px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.04);
+      min-height: 297mm;
+      display: flex;
+      flex-col: column;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+    .running-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .running-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border);
+      padding-top: 10px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+    h1 { font-size: 32px; font-weight: 900; line-height: 1.15; color: #0c0a09; }
+    h2 { font-size: 20px; font-weight: 800; color: #0c0a09; margin-top: 4px; }
+    h3 { font-size: 14px; font-weight: 700; color: #1c1917; }
+    p { font-size: 13.5px; color: #44403c; line-height: 1.6; }
+    .badge-eyebrow {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-bottom: 6px;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px;
+      background: #fafaf9;
+    }
+    .stat-number {
+      font-size: 26px;
+      font-weight: 900;
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-top: 4px;
+    }
+    .stat-sub {
+      font-size: 10px;
+      color: var(--muted);
+    }
+    .band-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+    }
+    .dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      margin-top: 10px;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 8px 10px;
+      text-align: left;
+    }
+    th {
+      background: #f5f4f1;
+      font-weight: 700;
+    }
+    .callout {
+      border-left: 4px solid var(--accent);
+      background: #faf9f7;
+      padding: 12px 14px;
+      border-radius: 0 8px 8px 0;
+      margin: 12px 0;
+    }
+    .mini-calc {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 24px;
+    }
+
+    /* Print Specifics */
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 10mm 12mm;
+      }
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
+      .no-print, .toolbar {
+        display: none !important;
+      }
+      .booklet-container {
+        padding: 0 !important;
+        margin: 0 !important;
+        max-width: 100% !important;
+      }
+      .sheet {
+        border: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
+        margin-bottom: 0 !important;
+        min-height: auto !important;
+        height: 275mm !important;
+        page-break-after: always !important;
+        break-after: page !important;
+        break-inside: avoid !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Screen Toolbar -->
+  <header class="toolbar no-print">
+    <div class="toolbar-container">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <a href="/" class="brand-tag">
+          <div class="brand-logo">N</div>
+          <div>
+            <div class="brand-title">NAFKAH BOOKLET</div>
+            <div style="font-size: 10px; color: var(--muted);">Peta Ekonomi & Living Cost 2026</div>
+          </div>
+        </a>
+        <a href="/" class="btn btn-secondary">← Kembali ke Peta</a>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <div class="page-nav">
+          <button class="nav-pill active" onclick="scrollToSheet('p1')">Cover</button>
+          <button class="nav-pill" onclick="scrollToSheet('p2')">1. Latar Belakang</button>
+          <button class="nav-pill" onclick="scrollToSheet('p3')">2. Metodologi</button>
+          <button class="nav-pill" onclick="scrollToSheet('p4')">3. Fitur Peta</button>
+          <button class="nav-pill" onclick="scrollToSheet('p5')">4. Simulator Gaji</button>
+          <button class="nav-pill" onclick="scrollToSheet('p6')">5. Komparasi</button>
+          <button class="nav-pill" onclick="scrollToSheet('p7')">6. Integritas Data</button>
+          <button class="nav-pill" onclick="scrollToSheet('p8')">7. Panduan & FAQ</button>
+        </div>
+        <button class="btn btn-primary" onclick="window.print()">
+          <span>🖨️ Cetak / PDF A4</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Booklet Body -->
+  <main class="booklet-container">
+
+    <!-- SHEET 1: COVER -->
+    <article class="sheet" id="p1">
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--ink); padding-bottom: 16px;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <div class="brand-logo" style="width: 44px; height: 44px; font-size: 22px; border-radius: 10px;">N</div>
+            <div>
+              <div style="font-size: 22px; font-weight: 900; letter-spacing: -0.02em;">NAFKAH</div>
+              <div style="font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em;">Living Cost & Wage Index</div>
+            </div>
+          </div>
+          <div style="text-align: right;">
+            <span style="background: var(--accent-soft); color: var(--accent); font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 999px;">EDISI RESMI 2026</span>
+            <div style="font-size: 10px; color: var(--muted); margin-top: 4px;">PP No. 49/2025 & Susenas BPS</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 40px;">
+          <span class="badge-eyebrow">Buku Panduan & Profil Proyek</span>
+          <h1>PETA KECUKUPAN GAJI &amp; BIAYA HIDUP INDONESIA</h1>
+          <p style="font-size: 16px; margin-top: 12px; color: #44403c;">
+            Eksplorasi spasial daya beli riil, analisis biaya hidup 10 kategori, dan perbandingan lantai upah minimum di 514 kabupaten/kota dari Aceh sampai Papua.
+          </p>
+        </div>
+
+        <div class="card" style="margin-top: 32px; background: #faf8f5; border-color: #dfd9ce;">
+          <div style="border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-bottom: 12px;">
+            <div style="font-size: 10.5px; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em;">Permintaan & Pertanyaan Pengguna</div>
+            <p style="font-style: italic; font-size: 13px; color: #292524; margin-top: 4px;">
+              &ldquo;Assalamualaikum kak, saya boleh tahu lebih lanjut mengenai project kakak mengenai maps ekonomi ini? Fitur apa saja yang terdapat di website terutama maps ekonomi ini?&rdquo;
+            </p>
+          </div>
+
+          <div class="grid-4" style="text-align: center;">
+            <div class="card" style="background: #fff;">
+              <div class="stat-number" style="color: var(--accent);">514</div>
+              <div class="stat-label">Kabupaten / Kota</div>
+              <div class="stat-sub">38 Provinsi Definitif</div>
+            </div>
+            <div class="card" style="background: #fff;">
+              <div class="stat-number" style="color: var(--info);">10</div>
+              <div class="stat-label">Kategori Biaya</div>
+              <div class="stat-sub">Pangan s/d Tabungan</div>
+            </div>
+            <div class="card" style="background: #fff;">
+              <div class="stat-number" style="color: var(--warn);">4</div>
+              <div class="stat-label">Band Keterjangkauan</div>
+              <div class="stat-sub">Nyaman s/d Tak Cukup</div>
+            </div>
+            <div class="card" style="background: #fff;">
+              <div class="stat-number" style="color: var(--ok);">100%</div>
+              <div class="stat-label">Privasi Browser</div>
+              <div class="stat-sub">Client-Side Calculation</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="running-footer">
+        <div><strong>Nafkah Open Data Initiative</strong> • nafkah.adenaufal.com</div>
+        <div>Lisensi Kode MIT • Data CC-BY-4.0</div>
+      </div>
+    </article>
+
+    <!-- SHEET 2: LATAR BELAKANG -->
+    <article class="sheet" id="p2">
+      <div>
+        <div class="running-header">
+          <span>Nafkah • Buku Panduan Resmi</span>
+          <span>1. Latar Belakang & Urgensi</span>
+        </div>
+
+        <div style="margin-top: 24px;">
+          <span class="badge-eyebrow">Pengantar Proyek</span>
+          <h2>Mengapa &ldquo;Maps Ekonomi&rdquo; Ini Dibangun?</h2>
+        </div>
+
+        <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 14px;">
+          <p>
+            <strong>Nafkah</strong> lahir dari pertanyaan yang dihadapi jutaan pekerja dan keluarga di Indonesia setiap hari: <em>&ldquo;Seberapa cukup upah di suatu daerah untuk menopang kehidupan nyata sehari-hari?&rdquo;</em>
+          </p>
+
+          <div class="callout">
+            <h3 style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent);">Paradoks Upah Nominal vs. Daya Beli Riil</h3>
+            <p style="font-size: 12.5px; margin-top: 4px;">
+              Angka gaji nominal sering kali menipu. Gaji <strong>Rp 5.000.000</strong> di DKI Jakarta bisa terasa sangat ketat karena biaya hunian sewa dan pengeluaran harian yang tinggi. Namun nominal yang sama di Kota Solo, Klaten, atau Sleman memberikan ruang bernapas yang jauh lebih lapang. Mengambil keputusan karir, relokasi domisili, atau penentuan standar upah tanpa memperhitungkan biaya hidup lokal adalah kekeliruan mendasar.
+            </p>
+          </div>
+
+          <h3>Siapa yang Membutuhkan Booklet & Maps Ini?</h3>
+          <div class="grid-2">
+            <div class="card">
+              <h3 style="color: var(--accent); font-size: 12.5px;">💼 Pencari Kerja & Pekerja Relokasi</h3>
+              <p style="font-size: 11.5px; margin-top: 4px;">Menimbang tawaran pekerjaan di kota lain secara objektif: apakah kenaikan gaji sebanding dengan biaya hidup baru?</p>
+            </div>
+            <div class="card">
+              <h3 style="color: var(--info); font-size: 12.5px;">🏢 HRD, Recruiter & Tim Remunerasi</h3>
+              <p style="font-size: 11.5px; margin-top: 4px;">Menentukan paket kompensasi yang adil dan kompetitif di berbagai cabang operasional seluruh provinsi.</p>
+            </div>
+            <div class="card">
+              <h3 style="color: var(--ok); font-size: 12.5px;">📊 Jurnalis Data & Peneliti Kebijakan</h3>
+              <p style="font-size: 11.5px; margin-top: 4px;">Menganalisis disparitas ekonomi spasial, kecukupan upah minimum regional, dan dampak inflasi.</p>
+            </div>
+            <div class="card">
+              <h3 style="color: var(--warn); font-size: 12.5px;">🏠 Keluarga & Perencana Anggaran</h3>
+              <p style="font-size: 11.5px; margin-top: 4px;">Merencanakan perpindahan domisili, estimasi hunian & sekolah anak, serta simulasi pasangan 2 upah.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="running-footer">
+        <span>nafkah.adenaufal.com</span>
+        <span>Halaman 2 dari 8</span>
+      </div>
+    </article>
+
+    <!-- SHEET 3: METODOLOGI -->
+    <article class="sheet" id="p3">
+      <div>
+        <div class="running-header">
+          <span>Nafkah • Buku Panduan Resmi</span>
+          <span>2. Metodologi & Konsep</span>
+        </div>
+
+        <div style="margin-top: 24px;">
+          <span class="badge-eyebrow">Rumus & Indikator</span>
+          <h2>Formula Perhitungan & 4 Band Keterjangkauan</h2>
+        </div>
+
+        <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 14px;">
+          <p>
+            Peta menghubungkan upah dan biaya hidup melalui <strong>Rasio Cakupan (Coverage Ratio)</strong>. Rasio ini menyatakan persentase pengeluaran bulanan yang mampu ditutup oleh lantai upah:
+          </p>
+
+          <div style="background: #1c1917; color: #f5f5f4; border-radius: 8px; padding: 14px; font-family: monospace; font-size: 12px;">
+            <div style="color: #a8a29e; font-size: 11px; margin-bottom: 4px;">FORMULA INTI NAFKAH:</div>
+            <div style="color: #f59e0b; font-weight: 700;">Cakupan (%) = (Basis Upah / Total Estimasi Biaya Hidup) × 100%</div>
+            <div style="font-family: sans-serif; font-size: 11px; color: #d6d3d1; margin-top: 6px; line-height: 1.5;">
+              • <strong>Basis Upah:</strong> UMK/UMP resmi daerah ATAU Pendapatan Sendiri jika dimasukkan pengguna.<br>
+              • <strong>Total Biaya:</strong> Jumlah 10 kategori biaya hidup setelah dikalikan pengali asumsi rumah tangga.
+            </div>
+          </div>
+
+          <h3>Klasifikasi 4 Band Keterjangkauan</h3>
+          <div>
+            <div class="band-item" style="border-color: #bbf7d0; background: #f0fdf4;">
+              <div class="dot" style="background: var(--ok);"></div>
+              <div>
+                <strong style="color: var(--ok); font-size: 13px;">Nyaman (≥ 120%)</strong> — <span style="font-size: 11.5px; color: #166534; font-weight: 600;">Surplus Lapang</span>
+                <p style="font-size: 11.5px; margin-top: 2px;">Upah menutup seluruh kebutuhan pokok serta sekunder, dan masih menyisakan ruang tabungan lapang.</p>
+              </div>
+            </div>
+
+            <div class="band-item" style="border-color: #bfdbfe; background: #eff6ff;">
+              <div class="dot" style="background: var(--info);"></div>
+              <div>
+                <strong style="color: var(--info); font-size: 13px;">Cukup (100% – 119%)</strong> — <span style="font-size: 11.5px; color: #1e40af; font-weight: 600;">Menutup Kebutuhan</span>
+                <p style="font-size: 11.5px; margin-top: 2px;">Upah menutup pengeluaran standar bulanan secara pas dengan cadangan tabungan moderat.</p>
+              </div>
+            </div>
+
+            <div class="band-item" style="border-color: #fde68a; background: #fffbeb;">
+              <div class="dot" style="background: var(--warn);"></div>
+              <div>
+                <strong style="color: var(--warn); font-size: 13px;">Ketat (80% – 99%)</strong> — <span style="font-size: 11.5px; color: #92400e; font-weight: 600;">Rentan / Pas-pasan</span>
+                <p style="font-size: 11.5px; margin-top: 2px;">Anggaran ketat. Pekerja harus memangkas pengeluaran gaya hidup atau meniadakan tabungan darurat.</p>
+              </div>
+            </div>
+
+            <div class="band-item" style="border-color: #fecdd3; background: #fff1f2;">
+              <div class="dot" style="background: var(--danger);"></div>
+              <div>
+                <strong style="color: var(--danger); font-size: 13px;">Tak Cukup (&lt; 80%)</strong> — <span style="font-size: 11.5px; color: #9f1239; font-weight: 600;">Defisit Signifikan</span>
+                <p style="font-size: 11.5px; margin-top: 2px;">Defisit bulanan. Upah minimum resmi belum mencukupi standar pengeluaran hidup layak dasar.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="running-footer">
+        <span>nafkah.adenaufal.com</span>
+        <span>Halaman 3 dari 8</span>
+      </div>
+    </article>
+
+    <!-- SHEET 4: FITUR PETA -->
+    <article class="sheet" id="p4">
+      <div>
+        <div class="running-header">
+          <span>Nafkah • Buku Panduan Resmi</span>
+          <span>3. Fitur Utama Maps Ekonomi</span>
+        </div>
+
+        <div style="margin-top: 24px;">
+          <span class="badge-eyebrow">Fitur Spasial</span>
+          <h2>Kemampuan &amp; Fitur Interaktif Peta</h2>
+        </div>
+
+        <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 14px;">
+          <p>
+            Maps ekonomi Nafkah menggunakan MapLibre GL JS berkinerja tinggi, zero API key, dan ramah aksesibilitas publik:
+          </p>
+
+          <div class="grid-2">
+            <div class="card">
+              <h3 style="font-size: 13px;">🗺️ Peta Choropleth 514 Daerah</h3>
+              <p style="font-size: 11.5px; margin-top: 4px;">
+                Batas adm2 definitif seluruh 514 kabupaten/kota Indonesia berbasis TopoJSON efisien (&lt;0.6 MB) yang memuat cepat di koneksi internet seluler sekalipun.
+              </p>
+            </div>
+            <div class="card">
+              <h3 style="font-size: 13px;">🎨 3 Mode Pewarnaan Fleksibel</h3>
+              <p style="font-size: 11.5px; margin-top: 4px;">
+                Pilihan pewarnaan: Mode <strong>Cakupan</strong> (rasio keterjangkauan %), Mode <strong>Biaya</strong> (gradien rupiah bulanan), atau Mode <strong>Upah</strong> (gradien UMK daerah).
+              </p>
+            </div>
+            <div class="card">
+              <h3 style="font-size: 13px;">🛰️ 4 Peta Dasar (Basemaps)</h3>
+              <p style="font-size: 11.5px; margin-top: 4px;">
+                Tersedia peta dasar <strong>Terang</strong> (CARTO Positron), <strong>Gelap</strong> (Dark Matter), <strong>Satelit</strong> (Citra Esri), dan <strong>Mode Offline</strong> tanpa tile peta.
+              </p>
+            </div>
+            <div class="card">
+              <h3 style="font-size: 13px;">👁️ Inklusif &amp; Ramah Buta Warna</h3>
+              <p style="font-size: 11.5px; margin-top: 4px;">
+                Palet warna teruji standar kontras AA dan ramah buta warna. Area non-data (danau, cagar alam) diberi tekstur arsir khusus.
+              </p>
+            </div>
+          </div>
+
+          <div class="card" style="background: #1c1917; color: #fff; margin-top: 6px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <div style="color: #f59e0b; font-size: 11px; font-weight: 800; text-transform: uppercase;">Performa &amp; Tanpa API Key</div>
+                <p style="font-size: 12px; color: #d6d3d1; margin-top: 4px;">
+                  Aplikasi bersifat statis mandiri (Next.js Static Export + MapLibre GL). Peta berjalan di browser pengguna tanpa pelacakan data dan tanpa resiko downtime batas API komersial.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="running-footer">
+        <span>nafkah.adenaufal.com</span>
+        <span>Halaman 4 dari 8</span>
+      </div>
+    </article>
+
+    <!-- SHEET 5: SIMULATOR GAJI -->
+    <article class="sheet" id="p5">
+      <div>
+        <div class="running-header">
+          <span>Nafkah • Buku Panduan Resmi</span>
+          <span>4. Simulator Asumsi & Gaji</span>
+        </div>
+
+        <div style="margin-top: 24px;">
+          <span class="badge-eyebrow">Simulasi Finansial</span>
+          <h2>Kustomisasi Asumsi &amp; Fitur &ldquo;Pendapatan Sendiri&rdquo;</h2>
+        </div>
+
+        <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 14px;">
+          <p>
+            Peta ekonomi ini tidak kaku. Setiap perubahan pada panel asumsi seketika <strong>mewarnai ulang seluruh 514 poligon daerah</strong> tanpa perlu memuat ulang halaman:
+          </p>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Asumsi</th>
+                <th>Pilihan yang Tersedia</th>
+                <th>Pengaruh terhadap Kalkulasi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Rumah Tangga</strong></td>
+                <td>Lajang, Pasangan, atau Keluarga (Anak)</td>
+                <td>Mempengaruhi porsi pangan, utilitas, dan biaya pendidikan anak</td>
+              </tr>
+              <tr>
+                <td><strong>Opsi 2 Upah</strong></td>
+                <td>Pasangan ikut bekerja (Dual Earner)</td>
+                <td>Menambahkan 1 UMK daerah ke total pemasukan rumah tangga</td>
+              </tr>
+              <tr>
+                <td><strong>Gaya Hidup</strong></td>
+                <td>Hemat, Standar (Baseline), atau Nyaman</td>
+                <td>Memperketat atau melonggarkan konsumsi dan alokasi rekreasi</td>
+              </tr>
+              <tr>
+                <td><strong>Tipe Hunian</strong></td>
+                <td>Kost/Rusun (55%), Rumah KPR (100%), Apartemen (145%)</td>
+                <td>Mengikuti benchmark sewa pasar lokal di masing-masing kota</td>
+              </tr>
+              <tr>
+                <td><strong>Transportasi</strong></td>
+                <td>Sepeda Motor, Kendaraan Umum, atau Ojek Online</td>
+                <td>Biaya bensin &amp; servis vs tarif per perjalanan harian</td>
+              </tr>
+              <tr>
+                <td><strong>Basis Upah</strong></td>
+                <td>UMK Kotor (Gross) atau Estimasi Take-Home</td>
+                <td>Potongan ±4% untuk BPJS Kesehatan, Ketenagakerjaan, dan PPh</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="card" style="border-color: #86efac; background: #f0fdf4;">
+            <h3 style="color: #166534; font-size: 13px;">🔒 Fitur Unggulan: &ldquo;Pendapatan Sendiri&rdquo;</h3>
+            <p style="font-size: 12px; color: #14532d; margin-top: 4px;">
+              Anda dapat menguji apakah gaji bulanan Anda cukup di kota mana pun tanpa bergantung pada UMK. Cukup masukkan angka gaji Anda ke kolom <strong>Pendapatan sendiri</strong>.
+            </p>
+            <p style="font-size: 11px; font-weight: 700; color: #166534; margin-top: 6px;">
+              ✓ Jaminan Privasi 100%: Angka gaji yang Anda ketik HANYA diolah di memori browser Anda dan tidak pernah dikirim ke server mana pun.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="running-footer">
+        <span>nafkah.adenaufal.com</span>
+        <span>Halaman 5 dari 8</span>
+      </div>
+    </article>
+
+    <!-- SHEET 6: KOMPARASI -->
+    <article class="sheet" id="p6">
+      <div>
+        <div class="running-header">
+          <span>Nafkah • Buku Panduan Resmi</span>
+          <span>5. Eksplorasi & Komparasi</span>
+        </div>
+
+        <div style="margin-top: 24px;">
+          <span class="badge-eyebrow">Analisis Komparasi</span>
+          <h2>Pencarian, Baki Sematan, &amp; Grafik Multilateral</h2>
+        </div>
+
+        <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 14px;">
+          <p>
+            Fitur perbandingan multilateral dirancang untuk membantu evaluasi antar wilayah secara berdampingan:
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <div class="card">
+              <h3 style="font-size: 13px;">🔍 Pencarian Instan 514 Daerah</h3>
+              <p style="font-size: 11.5px; margin-top: 2px;">Cari nama kabupaten, kota, atau provinsi. Kamera peta otomatis terbang ke lokasi wilayah target.</p>
+            </div>
+            <div class="card">
+              <h3 style="font-size: 13px;">📌 Baki Sematan (Pin Tray) Hingga 5 Wilayah</h3>
+              <p style="font-size: 11.5px; margin-top: 2px;">Sematkan beberapa daerah (misal: Jakarta Selatan, Surabaya, Yogyakarta) untuk memantau surplus/defisit bulanan secara simultan.</p>
+            </div>
+            <div class="card">
+              <h3 style="font-size: 13px;">📊 Grafik Batang Bertumpuk (Stacked Bar Chart)</h3>
+              <p style="font-size: 11.5px; margin-top: 2px;">Visualisasi Recharts membedah pengeluaran menjadi 10 komponen warna, memperlihatkan penyebab utama tingginya biaya di tiap kota.</p>
+            </div>
+            <div class="card">
+              <h3 style="font-size: 13px;">🗂️ Modal Detail Wilayah &amp; Narasi Lokal</h3>
+              <p style="font-size: 11.5px; margin-top: 2px;">Klik wilayah mana pun untuk membuka profil detail: narasi sosio-ekonomi lokal, rincian rupiah per pos pengeluaran, dan tren inflasi IHK.</p>
+            </div>
+          </div>
+
+          <div class="card" style="background: #fafaf9;">
+            <div style="font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase;">Contoh Angka Profil Lajang Standar (Edisi 2026):</div>
+            <div class="grid-3" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 8px; font-size: 11.5px;">
+              <div class="card" style="background: #fff; padding: 10px;">
+                <strong>DKI Jakarta</strong><br>
+                <span style="color: var(--muted); font-size: 10.5px;">UMK: Rp 5.396.761</span><br>
+                <span style="color: var(--info); font-weight: 700;">Cakupan 115% (Cukup)</span>
+              </div>
+              <div class="card" style="background: #fff; padding: 10px;">
+                <strong>Kota Solo (Surakarta)</strong><br>
+                <span style="color: var(--muted); font-size: 10.5px;">UMK: Rp 2.364.274</span><br>
+                <span style="color: var(--info); font-weight: 700;">Cakupan 108% (Cukup)</span>
+              </div>
+              <div class="card" style="background: #fff; padding: 10px;">
+                <strong>Kota Jayapura</strong><br>
+                <span style="color: var(--muted); font-size: 10.5px;">UMK: Rp 4.436.283</span><br>
+                <span style="color: var(--warn); font-weight: 700;">Cakupan 98% (Ketat)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="running-footer">
+        <span>nafkah.adenaufal.com</span>
+        <span>Halaman 6 dari 8</span>
+      </div>
+    </article>
+
+    <!-- SHEET 7: INTEGRITAS DATA -->
+    <article class="sheet" id="p7">
+      <div>
+        <div class="running-header">
+          <span>Nafkah • Buku Panduan Resmi</span>
+          <span>6. Integritas Data & Audit</span>
+        </div>
+
+        <div style="margin-top: 24px;">
+          <span class="badge-eyebrow">Transparansi Data</span>
+          <h2>Audit Provenance, Sumber Resmi, &amp; Batasan</h2>
+        </div>
+
+        <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 14px;">
+          <p>
+            Nafkah menganut filosofi <strong>provenance-first</strong>. Setiap baris data memiliki catatan sumber, tanggal penetapan, dan indikator keterpercayaan:
+          </p>
+
+          <div class="grid-3" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+            <div class="card" style="border-color: #86efac; background: #f0fdf4;">
+              <strong style="color: #166534; font-size: 12px;">Official (Resmi)</strong>
+              <p style="font-size: 11px; margin-top: 4px; color: #14532d;">Ketetapan resmi PP No. 49/2025, SK Gubernur 2026, dan rilis Kemnaker.</p>
+            </div>
+            <div class="card" style="border-color: #93c5fd; background: #eff6ff;">
+              <strong style="color: #1e40af; font-size: 12px;">Estimate (Estimasi)</strong>
+              <p style="font-size: 11px; margin-top: 4px; color: #1e3a8a;">Model ekonometrik dari Susenas BPS, inflasi IHK, dan standar biaya perintis.</p>
+            </div>
+            <div class="card" style="border-color: #fde68a; background: #fffbeb;">
+              <strong style="color: #92400e; font-size: 12px;">Sample (Sampel)</strong>
+              <p style="font-size: 11px; margin-top: 4px; color: #78350f;">Benchmark survei sewa pasar lokal di daerah tanpa SBH primer BPS.</p>
+            </div>
+          </div>
+
+          <div class="card" style="background: #fafaf9; border-color: #d6d3d1;">
+            <h3 style="font-size: 12.5px; text-transform: uppercase; color: #b91c1c;">⚠️ Catatan &amp; Batasan Penting (Disclaimer):</h3>
+            <div style="font-size: 11.5px; color: #44403c; margin-top: 6px; display: flex; flex-direction: column; gap: 6px; line-height: 1.5;">
+              <p>
+                <strong>1. UMK adalah Lantai Regulasi, Bukan Gaji Rata-Rata Nyata:</strong> Upah minimum adalah standar lantai hukum bagi pekerja baru di bawah 1 tahun. Sebagian sektor informal/UMKM membayar di bawah UMK, sementara sektor formal membayar lebih tinggi. Peta menjawab: <em>&ldquo;apakah lantai upah resmi cukup hidup di sini?&rdquo;</em>
+              </p>
+              <p>
+                <strong>2. Model Estimasi Ekonometrik:</strong> Angka pengeluaran dihitung dari permodelan Susenas dan IHK, bukan survei primer per kepala keluarga di 514 titik.
+              </p>
+              <p>
+                <strong>3. Bukan Nasihat Keuangan:</strong> Data ini disajikan untuk wawasan publik dan perbandingan spasial objektif.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="running-footer">
+        <span>nafkah.adenaufal.com</span>
+        <span>Halaman 7 dari 8</span>
+      </div>
+    </article>
+
+    <!-- SHEET 8: PANDUAN & FAQ -->
+    <article class="sheet" id="p8">
+      <div>
+        <div class="running-header">
+          <span>Nafkah • Buku Panduan Resmi</span>
+          <span>7. Panduan & Tanya Jawab</span>
+        </div>
+
+        <div style="margin-top: 24px;">
+          <span class="badge-eyebrow">Panduan Pengguna</span>
+          <h2>Langkah Praktis, Tanya Jawab &amp; Tautan Akses</h2>
+        </div>
+
+        <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 14px;">
+          <div class="grid-4">
+            <div class="card" style="text-align: center;">
+              <div style="color: var(--accent); font-weight: 800; font-size: 11px;">LANGKAH 1</div>
+              <div style="font-weight: 700; font-size: 12px; margin-top: 2px;">Cari Wilayah</div>
+              <p style="font-size: 10.5px; margin-top: 2px;">Pilih kota domisili atau tujuan Anda di peta.</p>
+            </div>
+            <div class="card" style="text-align: center;">
+              <div style="color: var(--info); font-weight: 800; font-size: 11px;">LANGKAH 2</div>
+              <div style="font-weight: 700; font-size: 12px; margin-top: 2px;">Atur Asumsi</div>
+              <p style="font-size: 10.5px; margin-top: 2px;">Sesuaikan profil keluarga, kost/rumah, &amp; transport.</p>
+            </div>
+            <div class="card" style="text-align: center;">
+              <div style="color: var(--warn); font-weight: 800; font-size: 11px;">LANGKAH 3</div>
+              <div style="font-weight: 700; font-size: 12px; margin-top: 2px;">Uji Gaji Anda</div>
+              <p style="font-size: 10.5px; margin-top: 2px;">Masukkan gaji sendiri untuk melihat kelayakan hidup.</p>
+            </div>
+            <div class="card" style="text-align: center;">
+              <div style="color: var(--ok); font-weight: 800; font-size: 11px;">LANGKAH 4</div>
+              <div style="font-weight: 700; font-size: 12px; margin-top: 2px;">Bandingkan</div>
+              <p style="font-size: 10.5px; margin-top: 2px;">Sematkan kota ke baki untuk komparasi grafik.</p>
+            </div>
+          </div>
+
+          <h3>Pertanyaan yang Sering Diajukan (FAQ)</h3>
+          <div style="display: flex; flex-direction: column; gap: 8px; font-size: 12px;">
+            <div class="card">
+              <strong>Q: Apakah data gaji yang saya masukkan aman?</strong>
+              <p style="font-size: 11.5px; margin-top: 2px;">A: 100% aman. Website tidak memiliki backend database pengguna. Angka gaji hanya hidup di browser Anda dan langsung hilang saat tab ditutup.</p>
+            </div>
+            <div class="card">
+              <strong>Q: Bagaimana cara mengajukan koreksi data jika ada angka yang keliru?</strong>
+              <p style="font-size: 11.5px; margin-top: 2px;">A: Anda bisa mengisi Form Airtable Koreksi Data resmi atau membuka issue/PR di repositori GitHub Nafkah.</p>
+            </div>
+          </div>
+
+          <!-- Final Back Cover Box -->
+          <div class="card" style="background: #1c1917; color: #fff; padding: 18px; margin-top: 8px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+              <div>
+                <div style="font-size: 16px; font-weight: 900;">Buka Website Nafkah Sekarang</div>
+                <div style="color: #fbbf24; font-size: 13px; font-weight: 700; margin-top: 2px;">https://nafkah.adenaufal.com</div>
+                <div style="font-size: 10.5px; color: #a8a29e; margin-top: 2px;">Kode Terbuka: github.com/adenaufal/nafkah</div>
+              </div>
+              <a href="/" class="btn btn-primary" style="padding: 8px 16px; font-size: 12px;">Buka Aplikasi Peta ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="running-footer">
+        <span>nafkah.adenaufal.com</span>
+        <span>Halaman 8 dari 8 • Akhir Dokumen</span>
+      </div>
+    </article>
+
+  </main>
+
+  <script>
+    function scrollToSheet(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+      document.querySelectorAll('.nav-pill').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+  </script>
+</body>
+</html>
