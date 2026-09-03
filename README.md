@@ -147,7 +147,7 @@ provinsi, sesuai Kepmendagri No. 100.1.1-6117.
   IHK tahunan Juli 2026 (+2,88%) dan memakai `asOf` 2026-08-01.
 - Deskripsi sumber sudah disesuaikan dengan metode yang dipakai. Nama survei
   fiktif dihapus. Sumber yang diduga memuat informasi rekaan untuk konten SEO
-  ditolak dan dicatat di `data-prep/wages-2026-research.json`.
+  ditolak dan dicatat di `data-prep/data/wages-2026-research.json`.
 - Daerah pedalaman dan kepulauan seperti Keerom, Sarmi, Mamberamo Raya, dan
   Pegunungan Arfak tidak punya SBH primer. Estimasi pengeluarannya memakai
   Susenas perdesaan dan biaya logistik perintis, sementara upahnya mengikuti

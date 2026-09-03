@@ -19,12 +19,13 @@ NUL
 # Large re-downloadable source (145 MB HDX raw; see README for fetch command)
 /data-prep/idn_admin2.geojson
 
-# Private capture — do not publish
+# Private, never-publish local artifacts — captures, sessions, audience/PII exports.
+# Reorganized under _private/; whole folder ignored. Root patterns kept as a
+# backstop for any new capture that lands in the repo root.
+/_private/
 /pi-session-*.html
 /Screenshot*.png
 /Screenshot*.jpg
-
-# Threads / audience feedback exports — third-party PII, NEVER publish
 /*_full.txt
 /*_feedback*.json
 /threads_*.txt

@@ -14,7 +14,7 @@ const out = ALL_PROVINCE_PACKAGES.map((p) => ({
     confidence: w.confidence,
   })),
 }));
-fs.writeFileSync("data-prep/wages-2025.json", JSON.stringify(out, null, 1));
+fs.writeFileSync("data-prep/data/wages-2025.json", JSON.stringify(out, null, 1));
 
 let n = 0,
   official = 0;

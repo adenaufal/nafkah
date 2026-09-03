@@ -1,5 +1,5 @@
 /**
- * Menerapkan hasil riset UMP/UMK 2026 (data-prep/wages-2026-research.json)
+ * Menerapkan hasil riset UMP/UMK 2026 (data-prep/data/wages-2026-research.json)
  * ke seluruh file src/data/provinces/*.ts:
  *  - Regenerasi blok `wages` (year 2026, dekrit resmi, asOf 2026-01-01).
  *  - Daerah tanpa UMK mandiri 2026 menginduk UMP 2026 provinsinya.
@@ -39,9 +39,9 @@ function loadJson<T>(rel: string): T {
   }
 }
 
-const spec = loadJson<Spec>("data-prep/wages-2026-research.json");
+const spec = loadJson<Spec>("data-prep/data/wages-2026-research.json");
 const costsOrig = loadJson<NonNullable<Spec["costs2025"]>>(
-  "data-prep/costs-2025-original.json",
+  "data-prep/data/costs-2025-original.json",
 );
 
 const slugByCode: Record<string, string> = {
@@ -222,7 +222,7 @@ for (const p of ALL_PROVINCE_PACKAGES) {
   fs.writeFileSync(file, text);
 }
 
-fs.writeFileSync("data-prep/wages-2026.json", JSON.stringify(dump, null, 1));
+fs.writeFileSync("data-prep/data/wages-2026.json", JSON.stringify(dump, null, 1));
 
 console.log(
   JSON.stringify(

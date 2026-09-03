@@ -111,7 +111,7 @@ while (true) {
 }
 
 fs.writeFileSync(
-  "data-prep/costs-2025-original.json",
+  "data-prep/data/costs-2025-original.json",
   JSON.stringify(out, null, 1),
 );
 console.log(JSON.stringify({ regionsExtracted: count }));
