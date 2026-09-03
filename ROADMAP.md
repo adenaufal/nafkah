@@ -21,7 +21,7 @@ kerja kecil, sedang, dan besar.
 
 ---
 
-## Status v0.1 (per 2 September 2026)
+## Status v0.1.0 (per 3 September 2026)
 
 ### ✅ Sudah tersedia
 
@@ -53,13 +53,17 @@ kerja kecil, sedang, dan besar.
 
 ---
 
-## Persiapan membuka repo ke publik
+## Status publikasi dan kanal kontribusi
 
-Persiapan teknis sudah selesai. Maintainer masih perlu menjalankan langkah
-manual berikut sebelum mengubah repo menjadi publik.
+Repositori sudah dibuat publik di GitHub dan aplikasi `v0.1.0`
+sudah dideploy. Checklist berikut mencatat kondisi pascapublikasi; item yang
+masih ❌ adalah pekerjaan operasional atau keamanan, bukan syarat untuk membuka
+repo.
 
 | Item | Status |
 | --- | --- |
+| Repositori GitHub publik | ✅ |
+| Aplikasi produksi di [nafkah.adenaufal.com](https://nafkah.adenaufal.com) | ✅ |
 | Dua lisensi: MIT untuk kode, CC-BY-4.0 untuk data | ✅ |
 | CONTRIBUTING + CI (typecheck/test/build) | ✅ |
 | Code of Conduct (Contributor Covenant 2.1) | ✅ |
@@ -67,22 +71,24 @@ manual berikut sebelum mengubah repo menjadi publik.
 | Pemeriksaan data dengan skema Zod dan validasi 514×3 di CI | ✅ (AP-02 sebagian) |
 | Penjelasan metode dan catatan bahwa UMK adalah patokan, bukan gaji nyata | ✅ (AP-01) |
 | File sementara dan data pribadi (screenshot, salinan masukan, log) masuk `.gitignore` | ✅ |
-| Push repo ke GitHub dan aktifkan Discussions | ❌ manual |
-| Buat form Airtable dan pasang tautannya di `config.yml` serta situs | ❌ manual (lihat [panduan kanal masukan](docs/feedback-channels.md)) |
+| Form Airtable dan tautannya di `config.yml` | 🟡 Tautan sudah terpasang; pemeriksaan laporan masih manual (lihat [panduan kanal masukan](docs/feedback-channels.md)) |
+| GitHub Discussions | 🟡 Tautan sudah tersedia; aktivasi dan kategorinya perlu dipelihara maintainer |
 | `SECURITY.md` untuk situs statis | ❌ opsional |
 
-> Setelah repo publik, AP-02 (file JSON dengan versi) dan AP-04 (form koreksi)
-> menjadi prasyarat untuk menerima koreksi komunitas dengan aman.
+> Repo sudah publik. AP-02 (file JSON dengan versi) dan alur pemeriksaan AP-04
+> tetap menjadi prasyarat untuk menerima serta menggabungkan koreksi komunitas
+> dengan aman.
 
 ---
 
 ## Rencana pengerjaan
 
-Keputusan 2 September 2026 menetapkan form Airtable untuk koreksi data publik
-tanpa login, terutama bagi pengguna nonteknis. Saran fitur dan bug teknis masuk
-ke GitHub Discussions. Situs tetap menyajikan aset statis, tanpa layanan form
-yang dihosting sendiri. Pengumpulan laporan nantinya memakai agent terjadwal
-di luar situs. Langkah penyiapannya ada di [panduan kanal masukan](docs/feedback-channels.md).
+Repositori dan aplikasi sudah publik. Form Airtable untuk koreksi data sudah
+ditautkan dari konfigurasi GitHub dan README; laporan yang masuk tetap diperiksa
+manual. Saran fitur dan bug diarahkan ke GitHub Discussions. Situs tetap
+menyajikan aset statis, tanpa layanan form yang dihosting sendiri. Pengumpulan
+laporan nantinya memakai agent terjadwal di luar situs. Keputusan 2 September
+2026 dan langkah pengelolaannya ada di [panduan kanal masukan](docs/feedback-channels.md).
 
 ### Dikerjakan berikutnya
 
@@ -91,7 +97,7 @@ di luar situs. Langkah penyiapannya ada di [panduan kanal masukan](docs/feedback
 | AP-01 | Penjelasan metode dan batasan | Tampilkan metode dekat peta dan di jendela detail. Jelaskan asumsi awal 1 orang, arti tingkat keterjangkauan, serta UMK sebagai acuan resmi, bukan gaji aktual. | 🟡 Bagian utama ✅: catatan di panel Tentang dan jendela detail; `source`/`asOf`/`confidence` sudah tampil. Pencatatan penggunaan masih menunggu AP-06. | P0 · S |
 | AP-02 | Versi dataset dan pemeriksaan data | Gunakan skema Zod dan CI untuk menolak data tidak valid sebelum menerima koreksi komunitas. Setelah itu, pindahkan dataset ke file JSON dengan versi dan catatan perubahan. | 🟡 Pemeriksaan Zod ✅ (`src/data/schema.ts`, `dataset.test.ts`, `DATASET_VERSION`). Migrasi TS ke JSON di `/data/vYYYY/` masih ❌. | P0 · M |
 | AP-03 | Personalisasi rumah tangga v1.1 | Tambahkan jumlah anak dan isian cicilan/KPR pada kontrol pendapatan dan 2 upah yang sudah ada. Tampilkan profil aktif dan tombol reset. | ❌ (faktor pengali dan tipe rumah tangga ✅). Unit test wajib mencakup anak dan cicilan. | P0 · M |
-| AP-04 | Form koreksi per wilayah | Buat form Airtable "Laporkan angka ini" dengan wilayah, kategori, nilai lama/usulan, periode, jenis bukti, sumber, dan kontak opsional. Laporan masuk ke antrean pemeriksaan manual (`Status=New`), tanpa mengubah dataset otomatis. | ❌ (skema ada di [panduan kanal masukan](docs/feedback-channels.md); template GitHub ✅). | P0 · M |
+| AP-04 | Form koreksi per wilayah | Buat form Airtable "Laporkan angka ini" dengan wilayah, kategori, nilai lama/usulan, periode, jenis bukti, sumber, dan kontak opsional. Laporan masuk ke antrean pemeriksaan manual (`Status=New`), tanpa mengubah dataset otomatis. | 🟡 Form dan tautan ✅; antrean pemeriksaan manual serta proses penerimaan masih ❌ (skema ada di [panduan kanal masukan](docs/feedback-channels.md); template GitHub ✅). | P0 · M |
 | AP-05 | Audit wilayah yang diperdebatkan | Periksa Kep. Meranti, Samosir, Bandung, serta biaya transportasi/logistik dan kesehatan. Bandingkan hasil model dengan laporan lokal, lalu catat keputusan tiap kasus. | ❌ | P0 · S/M |
 | AP-06 | Kemudahan menemukan dan memakai fitur | Uji ulang Pendapatan sendiri, filter tingkat keterjangkauan, mode gelap, dan legenda di ponsel serta lewat keyboard. Perjelas tombol tindakan dan catat penggunaan tanpa data pribadi. | ❌ | P1 · S |
 
@@ -115,9 +121,9 @@ di luar situs. Langkah penyiapannya ada di [panduan kanal masukan](docs/feedback
 
 ### Urutan eksekusi untuk satu maintainer
 
-1. Selesaikan persiapan publikasi: push repo, aktifkan Discussions, dan buat form Airtable.
+1. Pastikan kanal kontribusi publik tetap berfungsi: pantau form Airtable dan Discussions, lalu siapkan antrean pemeriksaan (AP-04, AP-10).
 2. Perjelas metode dan batasan (bagian utama AP-01 ✅), lalu audit Meranti, Samosir, Bandung, biaya transportasi, dan kesehatan (AP-05).
-3. Siapkan form koreksi, antrean pemeriksaan, dan catatan perubahan (AP-04, AP-10), lalu file JSON dengan versi (sisa AP-02).
+3. Selesaikan antrean pemeriksaan dan catatan perubahan (AP-04, AP-10), lalu file JSON dengan versi (sisa AP-02).
 4. Tambahkan jumlah anak dan cicilan (AP-03) beserta uji regresi, kemudian kerjakan perbandingan dan berbagi hasil (AP-07).
 
 ---

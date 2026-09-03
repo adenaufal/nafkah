@@ -18,7 +18,10 @@ kebutuhanmu.
 
 Coba di [nafkah.adenaufal.com](https://nafkah.adenaufal.com).
 
-## Fitur (v0.1)
+Rilis publik saat ini adalah `v0.1.0`. Aplikasi sudah dideploy, sedangkan kode
+sumber dan dataset tersedia secara terbuka di [repositori GitHub](https://github.com/adenaufal/nafkah).
+
+## Fitur (v0.1.0)
 
 - Peta 514 kabupaten/kota dengan warna untuk kategori Nyaman, Cukup, Ketat,
   dan Tak Cukup. Paletnya mempertimbangkan buta warna; wilayah tanpa data
@@ -54,6 +57,20 @@ npm run build      # static export ke ./out
 npm run typecheck
 npm test           # unit test kalkulasi (vitest)
 ```
+
+## Deployment
+
+Nafkah menghasilkan static export ke `./out` dan dideploy sebagai Cloudflare
+Workers Static Assets. Untuk mendeploy instance sendiri, login ke Wrangler lalu
+jalankan:
+
+```bash
+npx wrangler login
+npm run deploy
+```
+
+Sesuaikan `name` dan `routes` di `wrangler.jsonc` sebelum memakai konfigurasi
+ini untuk fork atau domain lain.
 
 ## Model asumsi & formula
 
@@ -163,7 +180,11 @@ provinsi, sesuai Kepmendagri No. 100.1.1-6117.
 
 Menemukan angka yang perlu diperbaiki? Baca [panduan kontribusi](CONTRIBUTING.md).
 Koreksi data jadi prioritas, dan setiap angka wajib disertai `source`, `asOf`,
-serta `confidence`. Rencana pengembangan ada di [roadmap](ROADMAP.md).
+serta `confidence`. Untuk masukan, gunakan [form koreksi data](https://airtable.com/appri285d7CNF5mqc/pagbuVQAdt3s9mEaV/form)
+jika kamu menemukan angka yang meleset, atau [GitHub Discussions](https://github.com/adenaufal/nafkah/discussions)
+untuk saran fitur, bug, dan diskusi umum. Setiap koreksi tetap diperiksa
+secara manual sebelum masuk ke dataset. Rencana pengembangan ada di
+[roadmap](ROADMAP.md).
 
 ## Lisensi
 
