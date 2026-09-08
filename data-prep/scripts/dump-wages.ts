@@ -1,33 +1,58 @@
-import { ALL_PROVINCE_PACKAGES } from "../../src/data/provinces/index";
+/**
+ * Dump ringkas dataset upah aktif (dari JSON berversi, AP-02) untuk pemeriksaan
+ * cepat: jumlah record, proporsi confidence, sebaran tahun, dan pengindukan
+ * UMP vs UMK mandiri. Jalankan dari root repo: npx tsx data-prep/scripts/dump-wages.ts
+ */
 import * as fs from "fs";
+import * as path from "path";
+import { fileURLToPath } from "node:url";
 
-const out = ALL_PROVINCE_PACKAGES.map((p) => ({
-  provinceName: p.provinceName,
-  provinceCode: p.provinceCode,
-  regions: p.regions.map((r) => ({ code: r.code, name: r.name, tier: r.tier })),
-  wages: p.wages.map((w) => ({
-    regionCode: w.regionCode,
-    year: w.year,
-    grossMonthly: w.grossMonthly,
-    source: w.source,
-    asOf: w.asOf,
-    confidence: w.confidence,
-  })),
-}));
-fs.writeFileSync("data-prep/data/wages-2025.json", JSON.stringify(out, null, 1));
+const here = path.dirname(fileURLToPath(import.meta.url));
+const root = path.resolve(here, "..", "..");
+const dir = path.join(root, "public", "data", "v2026.1");
+
+function readJson<T>(name: string): T {
+  try {
+    return JSON.parse(
+      fs.readFileSync(path.join(dir, name), "utf8"),
+    ) as T;
+  } catch (e) {
+    console.error(`Gagal membaca ${name}:`, e instanceof Error ? e.message : e);
+    process.exit(1);
+  }
+}
+
+interface WageDump {
+  regionCode: string;
+  year: number;
+  grossMonthly: number;
+  source: string;
+  asOf: string;
+  confidence: string;
+}
+interface ManifestDump {
+  datasetVersion: string;
+}
+
+const manifest = readJson<ManifestDump>("manifest.json");
+const wages = readJson<WageDump[]>("wages.json");
+
+console.log("datasetVersion:", manifest.datasetVersion);
 
 let n = 0,
   official = 0;
 const years: Record<number, number> = {};
 const umpVsUmk: Record<string, number> = {};
-for (const p of ALL_PROVINCE_PACKAGES) {
-  n += p.wages.length;
-  for (const w of p.wages) {
-    official += w.confidence === "official" ? 1 : 0;
-    years[w.year] = (years[w.year] || 0) + 1;
-    const isUmp = /UMP|Upah Minimum Provinsi/i.test(w.source);
-    umpVsUmk[isUmp ? "UMP-sourced" : "UMK-sourced"] =
-      (umpVsUmk[isUmp ? "UMP-sourced" : "UMK-sourced"] || 0) + 1;
-  }
+for (const w of wages) {
+  n += 1;
+  if (w.confidence === "official") official += 1;
+  years[w.year] = (years[w.year] || 0) + 1;
+  const isUmp = /UMP|Upah Minimum Provinsi/i.test(w.source);
+  umpVsUmk[isUmp ? "UMP-sourced" : "UMK-sourced"] =
+    (umpVsUmk[isUmp ? "UMP-sourced" : "UMK-sourced"] || 0) + 1;
 }
-console.log(JSON.stringify({ total: n, official, years, umpVsUmk }, null, 1));
+
+console.log("total wage records:", n);
+console.log("official:", official);
+console.log("years:", years);
+console.log("umpVsUmk:", umpVsUmk);

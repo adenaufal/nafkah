@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { useApp } from "@/state/AppContext";
+import manifest from "../../public/data/v2026.1/manifest.json";
 import {
   AFFORDABILITY_BANDS,
   BAND_LABEL,
@@ -67,7 +68,8 @@ export function AboutDrawer() {
                 Tentang Nafkah
               </h2>
               <p className="mt-0.5 text-xs text-muted">
-                Data estimasi sampel · bukan nasihat keuangan
+                Dataset {manifest.datasetVersion} · estimasi sampel · bukan
+                nasihat keuangan
               </p>
             </div>
             <button
@@ -150,12 +152,13 @@ export function AboutDrawer() {
               <p className="mt-2 leading-relaxed text-muted">
                 Angka di dalamnya mengikuti asumsi yang bisa kamu ubah sendiri —
                 komposisi rumah tangga (termasuk opsi dua penghasilan ketika
-                pasangan ikut bekerja dengan UMK/UMP daerah terpilih), gaya
-                hidup, tipe hunian, moda transportasi, tabungan, pendapatan
-                sendiri, sampai basis upah kotor atau take-home — dan berlaku
-                seketika tanpa memuat ulang. Klik wilayah untuk rincian sepuluh
-                kategori pengeluaran beserta sumber dan tanggal datanya; pin
-                hingga lima wilayah untuk membandingkannya berdampingan.
+                pasangan ikut bekerja dengan UMK/UMP daerah terpilih), jumlah
+                anak, gaya hidup, tipe hunian, moda transportasi, tabungan,
+                cicilan KPR, pendapatan sendiri, sampai basis upah kotor atau
+                take-home — dan berlaku seketika tanpa memuat ulang. Klik
+                wilayah untuk rincian sepuluh kategori pengeluaran beserta
+                sumber dan tanggal datanya; pin hingga lima wilayah untuk
+                membandingkannya berdampingan.
               </p>
             </section>
 
@@ -169,7 +172,11 @@ export function AboutDrawer() {
                 {[
                   [
                     "Tipe rumah tangga",
-                    "Single (1 orang), Pasangan (2 orang dewasa — opsi “2 upah” berarti pasangan ikut bekerja dengan upah minimum setempat), atau Keluarga (ditambah kebutuhan anak, termasuk pendidikan).",
+                    "Single (1 orang), Pasangan (2 orang dewasa — opsi “2 upah” berarti pasangan ikut bekerja dengan upah minimum setempat), atau Keluarga (pasangan + anak; preset jumlah anaknya diatur di baris “Jumlah anak”).",
+                  ],
+                  [
+                    "Jumlah anak",
+                    "0–5 anak. Tiap anak menambah kebutuhan makan, pendidikan/pengasuhan, kesehatan, dan sebagainya lewat faktor per-anak — skala ekuivalensi yang dikalibrasi ke profil Keluarga sebelumnya, diberi label estimasi. Berlaku juga untuk single (orang tua tunggal).",
                   ],
                   [
                     "Pendapatan sendiri (opsional)",
@@ -181,7 +188,11 @@ export function AboutDrawer() {
                   ],
                   [
                     "Hunian",
-                    "Rusun / kost (menengah ke bawah, ±55% biaya hunian dasar), Rumah KPR (menengah, baseline ×1), Apartemen (menengah ke atas, ±145% baseline). Angkanya anggaran hunian bulanan setara dari benchmark sewa pasar lokal, bukan simulasi cicilan bank.",
+                    "Rusun / kost (menengah ke bawah, ±55% biaya hunian dasar), Rumah KPR (menengah, baseline ×1), Apartemen (menengah ke atas, ±145% baseline). Angkanya anggaran hunian bulanan setara dari benchmark sewa pasar lokal; punya angsuran riil? Isi Cicilan KPR/angsuran agar hunian memakai angkamu.",
+                  ],
+                  [
+                    "Cicilan KPR / angsuran (opsional)",
+                    "Angsuran bulananmu menggantikan estimasi sewa hunian daerah — yang membayar KPR tidak membayar sewa. Kosongkan untuk kembali ke estimasi daerah. Angka ini hanya hidup di browsermu.",
                   ],
                   [
                     "Transportasi",
@@ -230,7 +241,17 @@ export function AboutDrawer() {
                   bukan “berapa yang orang benar-benar terima”. Untuk mengujinya
                   dengan angkamu sendiri, pakai kolom{" "}
                   <strong className="text-ink">Pendapatan sendiri</strong> di
-                  panel asumsi.
+                  panel asumsi. Versi dataset saat ini: {manifest.datasetVersion}
+                  , dengan catatan perubahannya di{" "}
+                  <a
+                    href="/data/CHANGELOG.md"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="font-semibold text-accent hover:underline"
+                  >
+                    /data/CHANGELOG.md
+                  </a>
+                  .
                 </span>
               </p>
               <p className="mt-3 rounded-lg border border-amber-500/40 bg-amber-500/10 p-3 text-xs leading-relaxed text-amber-800 dark:text-amber-300">

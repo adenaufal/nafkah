@@ -8,7 +8,6 @@ import {
   VALUE_RAMP,
   bandColors,
 } from "@/lib/calculations";
-import { REGION_BY_CODE } from "@/data/regions";
 import { formatPct } from "@/lib/format";
 import type { AffordabilityBand, BasemapId, ColorMode } from "@/lib/types";
 
@@ -264,7 +263,7 @@ export function InsightCard() {
 
 /** Wide-only insight column: highest / lowest coverage. */
 export function RankCard() {
-  const { state, metrics, metricsReady } = useApp();
+  const { state, metrics, metricsReady, regionByCode } = useApp();
   const palette = bandColors(state.darkMode);
   const [side, setSide] = useState<"top" | "bottom">("top");
   const rows = useMemo(() => {
@@ -276,11 +275,11 @@ export function RankCard() {
       side === "top" ? sorted.slice(0, 5) : sorted.slice(-5).reverse();
     return pick.map((m) => ({
       code: m.code,
-      name: (REGION_BY_CODE.get(m.code)?.name ?? m.code).replace(/^Kota /, ""),
+      name: (regionByCode.get(m.code)?.name ?? m.code).replace(/^Kota /, ""),
       value: m.coveragePercent,
       band: m.band,
     }));
-  }, [metrics, metricsReady, side]);
+  }, [metrics, metricsReady, regionByCode, side]);
 
   return (
     <section

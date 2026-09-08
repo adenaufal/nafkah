@@ -13,9 +13,6 @@ import type { ExpenseCategoryKey } from "@/lib/types";
  * zod stays out of the browser bundle.
  */
 
-/** Bump when the dataset's shape or vintage changes; surfaced in changelog. */
-export const DATASET_VERSION = "2026.1";
-
 /** Exactly the 514 kabupaten/kota per Kepmendagri 100.1.1-6117. */
 export const EXPECTED_REGION_COUNT = 514;
 

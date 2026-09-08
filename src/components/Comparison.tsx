@@ -13,11 +13,10 @@ import {
 } from "recharts";
 import { useApp } from "@/state/AppContext";
 import { EXPENSE_CATEGORIES } from "@/data/costs";
-import { REGION_BY_CODE } from "@/data/regions";
 import { BAND_LABEL, bandColors } from "@/lib/calculations";
+import { assumptionSummary } from "@/lib/profile";
 import { formatIDR, formatIDRCompact, formatPct } from "@/lib/format";
 import type {
-  Assumptions,
   ExpenseCategoryKey,
   RegionMetrics,
 } from "@/lib/types";
@@ -29,7 +28,7 @@ import type {
  */
 
 export function PinnedTray() {
-  const { state, metrics, unpin, select } = useApp();
+  const { state, metrics, regionByCode, unpin, select } = useApp();
   const palette = bandColors(state.darkMode);
 
   return (
@@ -57,7 +56,7 @@ export function PinnedTray() {
           </header>
           <ul className="grid gap-1.5 p-2">
             {state.pinned.map((code) => {
-              const region = REGION_BY_CODE.get(code);
+              const region = regionByCode.get(code);
               const name = region?.name ?? code;
               const m = metrics.get(code);
               return (
@@ -129,7 +128,7 @@ export function PinnedTray() {
 }
 
 export function ComparisonPanel() {
-  const { state, metrics } = useApp();
+  const { state, metrics, regionByCode } = useApp();
   const [open, setOpen] = useState(true);
   const customActive = (state.assumptions.customIncome ?? 0) > 0;
 
@@ -145,7 +144,7 @@ export function ComparisonPanel() {
 
   // Stacked composition data for recharts.
   const chartData = pinnedMetrics.map((m) => {
-    const name = (REGION_BY_CODE.get(m.code)?.name ?? m.code).replace(
+    const name = (regionByCode.get(m.code)?.name ?? m.code).replace(
       /^Kota /,
       "",
     );
@@ -192,7 +191,7 @@ export function ComparisonPanel() {
                 className="rounded-lg border border-border p-3"
               >
                 <h3 className="truncate text-sm font-semibold">
-                  {REGION_BY_CODE.get(m.code)?.name ?? m.code}
+                  {regionByCode.get(m.code)?.name ?? m.code}
                 </h3>
                 <dl className="mt-2 grid grid-cols-2 gap-x-3 gap-y-1 text-xs tabular-nums">
                   <MobileMetric
@@ -236,7 +235,7 @@ export function ComparisonPanel() {
                 </th>
                 {pinnedMetrics.map((m) => {
                   const name = (
-                    REGION_BY_CODE.get(m.code)?.name ?? m.code
+                    regionByCode.get(m.code)?.name ?? m.code
                   ).replace(/^Kota /, "");
                   return (
                     <th
@@ -439,41 +438,15 @@ function MobileMetric({
   value: string;
   tone?: "ok" | "danger";
 }) {
+  const toneClass = { ok: "text-ok", danger: "text-danger" } as const;
   return (
     <div>
       <dt className="text-muted">{label}</dt>
-      <dd
-        className={
-          tone === "ok" ? "text-ok" : tone === "danger" ? "text-danger" : ""
-        }
-      >
-        {value}
-      </dd>
+      <dd className={tone ? toneClass[tone] : ""}>{value}</dd>
     </div>
   );
 }
 
 function formatSignedCompact(value: number): string {
   return `${value >= 0 ? "+" : "−"}${formatIDRCompact(Math.abs(value))}`;
-}
-
-/** "asumsi: single · standar · rumah KPR · motor" for the compare header. */
-function assumptionSummary(a: Assumptions): string {
-  const household = { single: "single", couple: "pasangan", family: "keluarga" };
-  const lifestyle = {
-    budget: "hemat",
-    moderate: "standar",
-    comfortable: "nyaman",
-  };
-  const housing = {
-    room: "rusun/kost",
-    studio: "rumah KPR",
-    oneBedroom: "apartemen",
-  };
-  const transport = {
-    motorcycle: "motor",
-    publicTransport: "kend. umum",
-    rideHailing: "ojol",
-  };
-  return `asumsi: ${household[a.householdType]} · ${lifestyle[a.lifestyle]} · ${housing[a.housing]} · ${transport[a.transport]}`;
 }

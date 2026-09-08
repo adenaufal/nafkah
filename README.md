@@ -100,19 +100,24 @@ diurutkan sebagai berikut:
 `sample` → `estimate` (dimodelkan dari agregat BPS) → `official` (dataset resmi).
 Aplikasi menampilkan label "Estimasi sampel" untuk data di bawah `official`.
 
-Untuk memperbarui data, buka file sesuai jenisnya.
+Untuk memperbarui data, buka berkas sesuai jenisnya di
+`public/data/v<versi-dataset>/` (versi aktif tercantum di `manifest.json` dan
+perubahannya dicatat di `public/data/CHANGELOG.md`).
 
-- Upah ada di `src/data/provinces/<provinsi>.ts`. Isi `grossMonthly` dengan
-  UMK resmi, gunakan `confidence: "official"`, lalu lengkapi `source` (nama dan
-  nomor SK) serta `asOf`. Take-home tetap diberi label estimasi.
-- Biaya ada di `src/data/costs.ts`. Setiap nilai kategori punya
-  `source`, `asOf`, dan `confidence` sendiri. Jadi, upah suatu wilayah bisa
-  berstatus `official` sementara sewanya masih `sample`.
-- Untuk menambah wilayah, isi `src/data/regions.ts` dengan kode wilayah,
-  centroid, dan tier. Tambahkan juga data upah, biaya, serta narasinya di
-  `src/data/narratives.ts`.
+- Upah ada di `wages.json`. Isi `grossMonthly` dengan UMK resmi, gunakan
+  `confidence: "official"`, lalu lengkapi `source` (nama dan nomor SK) serta
+  `asOf`. Take-home tetap diberi label estimasi.
+- Biaya ada di `costs.json`. Setiap nilai kategori punya `source`, `asOf`, dan
+  `confidence` sendiri. Jadi, upah suatu wilayah bisa berstatus `official`
+  sementara sewanya masih `sample`.
+- Untuk menambah wilayah, isi `regions.json` dengan kode wilayah, centroid, dan
+  tier. Tambahkan juga data upah, biaya, serta narasinya (`narratives.json`),
+  lalu perbarui `counts` di `manifest.json`.
 
-Kalau ingin mengambil data dari API, ubah fungsi `loadRecords` di
+Skema dan integritas join diverifikasi Zod lewat `src/data/dataset.test.ts` —
+CI menolak perubahan yang tidak valid.
+
+Kalau ingin mengambil data dari API, ubah fungsi `loadDataset` di
 `src/data/loader.ts`. Pertahankan bentuk hasilnya, yaitu `Map<kode, record>`.
 
 Data disambungkan lewat kode wilayah. Contohnya, pcode HDX `ID3173` menjadi

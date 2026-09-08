@@ -16,17 +16,18 @@ import type {
   ColorMode,
   CostProfile,
   LoadStatus,
+  Region,
   RegionFeatureProps,
   RegionMetrics,
   WageRecord,
 } from "@/lib/types";
+import type { RegionNarrative } from "@/data/narratives";
 import {
   AFFORDABILITY_BANDS,
   computeAllMetrics,
   DEFAULT_ASSUMPTIONS,
 } from "@/lib/calculations";
-import { REGIONS } from "@/data/regions";
-import { loadGeometry, loadRecords } from "@/data/loader";
+import { loadGeometry, loadDataset } from "@/data/loader";
 import { loadPersisted, savePersisted } from "./persist";
 import type { FeatureCollection, Geometry } from "geojson";
 
@@ -42,8 +43,10 @@ interface AppState {
   geometry: FeatureCollection<Geometry, RegionFeatureProps> | null;
   dataStatus: LoadStatus;
   dataError: string | null;
+  regions: Region[];
   wages: Map<string, WageRecord>;
   costs: Map<string, CostProfile>;
+  narratives: Map<string, RegionNarrative>;
   assumptions: Assumptions;
   pinned: string[];
   pinMessage: string | null;
@@ -70,8 +73,10 @@ const initialState: AppState = {
   geometry: null,
   dataStatus: "idle",
   dataError: null,
+  regions: [],
   wages: new Map(),
   costs: new Map(),
+  narratives: new Map(),
   assumptions: DEFAULT_ASSUMPTIONS,
   pinned: [],
   pinMessage: null,
@@ -112,8 +117,10 @@ type Action =
   | { type: "data/loading" }
   | {
       type: "data/ready";
+      regions: Region[];
       wages: Map<string, WageRecord>;
       costs: Map<string, CostProfile>;
+      narratives: Map<string, RegionNarrative>;
     }
   | { type: "data/error"; message: string }
   | { type: "assumptions/set"; assumptions: Assumptions }
@@ -150,8 +157,10 @@ function reducer(state: AppState, action: Action): AppState {
       return {
         ...state,
         dataStatus: "ready",
+        regions: action.regions,
         wages: action.wages,
         costs: action.costs,
+        narratives: action.narratives,
       };
     case "data/error":
       return { ...state, dataStatus: "error", dataError: action.message };
@@ -199,11 +208,8 @@ function reducer(state: AppState, action: Action): AppState {
       return { ...state, basemap: action.basemap, basemapUserSet: true };
     case "theme/set": {
       // Basemap follows the UI theme unless the user overrode it explicitly.
-      const basemap = state.basemapUserSet
-        ? state.basemap
-        : action.dark
-          ? ("dark" as const)
-          : ("light" as const);
+      const followTheme = action.dark ? ("dark" as const) : ("light" as const);
+      const basemap = state.basemapUserSet ? state.basemap : followTheme;
       return { ...state, darkMode: action.dark, basemap };
     }
     case "view/reset":
@@ -230,8 +236,8 @@ function reducer(state: AppState, action: Action): AppState {
         onboarded: state.onboarded || onboarded,
         // The tour never drives app state — it only highlights — so close any
         // open drawer/sheet when a run starts to avoid covering its targets.
-        asumsiOpen: action.idx !== null ? false : state.asumsiOpen,
-        aboutOpen: action.idx !== null ? false : state.aboutOpen,
+        asumsiOpen: action.idx === null ? state.asumsiOpen : false,
+        aboutOpen: action.idx === null ? state.aboutOpen : false,
       };
     }
     case "onboardCard/set":
@@ -245,6 +251,8 @@ interface AppContextValue {
   state: AppState;
   metrics: Map<string, RegionMetrics>;
   metricsReady: boolean;
+  /** Wilayah dari dataset berversi — lookup kode → Region untuk nama/tier. */
+  regionByCode: Map<string, Region>;
   setAssumptions: (a: Assumptions) => void;
   resetAssumptions: () => void;
   pin: (code: string) => void;
@@ -288,8 +296,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const loadData = useCallback(async () => {
     dispatch({ type: "data/loading" });
     try {
-      const { wages, costs } = await loadRecords();
-      dispatch({ type: "data/ready", wages, costs });
+      const dataset = await loadDataset();
+      dispatch({ type: "data/ready", ...dataset });
     } catch (e) {
       dispatch({
         type: "data/error",
@@ -335,7 +343,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
     return () => clearTimeout(t);
   }, [state.pinMessage]);
 
-  const codes = useMemo(() => REGIONS.map((r) => r.code), []);
+  const codes = useMemo(() => state.regions.map((r) => r.code), [state.regions]);
+  const regionByCode = useMemo(
+    () => new Map(state.regions.map((r) => [r.code, r])),
+    [state.regions],
+  );
   const metrics = useMemo(
     () =>
       computeAllMetrics(
@@ -353,6 +365,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     state,
     metrics,
     metricsReady,
+    regionByCode,
     setAssumptions: (a) =>
       dispatch({ type: "assumptions/set", assumptions: a }),
     resetAssumptions: () => dispatch({ type: "assumptions/reset" }),

@@ -1,10 +1,4 @@
-import type { CostProfile, ExpenseCategoryKey } from "@/lib/types";
-import { ALL_COSTS } from "./provinces";
-
-export const COST_PROFILES: CostProfile[] = ALL_COSTS;
-export const COST_BY_REGION = new Map(
-  COST_PROFILES.map((c) => [c.regionCode, c]),
-);
+import type { ExpenseCategoryKey } from "@/lib/types";
 
 /** Category metadata for labels, tooltips and chart colors. */
 export const EXPENSE_CATEGORIES: {

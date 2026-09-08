@@ -135,7 +135,8 @@ membuat ringkasan saran fitur.
 
 1. Gabungkan laporan yang sama agar tidak diproses berulang.
 2. Cocokkan nama wilayah dengan kode wilayah.
-3. Bandingkan angka usulan dengan nilai di `src/data/provinces/*.ts`.
+3. Bandingkan angka usulan dengan nilai di `public/data/v<versi>/wages.json`
+   dan `costs.json` (versi aktif ada di `manifest.json`).
 4. Periksa apakah tautan sumber bisa dibuka dan dipercaya. Bedakan sumber
    resmi dari pengalaman pribadi.
 5. Kelompokkan laporan sebagai `kredibel`, `perlu bukti`, atau `tolak`.

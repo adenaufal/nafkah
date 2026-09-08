@@ -1,0 +1,10 @@
+{
+ "datasetVersion": "2026.1",
+ "generatedAt": "2026-09-07",
+ "counts": {
+  "regions": 514,
+  "wages": 514,
+  "costs": 514,
+  "narratives": 514
+ }
+}

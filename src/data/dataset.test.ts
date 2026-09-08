@@ -1,26 +1,61 @@
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
-import { ALL_REGIONS, ALL_WAGES, ALL_COSTS } from "./provinces";
 import { EXPECTED_REGION_COUNT, validateDataset } from "./schema";
 
 /**
- * Reliability gate (AP-02): the shipped dataset must satisfy the Zod schema
- * and cross-record integrity, or CI fails. This is the guard that lets us
- * accept community data corrections without silently breaking provenance.
+ * Reliability gate (AP-02): the versioned JSON files that are actually served
+ * must satisfy the Zod schema and cross-record integrity, or CI fails. This is
+ * the guard that lets us accept community data corrections without silently
+ * breaking provenance.
  */
+
+const DIR = resolve("public/data/v2026.1");
+
+const read = <T>(name: string): T =>
+  JSON.parse(readFileSync(resolve(DIR, name), "utf8")) as T;
+
+const regions = read<unknown[]>("regions.json");
+const wages = read<unknown[]>("wages.json");
+const costs = read<unknown[]>("costs.json");
+const narratives = read<unknown[]>("narratives.json");
+const manifest = read<{
+  datasetVersion: string;
+  generatedAt: string;
+  counts: Record<string, number>;
+}>("manifest.json");
+
 describe("dataset integrity", () => {
   it("passes schema + join validation with zero problems", () => {
-    const problems = validateDataset({
-      regions: ALL_REGIONS,
-      wages: ALL_WAGES,
-      costs: ALL_COSTS,
-    });
+    const problems = validateDataset({ regions, wages, costs });
     // Full list on failure — pinpoints the offending record.
     expect(problems).toEqual([]);
   });
 
   it("covers exactly the expected number of kabupaten/kota", () => {
-    expect(ALL_REGIONS.length).toBe(EXPECTED_REGION_COUNT);
-    expect(ALL_WAGES.length).toBe(EXPECTED_REGION_COUNT);
-    expect(ALL_COSTS.length).toBe(EXPECTED_REGION_COUNT);
+    expect(regions).toHaveLength(EXPECTED_REGION_COUNT);
+    expect(wages).toHaveLength(EXPECTED_REGION_COUNT);
+    expect(costs).toHaveLength(EXPECTED_REGION_COUNT);
+  });
+
+  it("matches the manifest", () => {
+    expect(manifest.datasetVersion).toMatch(/^\d{4}\.\d+$/);
+    expect(manifest.generatedAt).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    expect(manifest.counts).toEqual({
+      regions: regions.length,
+      wages: wages.length,
+      costs: costs.length,
+      narratives: narratives.length,
+    });
+  });
+
+  it("joins every narrative to a known region", () => {
+    const codes = new Set(
+      regions.map((r) => (r as { code: string }).code),
+    );
+    narratives.forEach((n, i) => {
+      const code = (n as { regionCode: string }).regionCode;
+      expect(codes.has(code), `narrative[${i}] ${code}`).toBe(true);
+    });
   });
 });

@@ -95,8 +95,8 @@ laporan nantinya memakai agent terjadwal di luar situs. Keputusan 2 September
 | ID | Pekerjaan | Yang perlu dilakukan | Status | Prioritas |
 | --- | --- | --- | --- | --- |
 | AP-01 | Penjelasan metode dan batasan | Tampilkan metode dekat peta dan di jendela detail. Jelaskan asumsi awal 1 orang, arti tingkat keterjangkauan, serta UMK sebagai acuan resmi, bukan gaji aktual. | 🟡 Bagian utama ✅: catatan di panel Tentang dan jendela detail; `source`/`asOf`/`confidence` sudah tampil. Pencatatan penggunaan masih menunggu AP-06. | P0 · S |
-| AP-02 | Versi dataset dan pemeriksaan data | Gunakan skema Zod dan CI untuk menolak data tidak valid sebelum menerima koreksi komunitas. Setelah itu, pindahkan dataset ke file JSON dengan versi dan catatan perubahan. | 🟡 Pemeriksaan Zod ✅ (`src/data/schema.ts`, `dataset.test.ts`, `DATASET_VERSION`). Migrasi TS ke JSON di `/data/vYYYY/` masih ❌. | P0 · M |
-| AP-03 | Personalisasi rumah tangga v1.1 | Tambahkan jumlah anak dan isian cicilan/KPR pada kontrol pendapatan dan 2 upah yang sudah ada. Tampilkan profil aktif dan tombol reset. | ❌ (faktor pengali dan tipe rumah tangga ✅). Unit test wajib mencakup anak dan cicilan. | P0 · M |
+| AP-02 | Versi dataset dan pemeriksaan data | Gunakan skema Zod dan CI untuk menolak data tidak valid sebelum menerima koreksi komunitas. Setelah itu, pindahkan dataset ke file JSON dengan versi dan catatan perubahan. | ✅ Pemeriksaan Zod + integritas join di CI (`src/data/schema.ts`, `dataset.test.ts`, kini membaca file yang di-ship). Dataset pindah ke JSON berversi `public/data/v2026.1/` dengan `manifest.json` dan catatan perubahan `public/data/CHANGELOG.md`; aplikasi memuatnya lewat fetch runtime (`src/data/loader.ts`). | P0 · M |
+| AP-03 | Personalisasi rumah tangga v1.1 | Tambahkan jumlah anak dan isian cicilan/KPR pada kontrol pendapatan dan 2 upah yang sudah ada. Tampilkan profil aktif dan tombol reset. | ✅ Stepper jumlah anak (0–5, berlaku juga untuk single) dan isian cicilan KPR yang menggantikan estimasi hunian; profil aktif tampil di header drawer dan chip perbandingan, tombol reset sudah ada. Unit test mencakup anak dan cicilan, termasuk menjaga angka profil Keluarga v0.1 tetap identik. | P0 · M |
 | AP-04 | Form koreksi per wilayah | Buat form Airtable "Laporkan angka ini" dengan wilayah, kategori, nilai lama/usulan, periode, jenis bukti, sumber, dan kontak opsional. Laporan masuk ke antrean pemeriksaan manual (`Status=New`), tanpa mengubah dataset otomatis. | 🟡 Form dan tautan ✅; antrean pemeriksaan manual serta proses penerimaan masih ❌ (skema ada di [panduan kanal masukan](docs/feedback-channels.md); template GitHub ✅). | P0 · M |
 | AP-05 | Audit wilayah yang diperdebatkan | Periksa Kep. Meranti, Samosir, Bandung, serta biaya transportasi/logistik dan kesehatan. Bandingkan hasil model dengan laporan lokal, lalu catat keputusan tiap kasus. | ❌ | P0 · S/M |
 | AP-06 | Kemudahan menemukan dan memakai fitur | Uji ulang Pendapatan sendiri, filter tingkat keterjangkauan, mode gelap, dan legenda di ponsel serta lewat keyboard. Perjelas tombol tindakan dan catat penggunaan tanpa data pribadi. | ❌ | P1 · S |
@@ -123,8 +123,8 @@ laporan nantinya memakai agent terjadwal di luar situs. Keputusan 2 September
 
 1. Pastikan kanal kontribusi publik tetap berfungsi: pantau form Airtable dan Discussions, lalu siapkan antrean pemeriksaan (AP-04, AP-10).
 2. Perjelas metode dan batasan (bagian utama AP-01 ✅), lalu audit Meranti, Samosir, Bandung, biaya transportasi, dan kesehatan (AP-05).
-3. Selesaikan antrean pemeriksaan dan catatan perubahan (AP-04, AP-10), lalu file JSON dengan versi (sisa AP-02).
-4. Tambahkan jumlah anak dan cicilan (AP-03) beserta uji regresi, kemudian kerjakan perbandingan dan berbagi hasil (AP-07).
+3. Selesaikan antrean pemeriksaan (AP-04, AP-10) — file JSON dengan versi sudah ✅ (`public/data/v2026.1/` + catatan perubahan).
+4. Jumlah anak dan cicilan sudah ✅ (AP-03) beserta uji regresinya; lanjutkan ke perbandingan dan berbagi hasil (AP-07).
 
 ---
 
@@ -144,7 +144,7 @@ Nomor AP-xx merujuk ke rencana di atas.
 | Pemeriksaan wilayah pedalaman dan non-IHK (kalibrasi Papua/kepulauan lewat Susenas dan logistik perintis) | ✅ |
 | Uji perhitungan dan pemeriksaan integritas data dengan Zod di CI | ✅ |
 | Penggantian estimasi biaya hidup dengan sumber primer/`official` (SBH BPS hanya mencakup kota sampel) | 🟡 |
-| File JSON dengan versi di `/data/vYYYY/` dan catatan perubahan | ❌ (→ AP-02) |
+| File JSON dengan versi di `/data/vYYYY/` dan catatan perubahan | ✅ `public/data/v2026.1/` + `public/data/CHANGELOG.md` (AP-02) |
 
 ### Peta & cakupan
 
@@ -165,7 +165,7 @@ Nomor AP-xx merujuk ke rencana di atas.
 | Mode gelap dan filter legenda per tingkat keterjangkauan (diminta komunitas, tersedia sejak v0.1) | ✅ |
 | Berbagi dan menyematkan peta (pengaturan di URL; mode `<iframe>`) | ❌ (→ AP-07) |
 | Ekspor CSV/PNG dengan sumber, `asOf`, dan catatan batasan | ❌ |
-| Profil rumah tangga dengan pilihan awal yang divalidasi lewat Susenas | 🟡 (→ AP-03) |
+| Profil rumah tangga dengan pilihan awal yang divalidasi lewat Susenas | 🟡 kontrol jumlah anak & cicilan KPR ✅ (AP-03); validasi pilihan awal lewat Susenas masih ❌ |
 | PWA yang bisa dipasang, menyimpan geometri dan data di cache, serta membuka kerangka aplikasi secara offline | ❌ |
 | Data upah dan biaya hidup dari 2020 sampai sekarang, dengan penggeser tahun | ❌ |
 

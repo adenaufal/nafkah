@@ -12,8 +12,6 @@ import {
 } from "recharts";
 import { useApp } from "@/state/AppContext";
 import { EXPENSE_CATEGORIES } from "@/data/costs";
-import { REGION_BY_CODE } from "@/data/regions";
-import { NARRATIVE_BY_REGION } from "@/data/narratives";
 import { BAND_LABEL, bandColors } from "@/lib/calculations";
 import {
   formatDate,
@@ -30,7 +28,7 @@ import type { Confidence } from "@/lib/types";
  * focus returns to the trigger element on close.
  */
 export function DetailModal() {
-  const { state, metrics, metricsReady, select, pin } = useApp();
+  const { state, metrics, metricsReady, regionByCode, select, pin } = useApp();
   const bandPalette = bandColors(state.darkMode);
   const isDualIncome =
     state.assumptions.dualIncome &&
@@ -64,7 +62,7 @@ export function DetailModal() {
 
   if (!code) return null;
 
-  const region = REGION_BY_CODE.get(code);
+  const region = regionByCode.get(code);
   const geoFeature = state.geometry?.features.find(
     (f) => f.properties.kode === code,
   );
@@ -73,7 +71,7 @@ export function DetailModal() {
   const metric = metricsReady ? metrics.get(code) : undefined;
   const wage = metricsReady ? state.wages.get(code) : undefined;
   const costs = metricsReady ? state.costs.get(code) : undefined;
-  const narrative = NARRATIVE_BY_REGION.get(code);
+  const narrative = state.narratives.get(code);
   const isPinned = state.pinned.includes(code);
 
   const close = () => select(null);
@@ -146,12 +144,11 @@ export function DetailModal() {
                   Kabupaten/kota ini punya geometri batas wilayah, tetapi belum
                   memiliki catatan upah atau biaya di dataset saat ini. Wilayah
                   berdata diberi warna; sisanya tampil dengan pola arsir.
-                  Menambah data cukup dengan menyunting{" "}
+                  Menambah data cukup dengan menyunting berkas JSON di{" "}
                   <code className="rounded bg-surface px-1">
-                    src/data/regions.ts
+                    public/data/v2026.1/
                   </code>
-                  , <code className="rounded bg-surface px-1">wages.ts</code>{" "}
-                  dan <code className="rounded bg-surface px-1">costs.ts</code>.
+                  .
                 </p>
               </div>
             ) : (

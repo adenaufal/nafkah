@@ -1,34 +1,51 @@
-import type { CostProfile, WageRecord } from "@/lib/types";
-import { COST_BY_REGION } from "./costs";
-import { WAGE_BY_REGION } from "./wages";
+import type { CostProfile, Region, WageRecord } from "@/lib/types";
+import type { RegionNarrative } from "@/data/narratives";
 import { topologyToFeatureCollection } from "@/lib/geometry";
 import type { RegionFeatureProps } from "@/lib/types";
 import type { FeatureCollection, Geometry } from "geojson";
 
 /**
- * Data access layer. Geometry and data records are fetched as separate
- * promises so the map can render before data arrives.
+ * Data access layer (AP-02). The dataset lives in versioned JSON files under
+ * /data/v2026.1/ — see public/data/CHANGELOG.md for the dataset changelog.
  *
- * Geometry is a real network fetch of the static TopoJSON asset. Wage/cost
- * records are local modules for now; the artificial delay keeps the loading
- * states real and swappable — to go live, replace `loadRecords` with an API
- * call and keep the same return shape.
+ * Geometry and the four data files are fetched separately so the map can
+ * render before the numbers arrive; each failure is surfaced through the
+ * data/geometry loading state machines with a retry.
  */
 
-export async function loadGeometry(): Promise<
- FeatureCollection<Geometry, RegionFeatureProps>
-> {
- const res = await fetch("/data/regions.topojson");
- if (!res.ok) throw new Error(`Geometry fetch failed: HTTP ${res.status}`);
- const topology = await res.json();
- return topologyToFeatureCollection(topology);
+export const DATASET_BASE = "/data/v2026.1";
+
+async function fetchJson<T>(path: string): Promise<T> {
+  const res = await fetch(path);
+  if (!res.ok) throw new Error(`Data fetch failed: HTTP ${res.status} (${path})`);
+  return (await res.json()) as T;
 }
 
-export async function loadRecords(): Promise<{
- wages: Map<string, WageRecord>;
- costs: Map<string, CostProfile>;
+export async function loadGeometry(): Promise<
+  FeatureCollection<Geometry, RegionFeatureProps>
+> {
+  const res = await fetch("/data/regions.topojson");
+  if (!res.ok) throw new Error(`Geometry fetch failed: HTTP ${res.status}`);
+  const topology = await res.json();
+  return topologyToFeatureCollection(topology);
+}
+
+export async function loadDataset(): Promise<{
+  regions: Region[];
+  wages: Map<string, WageRecord>;
+  costs: Map<string, CostProfile>;
+  narratives: Map<string, RegionNarrative>;
 }> {
- // Simulated latency so loading states are exercised; remove when wired to an API.
- await new Promise((r) => setTimeout(r, 350));
- return { wages: WAGE_BY_REGION, costs: COST_BY_REGION };
+  const [regions, wages, costs, narratives] = await Promise.all([
+    fetchJson<Region[]>(`${DATASET_BASE}/regions.json`),
+    fetchJson<WageRecord[]>(`${DATASET_BASE}/wages.json`),
+    fetchJson<CostProfile[]>(`${DATASET_BASE}/costs.json`),
+    fetchJson<RegionNarrative[]>(`${DATASET_BASE}/narratives.json`),
+  ]);
+  return {
+    regions,
+    wages: new Map(wages.map((w) => [w.regionCode, w])),
+    costs: new Map(costs.map((c) => [c.regionCode, c])),
+    narratives: new Map(narratives.map((n) => [n.regionCode, n])),
+  };
 }
