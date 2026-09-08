@@ -76,11 +76,85 @@ body {
 }
 
 /* MapLibre chrome tuning: calm, minimal, follows theme */
-@media (min-width: 768px) {
-  /* The left map controls sit beside—not under—the search/pinned rail. */
+@media (max-width: 1199px) {
+  /* Keep controls clear of the compact onboarding card and bottom dock. */
   .maplibregl-ctrl-top-left {
-    left: 18.5rem;
+    top: auto;
+    right: auto;
+    bottom: 5.25rem;
+    left: 0.75rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  /* Keep the map controls outside the left rail, never under search. */
+  .maplibregl-ctrl-top-left {
+    left: 20.25rem;
     top: 0.25rem;
+  }
+}
+
+@media (min-width: 1800px) {
+  /* The left rail grows from 296px to 340px on very wide screens. */
+  .maplibregl-ctrl-top-left {
+    left: 23rem;
+  }
+}
+
+/* Explicit drawer widths avoid custom Tailwind variants being shadowed by
+   the smaller sm: width rule at wide viewports. */
+.assumptions-drawer,
+.about-drawer {
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .assumptions-drawer {
+    width: 380px;
+  }
+
+  .about-drawer {
+    width: 480px;
+  }
+}
+
+@media (min-width: 768px) {
+  .assumptions-drawer {
+    width: 420px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .assumptions-drawer {
+    width: 440px;
+  }
+}
+
+@media (min-width: 1800px) {
+  .assumptions-drawer {
+    width: 680px;
+  }
+
+  .about-drawer {
+    width: 600px;
+  }
+}
+
+@media (min-width: 2400px) {
+  .assumptions-drawer {
+    width: 720px;
+  }
+}
+
+/* The desktop comparison rail is narrow at the breakpoint boundary. Keep
+   the table readable until there is enough room for its secondary chart. */
+@media (min-width: 1200px) and (max-width: 1439px) {
+  .comparison-content {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .comparison-chart {
+    display: none;
   }
 }
 

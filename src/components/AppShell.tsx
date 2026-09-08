@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { AppProvider, useApp } from "@/state/AppContext";
+import { DESKTOP_BREAKPOINT, getShellMode } from "@/lib/responsive";
 import { SearchBox } from "./SearchBox";
 import { InsightCard, RankCard } from "./RightPanels";
 import { AssumptionsDrawer } from "./AssumptionsPanel";
@@ -118,13 +119,18 @@ function TopBar() {
 }
 
 function Shell() {
-  const [desktop, setDesktop] = useState(false);
+  const [desktop, setDesktop] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      getShellMode(window.innerWidth) === "desktop",
+  );
 
   // Render only the active responsive chrome. Keeping both versions mounted
   // duplicates form IDs and makes hidden responsive charts measure at 0×0.
   useEffect(() => {
-    const query = window.matchMedia("(min-width: 768px)");
-    const sync = () => setDesktop(query.matches);
+    const query = window.matchMedia(`(min-width: ${DESKTOP_BREAKPOINT}px)`);
+    const sync = () =>
+      setDesktop(getShellMode(window.innerWidth) === "desktop");
     sync();
     query.addEventListener("change", sync);
     return () => query.removeEventListener("change", sync);
@@ -140,7 +146,7 @@ function Shell() {
 
         {desktop ? (
           <div className="pointer-events-none absolute inset-0">
-            <div className="pointer-events-auto absolute left-4 top-4 grid w-[296px] gap-3 min-[1800px]:w-[340px]">
+            <div className="pointer-events-auto absolute left-4 top-4 grid max-h-[calc(100%-2rem)] w-[296px] gap-3 overflow-y-auto min-[1800px]:w-[340px]">
               <div data-tour="search">
                 <SearchBox />
               </div>
@@ -159,7 +165,7 @@ function Shell() {
           </div>
         ) : (
           <>
-            <ThreeStepCard className="pointer-events-auto absolute inset-x-3 top-3 z-20" />
+            <ThreeStepCard className="pointer-events-auto absolute left-3 right-auto top-3 z-20 w-[min(calc(100%-1.5rem),26rem)]" />
             <MobileDock />
           </>
         )}

@@ -8,6 +8,8 @@ import {
   bandColors,
 } from "@/lib/calculations";
 import type { AffordabilityBand } from "@/lib/types";
+import { compactOverlayWidth } from "@/lib/responsive";
+import { useDialogFocus } from "@/lib/useDialogFocus";
 import {
   TOUR_BROAD,
   TOUR_NARROW,
@@ -72,6 +74,7 @@ function IntroCard({ narrow }: { narrow: boolean }) {
     setTourIdx(null);
     setOnboardCard(true);
   };
+  const dialogRef = useDialogFocus<HTMLDivElement>(true, dismiss);
   return (
     <div
       className="fixed inset-0 z-[60] flex justify-center bg-black/55"
@@ -80,8 +83,11 @@ function IntroCard({ narrow }: { narrow: boolean }) {
       aria-label="Panduan Nafkah"
     >
       <div
+        ref={dialogRef}
         className="absolute top-[10%] max-h-[80%] overflow-y-auto rounded-2xl border border-border bg-card p-[17px_19px] shadow-[0_20px_54px_rgba(0,0,0,0.34)]"
-        style={{ width: narrow ? "calc(100% - 24px)" : 424 }}
+        style={{
+          width: narrow ? "min(424px, calc(100vw - 24px))" : 424,
+        }}
       >
         <p className="text-[10.5px] font-extrabold uppercase tracking-[0.1em] text-accent">
           Panduan · sekitar 1 menit
@@ -132,6 +138,8 @@ function ClosingCard({ narrow }: { narrow: boolean }) {
     { t: "Sematkan sampai 5", d: "untuk membandingkan cakupan & saldonya." },
     { t: "Ubah asumsi", d: "rumah tangga, hunian, pendapatan sendiri." },
   ];
+  const close = () => setTourIdx(null);
+  const dialogRef = useDialogFocus<HTMLDivElement>(true, close);
   return (
     <div
       className="fixed inset-0 z-[60] flex justify-center bg-black/55"
@@ -140,8 +148,11 @@ function ClosingCard({ narrow }: { narrow: boolean }) {
       aria-label="Panduan selesai"
     >
       <div
+        ref={dialogRef}
         className="absolute top-[10%] max-h-[80%] overflow-y-auto rounded-2xl border border-border bg-card p-[17px_19px] shadow-[0_20px_54px_rgba(0,0,0,0.34)]"
-        style={{ width: narrow ? "calc(100% - 24px)" : 424 }}
+        style={{
+          width: narrow ? "min(424px, calc(100vw - 24px))" : 424,
+        }}
       >
         <p className="text-[10.5px] font-extrabold uppercase tracking-[0.1em] text-accent">
           Selesai
@@ -159,15 +170,14 @@ function ClosingCard({ narrow }: { narrow: boolean }) {
                 {i + 1}
               </span>
               <p className="text-[13px] leading-snug">
-                <strong>{r.t}</strong>{" "}
-                <span className="text-muted">{r.d}</span>
+                <strong>{r.t}</strong> <span className="text-muted">{r.d}</span>
               </p>
             </li>
           ))}
         </ol>
         <button
           type="button"
-          onClick={() => setTourIdx(null)}
+          onClick={close}
           className="mt-4 h-11 w-full rounded-[11px] bg-accent px-4 text-sm font-bold text-on-accent hover:bg-accent-strong"
         >
           Mulai jelajahi peta
@@ -222,16 +232,36 @@ function SpotlightStep({
     };
   }, [step.key]);
 
-  const fw = typeof window !== "undefined" ? window.innerWidth : 1440;
-  const fh = typeof window !== "undefined" ? window.innerHeight : 900;
-  const tw = narrow ? fw - 24 : 344;
-  const pos = placeTooltip(spot, tw, fw, fh);
+  const fw = typeof window === "undefined" ? 1440 : window.innerWidth;
+  const fh = typeof window === "undefined" ? 900 : window.innerHeight;
+  const tw = narrow ? compactOverlayWidth(fw) : 344;
+  const compactBottomSafeArea = narrow ? 68 + 140 + 16 : 0;
+  const controlSafeLeft = !narrow ? (fw < 1800 ? 380 : 423) : 0;
+  const railSafeRight = !narrow ? (fw < 1800 ? 326 : 390) : 0;
+  const comparison =
+    !narrow && typeof document !== "undefined"
+      ? document.querySelector<HTMLElement>('[data-tour="compare"]')
+      : null;
+  const comparisonBottomInset = comparison
+    ? Math.max(0, fh - comparison.getBoundingClientRect().top + 14)
+    : 0;
+  const bottomSafeArea = Math.max(compactBottomSafeArea, comparisonBottomInset);
+  const pos = placeTooltip(
+    spot,
+    tw,
+    fw,
+    fh,
+    bottomSafeArea,
+    controlSafeLeft,
+    railSafeRight,
+  );
 
   const skip = () => {
     setTourIdx(null);
     setOnboardCard(true);
   };
   const last = idx === steps.length - 1;
+  const dialogRef = useDialogFocus<HTMLDivElement>(true, skip);
 
   return (
     <div
@@ -254,8 +284,7 @@ function SpotlightStep({
             top: spot.y - 6,
             width: spot.w + 12,
             height: spot.h + 12,
-            boxShadow:
-              "0 0 0 2px var(--accent), 0 0 0 9999px rgba(0,0,0,0.55)",
+            boxShadow: "0 0 0 2px var(--accent), 0 0 0 9999px rgba(0,0,0,0.55)",
             pointerEvents: "none",
             transition:
               "left .22s ease, top .22s ease, width .22s ease, height .22s ease",
@@ -263,6 +292,7 @@ function SpotlightStep({
         />
       )}
       <div
+        ref={dialogRef}
         className="absolute overflow-y-auto rounded-2xl border border-border bg-card shadow-[0_20px_54px_rgba(0,0,0,0.34)]"
         style={{
           left: pos.left,

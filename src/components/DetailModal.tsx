@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import {
   Bar,
   BarChart,
@@ -21,6 +21,7 @@ import {
   formatSignedIDR,
 } from "@/lib/format";
 import type { Confidence } from "@/lib/types";
+import { useDialogFocus } from "@/lib/useDialogFocus";
 
 /**
  * Region detail modal. Opens on region click (map or search).
@@ -35,30 +36,12 @@ export function DetailModal() {
     state.assumptions.householdType !== "single";
   const code = state.selectedCode;
   const closeBtnRef = useRef<HTMLButtonElement>(null);
-  const triggerRef = useRef<Element | null>(null);
-
-  // Capture the trigger to restore focus on close.
-  useEffect(() => {
-    if (code) {
-      triggerRef.current = document.activeElement;
-      // Focus the close button once the modal is painted.
-      const t = setTimeout(() => closeBtnRef.current?.focus(), 50);
-      return () => clearTimeout(t);
-    }
-    const el = triggerRef.current;
-    if (el instanceof HTMLElement) el.focus();
-    triggerRef.current = null;
-  }, [code]);
-
-  // Escape closes.
-  useEffect(() => {
-    if (!code) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") select(null);
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [code, select]);
+  const close = () => select(null);
+  const dialogRef = useDialogFocus<HTMLDivElement>(
+    Boolean(code),
+    close,
+    closeBtnRef,
+  );
 
   if (!code) return null;
 
@@ -74,8 +57,6 @@ export function DetailModal() {
   const narrative = state.narratives.get(code);
   const isPinned = state.pinned.includes(code);
 
-  const close = () => select(null);
-
   return (
     <div
       className="fixed inset-0 z-50 flex items-end justify-center bg-black/45 sm:items-center sm:p-5 lg:p-8"
@@ -83,6 +64,7 @@ export function DetailModal() {
       role="presentation"
     >
       <div
+        ref={dialogRef}
         role="dialog"
         aria-modal="true"
         aria-label={`Detail keterjangkauan ${displayName}`}

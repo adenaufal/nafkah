@@ -98,13 +98,16 @@ const EDGE = 14;
 /**
  * Where to anchor the tooltip. With no target it floats top-center (the intro
  * position); with a target it prefers below, then above, then pins to the
- * bottom edge — always clamped inside the frame.
+ * bottom edge — always clamped inside the frame and supplied safe insets.
  */
 export function placeTooltip(
   spot: SpotRect | null,
   tooltipWidth: number,
   frameWidth: number,
   frameHeight: number,
+  bottomInset = 0,
+  leftInset = 0,
+  rightInset = 0,
 ): { left: number; top?: number; bottom?: number } {
   if (!spot) {
     return {
@@ -112,15 +115,21 @@ export function placeTooltip(
       top: Math.round(frameHeight * 0.1),
     };
   }
+  const safeLeft = Math.max(EDGE, leftInset);
+  const safeRight = Math.max(EDGE, rightInset);
   const left = Math.round(
     Math.min(
-      Math.max(spot.x + spot.w / 2 - tooltipWidth / 2, EDGE),
-      frameWidth - tooltipWidth - EDGE,
+      Math.max(spot.x + spot.w / 2 - tooltipWidth / 2, safeLeft),
+      frameWidth - tooltipWidth - safeRight,
     ),
   );
-  const fitsBelow = spot.y + spot.h + TOOLTIP_BUDGET <= frameHeight - 12;
-  const fitsAbove = spot.y - TOOLTIP_BUDGET >= 12;
+  const safeBottom = bottomInset + 12;
+  const fitsBelow =
+    spot.y + spot.h + TOOLTIP_BUDGET <= frameHeight - safeBottom;
+  const fitsAbove =
+    spot.y - TOOLTIP_BUDGET >= 12 && frameHeight - spot.y + EDGE >= safeBottom;
   if (fitsBelow) return { left, top: Math.round(spot.y + spot.h + EDGE) };
-  if (fitsAbove) return { left, bottom: Math.round(frameHeight - spot.y + EDGE) };
-  return { left, bottom: EDGE };
+  if (fitsAbove)
+    return { left, bottom: Math.round(frameHeight - spot.y + EDGE) };
+  return { left, bottom: bottomInset + EDGE };
 }

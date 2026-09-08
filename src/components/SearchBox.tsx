@@ -48,7 +48,6 @@ export function SearchBox() {
       select(item.code);
       setQuery("");
       setOpen(false);
-      inputRef.current?.blur();
     },
     [select],
   );
@@ -57,7 +56,6 @@ export function SearchBox() {
     if (e.key === "Escape") {
       setOpen(false);
       setQuery("");
-      inputRef.current?.blur();
       return;
     }
     if (!open || results.length === 0) return;

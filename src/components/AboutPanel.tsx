@@ -9,6 +9,7 @@ import {
   bandColors,
 } from "@/lib/calculations";
 import type { AffordabilityBand } from "@/lib/types";
+import { useDialogFocus } from "@/lib/useDialogFocus";
 
 const BAND_ORDER: AffordabilityBand[] = [
   "comfortable",
@@ -38,6 +39,7 @@ export function AboutDrawer() {
   const bandPalette = bandColors(state.darkMode);
   const [active, setActive] = useState("ringkasan");
   const bodyRef = useRef<HTMLDivElement>(null);
+  const dialogRef = useDialogFocus(state.aboutOpen, () => setAboutOpen(false));
 
   if (!state.aboutOpen) return null;
 
@@ -56,10 +58,11 @@ export function AboutDrawer() {
         onClick={() => setAboutOpen(false)}
       />
       <aside
+        ref={dialogRef}
         role="dialog"
         aria-modal="true"
         aria-label="Tentang Nafkah"
-        className="fixed inset-y-0 right-0 z-50 flex w-full flex-col border-l border-border bg-card text-sm shadow-[-18px_0_50px_rgba(0,0,0,0.28)] sm:w-[480px] min-[1800px]:w-[600px]"
+        className="about-drawer fixed inset-y-0 right-0 z-50 flex w-full flex-col border-l border-border bg-card text-sm shadow-[-18px_0_50px_rgba(0,0,0,0.28)]"
       >
         <header className="sticky top-0 z-10 border-b border-border bg-card px-5 pt-4">
           <div className="flex items-start justify-between gap-3">
@@ -119,11 +122,11 @@ export function AboutDrawer() {
               <h3 className="text-sm font-semibold">Latar belakang</h3>
               <p className="mt-1 leading-relaxed text-muted">
                 Angka gaji saja bisa menyesatkan: rupiah yang sama terasa lapang
-                di satu kota dan sulit bernapas di kota lain. Keputusan penting —
-                pindah kerja antarwilayah, menawarkan gaji ke kandidat, sampai
+                di satu kota dan sulit bernapas di kota lain. Keputusan penting
+                — pindah kerja antarwilayah, menawarkan gaji ke kandidat, sampai
                 kajian upah daerah — sering diambil hanya dari nominal, tanpa
-                sisi biaya hidup pembandingnya. Nafkah menghadirkan sisi tersebut
-                dalam satu peta yang mudah dibandingkan.
+                sisi biaya hidup pembandingnya. Nafkah menghadirkan sisi
+                tersebut dalam satu peta yang mudah dibandingkan.
               </p>
             </section>
 
@@ -163,7 +166,9 @@ export function AboutDrawer() {
             </section>
 
             <section id="about-asumsi">
-              <h3 className="text-sm font-semibold">Arti tiap pilihan asumsi</h3>
+              <h3 className="text-sm font-semibold">
+                Arti tiap pilihan asumsi
+              </h3>
               <p className="mt-1 leading-relaxed text-muted">
                 Semua pilihan hanya menskalakan biaya — peta dihitung ulang
                 seketika. Ini arti masing-masing:
@@ -207,10 +212,7 @@ export function AboutDrawer() {
                     "Bila dicentang, ±10% disisakan di atas biaya hidup sebagai dana darurat — melihat “cukup” sekaligus bisa nabung.",
                   ],
                 ].map(([term, def]) => (
-                  <div
-                    key={term}
-                    className="border-l-2 border-border pl-3"
-                  >
+                  <div key={term} className="border-l-2 border-border pl-3">
                     <dt className="font-medium">{term}</dt>
                     <dd className="text-muted">{def}</dd>
                   </div>
@@ -241,8 +243,8 @@ export function AboutDrawer() {
                   bukan “berapa yang orang benar-benar terima”. Untuk mengujinya
                   dengan angkamu sendiri, pakai kolom{" "}
                   <strong className="text-ink">Pendapatan sendiri</strong> di
-                  panel asumsi. Versi dataset saat ini: {manifest.datasetVersion}
-                  , dengan catatan perubahannya di{" "}
+                  panel asumsi. Versi dataset saat ini:{" "}
+                  {manifest.datasetVersion}, dengan catatan perubahannya di{" "}
                   <a
                     href="/data/CHANGELOG.md"
                     target="_blank"
@@ -263,14 +265,17 @@ export function AboutDrawer() {
 
               <div className="mt-4 rounded-xl border border-accent/30 bg-accent-soft p-3.5">
                 <div className="flex items-start gap-3">
-                  <span className="text-xl" aria-hidden="true">📖</span>
+                  <span className="text-xl" aria-hidden="true">
+                    📖
+                  </span>
                   <div className="min-w-0 flex-1">
                     <h4 className="text-xs font-bold text-ink">
                       Booklet Resmi: Maps Ekonomi & Biaya Hidup
                     </h4>
                     <p className="mt-0.5 text-[11.5px] leading-relaxed text-muted">
-                      Dokumentasi interaktif dan siap cetak (PDF A4) yang merangkum
-                      seluruh fitur peta, metodologi, dan simulasi asumsi.
+                      Dokumentasi interaktif dan siap cetak (PDF A4) yang
+                      merangkum seluruh fitur peta, metodologi, dan simulasi
+                      asumsi.
                     </p>
                     <a
                       href="/booklet"
@@ -291,10 +296,9 @@ export function AboutDrawer() {
                 Nafkah adalah eksperimen terbuka. Angka upah dan biaya hidup
                 tinggal di file data yang mudah diperiksa dan diperbaiki:
                 tambahkan penetapan resmi terbaru, laporkan selisih, atau
-                sambungkan sumber terverifikasi lewat{" "}
-                <em>issue</em> atau <em>pull request</em> di GitHub — setiap
-                usulan diverifikasi dengan SK/penetapan resmi lewat label
-                keterpercayaan yang sama.
+                sambungkan sumber terverifikasi lewat <em>issue</em> atau{" "}
+                <em>pull request</em> di GitHub — setiap usulan diverifikasi
+                dengan SK/penetapan resmi lewat label keterpercayaan yang sama.
               </p>
 
               <dl className="mt-3 space-y-1.5 rounded-lg border border-border bg-surface p-3 text-[12.5px]">

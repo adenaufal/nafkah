@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useApp } from "@/state/AppContext";
+import { useDialogFocus } from "@/lib/useDialogFocus";
 import { SearchBox } from "./SearchBox";
 import { PinnedTray, ComparisonPanel } from "./Comparison";
 import { ColorModeControls, BandLegend, BasemapControls } from "./RightPanels";
@@ -22,7 +23,7 @@ const TITLES: Record<SheetTab, string> = {
 };
 
 /**
- * Mobile (<768px): a fixed four-column tab bar plus one single-height sheet.
+ * Compact (<1200px): a fixed four-column tab bar plus one bounded sheet.
  * Tap a tab to open, tap the same tab (or the scrim) to close — no hidden drag
  * gestures. The Asumsi tab opens the assumptions drawer instead of the sheet.
  */
@@ -30,10 +31,13 @@ export function MobileDock() {
   const { state, setAsumsiOpen } = useApp();
   const [tab, setTab] = useState<SheetTab | null>(null);
 
-  // Opening the assumptions drawer (from here or the tour) closes the sheet.
+  // Any root-level overlay owns the compact viewport; never leave a sheet
+  // mounted behind the assumptions drawer, About drawer, or guided tour.
   useEffect(() => {
-    if (state.asumsiOpen) setTab(null);
-  }, [state.asumsiOpen]);
+    if (state.asumsiOpen || state.aboutOpen || state.tourIdx !== null) {
+      setTab(null);
+    }
+  }, [state.aboutOpen, state.asumsiOpen, state.tourIdx]);
 
   const onTab = (id: SheetTab | "assumptions") => {
     if (id === "assumptions") {
@@ -46,6 +50,7 @@ export function MobileDock() {
   };
 
   const open = tab !== null;
+  const dialogRef = useDialogFocus(open, () => setTab(null), undefined, tab);
 
   return (
     <>
@@ -66,10 +71,11 @@ export function MobileDock() {
             onClick={() => setTab(null)}
           />
           <section
+            ref={dialogRef}
             role="dialog"
             aria-modal="true"
             aria-label={TITLES[tab]}
-            className="absolute inset-x-0 bottom-[68px] z-40 flex h-[64%] flex-col rounded-t-[18px] border-t border-border bg-card shadow-[0_-8px_34px_rgba(0,0,0,0.24)]"
+            className="absolute inset-x-0 bottom-[68px] z-40 flex h-[64%] max-h-[620px] flex-col rounded-t-[18px] border-t border-border bg-card shadow-[0_-8px_34px_rgba(0,0,0,0.24)] md:inset-x-auto md:bottom-[84px] md:left-1/2 md:w-[min(calc(100%-3rem),760px)] md:-translate-x-1/2 md:rounded-[18px] md:border"
           >
             <header className="flex shrink-0 items-center justify-between border-b border-border px-3.5 py-3">
               <h2 className="text-[15px] font-bold">{TITLES[tab]}</h2>
@@ -104,7 +110,7 @@ export function MobileDock() {
 
       <nav
         aria-label="Panel navigasi"
-        className="absolute inset-x-0 bottom-0 z-40 grid h-[68px] grid-cols-4 gap-1 border-t border-border bg-card px-2 pb-2.5 pt-1.5 shadow-[0_-4px_20px_rgba(0,0,0,0.12)]"
+        className="absolute inset-x-0 bottom-0 z-40 grid h-[68px] grid-cols-4 gap-1 border-t border-border bg-card px-2 pb-2.5 pt-1.5 shadow-[0_-4px_20px_rgba(0,0,0,0.12)] md:inset-x-auto md:left-1/2 md:w-[min(calc(100%-3rem),760px)] md:-translate-x-1/2 md:rounded-t-[18px] md:border-x"
       >
         {TABS.map((t) => {
           const active =

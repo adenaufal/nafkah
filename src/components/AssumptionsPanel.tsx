@@ -13,6 +13,7 @@ import type {
   TransportMode,
   WageBasis,
 } from "@/lib/types";
+import { useDialogFocus } from "@/lib/useDialogFocus";
 
 /**
  * Kontrol asumsi dalam tiga kelompok (rumah tangga / biaya hidup / basis upah).
@@ -23,13 +24,15 @@ type IncomeSource = "solo" | "dual";
 
 function Group({
   title,
+  className = "",
   children,
 }: {
   title: string;
+  className?: string;
   children: React.ReactNode;
 }) {
   return (
-    <section className="space-y-4">
+    <section className={`space-y-4 ${className}`}>
       <h3 className="text-[10.5px] font-extrabold uppercase tracking-[0.1em] text-accent">
         {title}
       </h3>
@@ -64,9 +67,7 @@ export function AssumptionsControls() {
     a.installmentMonthly ? String(a.installmentMonthly) : "",
   );
   useEffect(() => {
-    setInstallmentRaw(
-      a.installmentMonthly ? String(a.installmentMonthly) : "",
-    );
+    setInstallmentRaw(a.installmentMonthly ? String(a.installmentMonthly) : "");
   }, [a.installmentMonthly]);
   const onInstallmentChange = (v: string) => {
     const digits = v.replace(/\D/g, "").slice(0, 12);
@@ -191,8 +192,9 @@ export function AssumptionsControls() {
             ]}
           />
           <p className="mt-1.5 text-[11px] leading-relaxed text-muted">
-            Kerangka kelas: rusun/kost = menengah ke bawah, rumah KPR = menengah,
-            apartemen = menengah ke atas. Arti lengkap di panel Tentang (ⓘ).
+            Kerangka kelas: rusun/kost = menengah ke bawah, rumah KPR =
+            menengah, apartemen = menengah ke atas. Arti lengkap di panel
+            Tentang (ⓘ).
           </p>
         </div>
         <div>
@@ -252,25 +254,27 @@ export function AssumptionsControls() {
         />
       </Group>
 
-      <Group title="Basis upah">
-        <Segmented<WageBasis>
-          label="Basis upah"
-          value={a.wageBasis}
-          onChange={(v) => set("wageBasis", v)}
-          options={[
-            { value: "gross", label: "UMK kotor" },
-            { value: "takeHome", label: "Est. take-home" },
-          ]}
-        />
-        <label className="flex items-center gap-2.5 rounded-[11px] border border-border px-3 py-2.5 text-sm">
-          <input
-            type="checkbox"
-            checked={a.includeSavings}
-            onChange={(e) => set("includeSavings", e.target.checked)}
-            className="h-[18px] w-[18px] accent-[var(--accent)]"
+      <Group title="Basis upah" className="min-[1800px]:col-span-2">
+        <div className="grid gap-4 min-[1800px]:grid-cols-2 min-[1800px]:items-end min-[1800px]:gap-8">
+          <Segmented<WageBasis>
+            label="Basis upah"
+            value={a.wageBasis}
+            onChange={(v) => set("wageBasis", v)}
+            options={[
+              { value: "gross", label: "UMK kotor" },
+              { value: "takeHome", label: "Est. take-home" },
+            ]}
           />
-          Sertakan tabungan / dana cadangan (±10%)
-        </label>
+          <label className="flex min-h-11 items-center gap-2.5 rounded-[11px] border border-border px-3 py-2.5 text-sm">
+            <input
+              type="checkbox"
+              checked={a.includeSavings}
+              onChange={(e) => set("includeSavings", e.target.checked)}
+              className="h-[18px] w-[18px] accent-[var(--accent)]"
+            />
+            Sertakan tabungan / dana cadangan (±10%)
+          </label>
+        </div>
       </Group>
     </div>
   );
@@ -374,6 +378,9 @@ function Stepper({
  */
 export function AssumptionsDrawer() {
   const { state, setAsumsiOpen, resetAssumptions } = useApp();
+  const dialogRef = useDialogFocus(state.asumsiOpen, () =>
+    setAsumsiOpen(false),
+  );
   if (!state.asumsiOpen) return null;
 
   return (
@@ -384,19 +391,20 @@ export function AssumptionsDrawer() {
         onClick={() => setAsumsiOpen(false)}
       />
       <aside
+        ref={dialogRef}
         role="dialog"
         aria-modal="true"
         aria-label="Asumsi rumah tangga"
-        className="fixed inset-y-0 right-0 z-50 flex w-full flex-col border-l border-border bg-card shadow-[-18px_0_50px_rgba(0,0,0,0.28)] sm:w-[380px] min-[1800px]:w-[640px]"
+        className="assumptions-drawer fixed inset-y-0 right-0 z-50 flex w-full flex-col border-l border-border bg-card shadow-[-18px_0_50px_rgba(0,0,0,0.28)]"
       >
-        <header className="sticky top-0 z-10 flex items-start justify-between gap-3 border-b border-border bg-card px-5 py-4">
+        <header className="sticky top-0 z-10 flex items-start justify-between gap-3 border-b border-border bg-card px-5 py-4 min-[1800px]:px-6 min-[2400px]:px-7">
           <div>
             <h2 className="text-lg font-bold tracking-[-0.015em]">Asumsi</h2>
             <p className="mt-0.5 text-xs text-muted">
               Setiap perubahan langsung mewarnai ulang peta.
             </p>
             <p className="mt-1 text-xs text-muted" aria-live="polite">
-              Profil: {" "}
+              Profil:{" "}
               <span className="font-medium text-ink">
                 {assumptionSummary(state.assumptions)}
               </span>
@@ -412,11 +420,11 @@ export function AssumptionsDrawer() {
           </button>
         </header>
 
-        <div className="min-h-0 flex-1 overflow-y-auto px-5 py-5">
+        <div className="min-h-0 flex-1 overflow-y-auto px-5 py-5 min-[1800px]:px-6 min-[1800px]:py-6 min-[2400px]:px-7">
           <AssumptionsControls />
         </div>
 
-        <footer className="sticky bottom-0 z-10 flex gap-2.5 border-t border-border bg-card px-5 py-3.5">
+        <footer className="sticky bottom-0 z-10 flex gap-2.5 border-t border-border bg-card px-5 py-3.5 min-[1800px]:px-6 min-[2400px]:px-7">
           <button
             type="button"
             onClick={resetAssumptions}

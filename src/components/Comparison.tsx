@@ -16,10 +16,8 @@ import { EXPENSE_CATEGORIES } from "@/data/costs";
 import { BAND_LABEL, bandColors } from "@/lib/calculations";
 import { assumptionSummary } from "@/lib/profile";
 import { formatIDR, formatIDRCompact, formatPct } from "@/lib/format";
-import type {
-  ExpenseCategoryKey,
-  RegionMetrics,
-} from "@/lib/types";
+import { shouldRenderComparisonChart } from "@/lib/responsive";
+import type { ExpenseCategoryKey, RegionMetrics } from "@/lib/types";
 
 /**
  * Baki perbandingan wilayah tersemat + panel perbandingan berdampingan.
@@ -116,10 +114,12 @@ export function PinnedTray() {
           aria-label="Wilayah disematkan"
           className="rounded-2xl border border-dashed border-border bg-card p-3.5 text-xs leading-relaxed text-muted"
         >
-          <p className="font-semibold text-ink">Belum ada wilayah disematkan.</p>
+          <p className="font-semibold text-ink">
+            Belum ada wilayah disematkan.
+          </p>
           <p className="mt-1">
-            Klik wilayah di peta lalu <strong className="text-ink">Pin</strong> —
-            dua wilayah sudah cukup untuk membandingkan.
+            Klik wilayah di peta lalu <strong className="text-ink">Pin</strong>{" "}
+            — dua wilayah sudah cukup untuk membandingkan.
           </p>
         </section>
       )}
@@ -130,7 +130,20 @@ export function PinnedTray() {
 export function ComparisonPanel() {
   const { state, metrics, regionByCode } = useApp();
   const [open, setOpen] = useState(true);
+  const [showChart, setShowChart] = useState(() =>
+    shouldRenderComparisonChart(
+      typeof window === "undefined" ? 1440 : window.innerWidth,
+    ),
+  );
   const customActive = (state.assumptions.customIncome ?? 0) > 0;
+
+  useEffect(() => {
+    const syncChartVisibility = () =>
+      setShowChart(shouldRenderComparisonChart(window.innerWidth));
+    syncChartVisibility();
+    window.addEventListener("resize", syncChartVisibility);
+    return () => window.removeEventListener("resize", syncChartVisibility);
+  }, []);
 
   const pinnedMetrics: RegionMetrics[] = state.pinned
     .map((c) => metrics.get(c))
@@ -182,7 +195,7 @@ export function ComparisonPanel() {
       </header>
 
       {open && (
-        <div className="grid min-w-0 gap-4 p-3 sm:p-4 lg:grid-cols-[minmax(0,1.25fr)_minmax(300px,.75fr)]">
+        <div className="comparison-content grid min-w-0 gap-4 p-3 sm:p-4 lg:grid-cols-[minmax(0,1.25fr)_minmax(300px,.75fr)]">
           {/* Cards are easier to scan than a squeezed table on phones. */}
           <div className="grid gap-2 sm:hidden">
             {pinnedMetrics.map((m) => (
@@ -307,50 +320,52 @@ export function ComparisonPanel() {
           </table>
 
           {/* Hide the secondary chart at tablet widths to protect map space. */}
-          <div
-            className="h-52 min-w-0 md:hidden lg:block lg:h-40 xl:h-48"
-            role="img"
-            aria-label="Komposisi biaya bulanan tiap wilayah tersemat"
-          >
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart
-                data={chartData}
-                margin={{ top: 4, right: 8, bottom: 0, left: 0 }}
-              >
-                <CartesianGrid
-                  strokeDasharray="3 3"
-                  stroke="var(--border)"
-                  vertical={false}
-                />
-                <XAxis
-                  dataKey="name"
-                  tick={{ fontSize: 11, fill: "var(--muted)" }}
-                  tickLine={false}
-                />
-                <YAxis
-                  tickFormatter={formatIDRCompact}
-                  tick={{ fontSize: 11, fill: "var(--muted)" }}
-                  tickLine={false}
-                  axisLine={false}
-                  width={62}
-                />
-                <Tooltip
-                  wrapperStyle={{ zIndex: 50 }}
-                  content={<CompareTooltip />}
-                />
-                <Legend wrapperStyle={{ fontSize: 11 }} />
-                {EXPENSE_CATEGORIES.map((c) => (
-                  <Bar
-                    key={c.key}
-                    dataKey={c.key}
-                    name={c.label}
-                    stackId="cost"
-                    fill={c.color}
+          {showChart && (
+            <div
+              className="comparison-chart h-52 min-w-0 md:hidden lg:block lg:h-40 xl:h-48"
+              role="img"
+              aria-label="Komposisi biaya bulanan tiap wilayah tersemat"
+            >
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart
+                  data={chartData}
+                  margin={{ top: 4, right: 8, bottom: 0, left: 0 }}
+                >
+                  <CartesianGrid
+                    strokeDasharray="3 3"
+                    stroke="var(--border)"
+                    vertical={false}
                   />
-                ))}
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
+                  <XAxis
+                    dataKey="name"
+                    tick={{ fontSize: 11, fill: "var(--muted)" }}
+                    tickLine={false}
+                  />
+                  <YAxis
+                    tickFormatter={formatIDRCompact}
+                    tick={{ fontSize: 11, fill: "var(--muted)" }}
+                    tickLine={false}
+                    axisLine={false}
+                    width={62}
+                  />
+                  <Tooltip
+                    wrapperStyle={{ zIndex: 50 }}
+                    content={<CompareTooltip />}
+                  />
+                  <Legend wrapperStyle={{ fontSize: 11 }} />
+                  {EXPENSE_CATEGORIES.map((c) => (
+                    <Bar
+                      key={c.key}
+                      dataKey={c.key}
+                      name={c.label}
+                      stackId="cost"
+                      fill={c.color}
+                    />
+                  ))}
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+          )}
         </div>
       )}
     </section>

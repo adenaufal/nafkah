@@ -27,6 +27,55 @@ describe("placeTooltip", () => {
     expect(p.top).toBeUndefined();
   });
 
+  it("reserves the compact dock and map controls", () => {
+    const p = placeTooltip(
+      { key: "map", x: 0, y: 56, w: 375, h: 756 },
+      351,
+      375,
+      812,
+      224,
+    );
+    expect(p.bottom).toBe(238);
+    expect(p.top).toBeUndefined();
+  });
+
+  it("reserves the desktop control lane when requested", () => {
+    const left = placeTooltip(
+      { key: "search", x: 20, y: 80, w: 296, h: 38 },
+      TW,
+      1200,
+      FH,
+      0,
+      380,
+    ).left;
+    expect(left).toBe(380);
+  });
+
+  it("reserves the desktop right rail when requested", () => {
+    const left = placeTooltip(
+      { key: "legend", x: 888, y: 80, w: 296, h: 38 },
+      TW,
+      1200,
+      FH,
+      0,
+      380,
+      326,
+    ).left;
+    expect(left).toBe(530);
+  });
+
+  it("keeps desktop tooltips above the comparison panel", () => {
+    const p = placeTooltip(
+      { key: "compare", x: 340, y: 480, w: 520, h: 266 },
+      TW,
+      1200,
+      800,
+      334,
+    );
+    expect(p.bottom).toBe(348);
+    expect(p.top).toBeUndefined();
+  });
+
   it("clamps horizontally inside the frame", () => {
     const left = placeTooltip(
       { key: "asumsi", x: 1400, y: 10, w: 36, h: 36 },
