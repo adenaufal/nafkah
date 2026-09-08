@@ -73,6 +73,8 @@ export type WageBasis = "gross" | "takeHome";
 
 export interface Assumptions {
  householdType: HouseholdType;
+ /** Jumlah anak (0–5). Menambah kebutuhan per-anak (lihat CHILD_MULTIPLIERS). */
+ children: number;
  lifestyle: LifestyleLevel;
  housing: HousingType;
  transport: TransportMode;
@@ -82,6 +84,8 @@ export interface Assumptions {
  dualIncome: boolean;
  /** Pendapatan bulanan milik pengguna (Rp). null = pakai upah daerah (UMK/UMP). */
  customIncome: number | null;
+ /** Cicilan KPR/angsuran bulanan milik pengguna (Rp). null = estimasi sewa daerah. */
+ installmentMonthly: number | null;
 }
 
 /* ---------- Derived ---------- */

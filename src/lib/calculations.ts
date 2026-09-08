@@ -8,6 +8,7 @@ import type {
   WageRecord,
 } from "./types";
 import {
+  CHILD_MULTIPLIERS,
   HOUSEHOLD_MULTIPLIERS,
   HOUSING_MULTIPLIERS,
   LIFESTYLE_MULTIPLIERS,
@@ -23,6 +24,8 @@ import {
  *   Dengan pendapatan sendiri (customIncome > 0):
  *     wageAmount = customIncome + (earners === 2 ? upah daerah 1 pekerja : 0)
  *   regionalWageAmount selalu = upah daerah (pembanding & layer peta "Upah").
+ *   Per-anak (AP-03): pengali rumah tangga + children × CHILD_MULTIPLIERS.
+ *   Cicilan KPR (AP-03): installmentMonthly menggantikan kategori hunian.
  *   coveragePercent    = (wageBasisAmount / totalMonthlyCost) * 100
  *   surplusOrDeficit   = wageBasisAmount - totalMonthlyCost
  *   affordabilityRatio = totalMonthlyCost / wageBasisAmount
@@ -83,6 +86,7 @@ export const NO_DATA_PATTERN = "hatch-nodata";
 
 export const DEFAULT_ASSUMPTIONS: Assumptions = {
   householdType: "single",
+  children: 0,
   lifestyle: "moderate",
   housing: "studio",
   transport: "motorcycle",
@@ -90,6 +94,7 @@ export const DEFAULT_ASSUMPTIONS: Assumptions = {
   wageBasis: "gross",
   dualIncome: false,
   customIncome: null,
+  installmentMonthly: null,
 };
 
 export function classify(
@@ -107,8 +112,19 @@ export function adjustCosts(
   profile: CostProfile,
   assumptions: Assumptions,
 ): Record<ExpenseCategoryKey, number> {
-  const household = HOUSEHOLD_MULTIPLIERS[assumptions.householdType];
+  // "Family" tidak punya tabel sendiri: keluarga = pasangan + anak (AP-03).
+  const household =
+    assumptions.householdType === "single"
+      ? HOUSEHOLD_MULTIPLIERS.single
+      : HOUSEHOLD_MULTIPLIERS.couple;
   const lifestyle = LIFESTYLE_MULTIPLIERS[assumptions.lifestyle];
+  // Cicilan KPR pengguna menggantikan seluruh estimasi hunian (pola yang sama
+  // dengan "Pendapatan sendiri" yang menggantikan upah daerah).
+  const installment =
+    assumptions.installmentMonthly != null &&
+    assumptions.installmentMonthly > 0
+      ? assumptions.installmentMonthly
+      : null;
 
   const entries = Object.entries(profile.baseline) as [
     ExpenseCategoryKey,
@@ -117,8 +133,18 @@ export function adjustCosts(
   const out = {} as Record<ExpenseCategoryKey, number>;
 
   for (const [key, cell] of entries) {
+    if (key === "housing" && installment != null) {
+      out[key] = installment;
+      continue;
+    }
     // Full precision in state; only display rounds to the nearest thousand.
-    let amount = cell.amount * (household[key] ?? 1) * (lifestyle[key] ?? 1);
+    // Biaya anak ditambahkan secara aditif ke pengali rumah tangga:
+    // efektif = household + children × CHILD_MULTIPLIERS (kalibrasi v1.1).
+    let amount =
+      cell.amount *
+      ((household[key] ?? 1) +
+        assumptions.children * (CHILD_MULTIPLIERS[key] ?? 0)) *
+      (lifestyle[key] ?? 1);
     if (key === "housing") amount *= HOUSING_MULTIPLIERS[assumptions.housing];
     if (key === "transport")
       amount *= TRANSPORT_MULTIPLIERS[assumptions.transport];

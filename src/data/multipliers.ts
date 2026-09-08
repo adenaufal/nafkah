@@ -10,12 +10,15 @@ import type {
  * Assumption multiplier tables. These are data — edit them here, not in code.
  * Baseline profile: single · moderate · studio · motorcycle · savings included.
  *
- * Household multipliers scale sub-linearly for shared resources (housing,
- * utilities) and near-linearly for per-person costs (food, healthcare).
+ * Household multipliers are EFFECTIVE factors on the baseline (1 orang dewasa):
+ * couple scales sub-linearly for shared resources (housing, utilities) and
+ * near-linearly for per-person costs (food, healthcare). Tipe "family" tidak
+ * lagi punya tabelnya sendiri — sejak v1.1 keluarga = pasangan + anak, dengan
+ * biaya per-anak dari CHILD_MULTIPLIERS (AP-03).
  */
 
 export const HOUSEHOLD_MULTIPLIERS: Record<
-  HouseholdType,
+  Exclude<HouseholdType, "family">,
   Partial<Record<ExpenseCategoryKey, number>>
 > = {
   single: {},
@@ -31,18 +34,28 @@ export const HOUSEHOLD_MULTIPLIERS: Record<
     education: 1.2,
     contingency: 1.5,
   },
-  family: {
-    housing: 1.6,
-    food: 2.6,
-    transport: 2.0,
-    utilities: 1.6,
-    connectivity: 1.0,
-    healthcare: 3.0,
-    personalCare: 2.4,
-    leisure: 2.2,
-    education: 4.0,
-    contingency: 2.0,
-  },
+};
+
+/**
+ * Biaya marginal per anak, ditambahkan secara aditif ke pengali rumah tangga:
+ * efektif = household + children × CHILD_MULTIPLIERS. Dikalibrasi agar
+ * pasangan + 2 anak mereproduksi profil "Keluarga" v0.1 secara persis
+ * (mis. food 1.75 + 2×0.425 = 2.6; education 1.2 + 2×1.4 = 4.0). Basis konsep:
+ * skala ekuivalensi OECD-modified (anak < 14 th ≈ 0,3–0,5 orang dewasa,
+ * lebih tinggi untuk pendidikan/pengasuhan) — label estimasi, bukan data
+ * survei primer.
+ */
+export const CHILD_MULTIPLIERS: Partial<Record<ExpenseCategoryKey, number>> = {
+  housing: 0.175,
+  food: 0.425,
+  transport: 0.2,
+  utilities: 0.15,
+  connectivity: 0,
+  healthcare: 0.55,
+  personalCare: 0.35,
+  leisure: 0.2,
+  education: 1.4,
+  contingency: 0.25,
 };
 
 export const LIFESTYLE_MULTIPLIERS: Record<

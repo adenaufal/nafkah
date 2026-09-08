@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { useApp } from "@/state/AppContext";
+import { MAX_CHILDREN } from "@/state/persist";
+import { assumptionSummary } from "@/lib/profile";
 import { formatIDR } from "@/lib/format";
 import type {
   Assumptions,
@@ -43,6 +45,7 @@ export function AssumptionsControls() {
     setAssumptions({ ...a, [k]: v });
 
   const customActive = (a.customIncome ?? 0) > 0;
+  const installmentActive = (a.installmentMonthly ?? 0) > 0;
   const dualIncome = a.dualIncome && a.householdType !== "single";
   const [incomeRaw, setIncomeRaw] = useState(
     a.customIncome ? String(a.customIncome) : "",
@@ -57,19 +60,54 @@ export function AssumptionsControls() {
     set("customIncome", digits && parsed > 0 ? parsed : null);
   };
 
+  const [installmentRaw, setInstallmentRaw] = useState(
+    a.installmentMonthly ? String(a.installmentMonthly) : "",
+  );
+  useEffect(() => {
+    setInstallmentRaw(
+      a.installmentMonthly ? String(a.installmentMonthly) : "",
+    );
+  }, [a.installmentMonthly]);
+  const onInstallmentChange = (v: string) => {
+    const digits = v.replace(/\D/g, "").slice(0, 12);
+    setInstallmentRaw(digits);
+    const parsed = Number(digits);
+    set("installmentMonthly", digits && parsed > 0 ? parsed : null);
+  };
+
   return (
     <div className="grid gap-7 min-[1800px]:grid-cols-2 min-[1800px]:gap-x-8">
       <Group title="Rumah tangga">
         <Segmented<HouseholdType>
           label="Tipe rumah tangga"
           value={a.householdType}
-          onChange={(v) => set("householdType", v)}
+          onChange={(v) => {
+            // Preset: memilih Keluarga mengisi 2 anak bila belum diatur.
+            if (v === "family" && a.children === 0) {
+              setAssumptions({ ...a, householdType: "family", children: 2 });
+            } else {
+              set("householdType", v);
+            }
+          }}
           options={[
             { value: "single", label: "Single" },
             { value: "couple", label: "Pasangan" },
             { value: "family", label: "Keluarga" },
           ]}
         />
+        <div>
+          <Stepper
+            label="Jumlah anak"
+            value={a.children}
+            min={0}
+            max={MAX_CHILDREN}
+            onChange={(v) => set("children", v)}
+          />
+          <p className="mt-1.5 text-[11px] leading-relaxed text-muted">
+            Tiap anak menambah kebutuhan makan, pendidikan/pengasuhan, dan
+            kesehatan lewat faktor per-anak (basis model, estimasi).
+          </p>
+        </div>
         {a.householdType !== "single" && (
           <div>
             <Segmented<IncomeSource>
@@ -157,6 +195,51 @@ export function AssumptionsControls() {
             apartemen = menengah ke atas. Arti lengkap di panel Tentang (ⓘ).
           </p>
         </div>
+        <div>
+          <label
+            htmlFor="ctl-installment"
+            className="mb-1.5 block text-xs font-semibold text-muted"
+          >
+            Cicilan KPR / angsuran (opsional)
+          </label>
+          <div className="flex gap-1.5">
+            <input
+              id="ctl-installment"
+              type="text"
+              inputMode="numeric"
+              autoComplete="off"
+              aria-describedby="ctl-installment-hint"
+              placeholder="cth. 2.500.000"
+              value={
+                installmentRaw
+                  ? Number(installmentRaw).toLocaleString("id-ID")
+                  : ""
+              }
+              onChange={(e) => onInstallmentChange(e.target.value)}
+              className="h-11 min-w-0 flex-1 rounded-[11px] border border-border bg-surface px-3 text-sm tabular-nums placeholder:text-muted/60"
+            />
+            {installmentActive && (
+              <button
+                type="button"
+                onClick={() => set("installmentMonthly", null)}
+                aria-label="Hapus cicilan, kembali ke estimasi hunian daerah"
+                className="shrink-0 self-stretch rounded-[11px] border border-border px-2.5 text-sm text-muted hover:border-accent hover:text-ink"
+              >
+                ✕
+              </button>
+            )}
+          </div>
+          <p
+            id="ctl-installment-hint"
+            className="mt-1.5 text-[11px] leading-relaxed text-muted"
+          >
+            {installmentActive
+              ? `Hunian dihitung dari cicilanmu: ${formatIDR(
+                  a.installmentMonthly ?? 0,
+                )} — menggantikan estimasi sewa daerah. Kosongkan (✕) untuk kembali.`
+              : "Menggantikan estimasi sewa hunian dengan angsuranmu. Kosong = estimasi daerah. Angka ini hanya hidup di browsermu."}
+          </p>
+        </div>
         <Segmented<TransportMode>
           label="Transportasi"
           value={a.transport}
@@ -233,6 +316,59 @@ function Segmented<T extends string>({
 }
 
 /**
+ * Stepper angka (dipakai untuk jumlah anak). Tombol −/+ dengan target sentuh
+ * penuh; nilai diumumkan lewat aria-live agar pembaca layar ikut terbarui.
+ */
+function Stepper({
+  label,
+  value,
+  min,
+  max,
+  onChange,
+}: {
+  label: string;
+  value: number;
+  min: number;
+  max: number;
+  onChange: (v: number) => void;
+}) {
+  const id = `ctl-${label.replace(/\W+/g, "-").toLowerCase()}`;
+  return (
+    <div role="group" aria-labelledby={id}>
+      <p id={id} className="mb-1.5 text-xs font-semibold text-muted">
+        {label}
+      </p>
+      <div className="flex items-center gap-2">
+        <button
+          type="button"
+          aria-label={`Kurangi ${label.toLowerCase()} menjadi ${value - 1}`}
+          disabled={value <= min}
+          onClick={() => onChange(value - 1)}
+          className="flex h-11 w-11 items-center justify-center rounded-[11px] border border-border text-lg disabled:cursor-default disabled:text-muted/40 hover:not-disabled:border-accent hover:not-disabled:text-ink"
+        >
+          −
+        </button>
+        <span
+          aria-live="polite"
+          className="min-w-16 text-center text-sm font-semibold tabular-nums"
+        >
+          {value} anak
+        </span>
+        <button
+          type="button"
+          aria-label={`Tambah ${label.toLowerCase()} menjadi ${value + 1}`}
+          disabled={value >= max}
+          onClick={() => onChange(value + 1)}
+          className="flex h-11 w-11 items-center justify-center rounded-[11px] border border-border text-lg disabled:cursor-default disabled:text-muted/40 hover:not-disabled:border-accent hover:not-disabled:text-ink"
+        >
+          +
+        </button>
+      </div>
+    </div>
+  );
+}
+
+/**
  * Drawer asumsi — dikendalikan dari context (tombol ⚙ header desktop & tab
  * Asumsi mobile). Header & footer sticky; kolom jadi dua di layar sangat lebar.
  */
@@ -258,6 +394,12 @@ export function AssumptionsDrawer() {
             <h2 className="text-lg font-bold tracking-[-0.015em]">Asumsi</h2>
             <p className="mt-0.5 text-xs text-muted">
               Setiap perubahan langsung mewarnai ulang peta.
+            </p>
+            <p className="mt-1 text-xs text-muted" aria-live="polite">
+              Profil: {" "}
+              <span className="font-medium text-ink">
+                {assumptionSummary(state.assumptions)}
+              </span>
             </p>
           </div>
           <button
