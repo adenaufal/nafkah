@@ -29,6 +29,7 @@ import {
 } from "@/lib/calculations";
 import { loadGeometry, loadDataset } from "@/data/loader";
 import { loadPersisted, savePersisted } from "./persist";
+import { decodeSharedView } from "./share";
 import type { FeatureCollection, Geometry } from "geojson";
 
 export const MAX_PINS = 5;
@@ -97,14 +98,21 @@ const initialState: AppState = {
 /** Client-only: pull persisted preferences over the static defaults. */
 function initState(base: AppState): AppState {
   const p = loadPersisted();
-  const onboarded = p.onboarded ?? false;
+  const shared =
+    typeof window === "undefined"
+      ? null
+      : decodeSharedView(window.location.search);
+  const onboarded = shared ? true : (p.onboarded ?? false);
   return {
     ...base,
     darkMode: p.darkMode ?? base.darkMode,
-    assumptions: p.assumptions ?? base.assumptions,
-    pinned: p.pinned ?? base.pinned,
+    assumptions: shared?.assumptions ?? p.assumptions ?? base.assumptions,
+    pinned: shared?.pinned ?? p.pinned ?? base.pinned,
+    selectedCode: shared?.selectedCode ?? base.selectedCode,
+    colorMode: shared?.colorMode ?? base.colorMode,
+    legendFilter: shared?.legendFilter ?? base.legendFilter,
     onboarded,
-    onboardCardOpen: !p.onboardCardDismissed,
+    onboardCardOpen: shared ? false : !p.onboardCardDismissed,
     // First visit opens the guide; returning visitors land straight on the map.
     tourIdx: onboarded ? null : -1,
   };
@@ -153,7 +161,8 @@ function reducer(state: AppState, action: Action): AppState {
       };
     case "data/loading":
       return { ...state, dataStatus: "loading", dataError: null };
-    case "data/ready":
+    case "data/ready": {
+      const validCodes = new Set(action.regions.map((region) => region.code));
       return {
         ...state,
         dataStatus: "ready",
@@ -161,7 +170,13 @@ function reducer(state: AppState, action: Action): AppState {
         wages: action.wages,
         costs: action.costs,
         narratives: action.narratives,
+        pinned: state.pinned.filter((code) => validCodes.has(code)),
+        selectedCode:
+          state.selectedCode && validCodes.has(state.selectedCode)
+            ? state.selectedCode
+            : null,
       };
+    }
     case "data/error":
       return { ...state, dataStatus: "error", dataError: action.message };
     case "assumptions/set":

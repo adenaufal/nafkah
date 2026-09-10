@@ -5,6 +5,16 @@ Nomor versi mengikuti Semantic Versioning: `MAJOR.MINOR.PATCH`.
 
 ## [Unreleased]
 
+### Added
+- Tautan berbagi berversi untuk memulihkan wilayah perbandingan, profil
+  rumah tangga, pendapatan/cicilan, mode warna, dan filter legenda.
+- Tombol Bagikan yang memakai share sheet perangkat atau menyalin tautan,
+  lengkap dengan penjelasan privasi untuk angka finansial yang ikut dibagikan.
+
+### Changed
+- Roadmap disusun ulang menjadi Now/Next/Later dan diselaraskan dengan status
+  AP-02, AP-03, serta fondasi AP-07 yang sudah tersedia.
+
 ## [0.1.0] - 2026-09-03
 
 Rilis publik open source pertama.

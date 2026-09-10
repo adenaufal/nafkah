@@ -14,6 +14,7 @@ import { StatusChips } from "./StatusChips";
 import { AboutDrawer } from "./AboutPanel";
 import { Onboarding } from "./onboarding/Onboarding";
 import { ThreeStepCard } from "./onboarding/ThreeStepCard";
+import { ShareButton } from "./ShareButton";
 
 // MapLibre must never run during SSR.
 const MapCanvas = dynamic(() => import("./map/MapCanvas"), {
@@ -79,6 +80,7 @@ function TopBar() {
           <span className="hidden sm:inline">Tentang</span>
           <span className="sr-only sm:hidden">Tentang Nafkah</span>
         </button>
+        <ShareButton />
         <button
           type="button"
           onClick={resetView}

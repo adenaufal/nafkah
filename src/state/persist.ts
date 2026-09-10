@@ -1,8 +1,8 @@
 /**
- * Small localStorage layer. Every displayed number stays client-side; the
- * "Pendapatan sendiri" copy promises customIncome never leaves the browser, so
- * these keys live only here. Every access is guarded — private windows, cleared
- * storage, or a stricter browser throw, and the app must still render.
+ * Small localStorage layer. Financial inputs stay client-side during ordinary
+ * use. They are only encoded into a URL after the user explicitly chooses
+ * "Bagikan". Every access is guarded — private windows, cleared storage, or a
+ * stricter browser throw, and the app must still render.
  */
 
 import { DEFAULT_ASSUMPTIONS } from "@/lib/calculations";

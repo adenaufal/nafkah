@@ -21,7 +21,7 @@ kerja kecil, sedang, dan besar.
 
 ---
 
-## Status v0.1.0 (per 3 September 2026)
+## Status produk (per 10 September 2026)
 
 ### ✅ Sudah tersedia
 
@@ -33,6 +33,10 @@ kerja kecil, sedang, dan besar.
   basis upah. Ada kolom "Pendapatan sendiri" serta opsi "2 upah".
 - Baki perbandingan hingga 5 wilayah dengan rincian biaya per kategori.
   Jendela detail mencantumkan asal setiap angka.
+- Dataset JSON berversi `public/data/v2026.1/` dengan manifest, skema Zod,
+  pemeriksaan integritas, dan catatan perubahan data.
+- Tautan berbagi berversi yang memulihkan wilayah tersemat/terpilih, asumsi
+  aktif, mode warna, dan filter legenda (fondasi AP-07; belum dirilis).
 - Navigasi keyboard, label `aria`, dan kontras AA.
 - Data upah 2026 untuk 514 wilayah berlabel `official`, serta 514×10 nilai
   biaya berlabel `estimate`, dengan keterangan sumber sesuai asalnya.
@@ -42,14 +46,11 @@ kerja kecil, sedang, dan besar.
 
 ### ❌ Belum tersedia
 
-- Data masih tersimpan dalam modul TypeScript. File JSON terpisah dengan
-  versi (`/data/vYYYY/…`) belum tersedia, tetapi skema Zod sudah memeriksa data
-  di CI (AP-02).
 - Peta dasar offline masih berupa latar polos. PMTiles yang dihosting sendiri
   belum tersedia.
-- Berbagi atau menyematkan peta lewat URL, ekspor CSV/PNG, PWA, data lintas
-  tahun, detail kecamatan, form koreksi publik aktif, API publik, E2E
-  Playwright, dan Lighthouse CI masih dalam rencana.
+- Pemisahan eksplisit "gaji asal" dan "biaya hidup tujuan", embed, ekspor
+  CSV/PNG, PWA, data lintas tahun, detail kecamatan, antrean koreksi publik,
+  API publik, E2E Playwright, dan Lighthouse CI masih dalam rencana.
 
 ---
 
@@ -68,20 +69,19 @@ repo.
 | CONTRIBUTING + CI (typecheck/test/build) | ✅ |
 | Code of Conduct (Contributor Covenant 2.1) | ✅ |
 | Template issue/PR dan arahan ke Discussions (`.github/`) | ✅ |
-| Pemeriksaan data dengan skema Zod dan validasi 514×3 di CI | ✅ (AP-02 sebagian) |
+| Pemeriksaan data dengan skema Zod, validasi 514×3, dan JSON berversi | ✅ (AP-02) |
 | Penjelasan metode dan catatan bahwa UMK adalah patokan, bukan gaji nyata | ✅ (AP-01) |
 | File sementara dan data pribadi (screenshot, salinan masukan, log) masuk `.gitignore` | ✅ |
 | Form Airtable dan tautannya di `config.yml` | 🟡 Tautan sudah terpasang; pemeriksaan laporan masih manual (lihat [panduan kanal masukan](docs/feedback-channels.md)) |
 | GitHub Discussions | 🟡 Tautan sudah tersedia; aktivasi dan kategorinya perlu dipelihara maintainer |
 | `SECURITY.md` untuk situs statis | ❌ opsional |
 
-> Repo sudah publik. AP-02 (file JSON dengan versi) dan alur pemeriksaan AP-04
-> tetap menjadi prasyarat untuk menerima serta menggabungkan koreksi komunitas
-> dengan aman.
+> Repo sudah publik dan AP-02 selesai. Alur pemeriksaan AP-04 tetap menjadi
+> prasyarat untuk menerima serta menggabungkan koreksi komunitas dengan aman.
 
 ---
 
-## Rencana pengerjaan
+## Roadmap Now / Next / Later
 
 Repositori dan aplikasi sudah publik. Form Airtable untuk koreksi data sudah
 ditautkan dari konfigurasi GitHub dan README; laporan yang masuk tetap diperiksa
@@ -90,7 +90,20 @@ menyajikan aset statis, tanpa layanan form yang dihosting sendiri. Pengumpulan
 laporan nantinya memakai agent terjadwal di luar situs. Keputusan 2 September
 2026 dan langkah pengelolaannya ada di [panduan kanal masukan](docs/feedback-channels.md).
 
-### Dikerjakan berikutnya
+### Ringkasan status
+
+| Status | Jumlah | Item |
+| --- | ---: | --- |
+| Selesai | 2 | AP-02, AP-03 |
+| Berjalan/sebagian | 3 | AP-01, AP-04, AP-07 |
+| Belum dimulai di fase Now | 2 | AP-05, AP-06 |
+
+Risiko terbesar tetap kualitas estimasi wilayah yang diperdebatkan (AP-05)
+dan kapasitas moderasi laporan (AP-04). Fondasi berbagi AP-07 tidak bergantung
+lagi pada migrasi data karena AP-02 sudah selesai, tetapi perlu keputusan UX
+tentang asal gaji versus kota tujuan sebelum dianggap lengkap.
+
+### Now — September–Oktober 2026
 
 | ID | Pekerjaan | Yang perlu dilakukan | Status | Prioritas |
 | --- | --- | --- | --- | --- |
@@ -100,17 +113,17 @@ laporan nantinya memakai agent terjadwal di luar situs. Keputusan 2 September
 | AP-04 | Form koreksi per wilayah | Buat form Airtable "Laporkan angka ini" dengan wilayah, kategori, nilai lama/usulan, periode, jenis bukti, sumber, dan kontak opsional. Laporan masuk ke antrean pemeriksaan manual (`Status=New`), tanpa mengubah dataset otomatis. | 🟡 Form dan tautan ✅; antrean pemeriksaan manual serta proses penerimaan masih ❌ (skema ada di [panduan kanal masukan](docs/feedback-channels.md); template GitHub ✅). | P0 · M |
 | AP-05 | Audit wilayah yang diperdebatkan | Periksa Kep. Meranti, Samosir, Bandung, serta biaya transportasi/logistik dan kesehatan. Bandingkan hasil model dengan laporan lokal, lalu catat keputusan tiap kasus. | ❌ | P0 · S/M |
 | AP-06 | Kemudahan menemukan dan memakai fitur | Uji ulang Pendapatan sendiri, filter tingkat keterjangkauan, mode gelap, dan legenda di ponsel serta lewat keyboard. Perjelas tombol tindakan dan catat penggunaan tanpa data pribadi. | ❌ | P1 · S |
+| AP-07 | Perbandingan dan berbagi hasil untuk relokasi | Bagikan wilayah, asumsi, mode warna, dan filter lewat URL berversi; lalu pisahkan gaji asal dari biaya kota tujuan dan tambahkan affordance berbagi di panel hasil. | 🟡 Fondasi URL + tombol Bagikan + sanitasi input + uji round-trip ✅. Model eksplisit Kota A → Kota B dan kompatibilitas lintas versi berikutnya masih ❌. | P0 · M |
 
-### Setelah data dan alur dasar stabil
+### Next — November–Desember 2026
 
 | ID | Pekerjaan | Rencana dan prasyarat |
 | --- | --- | --- |
-| AP-07 | Perbandingan dan berbagi hasil untuk relokasi | Bandingkan gaji di Kota A dengan biaya hidup di Kota B memakai pendapatan sendiri, beberapa wilayah, dan pengaturan tersimpan di URL. Kerjakan sebelum fitur embed penuh. Memerlukan AP-02 agar tautan lama tetap bisa dibaca. |
 | AP-08 | Lapisan data komunitas | Buat survei singkat per kategori. Tampilkan median atau rentangnya terpisah dari estimasi utama, lengkap dengan ukuran sampel, periode, confidence, dan aturan moderasi. |
 | AP-09 | Informasi kepatuhan UMK dan gaji aktual | Mulai dengan label kualitatif bersumber dari putusan atau berita; skor numerik belum dipakai. UMK baru bisa diganti dengan data gaji aktual jika cakupan dan metodenya memadai. Perlu tinjauan hukum dan metodologi. |
 | AP-10 | Tindak lanjut laporan sampai rilis | Setelah AP-04 berjalan, catat laporan yang diterima, ditolak, atau masih ditinjau. Agent terjadwal mengambil `Status=New` lewat PAT Airtable read-only dan Discussions baru. Jalankan harian saat ramai, berhenti bila kosong, lalu mingguan setelah reda. Agent hanya membuat draft PR; persetujuan tetap oleh manusia. |
 
-### Rencana jangka panjang
+### Later — 2027 dan seterusnya
 
 | ID | Pekerjaan | Rencana |
 | --- | --- | --- |
@@ -124,7 +137,7 @@ laporan nantinya memakai agent terjadwal di luar situs. Keputusan 2 September
 1. Pastikan kanal kontribusi publik tetap berfungsi: pantau form Airtable dan Discussions, lalu siapkan antrean pemeriksaan (AP-04, AP-10).
 2. Perjelas metode dan batasan (bagian utama AP-01 ✅), lalu audit Meranti, Samosir, Bandung, biaya transportasi, dan kesehatan (AP-05).
 3. Selesaikan antrean pemeriksaan (AP-04, AP-10) — file JSON dengan versi sudah ✅ (`public/data/v2026.1/` + catatan perubahan).
-4. Jumlah anak dan cicilan sudah ✅ (AP-03) beserta uji regresinya; lanjutkan ke perbandingan dan berbagi hasil (AP-07).
+4. Selesaikan model relokasi asal → tujuan dan kompatibilitas URL berikutnya (AP-07), lalu validasi alurnya bersama AP-06.
 
 ---
 
@@ -163,7 +176,7 @@ Nomor AP-xx merujuk ke rencana di atas.
 | --- | --- |
 | Bahasa Indonesia sebagai satu-satunya bahasa (pilihan i18n belum diperlukan) | ✅ |
 | Mode gelap dan filter legenda per tingkat keterjangkauan (diminta komunitas, tersedia sejak v0.1) | ✅ |
-| Berbagi dan menyematkan peta (pengaturan di URL; mode `<iframe>`) | ❌ (→ AP-07) |
+| Berbagi dan menyematkan peta (pengaturan di URL; mode `<iframe>`) | 🟡 URL berversi + tombol Bagikan ✅; embed ❌ (→ AP-07) |
 | Ekspor CSV/PNG dengan sumber, `asOf`, dan catatan batasan | ❌ |
 | Profil rumah tangga dengan pilihan awal yang divalidasi lewat Susenas | 🟡 kontrol jumlah anak & cicilan KPR ✅ (AP-03); validasi pilihan awal lewat Susenas masih ❌ |
 | PWA yang bisa dipasang, menyimpan geometri dan data di cache, serta membuka kerangka aplikasi secara offline | ❌ |

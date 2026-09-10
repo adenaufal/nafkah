@@ -163,8 +163,8 @@ export function AssumptionsControls() {
             {customActive
               ? `Pembagi: ${formatIDR(a.customIncome ?? 0)}${
                   dualIncome ? " + upah minimum pasangan" : ""
-                }. Kosongkan (✕) untuk kembali ke UMK/UPM.`
-              : "Kosong = memakai UMK/UPM daerah. Angka ini hanya hidup di browsermu."}
+                }. Kosongkan (✕) untuk kembali ke UMK/UMP.`
+              : "Kosong = memakai UMK/UMP daerah. Angka tetap di browsermu, kecuali saat kamu memilih Bagikan."}
           </p>
         </div>
       </Group>
@@ -239,7 +239,7 @@ export function AssumptionsControls() {
               ? `Hunian dihitung dari cicilanmu: ${formatIDR(
                   a.installmentMonthly ?? 0,
                 )} — menggantikan estimasi sewa daerah. Kosongkan (✕) untuk kembali.`
-              : "Menggantikan estimasi sewa hunian dengan angsuranmu. Kosong = estimasi daerah. Angka ini hanya hidup di browsermu."}
+              : "Menggantikan estimasi sewa hunian dengan angsuranmu. Kosong = estimasi daerah. Angka ikut masuk tautan hanya saat kamu memilih Bagikan."}
           </p>
         </div>
         <Segmented<TransportMode>
