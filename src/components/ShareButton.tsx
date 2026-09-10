@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useApp } from "@/state/AppContext";
 import { buildShareUrl } from "@/state/share";
+import { recordUsage } from "@/lib/usage";
 
 type ShareStatus = "idle" | "copied" | "shared" | "error";
 
@@ -43,10 +44,12 @@ export function ShareButton() {
   };
 
   const share = async () => {
+    recordUsage("share_requested");
     const url = buildShareUrl(window.location.href, {
       assumptions: state.assumptions,
       pinned: state.pinned,
       selectedCode: state.selectedCode,
+      originCode: state.originCode,
       colorMode: state.colorMode,
       legendFilter: state.legendFilter,
     });
@@ -58,10 +61,12 @@ export function ShareButton() {
           text: "Lihat perbandingan upah dan biaya hidup dengan asumsi ini.",
           url,
         });
+        recordUsage("share_completed");
         showStatus("shared");
         return;
       }
       await copyText(url);
+      recordUsage("share_completed");
       showStatus("copied");
     } catch (error) {
       if (error instanceof DOMException && error.name === "AbortError") return;

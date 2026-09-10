@@ -107,8 +107,11 @@ export interface RegionMetrics {
  wageAmount: number;
  /** Upah daerah berbasis UMK/UMP — pembanding saat pendapatan custom aktif. */
  regionalWageAmount: number;
- /** Sumber pembagi rasio keterjangkauan: upah daerah atau pendapatan sendiri. */
- wageSource: "region" | "custom";
+ /**
+  * Sumber pembagi rasio keterjangkauan: upah tujuan, gaji asal, atau
+  * pendapatan sendiri.
+  */
+ wageSource: "region" | "origin" | "custom";
  totalMonthlyCost: number;
  coveragePercent: number;
  surplusOrDeficit: number;

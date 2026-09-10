@@ -174,6 +174,51 @@ describe("computeMetrics", () => {
     });
     expect(m.wageAmount).toBe(50_000_000 + wage.grossMonthly);
   });
+
+  it("uses the origin wage while keeping the destination wage as comparator", () => {
+    const destinationWage = makeWage(3_000_000);
+    const originWage = {
+      ...makeWage(5_000_000),
+      regionCode: "01.01",
+    };
+    const m = computeMetrics(
+      "02.02",
+      destinationWage,
+      makeCosts(),
+      DEFAULT_ASSUMPTIONS,
+      AFFORDABILITY_BANDS,
+      originWage,
+    );
+
+    expect(m.wageAmount).toBe(originWage.grossMonthly);
+    expect(m.wageSource).toBe("origin");
+    expect(m.regionalWageAmount).toBe(destinationWage.grossMonthly);
+  });
+
+  it("uses the origin wage for the partner when custom income is active", () => {
+    const destinationWage = makeWage(3_000_000);
+    const originWage = {
+      ...makeWage(2_000_000),
+      regionCode: "01.01",
+    };
+    const m = computeMetrics(
+      "02.02",
+      destinationWage,
+      makeCosts(),
+      {
+        ...DEFAULT_ASSUMPTIONS,
+        householdType: "couple",
+        dualIncome: true,
+        customIncome: 7_000_000,
+      },
+      AFFORDABILITY_BANDS,
+      originWage,
+    );
+
+    expect(m.wageAmount).toBe(9_000_000);
+    expect(m.wageSource).toBe("custom");
+    expect(m.regionalWageAmount).toBe(6_000_000);
+  });
 });
 
 /* ---------- AP-03: jumlah anak & cicilan KPR ---------- */

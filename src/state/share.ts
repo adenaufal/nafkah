@@ -11,7 +11,12 @@ import type {
 } from "@/lib/types";
 import { MAX_CHILDREN, normalizeAssumptions } from "./persist";
 
-const SHARE_VERSION = "1";
+/**
+ * v2 adds an optional `origin` wage region for relocation comparisons. The
+ * decoder still accepts v1 so links shared before AP-07 remain valid.
+ */
+const SHARE_VERSION = "2";
+const SUPPORTED_SHARE_VERSIONS = new Set(["1", SHARE_VERSION]);
 const MAX_SHARED_REGIONS = 5;
 const REGION_CODE = /^\d{2}\.\d{2}$/;
 
@@ -36,6 +41,8 @@ export interface SharedView {
   assumptions: Assumptions;
   pinned: string[];
   selectedCode: string | null;
+  /** Upah source region; destination costs remain represented by `pinned`. */
+  originCode: string | null;
   colorMode: ColorMode;
   legendFilter: AffordabilityBand | null;
 }
@@ -75,6 +82,10 @@ function positiveInteger(value: string | null): number | null {
   return Number.isSafeInteger(parsed) && parsed > 0 ? parsed : null;
 }
 
+function regionCode(value: string | null): string | null {
+  return value && REGION_CODE.test(value) ? value : null;
+}
+
 function regionCodes(value: string | null): string[] {
   if (!value) return [];
   return [...new Set(value.split(",").filter((code) => REGION_CODE.test(code)))].slice(
@@ -86,7 +97,7 @@ function regionCodes(value: string | null): string[] {
 /** Parse a versioned shared view. Unknown or malformed values degrade safely. */
 export function decodeSharedView(search: string): SharedView | null {
   const params = new URLSearchParams(search);
-  if (params.get("naf") !== SHARE_VERSION) return null;
+  if (!SUPPORTED_SHARE_VERSIONS.has(params.get("naf") ?? "")) return null;
 
   const assumptions = normalizeAssumptions({
     ...DEFAULT_ASSUMPTIONS,
@@ -137,7 +148,8 @@ export function decodeSharedView(search: string): SharedView | null {
   return {
     assumptions,
     pinned: regionCodes(params.get("r")),
-    selectedCode: selected && REGION_CODE.test(selected) ? selected : null,
+    selectedCode: regionCode(selected),
+    originCode: regionCode(params.get("origin")),
     colorMode: enumValue(
       params.get("color"),
       COLOR_MODES,
@@ -162,6 +174,8 @@ export function buildShareUrl(baseUrl: string, view: SharedView): string {
     url.searchParams.set("r", regionCodes(view.pinned.join(",")).join(","));
   if (view.selectedCode && REGION_CODE.test(view.selectedCode))
     url.searchParams.set("f", view.selectedCode);
+  if (view.originCode && REGION_CODE.test(view.originCode))
+    url.searchParams.set("origin", view.originCode);
   url.searchParams.set("hh", a.householdType);
   url.searchParams.set("kids", String(a.children));
   url.searchParams.set("life", a.lifestyle);

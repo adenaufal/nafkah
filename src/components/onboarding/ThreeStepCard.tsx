@@ -13,7 +13,7 @@ const STEPS = [
   },
   {
     t: "Ubah asumsi",
-    d: "rumah tangga, hunian, atau pendapatan sendiri — peta mewarnai ulang seketika.",
+    d: "rumah tangga, hunian, pendapatan sendiri, atau gaji asal — peta mewarnai ulang seketika.",
   },
 ];
 

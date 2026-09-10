@@ -136,7 +136,10 @@ function ClosingCard({ narrow }: { narrow: boolean }) {
   const recap = [
     { t: "Cari wilayah", d: "atau klik langsung di peta." },
     { t: "Sematkan sampai 5", d: "untuk membandingkan cakupan & saldonya." },
-    { t: "Ubah asumsi", d: "rumah tangga, hunian, pendapatan sendiri." },
+    {
+      t: "Ubah asumsi",
+      d: "rumah tangga, hunian, pendapatan sendiri, atau gaji asal relokasi.",
+    },
   ];
   const close = () => setTourIdx(null);
   const dialogRef = useDialogFocus<HTMLDivElement>(true, close);

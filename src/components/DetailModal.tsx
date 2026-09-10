@@ -22,6 +22,8 @@ import {
 } from "@/lib/format";
 import type { Confidence } from "@/lib/types";
 import { useDialogFocus } from "@/lib/useDialogFocus";
+import { CORRECTION_FORM_URL } from "@/lib/links";
+import { recordUsage } from "@/lib/usage";
 
 /**
  * Region detail modal. Opens on region click (map or search).
@@ -29,7 +31,15 @@ import { useDialogFocus } from "@/lib/useDialogFocus";
  * focus returns to the trigger element on close.
  */
 export function DetailModal() {
-  const { state, metrics, metricsReady, regionByCode, select, pin } = useApp();
+  const {
+    state,
+    metrics,
+    metricsReady,
+    regionByCode,
+    select,
+    pin,
+    setOrigin,
+  } = useApp();
   const bandPalette = bandColors(state.darkMode);
   const isDualIncome =
     state.assumptions.dualIncome &&
@@ -56,6 +66,14 @@ export function DetailModal() {
   const costs = metricsReady ? state.costs.get(code) : undefined;
   const narrative = state.narratives.get(code);
   const isPinned = state.pinned.includes(code);
+  const isOrigin = state.originCode === code;
+  const originRegion = state.originCode
+    ? regionByCode.get(state.originCode)
+    : undefined;
+  const wageProvenance =
+    metric?.wageSource === "origin" && state.originCode
+      ? state.wages.get(state.originCode) ?? wage
+      : wage;
 
   return (
     <div
@@ -96,6 +114,21 @@ export function DetailModal() {
                 </span>
                 <span className="hidden sm:inline">
                   {isPinned ? "Sudah disematkan" : "Pin untuk dibandingkan"}
+                </span>
+              </button>
+            )}
+            {wage && (
+              <button
+                type="button"
+                onClick={() => setOrigin(isOrigin ? null : code)}
+                aria-pressed={isOrigin}
+                className="rounded-lg border border-border px-2.5 py-1.5 text-sm font-medium text-muted transition-colors hover:border-accent hover:text-accent sm:px-3"
+              >
+                <span className="sm:hidden">
+                  {isOrigin ? "Asal aktif" : "Jadikan asal"}
+                </span>
+                <span className="hidden sm:inline">
+                  {isOrigin ? "Hapus kota asal" : "Jadikan gaji asal"}
                 </span>
               </button>
             )}
@@ -142,6 +175,8 @@ export function DetailModal() {
                       metric.wageSource === "custom"
                         ? "Pendapatanmu (input sendiri)" +
                           (isDualIncome ? " + UMK pasangan" : "")
+                        : metric.wageSource === "origin"
+                          ? "Gaji asal (UMK)" + (isDualIncome ? " × 2" : "")
                         : (state.assumptions.wageBasis === "gross"
                             ? "UMK (kotor)"
                             : "UMK (est. take-home)") +
@@ -149,18 +184,30 @@ export function DetailModal() {
                     }
                     value={formatIDR(metric.wageAmount)}
                     provenance={
-                      metric.wageSource === "custom" ? undefined : wage
+                      metric.wageSource === "custom"
+                        ? undefined
+                        : wageProvenance
                     }
                     note={
                       metric.wageSource === "custom"
                         ? `Pembanding UMK daerah: ${formatIDR(
                             metric.regionalWageAmount,
                           )}`
+                        : metric.wageSource === "origin"
+                          ? `Kota asal: ${
+                              originRegion?.name ?? state.originCode ?? "—"
+                            }. UMK tujuan: ${formatIDR(
+                              metric.regionalWageAmount,
+                            )}`
                         : undefined
                     }
                   />
                   <Kpi
-                    label="Est. biaya bulanan"
+                    label={
+                      state.originCode
+                        ? "Est. biaya kota tujuan"
+                        : "Est. biaya bulanan"
+                    }
                     value={formatIDR(metric.totalMonthlyCost)}
                     provenance={{
                       source: "Lihat tabel kategori di bawah",
@@ -187,6 +234,19 @@ export function DetailModal() {
                     }
                   />
                 </dl>
+
+                {state.originCode && (
+                  <p className="-mt-2 rounded-lg border border-accent/30 bg-accent-soft p-3 text-[12px] leading-relaxed">
+                    <strong>Mode relokasi:</strong> gaji asal dari{" "}
+                    <span className="font-semibold">
+                      {originRegion?.name ?? state.originCode}
+                    </span>{" "}
+                    dibandingkan dengan biaya kota tujuan{" "}
+                    <span className="font-semibold">{displayName}</span>.
+                    {metric.wageSource === "custom" &&
+                      " Pendapatan sendiri tetap menjadi gaji utama; asal dipakai untuk upah pasangan bila 2 upah aktif."}
+                  </p>
+                )}
 
                 {metric.wageSource === "region" && (
                   <p className="-mt-2 text-[11px] leading-relaxed text-muted">
@@ -339,7 +399,16 @@ export function DetailModal() {
                         </tr>
                       </thead>
                       <tbody>
-                        <ProvenanceRow label={`UMK ${wage.year}`} p={wage} />
+                        <ProvenanceRow
+                          label={`${metric.wageSource === "origin" ? "UMK kota asal" : "UMK"} ${wageProvenance!.year}`}
+                          p={wageProvenance!}
+                        />
+                        {metric.wageSource === "origin" && (
+                          <ProvenanceRow
+                            label={`UMK kota tujuan ${wage.year}`}
+                            p={wage}
+                          />
+                        )}
                         {EXPENSE_CATEGORIES.map((c) => (
                           <ProvenanceRow
                             key={c.key}
@@ -357,6 +426,23 @@ export function DetailModal() {
                   riil berbeda menurut lingkungan tempat tinggal, ukuran rumah
                   tangga, tunjangan pekerjaan, dan keadaan personal.
                 </p>
+
+                <div className="flex flex-col gap-2 rounded-xl border border-accent/30 bg-accent-soft p-3 sm:flex-row sm:items-center sm:justify-between">
+                  <p className="text-[12px] leading-relaxed text-muted">
+                    Menemukan angka atau sumber yang perlu diperbaiki? Laporan
+                    diperiksa manual dan tidak mengubah data otomatis.
+                  </p>
+                  <a
+                    href={CORRECTION_FORM_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={() => recordUsage("correction_report_opened")}
+                    aria-label={`Laporkan angka untuk ${displayName}`}
+                    className="inline-flex h-10 shrink-0 items-center justify-center rounded-[10px] bg-accent px-3.5 text-xs font-bold text-on-accent transition-colors hover:bg-accent-strong"
+                  >
+                    Laporkan angka ini ↗
+                  </a>
+                </div>
               </>
             )
           ) : (

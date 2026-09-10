@@ -1,5 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { MAX_CHILDREN, normalizeAssumptions } from "./persist";
+import {
+  MAX_CHILDREN,
+  normalizeAssumptions,
+  normalizePersisted,
+} from "./persist";
 import { DEFAULT_ASSUMPTIONS } from "@/lib/calculations";
 import type { Assumptions } from "@/lib/types";
 
@@ -61,5 +65,26 @@ describe("normalizeAssumptions", () => {
     expect(normalizeAssumptions(null)).toEqual(DEFAULT_ASSUMPTIONS);
     expect(normalizeAssumptions(undefined)).toEqual(DEFAULT_ASSUMPTIONS);
     expect(normalizeAssumptions({})).toEqual(DEFAULT_ASSUMPTIONS);
+  });
+
+  it("menormalkan preferensi tampilan dan asal relokasi dari storage", () => {
+    expect(
+      normalizePersisted({
+        selectedCode: "31.73",
+        originCode: "32.73",
+        pinned: ["31.73", "bad", "31.73"],
+        colorMode: "cost",
+        legendFilter: null,
+        basemap: "offline",
+        darkMode: "yes",
+      }),
+    ).toEqual({
+      selectedCode: "31.73",
+      originCode: "32.73",
+      pinned: ["31.73"],
+      colorMode: "cost",
+      legendFilter: null,
+      basemap: "offline",
+    });
   });
 });
