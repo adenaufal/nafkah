@@ -22,7 +22,9 @@ import {
  *   wageBasisAmount    = earners × (wageBasis === 'gross' ? grossMonthly : estimatedTakeHomeMonthly)
  *                          earners = 2 jika pasangan ikut bekerja (default 1)
  *   Dengan pendapatan sendiri (customIncome > 0):
- *     wageAmount = customIncome + (earners === 2 ? upah daerah 1 pekerja : 0)
+ *     wageAmount = customIncome + (earners === 2 ? upah dari kota asal 1 pekerja : 0)
+ *   Dengan kota asal relokasi:
+ *     wageAmount = upah kota asal × earners, sedangkan biaya tetap dari kota tujuan.
  *   regionalWageAmount selalu = upah daerah (pembanding & layer peta "Upah").
  *   Per-anak (AP-03): pengali rumah tangga + children × CHILD_MULTIPLIERS.
  *   Cicilan KPR (AP-03): installmentMonthly menggantikan kategori hunian.
@@ -160,6 +162,7 @@ export function computeMetrics(
   costs: CostProfile,
   assumptions: Assumptions,
   bands: AffordabilityBands = AFFORDABILITY_BANDS,
+  originWage?: WageRecord,
 ): RegionMetrics {
   // Dua penghasilan hanya untuk rumah tangga berpasangan: pasangan diasumsikan
   // bekerja dengan upah minimum (UMK/UMP) daerah yang sama.
@@ -170,16 +173,21 @@ export function computeMetrics(
       ? wage.grossMonthly
       : wage.estimatedTakeHomeMonthly;
   const regionalWageAmount = earners * regionalSingle;
+  const incomeSingle = originWage
+    ? assumptions.wageBasis === "gross"
+      ? originWage.grossMonthly
+      : originWage.estimatedTakeHomeMonthly
+    : regionalSingle;
   // Pendapatan sendiri menggantikan upah pengguna; dengan "2 upah", pasangan
   // tetap diasumsikan berupah minimum (UMK/UMP) daerah yang sama.
   const customIncomeActive =
     assumptions.customIncome != null && assumptions.customIncome > 0;
-  // Pendapatan sendiri menggantikan upah pengguna; dengan "2 upah", pasangan
-  // tetap diasumsikan berupah minimum (UMK/UMP) daerah yang sama.
   let wageAmount = regionalWageAmount;
   if (assumptions.customIncome != null && assumptions.customIncome > 0) {
     wageAmount =
-      assumptions.customIncome + (earners === 2 ? regionalSingle : 0);
+      assumptions.customIncome + (earners === 2 ? incomeSingle : 0);
+  } else if (originWage) {
+    wageAmount = earners * incomeSingle;
   }
 
   const breakdown = adjustCosts(costs, assumptions);
@@ -191,7 +199,7 @@ export function computeMetrics(
     code,
     wageAmount,
     regionalWageAmount,
-    wageSource: customIncomeActive ? "custom" : "region",
+    wageSource: customIncomeActive ? "custom" : originWage ? "origin" : "region",
     totalMonthlyCost,
     coveragePercent,
     surplusOrDeficit: wageAmount - totalMonthlyCost,
@@ -208,13 +216,17 @@ export function computeAllMetrics(
   costs: Map<string, CostProfile>,
   assumptions: Assumptions,
   bands: AffordabilityBands = AFFORDABILITY_BANDS,
+  originWage?: WageRecord,
 ): Map<string, RegionMetrics> {
   const out = new Map<string, RegionMetrics>();
   for (const code of codes) {
     const wage = wages.get(code);
     const cost = costs.get(code);
     if (!wage || !cost) continue;
-    out.set(code, computeMetrics(code, wage, cost, assumptions, bands));
+    out.set(
+      code,
+      computeMetrics(code, wage, cost, assumptions, bands, originWage),
+    );
   }
   return out;
 }

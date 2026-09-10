@@ -10,6 +10,8 @@ import {
 } from "@/lib/calculations";
 import type { AffordabilityBand } from "@/lib/types";
 import { useDialogFocus } from "@/lib/useDialogFocus";
+import { CORRECTION_FORM_URL, DISCUSSIONS_URL } from "@/lib/links";
+import { recordUsage } from "@/lib/usage";
 
 const BAND_ORDER: AffordabilityBand[] = [
   "comfortable",
@@ -295,11 +297,31 @@ export function AboutDrawer() {
               <p className="mt-1 leading-relaxed text-muted">
                 Nafkah adalah eksperimen terbuka. Angka upah dan biaya hidup
                 tinggal di file data yang mudah diperiksa dan diperbaiki:
-                tambahkan penetapan resmi terbaru, laporkan selisih, atau
-                sambungkan sumber terverifikasi lewat <em>issue</em> atau{" "}
-                <em>pull request</em> di GitHub — setiap usulan diverifikasi
-                dengan SK/penetapan resmi lewat label keterpercayaan yang sama.
+                laporkan selisih lewat form koreksi atau sambungkan sumber
+                terverifikasi lewat <em>issue</em> atau <em>pull request</em> di
+                GitHub — setiap usulan diverifikasi dengan SK/penetapan resmi
+                lewat label keterpercayaan yang sama.
               </p>
+
+              <div className="mt-3 rounded-xl border border-accent/30 bg-accent-soft p-3.5">
+                <h4 className="text-xs font-bold text-ink">
+                  Menemukan angka yang meleset?
+                </h4>
+                <p className="mt-1 text-[12.5px] leading-relaxed text-muted">
+                  Sertakan wilayah, kategori, nilai lama/usulan, periode, dan
+                  sumber. Laporan masuk ke antrean manual dan tidak mengubah
+                  dataset secara otomatis.
+                </p>
+                <a
+                  href={CORRECTION_FORM_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={() => recordUsage("correction_report_opened")}
+                  className="mt-2.5 inline-flex h-10 items-center rounded-[10px] bg-accent px-3.5 text-xs font-bold text-on-accent transition-colors hover:bg-accent-strong"
+                >
+                  Laporkan angka via form ↗
+                </a>
+              </div>
 
               <dl className="mt-3 space-y-1.5 rounded-lg border border-border bg-surface p-3 text-[12.5px]">
                 <div className="flex justify-between gap-3">
@@ -328,13 +350,27 @@ export function AboutDrawer() {
               </dl>
 
               <a
-                href={REPO_URL}
+                href={DISCUSSIONS_URL}
                 target="_blank"
                 rel="noreferrer"
                 className="mt-3 inline-flex h-10 items-center gap-1.5 rounded-[10px] border border-border px-3.5 text-xs font-bold text-ink transition-colors hover:border-accent hover:text-accent"
               >
-                Lihat kode &amp; kirim koreksi di GitHub ↗
+                Saran fitur &amp; bug di Discussions ↗
               </a>
+              <a
+                href={REPO_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="ml-2 mt-3 inline-flex h-10 items-center gap-1.5 rounded-[10px] border border-border px-3.5 text-xs font-bold text-ink transition-colors hover:border-accent hover:text-accent"
+              >
+                Lihat kode &amp; kirim PR ↗
+              </a>
+
+              <p className="mt-3 rounded-lg border border-border bg-surface p-3 text-[11.5px] leading-relaxed text-muted">
+                Privasi penggunaan: aplikasi hanya menyimpan hitungan event
+                agregat di browser ini. URL, kode wilayah, nilai asumsi, dan
+                angka finansial tidak dicatat atau dikirim ke pihak ketiga.
+              </p>
             </section>
 
             <div className="flex flex-col gap-2 border-t border-border pt-4 sm:flex-row">

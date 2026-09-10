@@ -52,7 +52,7 @@ export const TOUR_BROAD: TourStep[] = [
   {
     key: "asumsi",
     title: "Sesuaikan dengan hidupmu",
-    body: "Single atau keluarga, kost atau KPR, motor atau ojol — bahkan gaji kamu sendiri. Peta mewarnai ulang seketika.",
+    body: "Single atau keluarga, kost atau KPR, motor atau ojol — bahkan gaji kamu sendiri. Untuk relokasi, jadikan upah satu wilayah sebagai gaji asal. Peta mewarnai ulang seketika.",
     tip: "Gaji yang kamu isi hanya tersimpan di browsermu.",
   },
 ];
@@ -78,7 +78,7 @@ export const TOUR_NARROW: TourStep[] = [
   {
     key: "asumsi",
     title: "Sesuaikan dengan hidupmu",
-    body: "Single atau keluarga, kost atau KPR, motor atau ojol — bahkan gaji kamu sendiri. Peta mewarnai ulang seketika.",
+    body: "Single atau keluarga, kost atau KPR, motor atau ojol — bahkan gaji kamu sendiri. Untuk relokasi, jadikan upah satu wilayah sebagai gaji asal.",
     tip: "Gaji yang kamu isi hanya tersimpan di browsermu.",
   },
 ];

@@ -8,7 +8,7 @@ import { useApp } from "@/state/AppContext";
  * (yang ketiga tampil di tooltip + modal detail).
  */
 export function StatusChips() {
-  const { state, retryGeometry, retryData } = useApp();
+  const { state, regionByCode, retryGeometry, retryData, setOrigin } = useApp();
 
   const chips: React.ReactNode[] = [];
 
@@ -40,6 +40,27 @@ export function StatusChips() {
         onAction={retryData}
         detail={state.dataError ?? undefined}
       />,
+    );
+  }
+
+  if (state.originCode) {
+    chips.push(
+      <div
+        key="origin"
+        role="status"
+        className="flex items-center gap-2 rounded-full border border-accent/40 bg-accent-soft px-3.5 py-1.5 text-xs font-medium text-accent shadow-md backdrop-blur"
+      >
+        <span>
+          Gaji asal: {regionByCode.get(state.originCode)?.name ?? state.originCode}
+        </span>
+        <button
+          type="button"
+          onClick={() => setOrigin(null)}
+          className="rounded bg-current/10 px-2 py-0.5 font-semibold underline underline-offset-2"
+        >
+          Hapus
+        </button>
+      </div>,
     );
   }
 

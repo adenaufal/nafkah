@@ -7,6 +7,7 @@ import {
   useEffect,
   useMemo,
   useReducer,
+  useRef,
   type ReactNode,
 } from "react";
 import type {
@@ -30,6 +31,7 @@ import {
 import { loadGeometry, loadDataset } from "@/data/loader";
 import { loadPersisted, savePersisted } from "./persist";
 import { decodeSharedView } from "./share";
+import { recordUsage } from "@/lib/usage";
 import type { FeatureCollection, Geometry } from "geojson";
 
 export const MAX_PINS = 5;
@@ -52,6 +54,8 @@ interface AppState {
   pinned: string[];
   pinMessage: string | null;
   selectedCode: string | null;
+  /** Optional wage source for relocation mode; costs always stay per destination. */
+  originCode: string | null;
   colorMode: ColorMode;
   legendFilter: AffordabilityBand | null;
   basemap: BasemapId;
@@ -82,6 +86,7 @@ const initialState: AppState = {
   pinned: [],
   pinMessage: null,
   selectedCode: null,
+  originCode: null,
   colorMode: "coverage",
   legendFilter: null,
   basemap: "light",
@@ -108,9 +113,13 @@ function initState(base: AppState): AppState {
     darkMode: p.darkMode ?? base.darkMode,
     assumptions: shared?.assumptions ?? p.assumptions ?? base.assumptions,
     pinned: shared?.pinned ?? p.pinned ?? base.pinned,
-    selectedCode: shared?.selectedCode ?? base.selectedCode,
-    colorMode: shared?.colorMode ?? base.colorMode,
-    legendFilter: shared?.legendFilter ?? base.legendFilter,
+    selectedCode:
+      shared ? shared.selectedCode : p.selectedCode ?? base.selectedCode,
+    originCode: shared ? shared.originCode : p.originCode ?? base.originCode,
+    colorMode: shared?.colorMode ?? p.colorMode ?? base.colorMode,
+    legendFilter: shared?.legendFilter ?? p.legendFilter ?? base.legendFilter,
+    basemap: p.basemap ?? base.basemap,
+    basemapUserSet: p.basemap != null,
     onboarded,
     onboardCardOpen: shared ? false : !p.onboardCardDismissed,
     // First visit opens the guide; returning visitors land straight on the map.
@@ -137,6 +146,7 @@ type Action =
   | { type: "pin/remove"; code: string }
   | { type: "pin/clearMessage" }
   | { type: "select"; code: string | null }
+  | { type: "origin/set"; code: string | null }
   | { type: "colorMode/set"; mode: ColorMode }
   | { type: "legendFilter/set"; band: AffordabilityBand | null }
   | { type: "basemap/set"; basemap: BasemapId }
@@ -174,6 +184,12 @@ function reducer(state: AppState, action: Action): AppState {
         selectedCode:
           state.selectedCode && validCodes.has(state.selectedCode)
             ? state.selectedCode
+            : null,
+        originCode:
+          state.originCode &&
+          validCodes.has(state.originCode) &&
+          action.wages.has(state.originCode)
+            ? state.originCode
             : null,
       };
     }
@@ -215,6 +231,8 @@ function reducer(state: AppState, action: Action): AppState {
       return { ...state, pinMessage: null };
     case "select":
       return { ...state, selectedCode: action.code };
+    case "origin/set":
+      return { ...state, originCode: action.code };
     case "colorMode/set":
       return { ...state, colorMode: action.mode };
     case "legendFilter/set":
@@ -273,6 +291,7 @@ interface AppContextValue {
   pin: (code: string) => void;
   unpin: (code: string) => void;
   select: (code: string | null) => void;
+  setOrigin: (code: string | null) => void;
   setColorMode: (m: ColorMode) => void;
   setLegendFilter: (b: AffordabilityBand | null) => void;
   setBasemap: (b: BasemapId) => void;
@@ -343,6 +362,26 @@ export function AppProvider({ children }: { children: ReactNode }) {
   );
   useEffect(() => savePersisted({ pinned: state.pinned }), [state.pinned]);
   useEffect(
+    () => savePersisted({ selectedCode: state.selectedCode }),
+    [state.selectedCode],
+  );
+  useEffect(
+    () => savePersisted({ originCode: state.originCode }),
+    [state.originCode],
+  );
+  useEffect(
+    () => savePersisted({ colorMode: state.colorMode }),
+    [state.colorMode],
+  );
+  useEffect(
+    () => savePersisted({ legendFilter: state.legendFilter }),
+    [state.legendFilter],
+  );
+  useEffect(
+    () => savePersisted({ basemap: state.basemap }),
+    [state.basemap],
+  );
+  useEffect(
     () => savePersisted({ onboarded: state.onboarded }),
     [state.onboarded],
   );
@@ -358,6 +397,14 @@ export function AppProvider({ children }: { children: ReactNode }) {
     return () => clearTimeout(t);
   }, [state.pinMessage]);
 
+  const previousPinnedCount = useRef(state.pinned.length);
+  useEffect(() => {
+    if (previousPinnedCount.current < 2 && state.pinned.length >= 2) {
+      recordUsage("comparison_started");
+    }
+    previousPinnedCount.current = state.pinned.length;
+  }, [state.pinned.length]);
+
   const codes = useMemo(() => state.regions.map((r) => r.code), [state.regions]);
   const regionByCode = useMemo(
     () => new Map(state.regions.map((r) => [r.code, r])),
@@ -371,8 +418,15 @@ export function AppProvider({ children }: { children: ReactNode }) {
         state.costs,
         state.assumptions,
         AFFORDABILITY_BANDS,
+        state.originCode ? state.wages.get(state.originCode) : undefined,
       ),
-    [codes, state.wages, state.costs, state.assumptions],
+    [
+      codes,
+      state.wages,
+      state.costs,
+      state.assumptions,
+      state.originCode,
+    ],
   );
   const metricsReady = state.dataStatus === "ready";
 
@@ -381,16 +435,45 @@ export function AppProvider({ children }: { children: ReactNode }) {
     metrics,
     metricsReady,
     regionByCode,
-    setAssumptions: (a) =>
-      dispatch({ type: "assumptions/set", assumptions: a }),
-    resetAssumptions: () => dispatch({ type: "assumptions/reset" }),
-    pin: (code) => dispatch({ type: "pin/add", code }),
+    setAssumptions: (a) => {
+      recordUsage("assumptions_changed");
+      dispatch({ type: "assumptions/set", assumptions: a });
+    },
+    resetAssumptions: () => {
+      recordUsage("assumptions_changed");
+      dispatch({ type: "assumptions/reset" });
+    },
+    pin: (code) => {
+      recordUsage("region_pinned");
+      dispatch({ type: "pin/add", code });
+    },
     unpin: (code) => dispatch({ type: "pin/remove", code }),
-    select: (code) => dispatch({ type: "select", code }),
-    setColorMode: (mode) => dispatch({ type: "colorMode/set", mode }),
-    setLegendFilter: (band) => dispatch({ type: "legendFilter/set", band }),
-    setBasemap: (basemap) => dispatch({ type: "basemap/set", basemap }),
-    setDarkMode: (dark) => dispatch({ type: "theme/set", dark }),
+    select: (code) => {
+      if (code) recordUsage("region_opened");
+      dispatch({ type: "select", code });
+    },
+    setOrigin: (code) => {
+      recordUsage(
+        code ? "relocation_origin_set" : "relocation_origin_cleared",
+      );
+      dispatch({ type: "origin/set", code });
+    },
+    setColorMode: (mode) => {
+      recordUsage("legend_mode_changed");
+      dispatch({ type: "colorMode/set", mode });
+    },
+    setLegendFilter: (band) => {
+      recordUsage("legend_filter_changed");
+      dispatch({ type: "legendFilter/set", band });
+    },
+    setBasemap: (basemap) => {
+      recordUsage("basemap_changed");
+      dispatch({ type: "basemap/set", basemap });
+    },
+    setDarkMode: (dark) => {
+      recordUsage("theme_toggled");
+      dispatch({ type: "theme/set", dark });
+    },
     resetView: () => dispatch({ type: "view/reset" }),
     retryGeometry: () => void loadGeo(),
     retryData: () => void loadData(),

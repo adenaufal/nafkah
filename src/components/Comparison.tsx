@@ -128,7 +128,7 @@ export function PinnedTray() {
 }
 
 export function ComparisonPanel() {
-  const { state, metrics, regionByCode } = useApp();
+  const { state, metrics, regionByCode, setOrigin } = useApp();
   const [open, setOpen] = useState(true);
   const [showChart, setShowChart] = useState(() =>
     shouldRenderComparisonChart(
@@ -136,6 +136,9 @@ export function ComparisonPanel() {
     ),
   );
   const customActive = (state.assumptions.customIncome ?? 0) > 0;
+  const origin = state.originCode
+    ? regionByCode.get(state.originCode)
+    : undefined;
 
   useEffect(() => {
     const syncChartVisibility = () =>
@@ -194,6 +197,31 @@ export function ComparisonPanel() {
         </button>
       </header>
 
+      <div className="border-b border-border bg-surface px-4 py-2.5 text-[11.5px] leading-relaxed">
+        {origin ? (
+          <div className="flex items-center justify-between gap-3">
+            <p>
+              <strong>Relokasi aktif:</strong> gaji asal dari{" "}
+              <span className="font-semibold">{origin.name}</span> → biaya
+              setiap kolom tetap dihitung sebagai kota tujuan.
+            </p>
+            <button
+              type="button"
+              onClick={() => setOrigin(null)}
+              className="shrink-0 rounded-md border border-border px-2 py-1 font-semibold text-muted hover:border-accent hover:text-accent"
+            >
+              Hapus asal
+            </button>
+          </div>
+        ) : (
+          <p className="text-muted">
+            Tip relokasi: buka detail satu wilayah lalu pilih{" "}
+            <strong className="text-ink">Jadikan gaji asal</strong>. Biaya
+            pada panel ini tetap mengikuti kota tujuan.
+          </p>
+        )}
+      </div>
+
       {open && (
         <div className="comparison-content grid min-w-0 gap-4 p-3 sm:p-4 lg:grid-cols-[minmax(0,1.25fr)_minmax(300px,.75fr)]">
           {/* Cards are easier to scan than a squeezed table on phones. */}
@@ -217,12 +245,14 @@ export function ComparisonPanel() {
                     value={formatIDRCompact(m.totalMonthlyCost)}
                   />
                   <MobileMetric
-                    label={customActive ? "Pendapatan" : "UMK"}
+                    label={
+                      origin ? "Gaji asal" : customActive ? "Pendapatan" : "UMK"
+                    }
                     value={formatIDRCompact(m.wageAmount)}
                   />
-                  {customActive && (
+                  {(customActive || origin) && (
                     <MobileMetric
-                      label="UMK daerah"
+                      label={origin ? "UMK tujuan" : "UMK daerah"}
                       value={formatIDRCompact(m.regionalWageAmount)}
                     />
                   )}
@@ -290,15 +320,21 @@ export function ComparisonPanel() {
                   </td>
                 ))}
               </Row>
-              <Row label={customActive ? "Pendapatan" : "UMK (basis)"}>
+              <Row
+                label={
+                  origin ? "Gaji asal" : customActive ? "Pendapatan" : "UMK (basis)"
+                }
+              >
                 {pinnedMetrics.map((m) => (
                   <td key={m.code} className="px-1 py-1.5 text-right">
                     {formatIDRCompact(m.wageAmount)}
                   </td>
                 ))}
               </Row>
-              {customActive && (
-                <Row label="UMK daerah (pembanding)">
+              {(customActive || origin) && (
+                <Row
+                  label={origin ? "UMK tujuan (pembanding)" : "UMK daerah (pembanding)"}
+                >
                   {pinnedMetrics.map((m) => (
                     <td key={m.code} className="px-1 py-1.5 text-right">
                       {formatIDRCompact(m.regionalWageAmount)}
