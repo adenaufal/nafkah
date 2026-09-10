@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useApp } from "@/state/AppContext";
 import { buildShareUrl } from "@/state/share";
 import { recordUsage } from "@/lib/usage";
+import { AppIcon } from "./icons";
 
 type ShareStatus = "idle" | "copied" | "shared" | "error";
 
@@ -95,11 +96,13 @@ export function ShareButton() {
       onClick={() => void share()}
       aria-label={`${label} tampilan saat ini.${privacyHint}`}
       title={`Bagikan wilayah dan asumsi aktif.${privacyHint}`}
-      className="inline-flex h-9 items-center rounded-[9px] border border-border px-2.5 text-[12.5px] font-medium text-muted transition-colors hover:bg-accent-soft hover:text-ink sm:px-3"
+      className="inline-flex h-9 items-center gap-1.5 rounded-[9px] border border-border px-2.5 text-[12.5px] font-medium text-muted transition-colors hover:bg-accent-soft hover:text-ink sm:px-3"
     >
-      <span aria-hidden="true" className="sm:mr-1.5">
-        {status === "copied" || status === "shared" ? "✓" : "↗"}
-      </span>
+      <AppIcon
+        name={status === "copied" || status === "shared" ? "check" : "share"}
+        size={16}
+        weight="bold"
+      />
       <span className="hidden sm:inline" aria-live="polite">
         {label}
       </span>

@@ -6,14 +6,21 @@ import { useDialogFocus } from "@/lib/useDialogFocus";
 import { SearchBox } from "./SearchBox";
 import { PinnedTray, ComparisonPanel } from "./Comparison";
 import { ColorModeControls, BandLegend, BasemapControls } from "./RightPanels";
+import { AppIcon } from "./icons";
+import type { AppIconName } from "./icons";
 
 type SheetTab = "search" | "legend" | "layers";
 
-const TABS: { id: SheetTab | "assumptions"; label: string; tour?: string }[] = [
-  { id: "search", label: "Cari", tour: "tab-search" },
-  { id: "legend", label: "Legenda", tour: "tab-legend" },
-  { id: "layers", label: "Lapisan" },
-  { id: "assumptions", label: "Asumsi" },
+const TABS: {
+  id: SheetTab | "assumptions";
+  label: string;
+  icon: AppIconName;
+  tour?: string;
+}[] = [
+  { id: "search", label: "Cari", icon: "magnifyingGlass", tour: "tab-search" },
+  { id: "legend", label: "Legenda", icon: "chartBar", tour: "tab-legend" },
+  { id: "layers", label: "Lapisan", icon: "map" },
+  { id: "assumptions", label: "Asumsi", icon: "gear" },
 ];
 
 const TITLES: Record<SheetTab, string> = {
@@ -85,7 +92,7 @@ export function MobileDock() {
                 aria-label="Tutup panel"
                 className="flex h-9 w-9 items-center justify-center rounded-lg border border-border text-sm hover:border-accent"
               >
-                ✕
+                <AppIcon name="x" size={17} />
               </button>
             </header>
             <div className="min-h-0 flex-1 overflow-y-auto p-3.5">
@@ -122,18 +129,16 @@ export function MobileDock() {
               data-tour={t.tour}
               aria-pressed={active}
               onClick={() => onTab(t.id)}
-              className={`flex flex-col items-center justify-center gap-1.5 rounded-xl text-[11.5px] transition-colors ${
+            className={`flex flex-col items-center justify-center gap-1.5 rounded-xl text-[11.5px] transition-colors ${
                 active
                   ? "bg-accent-soft font-bold text-accent"
                   : "font-medium text-muted"
-              }`}
-            >
-              <span
-                aria-hidden="true"
-                className="h-[3px] w-[18px] rounded-full"
-                style={{
-                  background: active ? "var(--accent)" : "var(--border)",
-                }}
+            }`}
+          >
+              <AppIcon
+                name={t.icon}
+                size={18}
+                weight={active ? "bold" : "regular"}
               />
               {t.label}
             </button>

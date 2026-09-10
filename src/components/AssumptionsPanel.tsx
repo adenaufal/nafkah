@@ -14,6 +14,7 @@ import type {
   WageBasis,
 } from "@/lib/types";
 import { useDialogFocus } from "@/lib/useDialogFocus";
+import { AppIcon } from "./icons";
 
 /**
  * Kontrol asumsi dalam tiga kelompok (rumah tangga / biaya hidup / basis upah).
@@ -152,7 +153,7 @@ export function AssumptionsControls() {
                 aria-label="Hapus pendapatan sendiri, kembali ke upah daerah"
                 className="shrink-0 self-stretch rounded-[11px] border border-border px-2.5 text-sm text-muted hover:border-accent hover:text-ink"
               >
-                ✕
+                <AppIcon name="x" size={16} />
               </button>
             )}
           </div>
@@ -163,7 +164,7 @@ export function AssumptionsControls() {
             {customActive
               ? `Pembagi: ${formatIDR(a.customIncome ?? 0)}${
                   dualIncome ? " + upah minimum pasangan" : ""
-                }. Kosongkan (✕) untuk kembali ke UMK/UMP.`
+                }. Kosongkan kolom untuk kembali ke UMK/UMP.`
               : "Kosong = memakai UMK/UMP daerah. Angka tetap di browsermu, kecuali saat kamu memilih Bagikan."}
           </p>
         </div>
@@ -194,7 +195,7 @@ export function AssumptionsControls() {
           <p className="mt-1.5 text-[11px] leading-relaxed text-muted">
             Kerangka kelas: rusun/kost = menengah ke bawah, rumah KPR =
             menengah, apartemen = menengah ke atas. Arti lengkap di panel
-            Tentang (ⓘ).
+            Tentang.
           </p>
         </div>
         <div>
@@ -227,7 +228,7 @@ export function AssumptionsControls() {
                 aria-label="Hapus cicilan, kembali ke estimasi hunian daerah"
                 className="shrink-0 self-stretch rounded-[11px] border border-border px-2.5 text-sm text-muted hover:border-accent hover:text-ink"
               >
-                ✕
+                <AppIcon name="x" size={16} />
               </button>
             )}
           </div>
@@ -238,7 +239,7 @@ export function AssumptionsControls() {
             {installmentActive
               ? `Hunian dihitung dari cicilanmu: ${formatIDR(
                   a.installmentMonthly ?? 0,
-                )} — menggantikan estimasi sewa daerah. Kosongkan (✕) untuk kembali.`
+                )} — menggantikan estimasi sewa daerah. Kosongkan kolom untuk kembali.`
               : "Menggantikan estimasi sewa hunian dengan angsuranmu. Kosong = estimasi daerah. Angka ikut masuk tautan hanya saat kamu memilih Bagikan."}
           </p>
         </div>
@@ -320,7 +321,7 @@ function Segmented<T extends string>({
 }
 
 /**
- * Stepper angka (dipakai untuk jumlah anak). Tombol −/+ dengan target sentuh
+ * Stepper angka (dipakai untuk jumlah anak). Tombol minus/plus dengan target sentuh
  * penuh; nilai diumumkan lewat aria-live agar pembaca layar ikut terbarui.
  */
 function Stepper({
@@ -350,7 +351,7 @@ function Stepper({
           onClick={() => onChange(value - 1)}
           className="flex h-11 w-11 items-center justify-center rounded-[11px] border border-border text-lg disabled:cursor-default disabled:text-muted/40 hover:not-disabled:border-accent hover:not-disabled:text-ink"
         >
-          −
+          <AppIcon name="minus" size={17} weight="bold" />
         </button>
         <span
           aria-live="polite"
@@ -365,7 +366,7 @@ function Stepper({
           onClick={() => onChange(value + 1)}
           className="flex h-11 w-11 items-center justify-center rounded-[11px] border border-border text-lg disabled:cursor-default disabled:text-muted/40 hover:not-disabled:border-accent hover:not-disabled:text-ink"
         >
-          +
+          <AppIcon name="plus" size={17} weight="bold" />
         </button>
       </div>
     </div>
@@ -373,7 +374,7 @@ function Stepper({
 }
 
 /**
- * Drawer asumsi — dikendalikan dari context (tombol ⚙ header desktop & tab
+ * Drawer asumsi — dikendalikan dari context (tombol pengaturan header desktop & tab
  * Asumsi mobile). Header & footer sticky; kolom jadi dua di layar sangat lebar.
  */
 export function AssumptionsDrawer() {
@@ -416,7 +417,7 @@ export function AssumptionsDrawer() {
             aria-label="Tutup panel asumsi"
             className="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-lg border border-border text-sm hover:border-accent"
           >
-            ✕
+            <AppIcon name="x" size={17} />
           </button>
         </header>
 

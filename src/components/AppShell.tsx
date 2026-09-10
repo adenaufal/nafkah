@@ -15,6 +15,7 @@ import { AboutDrawer } from "./AboutPanel";
 import { Onboarding } from "./onboarding/Onboarding";
 import { ThreeStepCard } from "./onboarding/ThreeStepCard";
 import { ShareButton } from "./ShareButton";
+import { AppIcon } from "./icons";
 
 // MapLibre must never run during SSR.
 const MapCanvas = dynamic(() => import("./map/MapCanvas"), {
@@ -53,7 +54,7 @@ function TopBar() {
       </div>
 
       <span className="hidden items-center gap-1 rounded-full border border-amber-500/40 bg-amber-500/10 px-2.5 py-1 text-[11px] font-semibold text-amber-700 lg:inline-flex dark:text-amber-400">
-        <span aria-hidden="true">⚠</span> Estimasi sampel
+        <AppIcon name="warning" size={14} weight="bold" /> Estimasi sampel
       </span>
 
       <div className="ml-auto flex shrink-0 items-center gap-1.5 sm:gap-2">
@@ -61,22 +62,18 @@ function TopBar() {
           type="button"
           onClick={openGuide}
           aria-label="Buka panduan"
-          className="inline-flex h-9 items-center rounded-[9px] border border-accent bg-accent-soft px-2.5 text-[12.5px] font-bold text-accent transition-colors hover:brightness-95 sm:px-3"
+          className="inline-flex h-9 items-center gap-1.5 rounded-[9px] border border-accent bg-accent-soft px-2.5 text-[12.5px] font-bold text-accent transition-colors hover:brightness-95 sm:px-3"
         >
-          <span aria-hidden="true" className="sm:mr-1.5">
-            ?
-          </span>
+          <AppIcon name="question" size={16} weight="bold" />
           <span className="hidden sm:inline">Panduan</span>
         </button>
         <button
           type="button"
           onClick={() => setAboutOpen(true)}
           aria-haspopup="dialog"
-          className="inline-flex h-9 items-center rounded-[9px] border border-border px-2.5 text-[12.5px] font-medium text-muted transition-colors hover:bg-accent-soft hover:text-ink sm:px-3"
+          className="inline-flex h-9 items-center gap-1.5 rounded-[9px] border border-border px-2.5 text-[12.5px] font-medium text-muted transition-colors hover:bg-accent-soft hover:text-ink sm:px-3"
         >
-          <span aria-hidden="true" className="sm:mr-1.5">
-            ⓘ
-          </span>
+          <AppIcon name="info" size={16} />
           <span className="hidden sm:inline">Tentang</span>
           <span className="sr-only sm:hidden">Tentang Nafkah</span>
         </button>
@@ -85,11 +82,9 @@ function TopBar() {
           type="button"
           onClick={resetView}
           aria-label="Atur ulang tampilan peta ke Indonesia"
-          className="hidden h-9 items-center rounded-[9px] border border-border px-2.5 text-[12.5px] font-medium text-muted transition-colors hover:bg-accent-soft hover:text-ink sm:inline-flex sm:px-3"
+          className="hidden h-9 items-center gap-1.5 rounded-[9px] border border-border px-2.5 text-[12.5px] font-medium text-muted transition-colors hover:bg-accent-soft hover:text-ink sm:inline-flex sm:px-3"
         >
-          <span aria-hidden="true" className="sm:mr-1.5">
-            ↻
-          </span>
+          <AppIcon name="arrowCounterClockwise" size={16} />
           <span className="hidden sm:inline">Atur ulang</span>
         </button>
         <button
@@ -101,18 +96,16 @@ function TopBar() {
           }
           className="inline-flex h-9 w-9 items-center justify-center rounded-[9px] border border-border text-[12.5px] font-medium text-muted transition-colors hover:bg-accent-soft hover:text-ink"
         >
-          <span aria-hidden="true">{state.darkMode ? "☀" : "☾"}</span>
+          <AppIcon name={state.darkMode ? "sun" : "moon"} size={17} />
         </button>
         <button
           type="button"
           data-tour="asumsi"
           onClick={() => setAsumsiOpen(true)}
           aria-haspopup="dialog"
-          className="inline-flex h-9 items-center rounded-[9px] bg-accent px-3 text-[12.5px] font-bold text-on-accent transition-colors hover:bg-accent-strong"
+          className="inline-flex h-9 items-center gap-1.5 rounded-[9px] bg-accent px-3 text-[12.5px] font-bold text-on-accent transition-colors hover:bg-accent-strong"
         >
-          <span aria-hidden="true" className="mr-1.5">
-            ⚙
-          </span>
+          <AppIcon name="gear" size={16} weight="bold" />
           Asumsi
         </button>
       </div>

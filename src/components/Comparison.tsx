@@ -18,6 +18,7 @@ import { assumptionSummary } from "@/lib/profile";
 import { formatIDR, formatIDRCompact, formatPct } from "@/lib/format";
 import { shouldRenderComparisonChart } from "@/lib/responsive";
 import type { ExpenseCategoryKey, RegionMetrics } from "@/lib/types";
+import { AppIcon } from "./icons";
 
 /**
  * Baki perbandingan wilayah tersemat + panel perbandingan berdampingan.
@@ -45,7 +46,8 @@ export function PinnedTray() {
           className="overflow-hidden rounded-2xl border border-border bg-card shadow-[0_6px_22px_rgba(0,0,0,0.10)]"
         >
           <header className="flex items-center justify-between border-b border-border px-3.5 py-2.5">
-            <h2 className="text-[10.5px] font-bold uppercase tracking-[0.09em] text-muted">
+            <h2 className="inline-flex items-center gap-1.5 text-[10.5px] font-bold uppercase tracking-[0.09em] text-muted">
+              <AppIcon name="pushPin" size={14} />
               Disematkan
             </h2>
             <span className="rounded-full bg-accent-soft px-2 py-0.5 text-[11px] font-bold tabular-nums text-accent">
@@ -102,7 +104,7 @@ export function PinnedTray() {
                     aria-label={`Hapus ${name} dari perbandingan`}
                     className="flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-md text-muted transition-colors hover:bg-red-500/10 hover:text-danger"
                   >
-                    ✕
+                    <AppIcon name="x" size={15} />
                   </button>
                 </li>
               );

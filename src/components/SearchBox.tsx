@@ -2,6 +2,7 @@
 
 import { useCallback, useMemo, useRef, useState } from "react";
 import { useApp } from "@/state/AppContext";
+import { AppIcon } from "./icons";
 
 interface SearchItem {
   code: string;
@@ -85,6 +86,11 @@ export function SearchBox() {
       <label htmlFor="region-search" className="sr-only">
         Cari kabupaten/kota atau provinsi
       </label>
+      <AppIcon
+        name="magnifyingGlass"
+        size={17}
+        className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted"
+      />
       <input
         id="region-search"
         ref={inputRef}
@@ -109,7 +115,7 @@ export function SearchBox() {
         }}
         onFocus={() => setOpen(true)}
         onKeyDown={onKeyDown}
-        className="w-full rounded-lg border border-border bg-card px-3 py-2 text-sm shadow-sm placeholder:text-muted focus:border-accent"
+        className="w-full rounded-lg border border-border bg-card py-2 pl-9 pr-3 text-sm shadow-sm placeholder:text-muted focus:border-accent"
       />
 
       {open && (results.length > 0 || empty) && (
@@ -139,6 +145,7 @@ export function SearchBox() {
                     i === active ? "bg-accent-soft" : ""
                   }`}
                 >
+                  <AppIcon name="mapPin" size={16} className="shrink-0 text-muted" />
                   <button
                     type="button"
                     tabIndex={-1}
@@ -163,8 +170,9 @@ export function SearchBox() {
                         pin(item.code);
                       }}
                       aria-label={`Sematkan ${item.name} ke baki perbandingan`}
-                      className="shrink-0 rounded border border-border px-1.5 py-0.5 text-[11px] text-muted hover:border-accent hover:text-accent"
+                      className="inline-flex shrink-0 items-center gap-1 rounded border border-border px-1.5 py-0.5 text-[11px] text-muted hover:border-accent hover:text-accent"
                     >
+                      <AppIcon name="pushPin" size={13} />
                       Pin
                     </button>
                   )}

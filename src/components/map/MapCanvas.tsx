@@ -7,6 +7,7 @@ import { useApp } from "@/state/AppContext";
 import { NO_DATA_PATTERN, VALUE_RAMP, bandColors } from "@/lib/calculations";
 import type { RegionFeatureProps, RegionMetrics } from "@/lib/types";
 import { formatPct, formatIDRCompact } from "@/lib/format";
+import { AppIcon } from "../icons";
 
 /**
  * MapLibre canvas: keyless basemaps, two geometry layers (data + no-data
@@ -410,8 +411,9 @@ export default function MapCanvas() {
           <button
             type="button"
             onClick={() => pin(state.selectedCode!)}
-            className="rounded-full bg-accent px-4 py-2 text-sm font-medium text-on-accent shadow-lg"
+            className="inline-flex items-center gap-1.5 rounded-full bg-accent px-4 py-2 text-sm font-medium text-on-accent shadow-lg"
           >
+            <AppIcon name="pushPin" size={16} weight="bold" />
             Pin wilayah ini
           </button>
         </div>

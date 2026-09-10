@@ -12,6 +12,7 @@ import type { AffordabilityBand } from "@/lib/types";
 import { useDialogFocus } from "@/lib/useDialogFocus";
 import { CORRECTION_FORM_URL, DISCUSSIONS_URL } from "@/lib/links";
 import { recordUsage } from "@/lib/usage";
+import { AppIcon } from "./icons";
 
 const BAND_ORDER: AffordabilityBand[] = [
   "comfortable",
@@ -83,7 +84,7 @@ export function AboutDrawer() {
               aria-label="Tutup laman tentang"
               className="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-lg border border-border text-sm hover:border-accent"
             >
-              ✕
+              <AppIcon name="x" size={17} />
             </button>
           </div>
           <nav
@@ -259,7 +260,13 @@ export function AboutDrawer() {
                 </span>
               </p>
               <p className="mt-3 rounded-lg border border-amber-500/40 bg-amber-500/10 p-3 text-xs leading-relaxed text-amber-800 dark:text-amber-300">
-                ⚠ Semua angka pada Nafkah adalah estimasi, bukan nasihat
+                <AppIcon
+                  name="warning"
+                  size={16}
+                  weight="bold"
+                  className="mr-1.5 inline-block align-[-3px]"
+                />
+                Semua angka pada Nafkah adalah estimasi, bukan nasihat
                 keuangan. Biaya riil berbeda menurut lingkungan tempat tinggal,
                 ukuran rumah tangga, tunjangan pekerjaan, dan gaya hidup
                 personal.
@@ -267,9 +274,12 @@ export function AboutDrawer() {
 
               <div className="mt-4 rounded-xl border border-accent/30 bg-accent-soft p-3.5">
                 <div className="flex items-start gap-3">
-                  <span className="text-xl" aria-hidden="true">
-                    📖
-                  </span>
+                  <AppIcon
+                    name="bookOpen"
+                    size={23}
+                    weight="regular"
+                    className="mt-0.5 shrink-0 text-accent"
+                  />
                   <div className="min-w-0 flex-1">
                     <h4 className="text-xs font-bold text-ink">
                       Booklet Resmi: Maps Ekonomi & Biaya Hidup
@@ -285,7 +295,8 @@ export function AboutDrawer() {
                       rel="noreferrer"
                       className="mt-2.5 inline-flex items-center gap-1.5 rounded-lg bg-accent px-3 py-1.5 text-xs font-bold text-on-accent transition-colors hover:bg-accent-strong"
                     >
-                      Buka Booklet Interaktif & PDF ↗
+                      Buka Booklet Interaktif &amp; PDF
+                      <AppIcon name="arrowUpRight" size={14} weight="bold" />
                     </a>
                   </div>
                 </div>
@@ -317,9 +328,10 @@ export function AboutDrawer() {
                   target="_blank"
                   rel="noreferrer"
                   onClick={() => recordUsage("correction_report_opened")}
-                  className="mt-2.5 inline-flex h-10 items-center rounded-[10px] bg-accent px-3.5 text-xs font-bold text-on-accent transition-colors hover:bg-accent-strong"
+                  className="mt-2.5 inline-flex h-10 items-center gap-1.5 rounded-[10px] bg-accent px-3.5 text-xs font-bold text-on-accent transition-colors hover:bg-accent-strong"
                 >
-                  Laporkan angka via form ↗
+                  Laporkan angka via form
+                  <AppIcon name="arrowUpRight" size={14} weight="bold" />
                 </a>
               </div>
 
@@ -355,7 +367,9 @@ export function AboutDrawer() {
                 rel="noreferrer"
                 className="mt-3 inline-flex h-10 items-center gap-1.5 rounded-[10px] border border-border px-3.5 text-xs font-bold text-ink transition-colors hover:border-accent hover:text-accent"
               >
-                Saran fitur &amp; bug di Discussions ↗
+                <AppIcon name="github" size={16} />
+                Saran fitur &amp; bug di Discussions
+                <AppIcon name="arrowUpRight" size={14} weight="bold" />
               </a>
               <a
                 href={REPO_URL}
@@ -363,7 +377,9 @@ export function AboutDrawer() {
                 rel="noreferrer"
                 className="ml-2 mt-3 inline-flex h-10 items-center gap-1.5 rounded-[10px] border border-border px-3.5 text-xs font-bold text-ink transition-colors hover:border-accent hover:text-accent"
               >
-                Lihat kode &amp; kirim PR ↗
+                <AppIcon name="github" size={16} />
+                Lihat kode &amp; kirim PR
+                <AppIcon name="arrowUpRight" size={14} weight="bold" />
               </a>
 
               <p className="mt-3 rounded-lg border border-border bg-surface p-3 text-[11.5px] leading-relaxed text-muted">

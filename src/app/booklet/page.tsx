@@ -2,6 +2,8 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import { AppIcon } from "@/components/icons";
+import type { AppIconName } from "@/components/icons";
 
 interface FeatureItem {
   id: string;
@@ -152,6 +154,19 @@ const PAGES = [
   { id: "guide-faq", title: "7. Panduan & Tanya Jawab" },
 ];
 
+const EXPENSE_GUIDE_ITEMS: { label: string; icon: AppIconName }[] = [
+  { label: "Hunian (Sewa/KPR)", icon: "house" },
+  { label: "Pangan & Makan", icon: "forkKnife" },
+  { label: "Transportasi", icon: "train" },
+  { label: "Listrik & Air", icon: "drop" },
+  { label: "Pendidikan", icon: "student" },
+  { label: "Kesehatan & BPJS", icon: "heartbeat" },
+  { label: "Sandang / Pakaian", icon: "tote" },
+  { label: "Internet & Pulsa", icon: "globe" },
+  { label: "Rekreasi & Sosial", icon: "coffee" },
+  { label: "Dana Cadangan", icon: "shieldCheck" },
+];
+
 export default function BookletPage() {
   const [currentPage, setCurrentPage] = useState(0);
   const [viewMode, setViewMode] = useState<"booklet" | "scroll">("booklet");
@@ -229,7 +244,7 @@ export default function BookletPage() {
               href="/"
               className="inline-flex items-center gap-1.5 rounded-lg border border-stone-300 bg-stone-100 px-3 py-1.5 text-xs font-semibold text-stone-700 hover:bg-stone-200 transition-colors"
             >
-              <span>←</span>
+              <AppIcon name="arrowLeft" size={14} weight="bold" />
               <span>Buka Peta Utama</span>
             </Link>
             <div className="hidden sm:block h-4 w-px bg-stone-300" />
@@ -279,7 +294,7 @@ export default function BookletPage() {
               className="inline-flex items-center gap-1.5 rounded-lg bg-[#c2452d] px-3.5 py-1.5 text-xs font-bold text-white shadow-sm hover:bg-[#a83624] transition-colors"
               title="Cetak booklet ke format A4 atau Simpan sebagai PDF"
             >
-              <span>🖨️</span>
+              <AppIcon name="printer" size={15} weight="bold" />
               <span>Cetak / Simpan PDF</span>
             </button>
           </div>
@@ -316,7 +331,7 @@ export default function BookletPage() {
                 className="rounded border border-stone-300 px-2 py-1 disabled:opacity-35 hover:bg-stone-100"
                 aria-label="Halaman sebelumnya"
               >
-                ◀
+                <AppIcon name="caretLeft" size={15} weight="bold" />
               </button>
               <button
                 type="button"
@@ -325,7 +340,7 @@ export default function BookletPage() {
                 className="rounded border border-stone-300 px-2 py-1 disabled:opacity-35 hover:bg-stone-100"
                 aria-label="Halaman selanjutnya"
               >
-                ▶
+                <AppIcon name="caretRight" size={15} weight="bold" />
               </button>
             </div>
           </div>
@@ -495,7 +510,7 @@ export default function BookletPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
                 <div className="rounded-lg border border-stone-200 p-3.5 bg-white">
                   <div className="flex items-center gap-2 text-[#c2452d] font-bold text-xs">
-                    <span>💼</span>
+                    <AppIcon name="briefcase" size={17} />
                     <span>Pencari Kerja & Pekerja Relokasi</span>
                   </div>
                   <p className="mt-1 text-xs text-stone-600">
@@ -506,7 +521,7 @@ export default function BookletPage() {
 
                 <div className="rounded-lg border border-stone-200 p-3.5 bg-white">
                   <div className="flex items-center gap-2 text-blue-700 font-bold text-xs">
-                    <span>🏢</span>
+                    <AppIcon name="buildings" size={17} />
                     <span>HRD, Recruiter & Tim Kompensasi</span>
                   </div>
                   <p className="mt-1 text-xs text-stone-600">
@@ -517,7 +532,7 @@ export default function BookletPage() {
 
                 <div className="rounded-lg border border-stone-200 p-3.5 bg-white">
                   <div className="flex items-center gap-2 text-emerald-700 font-bold text-xs">
-                    <span>📊</span>
+                    <AppIcon name="chartBar" size={17} />
                     <span>Jurnalis Data & Peneliti Kebijakan</span>
                   </div>
                   <p className="mt-1 text-xs text-stone-600">
@@ -528,7 +543,7 @@ export default function BookletPage() {
 
                 <div className="rounded-lg border border-stone-200 p-3.5 bg-white">
                   <div className="flex items-center gap-2 text-amber-700 font-bold text-xs">
-                    <span>🏠</span>
+                    <AppIcon name="house" size={17} />
                     <span>Keluarga & Perencana Anggaran</span>
                   </div>
                   <p className="mt-1 text-xs text-stone-600">
@@ -652,9 +667,10 @@ export default function BookletPage() {
               {/* 10 Categories List */}
               <h3 className="font-bold text-stone-900 pt-2">10 Kategori Biaya yang Dihitung</h3>
               <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 text-center text-xs">
-                {["🏠 Hunian (Sewa/KPR)", "🍚 Pangan & Makan", "🛵 Transportasi", "⚡ Listrik & Air", "📚 Pendidikan", "💊 Kesehatan & BPJS", "👕 Sandang / Pakaian", "📶 Internet & Pulsa", "☕ Rekreasi & Sosial", "🛡️ Dana Cadangan"].map((cat) => (
-                  <div key={cat} className="rounded-md border border-stone-200 bg-stone-50 p-2 font-medium text-stone-700">
-                    {cat}
+                {EXPENSE_GUIDE_ITEMS.map((item) => (
+                  <div key={item.label} className="flex flex-col items-center gap-1.5 rounded-md border border-stone-200 bg-stone-50 p-2 font-medium text-stone-700">
+                    <AppIcon name={item.icon} size={18} className="text-[#c2452d]" />
+                    <span>{item.label}</span>
                   </div>
                 ))}
               </div>
@@ -754,7 +770,11 @@ export default function BookletPage() {
                       MapLibre GL JS berjalan murni di sisi browser pengguna (client-side dynamic rendering). Tidak ada ketergantungan pada layanan berbayar pihak ketiga sehingga aplikasi selalu dapat diakses secara gratis dan stabil.
                     </p>
                   </div>
-                  <span className="hidden sm:block text-3xl ml-4">🗺️</span>
+                  <AppIcon
+                    name="map"
+                    size={34}
+                    className="ml-4 hidden shrink-0 text-amber-400 sm:block"
+                  />
                 </div>
               </div>
             </div>
@@ -845,7 +865,7 @@ export default function BookletPage() {
               {/* Custom Income Highlight Box */}
               <div className="rounded-xl border border-emerald-300 bg-emerald-50/70 p-4">
                 <div className="flex items-start gap-3">
-                  <span className="text-2xl">🔒</span>
+                  <AppIcon name="lock" size={24} className="mt-0.5 shrink-0 text-emerald-700" />
                   <div>
                     <h3 className="font-bold text-emerald-950 text-sm">
                       Fitur &ldquo;Pendapatan Sendiri&rdquo; & Jaminan Privasi
@@ -855,8 +875,9 @@ export default function BookletPage() {
                       <strong>&ldquo;Pendapatan sendiri&rdquo;</strong>. Peta akan langsung memperlihatkan di kota mana saja
                       gaji Anda masuk kategori <em>Nyaman</em> atau <em>Ketat</em>.
                     </p>
-                    <p className="mt-2 text-[11px] font-semibold text-emerald-800 bg-white/70 rounded px-2.5 py-1 inline-block border border-emerald-200">
-                      ✓ Privasi 100%: Angka gaji yang Anda masukkan HANYA diolah di browser Anda. Tidak ada data yang dikirim ke server.
+                    <p className="mt-2 inline-flex items-start gap-1.5 rounded border border-emerald-200 bg-white/70 px-2.5 py-1 text-[11px] font-semibold text-emerald-800">
+                      <AppIcon name="checkCircle" size={15} weight="bold" className="mt-0.5 shrink-0" />
+                      <span>Privasi 100%: Angka gaji yang Anda masukkan HANYA diolah di browser Anda. Tidak ada data yang dikirim ke server.</span>
                     </p>
                   </div>
                 </div>
@@ -904,7 +925,7 @@ export default function BookletPage() {
               <div className="space-y-3">
                 <div className="rounded-xl border border-stone-200 p-4 bg-stone-50">
                   <div className="flex items-center justify-between">
-                    <h3 className="font-bold text-stone-900 text-sm">🔍 Pencarian Instan 514 Daerah</h3>
+                    <h3 className="inline-flex items-center gap-1.5 font-bold text-stone-900 text-sm"><AppIcon name="magnifyingGlass" size={16} /> Pencarian Instan 514 Daerah</h3>
                     <span className="text-[10px] font-bold rounded bg-stone-200 px-2 py-0.5 text-stone-700">Fuzzy Search</span>
                   </div>
                   <p className="mt-1.5 text-xs text-stone-600 leading-relaxed">
@@ -914,7 +935,7 @@ export default function BookletPage() {
 
                 <div className="rounded-xl border border-stone-200 p-4 bg-stone-50">
                   <div className="flex items-center justify-between">
-                    <h3 className="font-bold text-stone-900 text-sm">📌 Baki Sematan (Pin Tray) Hingga 5 Wilayah</h3>
+                    <h3 className="inline-flex items-center gap-1.5 font-bold text-stone-900 text-sm"><AppIcon name="pushPin" size={16} /> Baki Sematan (Pin Tray) Hingga 5 Wilayah</h3>
                     <span className="text-[10px] font-bold rounded bg-stone-200 px-2 py-0.5 text-stone-700">Side-by-Side</span>
                   </div>
                   <p className="mt-1.5 text-xs text-stone-600 leading-relaxed">
@@ -924,7 +945,7 @@ export default function BookletPage() {
 
                 <div className="rounded-xl border border-stone-200 p-4 bg-stone-50">
                   <div className="flex items-center justify-between">
-                    <h3 className="font-bold text-stone-900 text-sm">📊 Grafik Batang Bertumpuk (Stacked Bar Chart)</h3>
+                    <h3 className="inline-flex items-center gap-1.5 font-bold text-stone-900 text-sm"><AppIcon name="chartBar" size={16} /> Grafik Batang Bertumpuk (Stacked Bar Chart)</h3>
                     <span className="text-[10px] font-bold rounded bg-stone-200 px-2 py-0.5 text-stone-700">10 Kategori Biaya</span>
                   </div>
                   <p className="mt-1.5 text-xs text-stone-600 leading-relaxed">
@@ -934,7 +955,7 @@ export default function BookletPage() {
 
                 <div className="rounded-xl border border-stone-200 p-4 bg-stone-50">
                   <div className="flex items-center justify-between">
-                    <h3 className="font-bold text-stone-900 text-sm">🗂️ Jendela Detail Wilayah & Profil Sosio-Ekonomi</h3>
+                    <h3 className="inline-flex items-center gap-1.5 font-bold text-stone-900 text-sm"><AppIcon name="list" size={16} /> Jendela Detail Wilayah & Profil Sosio-Ekonomi</h3>
                     <span className="text-[10px] font-bold rounded bg-stone-200 px-2 py-0.5 text-stone-700">Deep Dive</span>
                   </div>
                   <p className="mt-1.5 text-xs text-stone-600 leading-relaxed">
@@ -1041,8 +1062,9 @@ export default function BookletPage() {
 
               {/* Important Disclaimers Callout */}
               <div className="rounded-xl border border-stone-300 bg-stone-50 p-4 space-y-2.5">
-                <h3 className="font-bold text-stone-900 text-xs uppercase tracking-wider">
-                  ⚠️ Dua Batasan Kritis yang Wajib Dipahami Pengguna:
+                <h3 className="inline-flex items-center gap-1.5 font-bold text-stone-900 text-xs uppercase tracking-wider">
+                  <AppIcon name="warning" size={16} weight="bold" />
+                  Dua Batasan Kritis yang Wajib Dipahami Pengguna:
                 </h3>
 
                 <div className="text-xs space-y-2 text-stone-700">
@@ -1114,7 +1136,7 @@ export default function BookletPage() {
                   <p className="font-bold text-blue-700">Langkah 2</p>
                   <p className="font-semibold text-stone-900 mt-1">Atur Asumsi</p>
                   <p className="mt-1 text-[11px] text-stone-600">
-                    Buka tombol ⚙ Asumsi untuk memilih jenis rumah tangga, kost/rumah, dan moda transport.
+                    Buka tombol pengaturan Asumsi untuk memilih jenis rumah tangga, kost/rumah, dan moda transport.
                   </p>
                 </div>
                 <div className="rounded-lg border border-stone-200 bg-stone-50 p-3">
@@ -1172,9 +1194,10 @@ export default function BookletPage() {
                 <div className="flex items-center gap-2">
                   <Link
                     href="/"
-                    className="rounded-lg bg-[#c2452d] px-4 py-2 text-xs font-bold text-white hover:bg-[#a83624] transition-colors"
+                    className="inline-flex items-center gap-1.5 rounded-lg bg-[#c2452d] px-4 py-2 text-xs font-bold text-white hover:bg-[#a83624] transition-colors"
                   >
-                    Buka Aplikasi Sekarang ↗
+                    Buka Aplikasi Sekarang
+                    <AppIcon name="arrowUpRight" size={14} weight="bold" />
                   </Link>
                 </div>
               </div>

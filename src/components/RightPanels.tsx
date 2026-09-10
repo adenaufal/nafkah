@@ -10,6 +10,8 @@ import {
 } from "@/lib/calculations";
 import { formatPct } from "@/lib/format";
 import type { AffordabilityBand, BasemapId, ColorMode } from "@/lib/types";
+import { AppIcon } from "./icons";
+import type { AppIconName } from "./icons";
 
 const BAND_ORDER: AffordabilityBand[] = [
   "comfortable",
@@ -18,17 +20,32 @@ const BAND_ORDER: AffordabilityBand[] = [
   "insufficient",
 ];
 
-const COLOR_MODES: { id: ColorMode; label: string; hint: string }[] = [
-  { id: "coverage", label: "Cakupan", hint: "Upah ÷ estimasi biaya" },
-  { id: "cost", label: "Biaya", hint: "Estimasi rupiah bulanan" },
-  { id: "wage", label: "Upah", hint: "Rupiah UMK" },
+const COLOR_MODES: {
+  id: ColorMode;
+  label: string;
+  hint: string;
+  icon: AppIconName;
+}[] = [
+  {
+    id: "coverage",
+    label: "Cakupan",
+    hint: "Upah ÷ estimasi biaya",
+    icon: "chartBar",
+  },
+  {
+    id: "cost",
+    label: "Biaya",
+    hint: "Estimasi rupiah bulanan",
+    icon: "coins",
+  },
+  { id: "wage", label: "Upah", hint: "Rupiah UMK", icon: "money" },
 ];
 
-const BASEMAPS: { id: BasemapId; label: string }[] = [
-  { id: "light", label: "Terang" },
-  { id: "dark", label: "Gelap" },
-  { id: "satellite", label: "Satelit" },
-  { id: "offline", label: "Offline" },
+const BASEMAPS: { id: BasemapId; label: string; icon: AppIconName }[] = [
+  { id: "light", label: "Terang", icon: "sun" },
+  { id: "dark", label: "Gelap", icon: "moon" },
+  { id: "satellite", label: "Satelit", icon: "image" },
+  { id: "offline", label: "Offline", icon: "wifiSlash" },
 ];
 
 /** Eyebrow used across the sequential card. */
@@ -61,13 +78,18 @@ export function ColorModeControls() {
               aria-checked={active}
               title={m.hint}
               onClick={() => setColorMode(m.id)}
-              className={`h-[34px] min-w-0 rounded-[9px] border text-center text-xs transition-colors ${
+              className={`inline-flex h-[34px] min-w-0 items-center justify-center gap-1.5 rounded-[9px] border text-center text-xs transition-colors ${
                 active
                   ? "border-accent bg-accent font-bold text-on-accent"
                   : "border-border text-muted hover:border-accent hover:bg-accent-soft"
               }`}
             >
-              <span className="block truncate">{m.label}</span>
+              <AppIcon
+                name={m.icon}
+                size={14}
+                weight={active ? "bold" : "regular"}
+              />
+              <span className="truncate">{m.label}</span>
             </button>
           );
         })}
@@ -224,12 +246,17 @@ export function BasemapControls() {
               role="radio"
               aria-checked={active}
               onClick={() => setBasemap(b.id)}
-              className={`h-8 rounded-lg border text-xs transition-colors ${
+              className={`inline-flex h-8 items-center justify-center gap-1.5 rounded-lg border text-xs transition-colors ${
                 active
                   ? "border-accent bg-accent font-medium text-on-accent"
                   : "border-border text-muted hover:border-accent hover:bg-accent-soft"
               }`}
             >
+              <AppIcon
+                name={b.icon}
+                size={14}
+                weight={active ? "bold" : "regular"}
+              />
               {b.label}
             </button>
           );

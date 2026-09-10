@@ -24,6 +24,7 @@ import type { Confidence } from "@/lib/types";
 import { useDialogFocus } from "@/lib/useDialogFocus";
 import { CORRECTION_FORM_URL } from "@/lib/links";
 import { recordUsage } from "@/lib/usage";
+import { AppIcon } from "./icons";
 
 /**
  * Region detail modal. Opens on region click (map or search).
@@ -107,8 +108,13 @@ export function DetailModal() {
                 onClick={() => pin(code)}
                 disabled={isPinned}
                 aria-pressed={isPinned}
-                className="rounded-lg border border-accent px-2.5 py-1.5 text-sm font-medium text-accent transition-colors hover:bg-accent hover:text-on-accent disabled:cursor-default disabled:border-border disabled:bg-surface disabled:text-muted sm:px-3"
+                className="inline-flex items-center gap-1.5 rounded-lg border border-accent px-2.5 py-1.5 text-sm font-medium text-accent transition-colors hover:bg-accent hover:text-on-accent disabled:cursor-default disabled:border-border disabled:bg-surface disabled:text-muted sm:px-3"
               >
+                <AppIcon
+                  name="pushPin"
+                  size={15}
+                  weight={isPinned ? "fill" : "regular"}
+                />
                 <span className="sm:hidden">
                   {isPinned ? "Tersemat" : "Pin"}
                 </span>
@@ -139,7 +145,7 @@ export function DetailModal() {
               aria-label="Tutup modal detail"
               className="rounded-lg border border-border px-2.5 py-1.5 text-sm hover:border-accent"
             >
-              ✕
+              <AppIcon name="x" size={17} />
             </button>
           </div>
         </header>
@@ -434,7 +440,13 @@ export function DetailModal() {
                 </section>
 
                 <p className="rounded-lg border border-amber-500/40 bg-amber-500/10 p-3 text-xs leading-relaxed text-amber-800 dark:text-amber-300">
-                  ⚠ Angka di sini adalah estimasi, bukan nasihat keuangan. Biaya
+                  <AppIcon
+                    name="warning"
+                    size={16}
+                    weight="bold"
+                    className="mr-1.5 inline-block align-[-3px]"
+                  />
+                  Angka di sini adalah estimasi, bukan nasihat keuangan. Biaya
                   riil berbeda menurut lingkungan tempat tinggal, ukuran rumah
                   tangga, tunjangan pekerjaan, dan keadaan personal.
                 </p>
@@ -450,9 +462,10 @@ export function DetailModal() {
                     rel="noreferrer"
                     onClick={() => recordUsage("correction_report_opened")}
                     aria-label={`Laporkan angka untuk ${displayName}`}
-                    className="inline-flex h-10 shrink-0 items-center justify-center rounded-[10px] bg-accent px-3.5 text-xs font-bold text-on-accent transition-colors hover:bg-accent-strong"
+                    className="inline-flex h-10 shrink-0 items-center justify-center gap-1.5 rounded-[10px] bg-accent px-3.5 text-xs font-bold text-on-accent transition-colors hover:bg-accent-strong"
                   >
-                    Laporkan angka ini ↗
+                    Laporkan angka ini
+                    <AppIcon name="arrowUpRight" size={14} weight="bold" />
                   </a>
                 </div>
               </>

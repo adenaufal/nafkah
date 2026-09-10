@@ -1,6 +1,7 @@
 "use client";
 
 import { useApp } from "@/state/AppContext";
+import { AppIcon } from "../icons";
 
 const STEPS = [
   {
@@ -41,7 +42,7 @@ export function ThreeStepCard({ className = "" }: { className?: string }) {
           aria-label="Tutup kartu tiga langkah"
           className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md text-muted hover:bg-accent-soft hover:text-ink"
         >
-          ✕
+          <AppIcon name="x" size={15} />
         </button>
       </div>
       <ol className="mt-2 space-y-2">
@@ -62,9 +63,10 @@ export function ThreeStepCard({ className = "" }: { className?: string }) {
       <button
         type="button"
         onClick={beginTourSteps}
-        className="mt-3 h-10 w-full rounded-[10px] border border-accent bg-accent-soft text-[12.5px] font-bold text-accent hover:brightness-95"
+        className="mt-3 inline-flex h-10 w-full items-center justify-center gap-1.5 rounded-[10px] border border-accent bg-accent-soft text-[12.5px] font-bold text-accent hover:brightness-95"
       >
-        Tunjukkan langsung di layar →
+        Tunjukkan langsung di layar
+        <AppIcon name="arrowRight" size={15} weight="bold" />
       </button>
     </section>
   );

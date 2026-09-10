@@ -17,6 +17,7 @@ import {
   type SpotRect,
   type TourStep,
 } from "./tour";
+import { AppIcon } from "../icons";
 
 const BAND_ORDER: AffordabilityBand[] = [
   "comfortable",
@@ -114,9 +115,10 @@ function IntroCard({ narrow }: { narrow: boolean }) {
           <button
             type="button"
             onClick={beginTourSteps}
-            className="h-11 min-w-[170px] flex-1 rounded-[11px] bg-accent px-4 text-sm font-bold text-on-accent hover:bg-accent-strong"
+            className="inline-flex h-11 min-w-[170px] flex-1 items-center justify-center gap-1.5 rounded-[11px] bg-accent px-4 text-sm font-bold text-on-accent hover:bg-accent-strong"
           >
             Tunjukkan caranya
+            <AppIcon name="arrowRight" size={16} weight="bold" />
           </button>
           <button
             type="button"
@@ -187,7 +189,7 @@ function ClosingCard({ narrow }: { narrow: boolean }) {
         </button>
         <p className="mt-2.5 text-[11.5px] leading-relaxed text-muted">
           Panduan ini bisa dibuka lagi kapan saja dari tombol{" "}
-          <strong className="text-ink">? Panduan</strong> di kanan atas.
+          <strong className="text-ink">Panduan</strong> di kanan atas.
         </p>
       </div>
     </div>
@@ -344,19 +346,21 @@ function SpotlightStep({
             <button
               type="button"
               onClick={() => setTourIdx(idx - 1)}
-              className="ml-auto h-10 rounded-[10px] border border-border px-3.5 text-xs font-semibold text-muted hover:border-accent"
+              className="ml-auto inline-flex h-10 items-center gap-1.5 rounded-[10px] border border-border px-3.5 text-xs font-semibold text-muted hover:border-accent"
             >
+              <AppIcon name="arrowLeft" size={14} />
               Kembali
             </button>
           )}
           <button
             type="button"
             onClick={() => setTourIdx(idx + 1)}
-            className={`h-10 rounded-[10px] bg-accent px-4 text-[12.5px] font-bold text-on-accent hover:bg-accent-strong ${
+            className={`inline-flex h-10 items-center gap-1.5 rounded-[10px] bg-accent px-4 text-[12.5px] font-bold text-on-accent hover:bg-accent-strong ${
               idx > 0 ? "" : "ml-auto"
             }`}
           >
             {last ? "Selesai" : "Lanjut"}
+            <AppIcon name={last ? "check" : "arrowRight"} size={15} weight="bold" />
           </button>
         </div>
       </div>
