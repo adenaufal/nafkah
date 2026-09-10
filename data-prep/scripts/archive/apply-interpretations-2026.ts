@@ -156,6 +156,11 @@ for (const pkg of ALL_PROVINCE_PACKAGES) {
         max: ${n.rentRange.max},
         note:
           ${JSON.stringify(n.rentRange.note)},
+        provenance: {
+          source: "Model estimasi sewa hunian & pasar properti lokal — disesuaikan IHK nasional Juli 2026 (+2,88% yoy)",
+          asOf: "2026-08-01",
+          confidence: "estimate",
+        },
       },
       transportContext:
         ${JSON.stringify(n.transportContext)},

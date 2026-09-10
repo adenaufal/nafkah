@@ -42,4 +42,14 @@ describe("privacy-first usage counters", () => {
     expect(counts.share_completed).toBe(0);
     expect(counts.assumptions_changed).toBe(0);
   });
+
+  it("does not overflow a counter when storage is already at the safe limit", () => {
+    const storage = memoryStorage(
+      JSON.stringify({ region_opened: Number.MAX_SAFE_INTEGER }),
+    );
+
+    recordUsage("region_opened", storage);
+
+    expect(readUsageCounts(storage).region_opened).toBe(Number.MAX_SAFE_INTEGER);
+  });
 });

@@ -80,6 +80,24 @@ export const costProfileSchema = z.object({
   ),
 });
 
+/** Narrative rent endpoints are displayed in the detail view, so they are data. */
+export const narrativeSchema = z.object({
+  regionCode: z.string().regex(KODE_WILAYAH),
+  rentRange: z
+    .object({
+      min: z.number().nonnegative(),
+      max: z.number().nonnegative(),
+      note: z.string().trim().min(1),
+      provenance: provenanceSchema,
+    })
+    .refine((rent) => rent.max >= rent.min, {
+      message: "rentRange.max must be greater than or equal to min",
+      path: ["max"],
+    }),
+  transportContext: z.string().trim().min(1),
+  interpretation: z.string().trim().min(1),
+});
+
 export interface DatasetInput {
   regions: { code: string; provinceCode?: string }[];
   wages: { regionCode: string }[];
@@ -96,10 +114,11 @@ export function validateDataset(input: {
   regions: unknown[];
   wages: unknown[];
   costs: unknown[];
+  narratives?: unknown[];
 }): string[] {
   const problems: string[] = [];
 
-  const regions: { code: string }[] = [];
+  const regions: { code: string; provinceCode: string }[] = [];
   input.regions.forEach((r, i) => {
     const res = regionSchema.safeParse(r);
     if (res.success) regions.push(res.data);
@@ -114,6 +133,13 @@ export function validateDataset(input: {
   input.costs.forEach((c, i) => {
     const res = costProfileSchema.safeParse(c);
     if (!res.success) problems.push(`cost[${i}]: ${issues(res.error)}`);
+  });
+
+  const narratives: { regionCode: string }[] = [];
+  input.narratives?.forEach((n, i) => {
+    const res = narrativeSchema.safeParse(n);
+    if (res.success) narratives.push(res.data);
+    else problems.push(`narrative[${i}]: ${issues(res.error)}`);
   });
 
   // Cross-record integrity.
@@ -138,6 +164,21 @@ export function validateDataset(input: {
       .map((c) => c.regionCode)
       .filter((c): c is string => typeof c === "string"),
   );
+  const duplicateCodes = (
+    label: "wage" | "cost",
+    records: unknown[],
+  ): void => {
+    const seen = new Set<string>();
+    for (const record of records) {
+      if (!record || typeof record !== "object") continue;
+      const code = (record as { regionCode?: unknown }).regionCode;
+      if (typeof code !== "string") continue;
+      if (seen.has(code)) problems.push(`duplicate ${label} region code ${code}`);
+      seen.add(code);
+    }
+  };
+  duplicateCodes("wage", input.wages);
+  duplicateCodes("cost", input.costs);
   for (const code of codes) {
     if (!wageCodes.has(code)) problems.push(`region ${code} has no wage record`);
     if (!costCodes.has(code)) problems.push(`region ${code} has no cost profile`);
@@ -147,6 +188,29 @@ export function validateDataset(input: {
   }
   for (const code of costCodes) {
     if (!codes.has(code)) problems.push(`cost references unknown region ${code}`);
+  }
+
+  if (input.narratives) {
+    const narrativeCodes = new Set<string>();
+    for (const narrative of narratives) {
+      if (narrativeCodes.has(narrative.regionCode)) {
+        problems.push(`duplicate narrative region code ${narrative.regionCode}`);
+      }
+      narrativeCodes.add(narrative.regionCode);
+    }
+    if (narratives.length !== EXPECTED_REGION_COUNT) {
+      problems.push(
+        `expected ${EXPECTED_REGION_COUNT} narratives, got ${narratives.length}`,
+      );
+    }
+    for (const code of codes) {
+      if (!narrativeCodes.has(code))
+        problems.push(`region ${code} has no narrative`);
+    }
+    for (const code of narrativeCodes) {
+      if (!codes.has(code))
+        problems.push(`narrative references unknown region ${code}`);
+    }
   }
 
   return problems;

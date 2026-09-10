@@ -2,6 +2,8 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import { EXPECTED_REGION_COUNT, validateDataset } from "./schema";
+import type { CostProfile, Region, WageRecord } from "@/lib/types";
+import type { RegionNarrative } from "./narratives";
 
 /**
  * Reliability gate (AP-02): the versioned JSON files that are actually served
@@ -15,10 +17,10 @@ const DIR = resolve("public/data/v2026.1");
 const read = <T>(name: string): T =>
   JSON.parse(readFileSync(resolve(DIR, name), "utf8")) as T;
 
-const regions = read<unknown[]>("regions.json");
-const wages = read<unknown[]>("wages.json");
-const costs = read<unknown[]>("costs.json");
-const narratives = read<unknown[]>("narratives.json");
+const regions = read<Region[]>("regions.json");
+const wages = read<WageRecord[]>("wages.json");
+const costs = read<CostProfile[]>("costs.json");
+const narratives = read<RegionNarrative[]>("narratives.json");
 const manifest = read<{
   datasetVersion: string;
   generatedAt: string;
@@ -27,7 +29,7 @@ const manifest = read<{
 
 describe("dataset integrity", () => {
   it("passes schema + join validation with zero problems", () => {
-    const problems = validateDataset({ regions, wages, costs });
+    const problems = validateDataset({ regions, wages, costs, narratives });
     // Full list on failure — pinpoints the offending record.
     expect(problems).toEqual([]);
   });
@@ -56,6 +58,23 @@ describe("dataset integrity", () => {
     narratives.forEach((n, i) => {
       const code = (n as { regionCode: string }).regionCode;
       expect(codes.has(code), `narrative[${i}] ${code}`).toBe(true);
+    });
+  });
+
+  it("keeps displayed rent provenance aligned with the housing benchmark", () => {
+    const housing = new Map(
+      costs.map((cost) => [cost.regionCode, cost.baseline.housing]),
+    );
+
+    narratives.forEach((narrative) => {
+      const housingProvenance = housing.get(narrative.regionCode);
+      expect(narrative.rentRange.provenance).toEqual(
+        housingProvenance && {
+          source: housingProvenance.source,
+          asOf: housingProvenance.asOf,
+          confidence: housingProvenance.confidence,
+        },
+      );
     });
   });
 });
