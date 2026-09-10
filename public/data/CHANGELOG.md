@@ -14,6 +14,9 @@ Lisensi data: CC-BY-4.0 (lihat `LICENSE-DATA.md`).
   isi angka tidak berubah).
 - Isi: 514 kabupaten/kota (kode wilayah sesuai Kepmendagri 100.1.1-6117),
   upah UMP/UMK 2026 resmi (`official`), 514 × 10 nilai biaya baseline
-  (`estimate`), dan narasi lokal untuk seluruh wilayah.
+  (`estimate`), serta narasi lokal untuk seluruh wilayah. Rentang sewa yang
+  ditampilkan dari narasi memakai provenance yang sama dengan benchmark hunian
+  per wilayah (`estimate`, per 2026-08-01); rentang ini hanya konteks dan tidak
+  ikut menghitung cakupan.
 - Struktur berkas: `regions.json`, `wages.json`, `costs.json`,
   `narratives.json`, `manifest.json`.

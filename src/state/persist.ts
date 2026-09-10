@@ -33,6 +33,11 @@ export interface Persisted {
 
 const REGION_CODE = /^\d{2}\.\d{2}$/;
 const MAX_PERSISTED_PINS = 5;
+const HOUSEHOLDS = ["single", "couple", "family"] as const;
+const LIFESTYLES = ["budget", "moderate", "comfortable"] as const;
+const HOUSING = ["room", "studio", "oneBedroom"] as const;
+const TRANSPORT = ["motorcycle", "publicTransport", "rideHailing"] as const;
+const WAGE_BASES = ["gross", "takeHome"] as const;
 const COLOR_MODES: ColorMode[] = ["coverage", "cost", "wage"];
 const BANDS: AffordabilityBand[] = [
   "comfortable",
@@ -62,6 +67,21 @@ function optionalEnum<T extends string>(
   return typeof value === "string" && allowed.includes(value as T)
     ? (value as T)
     : undefined;
+}
+
+function boundedChildren(value: unknown, fallback: number): number {
+  // State written by the app is numeric. Ignore strings and other edited
+  // values rather than letting Number("...") smuggle malformed state into
+  // the calculation core.
+  const numeric = value === null ? 0 : value;
+  if (typeof numeric !== "number" || !Number.isFinite(numeric)) return fallback;
+  return Math.min(MAX_CHILDREN, Math.max(0, Math.floor(numeric)));
+}
+
+function positiveMoney(value: unknown): number | null {
+  if (typeof value !== "number" || !Number.isFinite(value)) return null;
+  const amount = Math.floor(value);
+  return Number.isSafeInteger(amount) && amount > 0 ? amount : null;
 }
 
 /**
@@ -124,20 +144,46 @@ export function normalizePersisted(input: unknown): Persisted {
 export function normalizeAssumptions(
   input: Partial<Assumptions> | null | undefined,
 ): Assumptions {
-  const a: Assumptions = { ...DEFAULT_ASSUMPTIONS, ...(input ?? {}) };
-  if (a.householdType === "family" && input?.children === undefined) {
-    a.children = 2;
-  }
-  a.children = Math.min(
-    MAX_CHILDREN,
-    Math.max(0, Math.floor(Number(a.children) || 0)),
-  );
-  const installment = Number(a.installmentMonthly);
-  a.installmentMonthly =
-    Number.isFinite(installment) && installment > 0
-      ? Math.floor(installment)
-      : null;
-  return a;
+  const raw = isRecord(input) ? input : {};
+  const householdType =
+    optionalEnum(raw.householdType, HOUSEHOLDS) ??
+    DEFAULT_ASSUMPTIONS.householdType;
+  const childrenInput =
+    raw.children === undefined && householdType === "family"
+      ? 2
+      : raw.children;
+
+  return {
+    householdType,
+    children: boundedChildren(
+      childrenInput,
+      DEFAULT_ASSUMPTIONS.children,
+    ),
+    lifestyle:
+      optionalEnum(raw.lifestyle, LIFESTYLES) ?? DEFAULT_ASSUMPTIONS.lifestyle,
+    housing:
+      optionalEnum(raw.housing, HOUSING) ?? DEFAULT_ASSUMPTIONS.housing,
+    transport:
+      optionalEnum(raw.transport, TRANSPORT) ?? DEFAULT_ASSUMPTIONS.transport,
+    includeSavings:
+      typeof raw.includeSavings === "boolean"
+        ? raw.includeSavings
+        : DEFAULT_ASSUMPTIONS.includeSavings,
+    wageBasis:
+      optionalEnum(raw.wageBasis, WAGE_BASES) ?? DEFAULT_ASSUMPTIONS.wageBasis,
+    dualIncome:
+      typeof raw.dualIncome === "boolean"
+        ? raw.dualIncome
+        : DEFAULT_ASSUMPTIONS.dualIncome,
+    customIncome:
+      raw.customIncome === undefined
+        ? DEFAULT_ASSUMPTIONS.customIncome
+        : positiveMoney(raw.customIncome),
+    installmentMonthly:
+      raw.installmentMonthly === undefined
+        ? DEFAULT_ASSUMPTIONS.installmentMonthly
+        : positiveMoney(raw.installmentMonthly),
+  };
 }
 
 export function loadPersisted(): Persisted {

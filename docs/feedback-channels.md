@@ -24,7 +24,9 @@ Gunakan satu base dengan tabel utama `Koreksi Data`. Field bertanda 🔒 diisi
 maintainer atau agent dan disembunyikan dari form publik.
 
 File [airtable-koreksi-data.csv](airtable-koreksi-data.csv) berisi semua nama
-kolom dan 2 baris contoh. Impor lewat *Add a table → Import data → CSV*, lalu
+kolom dan 2 baris contoh sintetis (bukan laporan nyata dan bukan data kontak).
+Hapus baris contoh setelah struktur base selesai; jangan menganggapnya sebagai
+antrean produksi. Impor lewat *Add a table → Import data → CSV*, lalu
 sesuaikan tabelnya:
 
 1. Jadikan `Kabupaten/Kota` (kolom pertama, bertipe teks) sebagai primary field

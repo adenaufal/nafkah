@@ -363,6 +363,18 @@ export function DetailModal() {
                       <dd className="mt-0.5 text-xs text-muted">
                         {narrative.rentRange.note}
                       </dd>
+                      <dd className="mt-2 border-t border-border/60 pt-2 text-[10px] leading-relaxed text-muted">
+                        <span className="block">
+                          Sumber: {narrative.rentRange.provenance.source}
+                        </span>
+                        <time dateTime={narrative.rentRange.provenance.asOf}>
+                          Per {" "}
+                          {formatDate(narrative.rentRange.provenance.asOf)}
+                        </time>{" "}
+                        <ConfidenceBadge
+                          confidence={narrative.rentRange.provenance.confidence}
+                        />
+                      </dd>
                     </div>
                     <div className="rounded-lg bg-surface p-3">
                       <dt className="text-xs font-semibold uppercase tracking-wide text-muted">

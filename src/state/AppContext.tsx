@@ -117,7 +117,11 @@ function initState(base: AppState): AppState {
       shared ? shared.selectedCode : p.selectedCode ?? base.selectedCode,
     originCode: shared ? shared.originCode : p.originCode ?? base.originCode,
     colorMode: shared?.colorMode ?? p.colorMode ?? base.colorMode,
-    legendFilter: shared?.legendFilter ?? p.legendFilter ?? base.legendFilter,
+    // `null` in a shared view is intentional: it clears an older local
+    // filter instead of falling back to the preference being overridden.
+    legendFilter: shared
+      ? shared.legendFilter
+      : p.legendFilter ?? base.legendFilter,
     basemap: p.basemap ?? base.basemap,
     basemapUserSet: p.basemap != null,
     onboarded,

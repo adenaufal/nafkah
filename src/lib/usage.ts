@@ -28,6 +28,7 @@ export const USAGE_EVENTS = [
 
 export type UsageEvent = (typeof USAGE_EVENTS)[number];
 export type UsageCounts = Record<UsageEvent, number>;
+const MAX_USAGE_COUNT = Number.MAX_SAFE_INTEGER;
 
 export type UsageStorage = Pick<Storage, "getItem" | "setItem">;
 
@@ -78,7 +79,7 @@ export function recordUsage(
   if (!storage) return;
   try {
     const counts = readUsageCounts(storage);
-    counts[event] += 1;
+    counts[event] = Math.min(MAX_USAGE_COUNT, counts[event] + 1);
     storage.setItem(USAGE_STORAGE_KEY, JSON.stringify(counts));
   } catch {
     /* Private browsing or strict storage policies must not break the app. */

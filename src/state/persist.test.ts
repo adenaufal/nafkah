@@ -67,6 +67,23 @@ describe("normalizeAssumptions", () => {
     expect(normalizeAssumptions({})).toEqual(DEFAULT_ASSUMPTIONS);
   });
 
+  it("menolak enum, boolean, dan nominal yang dirusak di localStorage", () => {
+    const malformed = {
+      householdType: "hacker",
+      lifestyle: "lavish",
+      housing: "penthouse",
+      transport: "teleport",
+      includeSavings: "yes",
+      wageBasis: "net",
+      dualIncome: 1,
+      children: Number.POSITIVE_INFINITY,
+      customIncome: Number.MAX_VALUE,
+      installmentMonthly: "2500000",
+    } as unknown as Partial<Assumptions>;
+
+    expect(normalizeAssumptions(malformed)).toEqual(DEFAULT_ASSUMPTIONS);
+  });
+
   it("menormalkan preferensi tampilan dan asal relokasi dari storage", () => {
     expect(
       normalizePersisted({
