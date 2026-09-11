@@ -82,7 +82,7 @@ export function AboutDrawer() {
               type="button"
               onClick={() => setAboutOpen(false)}
               aria-label="Tutup laman tentang"
-              className="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-lg border border-border text-sm hover:border-accent"
+              className="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-lg border border-border text-sm hover:border-accent min-[1400px]:h-10 min-[1400px]:w-10 min-[1800px]:h-11 min-[1800px]:w-11"
             >
               <AppIcon name="x" size={17} />
             </button>
@@ -97,7 +97,7 @@ export function AboutDrawer() {
                 type="button"
                 aria-current={active === n.id}
                 onClick={() => goto(n.id)}
-                className={`h-8 shrink-0 rounded-full px-3 text-xs font-medium transition-colors ${
+                className={`h-8 shrink-0 rounded-full px-3 text-xs font-medium transition-colors min-[1400px]:h-9 min-[1400px]:text-[13px] ${
                   active === n.id
                     ? "bg-accent text-on-accent"
                     : "border border-border text-muted hover:border-accent"
@@ -396,7 +396,7 @@ export function AboutDrawer() {
                   setAboutOpen(false);
                   openGuide();
                 }}
-                className="h-11 flex-1 rounded-[11px] bg-accent px-4 text-sm font-bold text-on-accent hover:bg-accent-strong"
+                className="h-11 flex-1 rounded-[11px] bg-accent px-4 text-sm font-bold text-on-accent hover:bg-accent-strong min-[1400px]:h-12 min-[1400px]:text-[14.5px] min-[1800px]:h-[50px] min-[1800px]:text-base"
               >
                 Putar ulang tur panduan
               </button>
@@ -406,7 +406,7 @@ export function AboutDrawer() {
                   setOnboardCard(true);
                   setAboutOpen(false);
                 }}
-                className="h-11 rounded-[11px] border border-border px-4 text-sm font-semibold text-muted hover:border-accent hover:text-accent"
+                className="h-11 rounded-[11px] border border-border px-4 text-sm font-semibold text-muted hover:border-accent hover:text-accent min-[1400px]:h-12 min-[1400px]:text-[14.5px] min-[1800px]:h-[50px] min-[1800px]:text-base"
               >
                 Tampilkan kartu 3 langkah
               </button>

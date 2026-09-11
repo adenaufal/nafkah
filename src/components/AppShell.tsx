@@ -29,40 +29,41 @@ const MapCanvas = dynamic(() => import("./map/MapCanvas"), {
 
 function TopBar() {
   const {
-    state,
-    setDarkMode,
     resetView,
     openGuide,
     setAboutOpen,
     setAsumsiOpen,
   } = useApp();
   return (
-    <header className="relative z-30 flex h-14 items-center gap-3 border-b border-border bg-card px-3 sm:px-4">
+    <header className="relative z-30 flex h-14 items-center gap-3 border-b border-border bg-card px-3 sm:px-4 min-[1400px]:h-16 min-[1800px]:h-[68px] min-[1400px]:px-6">
       <div className="flex min-w-0 items-center gap-2.5">
         <span
           aria-hidden="true"
-          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-accent text-[17px] font-extrabold text-on-accent"
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-accent text-[17px] font-extrabold text-on-accent min-[1400px]:h-10 min-[1400px]:w-10 min-[1400px]:text-[18px] min-[1800px]:h-11 min-[1800px]:w-11 min-[1800px]:text-[20px]"
         >
           N
         </span>
         <div className="min-w-0 leading-tight">
-          <p className="truncate text-base font-bold tracking-tight">Nafkah</p>
-          <p className="hidden text-[11.5px] text-muted sm:block">
+          <div className="flex items-center gap-2">
+            <p className="shrink-0 text-base font-bold tracking-tight min-[1400px]:text-[17px] min-[1800px]:text-lg">
+              Nafkah
+            </p>
+            <span className="hidden items-center gap-1 rounded-full border border-amber-500/40 bg-amber-500/10 px-2 py-0.5 text-[10.5px] font-semibold text-amber-700 whitespace-nowrap md:inline-flex dark:text-amber-400 min-[1400px]:px-2.5 min-[1400px]:py-0.5 min-[1400px]:text-[11.5px] min-[1800px]:px-3 min-[1800px]:text-xs">
+              <AppIcon name="warning" size={12} weight="bold" /> Estimasi sampel
+            </span>
+          </div>
+          <p className="hidden text-[11.5px] text-muted sm:block min-[1400px]:text-xs min-[1800px]:text-[13px]">
             Seberapa cukup gajimu untuk hidup di kota ini?
           </p>
         </div>
       </div>
 
-      <span className="hidden items-center gap-1 rounded-full border border-amber-500/40 bg-amber-500/10 px-2.5 py-1 text-[11px] font-semibold text-amber-700 lg:inline-flex dark:text-amber-400">
-        <AppIcon name="warning" size={14} weight="bold" /> Estimasi sampel
-      </span>
-
-      <div className="ml-auto flex shrink-0 items-center gap-1.5 sm:gap-2">
+      <div className="ml-auto flex shrink-0 items-center gap-1.5 sm:gap-2 min-[1400px]:gap-2.5 min-[1800px]:gap-3">
         <button
           type="button"
           onClick={openGuide}
           aria-label="Buka panduan"
-          className="inline-flex h-9 items-center gap-1.5 rounded-[9px] border border-accent bg-accent-soft px-2.5 text-[12.5px] font-bold text-accent transition-colors hover:brightness-95 sm:px-3"
+          className="inline-flex h-9 items-center gap-1.5 rounded-[9px] border border-accent bg-accent-soft px-2.5 text-[12.5px] font-bold text-accent transition-colors hover:brightness-95 sm:px-3 min-[1400px]:h-10 min-[1400px]:px-3.5 min-[1400px]:text-[13.5px] min-[1400px]:rounded-[10px] min-[1800px]:h-11 min-[1800px]:px-4 min-[1800px]:text-sm"
         >
           <AppIcon name="question" size={16} weight="bold" />
           <span className="hidden sm:inline">Panduan</span>
@@ -71,7 +72,7 @@ function TopBar() {
           type="button"
           onClick={() => setAboutOpen(true)}
           aria-haspopup="dialog"
-          className="inline-flex h-9 items-center gap-1.5 rounded-[9px] border border-border px-2.5 text-[12.5px] font-medium text-muted transition-colors hover:bg-accent-soft hover:text-ink sm:px-3"
+          className="inline-flex h-9 items-center gap-1.5 rounded-[9px] border border-border px-2.5 text-[12.5px] font-medium text-muted transition-colors hover:bg-accent-soft hover:text-ink sm:px-3 min-[1400px]:h-10 min-[1400px]:px-3.5 min-[1400px]:text-[13.5px] min-[1400px]:rounded-[10px] min-[1800px]:h-11 min-[1800px]:px-4 min-[1800px]:text-sm"
         >
           <AppIcon name="info" size={16} />
           <span className="hidden sm:inline">Tentang</span>
@@ -82,28 +83,17 @@ function TopBar() {
           type="button"
           onClick={resetView}
           aria-label="Atur ulang tampilan peta ke Indonesia"
-          className="hidden h-9 items-center gap-1.5 rounded-[9px] border border-border px-2.5 text-[12.5px] font-medium text-muted transition-colors hover:bg-accent-soft hover:text-ink sm:inline-flex sm:px-3"
+          className="hidden h-9 items-center gap-1.5 rounded-[9px] border border-border px-2.5 text-[12.5px] font-medium text-muted transition-colors hover:bg-accent-soft hover:text-ink md:inline-flex lg:px-3 min-[1400px]:h-10 min-[1400px]:px-3.5 min-[1400px]:text-[13.5px] min-[1400px]:rounded-[10px] min-[1800px]:h-11 min-[1800px]:px-4 min-[1800px]:text-sm"
         >
           <AppIcon name="arrowCounterClockwise" size={16} />
-          <span className="hidden sm:inline">Atur ulang</span>
-        </button>
-        <button
-          type="button"
-          onClick={() => setDarkMode(!state.darkMode)}
-          aria-pressed={state.darkMode}
-          aria-label={
-            state.darkMode ? "Ganti ke mode terang" : "Ganti ke mode gelap"
-          }
-          className="inline-flex h-9 w-9 items-center justify-center rounded-[9px] border border-border text-[12.5px] font-medium text-muted transition-colors hover:bg-accent-soft hover:text-ink"
-        >
-          <AppIcon name={state.darkMode ? "sun" : "moon"} size={17} />
+          <span className="hidden lg:inline">Atur ulang</span>
         </button>
         <button
           type="button"
           data-tour="asumsi"
           onClick={() => setAsumsiOpen(true)}
           aria-haspopup="dialog"
-          className="inline-flex h-9 items-center gap-1.5 rounded-[9px] bg-accent px-3 text-[12.5px] font-bold text-on-accent transition-colors hover:bg-accent-strong"
+          className="inline-flex h-9 items-center gap-1.5 rounded-[9px] bg-accent px-3 text-[12.5px] font-bold text-on-accent transition-colors hover:bg-accent-strong min-[1400px]:h-10 min-[1400px]:px-4 min-[1400px]:text-[13.5px] min-[1400px]:rounded-[10px] min-[1800px]:h-11 min-[1800px]:px-5 min-[1800px]:text-sm"
         >
           <AppIcon name="gear" size={16} weight="bold" />
           Asumsi

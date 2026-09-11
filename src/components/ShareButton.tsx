@@ -96,7 +96,7 @@ export function ShareButton() {
       onClick={() => void share()}
       aria-label={`${label} tampilan saat ini.${privacyHint}`}
       title={`Bagikan wilayah dan asumsi aktif.${privacyHint}`}
-      className="inline-flex h-9 items-center gap-1.5 rounded-[9px] border border-border px-2.5 text-[12.5px] font-medium text-muted transition-colors hover:bg-accent-soft hover:text-ink sm:px-3"
+      className="inline-flex h-9 items-center gap-1.5 rounded-[9px] border border-border px-2.5 text-[12.5px] font-medium text-muted transition-colors hover:bg-accent-soft hover:text-ink sm:px-3 min-[1400px]:h-10 min-[1400px]:px-3.5 min-[1400px]:text-[13.5px] min-[1400px]:rounded-[10px] min-[1800px]:h-11 min-[1800px]:px-4 min-[1800px]:text-sm"
     >
       <AppIcon
         name={status === "copied" || status === "shared" ? "check" : "share"}

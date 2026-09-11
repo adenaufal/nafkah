@@ -45,13 +45,12 @@ const BASEMAPS: { id: BasemapId; label: string; icon: AppIconName }[] = [
   { id: "light", label: "Terang", icon: "sun" },
   { id: "dark", label: "Gelap", icon: "moon" },
   { id: "satellite", label: "Satelit", icon: "image" },
-  { id: "offline", label: "Offline", icon: "wifiSlash" },
 ];
 
 /** Eyebrow used across the sequential card. */
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
-    <h3 className="text-[10.5px] font-bold uppercase tracking-[0.09em] text-muted">
+    <h3 className="text-[10.5px] font-bold uppercase tracking-[0.09em] text-muted min-[1400px]:text-[11px] min-[1800px]:text-xs">
       {children}
     </h3>
   );
@@ -78,7 +77,7 @@ export function ColorModeControls() {
               aria-checked={active}
               title={m.hint}
               onClick={() => setColorMode(m.id)}
-              className={`inline-flex h-[34px] min-w-0 items-center justify-center gap-1.5 rounded-[9px] border text-center text-xs transition-colors ${
+              className={`inline-flex h-[34px] min-w-0 items-center justify-center gap-1.5 rounded-[9px] border text-center text-xs transition-colors min-[1400px]:h-9 min-[1400px]:text-[12.5px] min-[1800px]:h-10 min-[1800px]:text-xs ${
                 active
                   ? "border-accent bg-accent font-bold text-on-accent"
                   : "border-border text-muted hover:border-accent hover:bg-accent-soft"
@@ -94,7 +93,7 @@ export function ColorModeControls() {
           );
         })}
       </div>
-      <p className="mt-1.5 min-h-4 text-[11px] text-muted">
+      <p className="mt-1.5 min-h-4 text-[11px] text-muted min-[1400px]:text-xs">
         {COLOR_MODES.find((m) => m.id === state.colorMode)?.hint}
       </p>
     </div>
@@ -235,7 +234,7 @@ export function BasemapControls() {
       <div
         role="radiogroup"
         aria-label="Gaya peta dasar"
-        className="mt-2 grid grid-cols-2 gap-1.5"
+        className="mt-2 grid grid-cols-3 gap-1.5"
       >
         {BASEMAPS.map((b) => {
           const active = state.basemap === b.id;
@@ -246,7 +245,7 @@ export function BasemapControls() {
               role="radio"
               aria-checked={active}
               onClick={() => setBasemap(b.id)}
-              className={`inline-flex h-8 items-center justify-center gap-1.5 rounded-lg border text-xs transition-colors ${
+              className={`inline-flex h-8 items-center justify-center gap-1.5 rounded-lg border text-xs transition-colors min-[1400px]:h-9 min-[1800px]:h-9.5 ${
                 active
                   ? "border-accent bg-accent font-medium text-on-accent"
                   : "border-border text-muted hover:border-accent hover:bg-accent-soft"
@@ -322,7 +321,7 @@ export function RankCard() {
               type="button"
               aria-pressed={side === s}
               onClick={() => setSide(s)}
-              className={`h-7 rounded-lg px-2.5 text-[11px] font-semibold transition-colors ${
+              className={`h-7 rounded-lg px-2.5 text-[11px] font-semibold transition-colors min-[1400px]:h-8 min-[1400px]:text-xs ${
                 side === s
                   ? "bg-accent text-on-accent"
                   : "border border-border text-muted hover:border-accent"

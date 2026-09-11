@@ -49,7 +49,7 @@ export function StatusChips() {
       <div
         key="origin"
         role="status"
-        className="flex items-center gap-2 rounded-full border border-accent/40 bg-accent-soft px-3.5 py-1.5 text-xs font-medium text-accent shadow-md backdrop-blur"
+        className="flex items-center gap-2 rounded-full border border-accent/40 bg-accent-soft px-3.5 py-1.5 text-xs font-medium text-accent shadow-md backdrop-blur min-[1400px]:px-4 min-[1400px]:py-2 min-[1400px]:text-[13px] min-[1800px]:px-5 min-[1800px]:py-2.5 min-[1800px]:text-sm"
       >
         <span>
           Gaji asal: {regionByCode.get(state.originCode)?.name ?? state.originCode}
@@ -57,7 +57,7 @@ export function StatusChips() {
         <button
           type="button"
           onClick={() => setOrigin(null)}
-          className="rounded bg-current/10 px-2 py-0.5 font-semibold underline underline-offset-2"
+          className="rounded bg-current/10 px-2 py-0.5 font-semibold underline underline-offset-2 min-[1400px]:px-2.5 min-[1400px]:py-1 min-[1400px]:text-xs min-[1800px]:text-[13px]"
         >
           Hapus
         </button>
@@ -94,7 +94,7 @@ function Chip({
   return (
     <div
       role={tone === "error" ? "alert" : "status"}
-      className={`flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-xs font-medium shadow-md backdrop-blur ${cls}`}
+      className={`flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-xs font-medium shadow-md backdrop-blur min-[1400px]:px-4 min-[1400px]:py-2 min-[1400px]:text-[13px] min-[1800px]:px-5 min-[1800px]:py-2.5 min-[1800px]:text-sm ${cls}`}
     >
       {tone === "muted" && (
         <span
@@ -104,12 +104,12 @@ function Chip({
       )}
       {tone === "error" && <AppIcon name="warning" size={15} weight="bold" />}
       <span>{text}</span>
-      {detail && <span className="text-[10px] opacity-70">({detail})</span>}
+      {detail && <span className="text-[10px] opacity-70 min-[1400px]:text-[11px]">({detail})</span>}
       {actionLabel && (
         <button
           type="button"
           onClick={onAction}
-          className="inline-flex items-center gap-1 rounded bg-current/10 px-2 py-0.5 font-semibold underline underline-offset-2"
+          className="inline-flex items-center gap-1 rounded bg-current/10 px-2 py-0.5 font-semibold underline underline-offset-2 min-[1400px]:px-2.5 min-[1400px]:py-1 min-[1400px]:text-xs min-[1800px]:text-[13px]"
         >
           <AppIcon name="arrowClockwise" size={13} weight="bold" />
           Coba lagi

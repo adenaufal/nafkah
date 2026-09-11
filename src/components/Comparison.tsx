@@ -50,7 +50,7 @@ export function PinnedTray() {
               <AppIcon name="pushPin" size={14} />
               Disematkan
             </h2>
-            <span className="rounded-full bg-accent-soft px-2 py-0.5 text-[11px] font-bold tabular-nums text-accent">
+            <span className="rounded-full bg-accent-soft px-2 py-0.5 text-[11px] font-bold tabular-nums text-accent min-[1400px]:text-xs min-[1400px]:px-2.5 min-[1400px]:py-0.5">
               {state.pinned.length}/5
             </span>
           </header>
@@ -102,7 +102,7 @@ export function PinnedTray() {
                     type="button"
                     onClick={() => unpin(code)}
                     aria-label={`Hapus ${name} dari perbandingan`}
-                    className="flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-md text-muted transition-colors hover:bg-red-500/10 hover:text-danger"
+                    className="flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-md text-muted transition-colors hover:bg-red-500/10 hover:text-danger min-[1400px]:h-8 min-[1400px]:w-8"
                   >
                     <AppIcon name="x" size={15} />
                   </button>
@@ -193,7 +193,7 @@ export function ComparisonPanel() {
           type="button"
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
-          className="h-8 shrink-0 rounded-lg border border-border px-3 text-xs font-semibold text-muted hover:border-accent"
+          className="h-8 shrink-0 rounded-lg border border-border px-3 text-xs font-semibold text-muted hover:border-accent min-[1400px]:h-9 min-[1400px]:text-xs min-[1800px]:h-9.5 min-[1800px]:px-3.5"
         >
           {open ? "Sembunyikan" : "Tampilkan"}
         </button>
@@ -210,7 +210,7 @@ export function ComparisonPanel() {
             <button
               type="button"
               onClick={() => setOrigin(null)}
-              className="shrink-0 rounded-md border border-border px-2 py-1 font-semibold text-muted hover:border-accent hover:text-accent"
+              className="shrink-0 rounded-md border border-border px-2 py-1 font-semibold text-muted hover:border-accent hover:text-accent min-[1400px]:px-2.5 min-[1400px]:py-1.5 min-[1400px]:text-xs"
             >
               Hapus asal
             </button>

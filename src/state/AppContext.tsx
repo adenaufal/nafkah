@@ -108,9 +108,16 @@ function initState(base: AppState): AppState {
       ? null
       : decodeSharedView(window.location.search);
   const onboarded = shared ? true : (p.onboarded ?? false);
+  const basemap = p.basemap ?? base.basemap;
+  const darkMode =
+    basemap === "dark"
+      ? true
+      : basemap === "light"
+        ? false
+        : (p.darkMode ?? base.darkMode);
   return {
     ...base,
-    darkMode: p.darkMode ?? base.darkMode,
+    darkMode,
     assumptions: shared?.assumptions ?? p.assumptions ?? base.assumptions,
     pinned: shared?.pinned ?? p.pinned ?? base.pinned,
     selectedCode:
@@ -122,7 +129,7 @@ function initState(base: AppState): AppState {
     legendFilter: shared
       ? shared.legendFilter
       : p.legendFilter ?? base.legendFilter,
-    basemap: p.basemap ?? base.basemap,
+    basemap,
     basemapUserSet: p.basemap != null,
     onboarded,
     onboardCardOpen: shared ? false : !p.onboardCardDismissed,
@@ -241,8 +248,15 @@ function reducer(state: AppState, action: Action): AppState {
       return { ...state, colorMode: action.mode };
     case "legendFilter/set":
       return { ...state, legendFilter: action.band };
-    case "basemap/set":
-      return { ...state, basemap: action.basemap, basemapUserSet: true };
+    case "basemap/set": {
+      const darkMode =
+        action.basemap === "dark"
+          ? true
+          : action.basemap === "light"
+            ? false
+            : state.darkMode;
+      return { ...state, basemap: action.basemap, basemapUserSet: true, darkMode };
+    }
     case "theme/set": {
       // Basemap follows the UI theme unless the user overrode it explicitly.
       const followTheme = action.dark ? ("dark" as const) : ("light" as const);

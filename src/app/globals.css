@@ -130,18 +130,44 @@ body {
   }
 }
 
+@media (min-width: 1400px) {
+  .assumptions-drawer {
+    width: 520px;
+  }
+
+  .about-drawer {
+    width: 540px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .assumptions-drawer {
+    width: 580px;
+  }
+}
+
 @media (min-width: 1800px) {
   .assumptions-drawer {
     width: 680px;
   }
 
   .about-drawer {
-    width: 600px;
+    width: 640px;
   }
 }
 
-@media (min-width: 2400px) {
+@media (min-width: 2200px) {
   .assumptions-drawer {
+    width: 760px;
+  }
+}
+
+@media (min-width: 2560px) {
+  .assumptions-drawer {
+    width: 580px;
+  }
+
+  .about-drawer {
     width: 720px;
   }
 }
@@ -170,8 +196,22 @@ body {
 }
 .maplibregl-ctrl-attrib {
   background: color-mix(in srgb, var(--card) 85%, transparent) !important;
-  color: var(--muted);
+  color: var(--muted) !important;
   font-size: 10px;
+}
+.maplibregl-ctrl-attrib a {
+  color: inherit !important;
+}
+.maplibregl-ctrl-attrib a:hover {
+  color: var(--ink) !important;
+  text-decoration: underline;
+}
+.dark .maplibregl-ctrl-attrib,
+.dark .maplibregl-ctrl-attrib a {
+  color: var(--muted) !important;
+}
+.dark .maplibregl-ctrl-attrib a:hover {
+  color: var(--ink) !important;
 }
 .dark .maplibregl-ctrl-zoom-in .maplibregl-ctrl-icon,
 .dark .maplibregl-ctrl-zoom-out .maplibregl-ctrl-icon,
