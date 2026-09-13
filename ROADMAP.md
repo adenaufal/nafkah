@@ -111,7 +111,7 @@ agregat lokal, sehingga belum menyediakan analitik lintas pengguna.
 
 | ID | Pekerjaan | Yang perlu dilakukan | Status | Prioritas |
 | --- | --- | --- | --- | --- |
-| AP-01 | Penjelasan metode dan batasan | Tampilkan metode dekat peta dan di jendela detail. Jelaskan asumsi awal 1 orang, arti tingkat keterjangkauan, serta UMK sebagai acuan resmi, bukan gaji aktual. | 🟡 Bagian utama ✅: catatan di panel Tentang dan jendela detail; `source`/`asOf`/`confidence` tampil untuk upah, 10 kategori biaya, dan rentang sewa narasi. Hitungan penggunaan agregat lokal tersedia lewat AP-06; telemetry lintas pengguna belum digunakan. | P0 · S |
+| AP-01 | Penjelasan metode dan batasan | Tampilkan metode dekat peta dan di jendela detail. Jelaskan asumsi awal 1 orang, arti tingkat keterjangkauan, serta UMK sebagai acuan resmi, bukan gaji aktual. | 🟡 Bagian utama ✅: catatan di panel Tentang dan jendela detail; `source`/`asOf`/`confidence` tampil untuk upah, 10 kategori biaya, dan rentang sewa narasi. Tabel sensitivitas band ✅ — dihitung live dari dataset, dikunci di CI, dengan keputusan pilihan awal dicatat di [catatan kalibrasi](docs/kalibrasi-default-2026-09.md). Hitungan penggunaan agregat lokal tersedia lewat AP-06; telemetry lintas pengguna belum digunakan. | P0 · S |
 | AP-02 | Versi dataset dan pemeriksaan data | Gunakan skema Zod dan CI untuk menolak data tidak valid sebelum menerima koreksi komunitas. Setelah itu, pindahkan dataset ke file JSON dengan versi dan catatan perubahan. | ✅ Pemeriksaan Zod + integritas join di CI (`src/data/schema.ts`, `dataset.test.ts`, kini membaca file yang di-ship). Dataset pindah ke JSON berversi `public/data/v2026.1/` dengan `manifest.json` dan catatan perubahan `public/data/CHANGELOG.md`; aplikasi memuatnya lewat fetch runtime (`src/data/loader.ts`). | P0 · M |
 | AP-03 | Personalisasi rumah tangga v1.1 | Tambahkan jumlah anak dan isian cicilan/KPR pada kontrol pendapatan dan 2 upah yang sudah ada. Tampilkan profil aktif dan tombol reset. | ✅ Stepper jumlah anak (0–5, berlaku juga untuk single) dan isian cicilan KPR yang menggantikan estimasi hunian; profil aktif tampil di header drawer dan chip perbandingan, tombol reset sudah ada. Unit test mencakup anak dan cicilan, termasuk menjaga angka profil Keluarga v0.1 tetap identik. | P0 · M |
 | AP-04 | Form koreksi per wilayah | Buat form Airtable "Laporkan angka ini" dengan wilayah, kategori, nilai lama/usulan, periode, jenis bukti, sumber, dan kontak opsional. Laporan masuk ke antrean pemeriksaan manual (`Status=New`), tanpa mengubah dataset otomatis. | 🟡 Form, CTA kontekstual, dan skema antrean manual ✅; pemeriksaan laporan nyata serta proses penerimaan dataset masih ❌ (lihat [panduan kanal masukan](docs/feedback-channels.md); template GitHub ✅). | P0 · M |
@@ -183,7 +183,7 @@ Nomor AP-xx merujuk ke rencana di atas.
 | Mode gelap dan filter legenda per tingkat keterjangkauan (diminta komunitas, tersedia sejak v0.1) | ✅ |
 | Berbagi dan menyematkan peta (pengaturan di URL; mode `<iframe>`) | 🟡 URL relokasi berversi + tombol Bagikan ✅; embed ❌ |
 | Ekspor CSV/PNG dengan sumber, `asOf`, dan catatan batasan | ❌ |
-| Profil rumah tangga dengan pilihan awal yang divalidasi lewat Susenas | 🟡 kontrol jumlah anak & cicilan KPR ✅ (AP-03); validasi pilihan awal lewat Susenas masih ❌ |
+| Profil rumah tangga dengan pilihan awal yang divalidasi lewat Susenas | 🟡 kontrol jumlah anak & cicilan KPR ✅ (AP-03); hunian awal diubah ke rusun/kost dengan tabel sensitivitas ✅ ([catatan kalibrasi](docs/kalibrasi-default-2026-09.md)); validasi pilihan awal lewat Susenas masih ❌ |
 | PWA yang bisa dipasang, menyimpan geometri dan data di cache, serta membuka kerangka aplikasi secara offline | ❌ |
 | Data upah dan biaya hidup dari 2020 sampai sekarang, dengan penggeser tahun | ❌ |
 
@@ -217,13 +217,20 @@ Ringkasannya anonim, tanpa nama akun atau kutipan pribadi. Sebagian besar
 tanggapan positif; warga di Sleman, Surakarta, dan Jawa Tengah ikut mengecek
 kecocokan angka dengan kondisi setempat.
 
-Dengan asumsi awal pada dataset v2026.1, 2 wilayah masuk kategori Nyaman
+Dengan asumsi awal v0.1 pada dataset v2026.1, 2 wilayah masuk kategori Nyaman
 (Comfortable), 95 Cukup (Manageable), 303 Ketat (Tight), dan 114 Tak Cukup
 (Insufficient). Keluhan
 "tidak ada yang hijau" muncul berulang. Kalibrasinya mungkin terlalu ketat,
 atau kondisi upah dan biaya hidup memang berat. Penjelasan metode perlu lebih
 mudah ditemukan (AP-01), bersama filter/urutan tingkat keterjangkauan yang
 sudah tersedia (✅).
+
+Pemeriksaan lanjutannya menemukan bahwa yang menggerakkan sebaran band bukan
+datanya, melainkan pilihan awal: dengan hunian rusun/kost, sebarannya menjadi
+27 Nyaman, 191 Cukup, 250 Ketat, dan 46 Tak Cukup pada dataset yang sama. Sejak
+v0.2.0 hunian awal memakai rusun/kost dan panel metode menampilkan tabel
+sensitivitasnya; band 120/100/80 tidak digeser. Lihat [catatan
+kalibrasi](docs/kalibrasi-default-2026-09.md).
 
 | Tema | Masukan | Tindak lanjut |
 | --- | --- | --- |

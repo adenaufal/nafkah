@@ -55,6 +55,17 @@ function makeWage(gross = 3_000_000, takeHome = 2_700_000): WageRecord {
 const totalCost = (a: Assumptions, c: CostProfile) =>
   Object.values(adjustCosts(c, a)).reduce((s, v) => s + v, 0);
 
+/**
+ * Baseline dataset: profil dengan semua pengali = 1, termasuk hunian studio.
+ * Pilihan awal aplikasi (DEFAULT_ASSUMPTIONS) sengaja memakai Rusun/kost
+ * (×0.55), jadi test yang menguji tabel pengali terhadap profil v0.1 harus
+ * menyebut hunian baseline secara eksplisit — bukan ikut pilihan awal.
+ */
+const BASELINE_PROFILE: Assumptions = {
+  ...DEFAULT_ASSUMPTIONS,
+  housing: "studio",
+};
+
 describe("classify", () => {
   const b = AFFORDABILITY_BANDS; // comfortable 120, manageable 100, tight 80
   it("maps coverage% to bands at the exact boundaries", () => {
@@ -260,7 +271,7 @@ const BASELINE_AMOUNT = 1_000_000;
 describe("children (AP-03)", () => {
   it("pasangan + 2 anak mereproduksi profil Keluarga v0.1 secara persis", () => {
     const out = adjustCosts(makeCosts(), {
-      ...DEFAULT_ASSUMPTIONS,
+      ...BASELINE_PROFILE,
       householdType: "couple",
       children: 2,
     });
@@ -271,7 +282,7 @@ describe("children (AP-03)", () => {
 
   it("pasangan tanpa anak tetap profil Pasangan v0.1", () => {
     const out = adjustCosts(makeCosts(), {
-      ...DEFAULT_ASSUMPTIONS,
+      ...BASELINE_PROFILE,
       householdType: "couple",
       children: 0,
     });
@@ -352,11 +363,11 @@ describe("installment override (AP-03)", () => {
 
   it("cicilan 0 atau negatif diabaikan (kembali ke estimasi daerah)", () => {
     const zero = adjustCosts(makeCosts(), {
-      ...DEFAULT_ASSUMPTIONS,
+      ...BASELINE_PROFILE,
       installmentMonthly: 0,
     });
     const negative = adjustCosts(makeCosts(), {
-      ...DEFAULT_ASSUMPTIONS,
+      ...BASELINE_PROFILE,
       installmentMonthly: -500_000,
     });
     expect(zero.housing).toBe(1_000_000); // baseline × hunian studio (×1)

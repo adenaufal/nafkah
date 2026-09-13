@@ -8,7 +8,9 @@ import type {
 
 /**
  * Assumption multiplier tables. These are data — edit them here, not in code.
- * Baseline profile: single · moderate · studio · motorcycle · savings included.
+ * Baseline profile DATASET (semua pengali = 1): single · moderate · studio ·
+ * motorcycle · savings included. Pilihan awal yang dilihat pengunjung berbeda
+ * dari baseline ini — lihat DEFAULT_ASSUMPTIONS di `src/lib/calculations.ts`.
  *
  * Household multipliers are EFFECTIVE factors on the baseline (1 orang dewasa):
  * couple scales sub-linearly for shared resources (housing, utilities) and

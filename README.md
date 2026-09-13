@@ -75,9 +75,15 @@ ini untuk fork atau domain lain.
 ## Model asumsi & formula
 
 Perhitungan awal memakai profil
-`single · moderate · studio · motorcycle · savings included`.
+`single · moderate · room · motorcycle · savings included`.
 Faktor pengali untuk rumah tangga, gaya hidup, hunian, dan transportasi tersimpan
 per kategori di `src/data/multipliers.ts` dan bisa disesuaikan.
+
+Pilihan awal itu berbeda dari baseline dataset (`studio`, semua pengali ×1).
+Hunian awal memakai rusun/kost karena pembanding utama peta ini adalah penerima
+upah minimum lajang. Alasan, sebaran band sebelum/sesudah, dan batasannya ada di
+[catatan kalibrasi](docs/kalibrasi-default-2026-09.md); panel Tentang di aplikasi
+menampilkan tabel sensitivitasnya langsung dari dataset yang dimuat.
 
 ```text
 totalMonthlyCost   = Σ nilai kategori aktif di bawah asumsi saat ini

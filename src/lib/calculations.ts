@@ -86,11 +86,21 @@ export const VALUE_RAMP = {
 export const NO_DATA_COLOR = "#9aa0a6";
 export const NO_DATA_PATTERN = "hatch-nodata";
 
+/**
+ * Pilihan awal aplikasi — bukan baseline model biaya.
+ *
+ * `housing: "room"` (Rusun/kost) dipilih karena pembanding utama di peta adalah
+ * penerima upah minimum lajang, dan hunian awal "Rumah KPR" mengandaikan
+ * angsuran rumah untuk satu orang berupah UMK. Benchmark hunian pada dataset
+ * tetap studio ×1.0 (lihat HOUSING_MULTIPLIERS); yang berubah hanya titik awal
+ * yang dilihat pengunjung. Alasan lengkap dan sebaran band sebelum/sesudah ada
+ * di `docs/kalibrasi-default-2026-09.md`.
+ */
 export const DEFAULT_ASSUMPTIONS: Assumptions = {
   householdType: "single",
   children: 0,
   lifestyle: "moderate",
-  housing: "studio",
+  housing: "room",
   transport: "motorcycle",
   includeSavings: true,
   wageBasis: "gross",

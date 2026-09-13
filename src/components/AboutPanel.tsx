@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { useApp } from "@/state/AppContext";
 import manifest from "../../public/data/v2026.1/manifest.json";
 import {
@@ -8,6 +8,7 @@ import {
   BAND_LABEL,
   bandColors,
 } from "@/lib/calculations";
+import { sensitivityTable } from "@/lib/calibration";
 import type { AffordabilityBand } from "@/lib/types";
 import { useDialogFocus } from "@/lib/useDialogFocus";
 import { CORRECTION_FORM_URL, DISCUSSIONS_URL } from "@/lib/links";
@@ -43,6 +44,19 @@ export function AboutDrawer() {
   const [active, setActive] = useState("ringkasan");
   const bodyRef = useRef<HTMLDivElement>(null);
   const dialogRef = useDialogFocus(state.aboutOpen, () => setAboutOpen(false));
+  // Dihitung dari dataset yang sedang dimuat, bukan angka hafalan — tabelnya
+  // ikut berubah kalau data atau pengalinya berubah.
+  const sensitivity = useMemo(
+    () =>
+      state.regions.length
+        ? sensitivityTable(
+            state.regions.map((region) => region.code),
+            state.wages,
+            state.costs,
+          )
+        : [],
+    [state.regions, state.wages, state.costs],
+  );
 
   if (!state.aboutOpen) return null;
 
@@ -166,6 +180,93 @@ export function AboutDrawer() {
                 sumber dan tanggal datanya; pin hingga lima wilayah untuk
                 membandingkannya berdampingan.
               </p>
+
+              {sensitivity.length > 0 && (
+                <>
+                  <h4 className="mt-4 text-sm font-semibold">
+                    Seberapa besar pengaruh asumsimu
+                  </h4>
+                  <p className="mt-1 leading-relaxed text-muted">
+                    Warna peta sama sekali bukan sifat tetap sebuah daerah: satu
+                    pilihan asumsi bisa memindahkan ratusan wilayah antar band.
+                    Tabel ini menghitung ulang seluruh{" "}
+                    {sensitivity[0].distribution.total} wilayah untuk beberapa
+                    profil lajang sebagai pembanding, memakai dataset yang sama
+                    dengan yang sedang kamu lihat.
+                  </p>
+                  <div className="mt-2 overflow-x-auto">
+                    <table className="w-full min-w-[30rem] border-collapse text-[13px]">
+                      <caption className="sr-only">
+                        Jumlah kabupaten/kota per band keterjangkauan untuk tiap
+                        profil asumsi, beserta median cakupan upah terhadap
+                        biaya hidup.
+                      </caption>
+                      <thead>
+                        <tr className="border-b border-border text-left">
+                          <th scope="col" className="py-1 pr-2 font-medium">
+                            Profil
+                          </th>
+                          {BAND_ORDER.map((band) => (
+                            <th
+                              key={band}
+                              scope="col"
+                              className="py-1 px-1 text-right font-medium"
+                            >
+                              <span className="inline-flex items-center gap-1">
+                                <span
+                                  aria-hidden="true"
+                                  className="h-2 w-2 shrink-0 rounded-full"
+                                  style={{
+                                    backgroundColor: bandPalette[band],
+                                  }}
+                                />
+                                {BAND_LABEL[band]}
+                              </span>
+                            </th>
+                          ))}
+                          <th scope="col" className="py-1 pl-2 text-right font-medium">
+                            Median
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {sensitivity.map((row) => (
+                          <tr key={row.id} className="border-b border-border/60">
+                            <th
+                              scope="row"
+                              className="py-1.5 pr-2 text-left font-normal"
+                            >
+                              <span className="block font-medium">
+                                {row.label}
+                              </span>
+                              <span className="block text-[12px] text-muted">
+                                {row.note}
+                              </span>
+                            </th>
+                            {BAND_ORDER.map((band) => (
+                              <td
+                                key={band}
+                                className="py-1.5 px-1 text-right tabular-nums"
+                              >
+                                {row.distribution.counts[band]}
+                              </td>
+                            ))}
+                            <td className="py-1.5 pl-2 text-right tabular-nums">
+                              {Math.round(row.distribution.medianCoverage)}%
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                  <p className="mt-2 leading-relaxed text-muted">
+                    Bacalah angka ini sebagai rentang, bukan vonis. Jarak antara
+                    baris paling atas dan baris “hemat” adalah ukuran
+                    ketidakpastian model — bukan bukti bahwa salah satunya
+                    benar.
+                  </p>
+                </>
+              )}
             </section>
 
             <section id="about-asumsi">
