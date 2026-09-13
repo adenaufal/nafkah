@@ -132,7 +132,7 @@ agregat lokal, sehingga belum menyediakan analitik lintas pengguna.
 | ID | Pekerjaan | Rencana |
 | --- | --- | --- |
 | AP-11 | Perencanaan relokasi | Gabungkan pendapatan, profil rumah tangga, pilihan kota, biaya, dan surplus/defisit. Hasilnya bisa dibagikan lewat tautan. |
-| AP-12 | Lapisan desil dan analisis kebijakan | Tambahkan desil BPS, daya beli daerah, dan sektor pekerjaan setelah data dasar bisa diandalkan. |
+| AP-12 | Lapisan desil dan analisis kebijakan | Tambahkan desil BPS, daya beli daerah, dan sektor pekerjaan setelah data dasar bisa diandalkan. Jalur akuisisi median pengeluaran per kapita per kabupaten (mikrodata Susenas KOR, biaya, skema nol rupiah, dan blocker lisensi SPPD terhadap CC-BY-4.0) sudah dipetakan di [catatan akuisisi Susenas](docs/susenas-median-akuisisi-data.md); statusnya `Pending` dan belum ada dataset yang berubah. |
 | AP-13 | Akses data terbuka | Sediakan API read-only dengan versi, skema publik, template kontribusi, dan rilis dataset berkala setelah pengelolaan versi serta moderasi berjalan baik. |
 | AP-14 | Cakupan lintas negara | Di luar rencana tahun ini. Evaluasi setelah model Indonesia, pencatatan sumber, dan alur koreksi terbukti stabil. |
 
@@ -161,6 +161,7 @@ Nomor AP-xx merujuk ke rencana di atas.
 | Pemeriksaan wilayah pedalaman dan non-IHK (kalibrasi Papua/kepulauan lewat Susenas dan logistik perintis) | ✅ |
 | Uji perhitungan dan pemeriksaan integritas data dengan Zod di CI | ✅ |
 | Penggantian estimasi biaya hidup dengan sumber primer/`official` (SBH BPS hanya mencakup kota sampel) | 🟡 |
+| Median pengeluaran per kapita per kabupaten dari mikrodata Susenas Maret (KOR) sebagai pembanding independen untuk model estimasi | ❌ Jalur akuisisi, biaya, dan blocker lisensi tercatat di [catatan akuisisi Susenas](docs/susenas-median-akuisisi-data.md); verifikasi layout dan ketentuan SPPD belum dikerjakan |
 | File JSON dengan versi di `/data/vYYYY/` dan catatan perubahan | ✅ `public/data/v2026.1/` + `public/data/CHANGELOG.md` (AP-02) |
 
 ### Peta & cakupan
