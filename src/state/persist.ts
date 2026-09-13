@@ -18,11 +18,36 @@ const KEY = "nafkah.v1";
 /** Batas jumlah anak (AP-03) — clamp di satu tempat agar UI & state sepakat. */
 export const MAX_CHILDREN = 5;
 
+/**
+ * Revisi asumsi tersimpan. Naikkan bila DEFAULT_ASSUMPTIONS berubah dan state
+ * lama yang masih sama dengan pilihan awal sebelumnya perlu ikut pindah.
+ *  - 2 (v0.2.0): hunian awal `studio` → `room`.
+ */
+export const ASSUMPTIONS_REV = 2;
+
+/**
+ * Pilihan awal sampai v0.1, ditulis literal agar tidak ikut bergeser bila
+ * DEFAULT_ASSUMPTIONS berubah lagi.
+ */
+const V01_DEFAULT_ASSUMPTIONS: Assumptions = {
+  householdType: "single",
+  children: 0,
+  lifestyle: "moderate",
+  housing: "studio",
+  transport: "motorcycle",
+  includeSavings: true,
+  wageBasis: "gross",
+  dualIncome: false,
+  customIncome: null,
+  installmentMonthly: null,
+};
+
 export interface Persisted {
   darkMode?: boolean;
   onboarded?: boolean;
   onboardCardDismissed?: boolean;
   assumptions?: Assumptions;
+  assumptionsRev?: number;
   pinned?: string[];
   selectedCode?: string | null;
   originCode?: string | null;
@@ -84,6 +109,10 @@ function positiveMoney(value: unknown): number | null {
   return Number.isSafeInteger(amount) && amount > 0 ? amount : null;
 }
 
+function sameAssumptions(a: Assumptions, b: Assumptions): boolean {
+  return (Object.keys(b) as (keyof Assumptions)[]).every((k) => a[k] === b[k]);
+}
+
 /**
  * Treat localStorage as untrusted input. Invalid preferences are discarded so
  * a hand-edited or stale value cannot poison the map state on the next visit.
@@ -101,7 +130,17 @@ export function normalizePersisted(input: unknown): Persisted {
     out.onboardCardDismissed = onboardCardDismissed;
 
   if (isRecord(input.assumptions)) {
-    out.assumptions = normalizeAssumptions(input.assumptions as Partial<Assumptions>);
+    const assumptions = normalizeAssumptions(
+      input.assumptions as Partial<Assumptions>,
+    );
+    // v0.1 menyimpan asumsi di setiap kunjungan, jadi state lama yang sama
+    // persis dengan pilihan awal v0.1 tidak bisa dibedakan dari "tidak pernah
+    // diubah" — ikutkan ke pilihan awal baru (docs/kalibrasi-default-2026-09.md).
+    const staleDefault =
+      input.assumptionsRev !== ASSUMPTIONS_REV &&
+      sameAssumptions(assumptions, V01_DEFAULT_ASSUMPTIONS);
+    out.assumptions = staleDefault ? DEFAULT_ASSUMPTIONS : assumptions;
+    out.assumptionsRev = ASSUMPTIONS_REV;
   }
 
   if (Array.isArray(input.pinned)) {
@@ -203,7 +242,15 @@ export function savePersisted(patch: Persisted): void {
     const current = loadPersisted();
     window.localStorage.setItem(
       KEY,
-      JSON.stringify(normalizePersisted({ ...current, ...patch })),
+      // Yang ditulis versi ini selalu revisi terbaru — termasuk asumsi dari
+      // tautan berbagi di browser yang belum punya storage.
+      JSON.stringify(
+        normalizePersisted({
+          ...current,
+          ...patch,
+          assumptionsRev: ASSUMPTIONS_REV,
+        }),
+      ),
     );
   } catch {
     /* storage unavailable — degrade silently */

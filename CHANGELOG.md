@@ -5,6 +5,12 @@ Nomor versi mengikuti Semantic Versioning: `MAJOR.MINOR.PATCH`.
 
 ## [Unreleased]
 
+### Fixed
+- Pengunjung lama yang asumsinya masih sama dengan pilihan awal v0.1
+  (Rumah KPR) kini ikut pindah ke pilihan awal baru (Rusun/kost). Sebelumnya
+  asumsi tersimpan di browser menimpa pilihan awal, sehingga legenda peta
+  menampilkan 2/95/303/114 alih-alih angka di tabel sensitivitas.
+
 ## [0.2.0] - 2026-09-13
 
 Rilis kedua: mode relokasi, berbagi hasil lewat tautan, personalisasi

@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  ASSUMPTIONS_REV,
   MAX_CHILDREN,
   normalizeAssumptions,
   normalizePersisted,
@@ -103,5 +104,29 @@ describe("normalizeAssumptions", () => {
       legendFilter: null,
       basemap: "offline",
     });
+  });
+
+  it("memindahkan pilihan awal v0.1 (Rumah KPR) ke pilihan awal baru, sekali saja", () => {
+    const v01Default = { ...DEFAULT_ASSUMPTIONS, housing: "studio" as const };
+
+    // State v0.1 tanpa revisi yang sama persis dengan pilihan awal lama.
+    expect(normalizePersisted({ assumptions: v01Default })).toEqual({
+      assumptions: DEFAULT_ASSUMPTIONS,
+      assumptionsRev: ASSUMPTIONS_REV,
+    });
+
+    // State v0.1 yang sudah diubah pengguna tetap dihormati.
+    const customized = { ...v01Default, lifestyle: "budget" as const };
+    expect(
+      normalizePersisted({ assumptions: customized }).assumptions,
+    ).toEqual(customized);
+
+    // Setelah revisi terbaru, memilih Rumah KPR lagi adalah pilihan sadar.
+    expect(
+      normalizePersisted({
+        assumptions: v01Default,
+        assumptionsRev: ASSUMPTIONS_REV,
+      }).assumptions,
+    ).toEqual(v01Default);
   });
 });
