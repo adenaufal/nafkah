@@ -202,7 +202,10 @@ function insertEntry(changelog, entry) {
     /^## \[Unreleased\]\s*$/i.test(line.trim()),
   );
   const firstReleaseIndex = lines.findIndex((line, index) =>
-    index > unreleasedIndex && /^## \[[^]]+\]/.test(line.trim()),
+    // `[^]]` terbaca sebagai "sembarang karakter" + "]" di JS, sehingga pola
+    // lama tidak pernah cocok dengan `## [0.1.0]` dan entry baru selalu
+    // menumpuk di akhir berkas. Kelasnya harus di-escape.
+    index > unreleasedIndex && /^## \[[^\]]+\]/.test(line.trim()),
   );
   const insertionIndex = firstReleaseIndex >= 0
     ? firstReleaseIndex
