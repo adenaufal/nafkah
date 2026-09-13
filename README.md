@@ -18,16 +18,17 @@ kebutuhanmu.
 
 Coba di [nafkah.adenaufal.com](https://nafkah.adenaufal.com).
 
-Rilis publik saat ini adalah `v0.1.0`. Aplikasi sudah dideploy, sedangkan kode
+Rilis publik saat ini adalah `v0.2.0`. Aplikasi sudah dideploy, sedangkan kode
 sumber dan dataset tersedia secara terbuka di [repositori GitHub](https://github.com/adenaufal/nafkah).
 
-## Fitur (v0.1.0)
+## Fitur (v0.2.0)
 
 - Peta 514 kabupaten/kota dengan warna untuk kategori Nyaman, Cukup, Ketat,
   dan Tak Cukup. Paletnya mempertimbangkan buta warna; wilayah tanpa data
   juga diberi arsir.
 - Panel asumsi untuk mengatur rumah tangga (lajang, pasangan, atau keluarga),
-  gaya hidup, hunian, transportasi, tabungan, serta upah kotor atau take-home.
+  jumlah anak, gaya hidup, hunian, transportasi, cicilan KPR, tabungan, serta
+  upah kotor atau take-home.
 - Kolom "Pendapatan sendiri" untuk mencoba perhitungan dengan gajimu. Ada
   opsi "2 upah" untuk pasangan bekerja, dengan UMK daerah sebagai pembanding.
 - Baki perbandingan untuk menyematkan hingga 5 wilayah dan melihat rincian
@@ -37,6 +38,11 @@ sumber dan dataset tersedia secara terbuka di [repositori GitHub](https://github
 - Peta dasar Terang, Gelap, dan Satelit tanpa API key, serta mode Offline
   tanpa tile peta.
 - Mode gelap, pencarian wilayah, legenda angka, dan filter tingkat keterjangkauan.
+- Mode relokasi: pisahkan gaji kota asal dari biaya kota tujuan, lalu bagikan
+  hasilnya lewat tautan berversi yang memulihkan wilayah, asumsi, mode warna,
+  dan filter legenda.
+- Panel metode dengan tabel sensitivitas: sebaran band untuk empat profil
+  pembanding, dihitung dari dataset yang sedang dimuat.
 - Navigasi keyboard, label `aria`, dan kontras AA.
 
 ## Teknologi

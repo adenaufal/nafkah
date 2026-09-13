@@ -5,6 +5,11 @@ Nomor versi mengikuti Semantic Versioning: `MAJOR.MINOR.PATCH`.
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-09-13
+
+Rilis kedua: mode relokasi, berbagi hasil lewat tautan, personalisasi
+rumah tangga, dan pilihan awal yang dikalibrasi ulang.
+
 ### Added
 - Tautan berbagi berversi untuk memulihkan wilayah perbandingan, profil
   rumah tangga, pendapatan/cicilan, mode warna, dan filter legenda.
