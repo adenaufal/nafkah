@@ -52,9 +52,9 @@ kerja kecil, sedang, dan besar.
 
 - Peta dasar offline masih berupa latar polos. PMTiles yang dihosting sendiri
   belum tersedia.
-- Embed, ekspor CSV/PNG, PWA, data lintas tahun, detail kecamatan, antrean
-  koreksi publik yang operasional, API publik, E2E Playwright, dan Lighthouse
-  CI masih dalam rencana.
+- Embed, ekspor PNG, data lintas tahun, detail kecamatan, antrean koreksi
+  publik yang operasional, API publik, E2E Playwright, dan Lighthouse CI masih
+  dalam rencana.
 
 ---
 
@@ -182,9 +182,9 @@ Nomor AP-xx merujuk ke rencana di atas.
 | Bahasa Indonesia sebagai satu-satunya bahasa (pilihan i18n belum diperlukan) | ✅ |
 | Mode gelap dan filter legenda per tingkat keterjangkauan (diminta komunitas, tersedia sejak v0.1) | ✅ |
 | Berbagi dan menyematkan peta (pengaturan di URL; mode `<iframe>`) | 🟡 URL relokasi berversi + tombol Bagikan ✅; embed ❌ |
-| Ekspor CSV/PNG dengan sumber, `asOf`, dan catatan batasan | ❌ |
+| Ekspor CSV/PNG dengan sumber, asOf, dan catatan batasan | 🟡 Ekspor CSV untuk baki perbandingan ✅; ekspor PNG dan embed masih ❌ |
 | Profil rumah tangga dengan pilihan awal yang divalidasi lewat Susenas | 🟡 kontrol jumlah anak & cicilan KPR ✅ (AP-03); hunian awal diubah ke rusun/kost dengan tabel sensitivitas ✅ ([catatan kalibrasi](docs/kalibrasi-default-2026-09.md)); validasi pilihan awal lewat Susenas masih ❌ |
-| PWA yang bisa dipasang, menyimpan geometri dan data di cache, serta membuka kerangka aplikasi secara offline | ❌ |
+| PWA yang bisa dipasang, menyimpan geometri dan data di cache, serta membuka kerangka aplikasi secara offline | ✅ Manifest + service worker menyimpan shell, geometri, dan dataset aktif; basemap eksternal tetap memerlukan jaringan |
 | Data upah dan biaya hidup dari 2020 sampai sekarang, dengan penggeser tahun | ❌ |
 
 ### Komunitas dan pengelolaan proyek

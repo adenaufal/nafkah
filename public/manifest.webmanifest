@@ -1,0 +1,20 @@
+{
+  "name": "Nafkah — Peta Kecukupan Gaji",
+  "short_name": "Nafkah",
+  "description": "Bandingkan upah minimum dengan estimasi biaya hidup di 514 kabupaten/kota Indonesia.",
+  "lang": "id-ID",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f5f4f1",
+  "theme_color": "#c2452d",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

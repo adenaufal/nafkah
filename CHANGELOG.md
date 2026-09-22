@@ -5,6 +5,12 @@ Nomor versi mengikuti Semantic Versioning: `MAJOR.MINOR.PATCH`.
 
 ## [Unreleased]
 
+### Added
+- Ekspor CSV dari baki perbandingan dengan rincian kategori, hasil hitung,
+  asumsi aktif, dan provenance source/asOf/confidence pada setiap baris angka.
+- Manifest PWA dan service worker yang menyimpan shell aplikasi, geometri, dan
+  dataset aktif untuk kunjungan offline setelah aplikasi dibuka online.
+
 ### Fixed
 - Pengunjung lama yang asumsinya masih sama dengan pilihan awal v0.1
   (Rumah KPR) kini ikut pindah ke pilihan awal baru (Rusun/kost). Sebelumnya

@@ -17,7 +17,14 @@ import { BAND_LABEL, bandColors } from "@/lib/calculations";
 import { assumptionSummary } from "@/lib/profile";
 import { formatIDR, formatIDRCompact, formatPct } from "@/lib/format";
 import { shouldRenderComparisonChart } from "@/lib/responsive";
+import {
+  buildComparisonCsv,
+  downloadCsv,
+  type ComparisonExportRow,
+} from "@/lib/export";
+import { recordUsage } from "@/lib/usage";
 import type { ExpenseCategoryKey, RegionMetrics } from "@/lib/types";
+import manifest from "../../public/data/v2026.1/manifest.json";
 import { AppIcon } from "./icons";
 
 /**
@@ -132,6 +139,9 @@ export function PinnedTray() {
 export function ComparisonPanel() {
   const { state, metrics, regionByCode, setOrigin } = useApp();
   const [open, setOpen] = useState(true);
+  const [exportStatus, setExportStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
   const [showChart, setShowChart] = useState(() =>
     shouldRenderComparisonChart(
       typeof window === "undefined" ? 1440 : window.innerWidth,
@@ -154,9 +164,46 @@ export function ComparisonPanel() {
     .map((c) => metrics.get(c))
     .filter((m): m is RegionMetrics => !!m);
 
+  const exportRows: ComparisonExportRow[] = pinnedMetrics.flatMap((metric) => {
+    const region = regionByCode.get(metric.code);
+    const wage = state.wages.get(metric.code);
+    const costs = state.costs.get(metric.code);
+    if (!region || !wage || !costs) return [];
+    return [
+      {
+        region,
+        metrics: metric,
+        wage,
+        costs,
+        originWage: state.originCode
+          ? state.wages.get(state.originCode)
+          : undefined,
+      },
+    ];
+  });
+
   useEffect(() => {
     if (pinnedMetrics.length >= 2) setOpen(true);
   }, [pinnedMetrics.length]);
+
+  const exportComparison = () => {
+    if (!exportRows.length) return;
+    try {
+      const today = new Date().toISOString().slice(0, 10);
+      const csv = buildComparisonCsv({
+        rows: exportRows,
+        assumptions: state.assumptions,
+        datasetVersion: manifest.datasetVersion,
+        origin,
+      });
+      downloadCsv(csv, "nafkah-perbandingan-" + today + ".csv");
+      recordUsage("csv_exported");
+      setExportStatus("success");
+      window.setTimeout(() => setExportStatus("idle"), 2500);
+    } catch {
+      setExportStatus("error");
+    }
+  };
 
   if (pinnedMetrics.length < 2) return null;
 
@@ -189,15 +236,44 @@ export function ComparisonPanel() {
             {assumptionSummary(state.assumptions)}
           </p>
         </div>
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-expanded={open}
-          className="h-8 shrink-0 rounded-lg border border-border px-3 text-xs font-semibold text-muted hover:border-accent min-[1400px]:h-9 min-[1400px]:text-xs min-[1800px]:h-9.5 min-[1800px]:px-3.5"
-        >
-          {open ? "Sembunyikan" : "Tampilkan"}
-        </button>
+        <div className="flex shrink-0 items-center gap-1.5">
+          <button
+            type="button"
+            onClick={exportComparison}
+            disabled={!exportRows.length}
+            aria-label="Ekspor perbandingan sebagai CSV"
+            className="inline-flex h-8 items-center gap-1.5 rounded-lg border border-border px-2.5 text-xs font-semibold text-muted hover:border-accent hover:text-accent disabled:cursor-not-allowed disabled:opacity-50 min-[1400px]:h-9 min-[1400px]:px-3 min-[1800px]:text-xs"
+          >
+            <AppIcon name="download" size={14} />
+            <span className="hidden sm:inline">
+              {exportStatus === "success" ? "CSV siap" : "Ekspor CSV"}
+            </span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            className="h-8 rounded-lg border border-border px-3 text-xs font-semibold text-muted hover:border-accent min-[1400px]:h-9 min-[1400px]:text-xs min-[1800px]:h-9.5 min-[1800px]:px-3.5"
+          >
+            {open ? "Sembunyikan" : "Tampilkan"}
+          </button>
+        </div>
       </header>
+
+      {exportStatus === "success" && (
+        <p role="status" className="sr-only">
+          CSV perbandingan berhasil diunduh.
+        </p>
+      )}
+      {exportStatus === "error" && (
+        <p
+          role="alert"
+          className="border-b border-amber-500/40 bg-amber-500/10 px-4 py-2 text-xs text-amber-800 dark:text-amber-300"
+        >
+          CSV belum bisa disimpan di browser ini. Coba lagi atau gunakan menu
+          berbagi.
+        </p>
+      )}
 
       <div className="border-b border-border bg-surface px-4 py-2.5 text-[11.5px] leading-relaxed">
         {origin ? (

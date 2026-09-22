@@ -41,6 +41,12 @@ sumber dan dataset tersedia secara terbuka di [repositori GitHub](https://github
 - Mode relokasi: pisahkan gaji kota asal dari biaya kota tujuan, lalu bagikan
   hasilnya lewat tautan berversi yang memulihkan wilayah, asumsi, mode warna,
   dan filter legenda.
+- Ekspor CSV dari baki perbandingan. Nilai kategori, hasil hitung, dan
+  provenance source/asOf/confidence ikut disertakan agar bisa diperiksa atau
+  diolah ulang secara lokal.
+- PWA yang menyimpan shell aplikasi, geometri, dan dataset aktif di cache
+  browser setelah kunjungan online pertama; pilih basemap Offline untuk
+  pengalaman peta tanpa tile eksternal.
 - Panel metode dengan tabel sensitivitas: sebaran band untuk empat profil
   pembanding, dihitung dari dataset yang sedang dimuat.
 - Navigasi keyboard, label `aria`, dan kontras AA.

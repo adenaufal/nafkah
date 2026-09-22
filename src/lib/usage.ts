@@ -23,6 +23,7 @@ export const USAGE_EVENTS = [
   "relocation_origin_cleared",
   "share_requested",
   "share_completed",
+  "csv_exported",
   "correction_report_opened",
 ] as const;
 

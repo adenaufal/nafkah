@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     "peta biaya hidup",
   ],
   alternates: { canonical: "/" },
+  manifest: "/manifest.webmanifest",
   openGraph: {
     type: "website",
     locale: "id_ID",

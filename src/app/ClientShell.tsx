@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { useEffect } from "react";
 
 /**
  * The whole shell is interactive and map-first; render it client-side only.
@@ -17,5 +18,13 @@ const AppShell = dynamic(() => import("@/components/AppShell"), {
 });
 
 export default function ClientShell() {
- return <AppShell />;
+  useEffect(() => {
+    if ("serviceWorker" in navigator) {
+      void navigator.serviceWorker.register("/sw.js").catch(() => {
+        // Offline support is progressive enhancement; a blocked SW must not break the app.
+      });
+    }
+  }, []);
+
+  return <AppShell />;
 }
