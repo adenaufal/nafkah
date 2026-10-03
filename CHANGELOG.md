@@ -5,6 +5,8 @@ Nomor versi mengikuti Semantic Versioning: `MAJOR.MINOR.PATCH`.
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-10-03
+
 ### Added
 - Ekspor CSV dari baki perbandingan dengan rincian kategori, hasil hitung,
   asumsi aktif, dan provenance source/asOf/confidence pada setiap baris angka.
@@ -16,6 +18,21 @@ Nomor versi mengikuti Semantic Versioning: `MAJOR.MINOR.PATCH`.
   (Rumah KPR) kini ikut pindah ke pilihan awal baru (Rusun/kost). Sebelumnya
   asumsi tersimpan di browser menimpa pilihan awal, sehingga legenda peta
   menampilkan 2/95/303/114 alih-alih angka di tabel sensitivitas.
+
+### Perbaikan
+
+- fix(build): jalankan validasi versi lewat npm CLI (8914ea5)
+- fix(state): migrasi asumsi tersimpan dari pilihan awal v0.1 (#7) (b2d706b)
+
+### Fitur
+
+- feat(data): tambah validasi koreksi dan ringkasan komunitas (62d9a98)
+- feat(ui): tampilkan ringkasan metode di peta (610538b)
+- feat(app): add CSV export and offline PWA support (be39d1b)
+
+### Pemeliharaan
+
+- chore(ai): tambah skill keputusan TypeSafe (eb1bca9)
 
 ## [0.2.0] - 2026-09-13
 

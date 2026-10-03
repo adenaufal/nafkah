@@ -18,10 +18,10 @@ kebutuhanmu.
 
 Coba di [nafkah.adenaufal.com](https://nafkah.adenaufal.com).
 
-Rilis publik saat ini adalah `v0.2.0`. Aplikasi sudah dideploy, sedangkan kode
-sumber dan dataset tersedia secara terbuka di [repositori GitHub](https://github.com/adenaufal/nafkah).
+Versi kode sumber saat ini adalah `v0.3.0`. Kode sumber dan dataset tersedia
+secara terbuka di [repositori GitHub](https://github.com/adenaufal/nafkah).
 
-## Fitur (v0.2.0)
+## Fitur (v0.3.0)
 
 - Peta 514 kabupaten/kota dengan warna untuk kategori Nyaman, Cukup, Ketat,
   dan Tak Cukup. Paletnya mempertimbangkan buta warna; wilayah tanpa data
