@@ -31,10 +31,18 @@ function runGit(args, { allowFailure = false } = {}) {
 }
 
 function runNpm(script) {
+  if (!["typecheck", "test", "build"].includes(script)) {
+    throw new Error(`Script validasi tidak dikenal: ${script}`);
+  }
+  const options = { cwd: ROOT, stdio: "inherit" };
+  if (process.env.npm_execpath) {
+    execFileSync(process.execPath, [process.env.npm_execpath, "run", script], options);
+    return;
+  }
   const npmCommand = process.platform === "win32" ? "npm.cmd" : "npm";
   execFileSync(npmCommand, ["run", script], {
-    cwd: ROOT,
-    stdio: "inherit",
+    ...options,
+    shell: process.platform === "win32",
   });
 }
 
