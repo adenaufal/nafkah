@@ -70,6 +70,28 @@ npm run typecheck
 npm test           # unit test kalkulasi (vitest)
 ```
 
+## Pemeriksaan koreksi dan data komunitas
+
+Tool maintainer membaca JSON privat dari `_private/` (diabaikan Git):
+
+```powershell
+npm run corrections:validate -- .\_private\proposal.json
+npm run corrections:summary -- .\_private\correction-ledger.json
+npm run community:summary -- .\_private\community-observations.json
+```
+
+Validator koreksi menyimulasikan proposal yang sudah direview, termasuk pasangan
+benchmark hunian dan rentang sewa narasinya. Ringkasan antrean hanya berisi jumlah
+per status dan jumlah laporan yang sudah dirilis. Ringkasan komunitas menghitung
+median dan rentang per wilayah, kategori, profil rumah tangga, serta periode;
+hanya kelompok dengan minimal lima responden yang sudah diterima yang keluar.
+Sampel komunitas tetap terpisah dari estimasi utama dan belum tampil di peta.
+
+Format input dan alur review ada di [kanal masukan](docs/feedback-channels.md),
+[pencatatan koreksi](docs/correction-ledger.md), dan
+[data komunitas](docs/community-data.md). Ketiga perintah bersifat read-only:
+tidak mengubah dataset, status Airtable, atau menerbitkan hasil secara otomatis.
+
 ## Deployment
 
 Nafkah menghasilkan static export ke `./out` dan dideploy sebagai Cloudflare

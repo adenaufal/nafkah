@@ -107,6 +107,90 @@ Arahkan pengguna nonteknis ke form Airtable dan developer ke Discussions.
 
 ---
 
+## Validasi proposal koreksi secara lokal (AP-04)
+
+Proposal yang sudah diperiksa manusia dapat divalidasi offline sebelum perubahan
+dataset dibuat dalam PR. Validator membaca dataset versi aktif yang dikirim
+bersama repo, menerapkan nilai usulan hanya ke salinan di memori, lalu menjalankan
+schema Zod dan pemeriksaan integritas dataset. Perintah ini tidak menulis atau
+mengubah file di `public/data/`.
+
+Simpan proposal sebagai JSON privat di `_private/proposal.json` (direktori ini
+diabaikan Git). Jangan masukkan kontak atau teks laporan mentah. Formatnya satu
+objek dengan `datasetVersion` dan daftar `changes`. Setiap perubahan harus punya
+keputusan maintainer `Accepted`, alasan review, provenance baru, nilai lama yang
+diharapkan, dan nilai usulan. Kedua field upah berbagi provenance tingkat record;
+kalau proposal mengubah keduanya, provenance-nya harus sama. Target upah memakai
+`field` `grossMonthly` atau `estimatedTakeHomeMonthly`; target biaya
+memakai salah satu kunci kategori internal: `housing`, `food`, `transport`,
+`utilities`, `connectivity`, `healthcare`, `personalCare`, `leisure`,
+`education`, atau `contingency`.
+
+Contoh sintetis:
+
+```json
+{
+  "datasetVersion": "2026.1",
+  "changes": [{
+    "regionCode": "11.01",
+    "kind": "wage",
+    "field": "grossMonthly",
+    "currentValue": 3932552,
+    "proposedValue": 4000000,
+    "provenance": {
+      "source": "Keputusan Gubernur contoh nomor 1",
+      "asOf": "2026-09-01",
+      "confidence": "official"
+    },
+    "review": {
+      "status": "Accepted",
+      "reviewer": "Nama maintainer",
+      "reason": "Cocok dengan dokumen resmi yang diperiksa.",
+      "reviewedAt": "2026-09-27"
+    }
+  }]
+}
+```
+
+Jalankan dari root repo:
+
+```powershell
+npm run corrections:validate -- .\_private\proposal.json
+```
+
+Kode keluar `0` berarti seluruh proposal lolos dan dataset hasil simulasi tetap
+lolos integritas. Kode keluar `1` berarti ada kesalahan, termasuk nilai lama yang
+sudah basi, target wilayah/kategori yang tidak cocok, provenance atau review
+kurang, target ganda, atau pelanggaran schema; `2` berarti argumen perintah
+keliru. Keluaran hanya menampilkan jumlah dan lokasi/jenis masalah, tanpa
+menampilkan nilai sumber, isi proposal, atau kontak. Jika dataset aktif berubah,
+perbarui `datasetVersion` dan jalankan kembali validasi. Setelah lolos, buat PR
+terpisah yang mengubah file data secara eksplisit dan sertakan catatan review;
+validator ini tidak menerapkan perubahan ke dataset.
+
+Koreksi kategori hunian juga harus menjaga provenance `rentRange` pada narasi
+wilayah agar sama dengan provenance benchmark hunian. Sertakan perubahan
+`kind: "rentRange"` dalam proposal yang sama jika sumber/periode/keyakinan
+benchmark berubah. `currentValue` dan `proposedValue` untuk jenis ini masing-masing
+berupa objek `{ "min": 1000000, "max": 2000000, "note": "Konteks rentang" }`;
+nilai lama harus cocok persis dengan narasi yang dikirim repo. Lengkapi
+`provenance` dan `review` seperti perubahan biaya. Validator memeriksa rentang
+baru serta integritas gabungan, tanpa bergantung pada urutan perubahan.
+
+## Mencatat tindak lanjut sampai rilis (AP-10)
+
+Antrean privat dapat dicatat sebagai JSON dan diperiksa lewat
+`npm run corrections:summary -- .\_private\correction-ledger.json`.
+Perintah menghasilkan jumlah per status dan jumlah laporan yang sudah masuk
+rilis, tanpa menerbitkan identitas pelapor, reviewer, atau alasan review.
+Status `Accepted` berarti keputusan review; pencatatan rilis dilakukan terpisah
+setelah perubahan benar-benar diterbitkan. Format, contoh, dan aturan keputusan
+ada di [panduan pencatatan koreksi](correction-ledger.md).
+
+Untuk survei biaya per kategori, gunakan alur dan format terpisah di
+[panduan data komunitas](community-data.md). Sampel ini tidak menjadi proposal
+pengganti estimasi utama secara otomatis.
+
 ## Mengumpulkan laporan dengan agent terjadwal
 
 Bagian ini dikerjakan nanti, saat laporan mulai sulit ditangani manual.
@@ -143,7 +227,8 @@ membuat ringkasan saran fitur.
    resmi dari pengalaman pribadi.
 5. Kelompokkan laporan sebagai `kredibel`, `perlu bukti`, atau `tolak`.
 6. Untuk laporan yang kredibel, buat draft PR berisi perubahan data beserta
-   `source`, `asOf`, dan `confidence`, lalu perbarui `Status` di Airtable.
+   `source`, `asOf`, dan `confidence`. Maintainer memperbarui `Status` di Airtable;
+   PAT read-only untuk pengumpulan laporan tidak dapat menulis status.
 7. Terbitkan ringkasan laporan yang diterima, ditolak, atau masih ditinjau
    untuk catatan AP-10.
 

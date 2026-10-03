@@ -119,6 +119,8 @@ export function validateDataset(input: {
   const problems: string[] = [];
 
   const regions: { code: string; provinceCode: string }[] = [];
+  const costs: z.infer<typeof costProfileSchema>[] = [];
+  const narratives: z.infer<typeof narrativeSchema>[] = [];
   input.regions.forEach((r, i) => {
     const res = regionSchema.safeParse(r);
     if (res.success) regions.push(res.data);
@@ -132,10 +134,10 @@ export function validateDataset(input: {
 
   input.costs.forEach((c, i) => {
     const res = costProfileSchema.safeParse(c);
-    if (!res.success) problems.push(`cost[${i}]: ${issues(res.error)}`);
+    if (res.success) costs.push(res.data);
+    else problems.push(`cost[${i}]: ${issues(res.error)}`);
   });
 
-  const narratives: { regionCode: string }[] = [];
   input.narratives?.forEach((n, i) => {
     const res = narrativeSchema.safeParse(n);
     if (res.success) narratives.push(res.data);
@@ -210,6 +212,19 @@ export function validateDataset(input: {
     for (const code of narrativeCodes) {
       if (!codes.has(code))
         problems.push(`narrative references unknown region ${code}`);
+    }
+
+    const housingByRegion = new Map(costs.map((cost) => [cost.regionCode, cost.baseline.housing]));
+    for (const narrative of narratives) {
+      const housing = housingByRegion.get(narrative.regionCode);
+      const rentProvenance = narrative.rentRange.provenance;
+      if (housing && (
+        rentProvenance.source !== housing.source ||
+        rentProvenance.asOf !== housing.asOf ||
+        rentProvenance.confidence !== housing.confidence
+      )) {
+        problems.push(`narrative ${narrative.regionCode} rent provenance does not match housing benchmark`);
+      }
     }
   }
 

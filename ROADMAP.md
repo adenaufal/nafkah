@@ -98,9 +98,10 @@ laporan nantinya memakai agent terjadwal di luar situs. Keputusan 2 September
 
 | Status | Jumlah | Item |
 | --- | ---: | --- |
-| Selesai | 4 | AP-02, AP-03, AP-06, AP-07 |
-| Berjalan/sebagian | 3 | AP-01, AP-04, AP-05 |
+| Selesai | 5 | AP-01, AP-02, AP-03, AP-06, AP-07 |
+| Berjalan/sebagian | 2 | AP-04, AP-05 |
 | Belum dimulai di fase Now | 0 | — |
+| Fondasi lokal fase Next | 2 | AP-08, AP-10 (belum operasional/publik) |
 
 Risiko terbesar tetap kualitas estimasi wilayah yang diperdebatkan (AP-05)
 dan kapasitas moderasi laporan (AP-04). AP-07 sudah memiliki model asal →
@@ -111,10 +112,10 @@ agregat lokal, sehingga belum menyediakan analitik lintas pengguna.
 
 | ID | Pekerjaan | Yang perlu dilakukan | Status | Prioritas |
 | --- | --- | --- | --- | --- |
-| AP-01 | Penjelasan metode dan batasan | Tampilkan metode dekat peta dan di jendela detail. Jelaskan asumsi awal 1 orang, arti tingkat keterjangkauan, serta UMK sebagai acuan resmi, bukan gaji aktual. | 🟡 Bagian utama ✅: catatan di panel Tentang dan jendela detail; `source`/`asOf`/`confidence` tampil untuk upah, 10 kategori biaya, dan rentang sewa narasi. Tabel sensitivitas band ✅ — dihitung live dari dataset, dikunci di CI, dengan keputusan pilihan awal dicatat di [catatan kalibrasi](docs/kalibrasi-default-2026-09.md). Hitungan penggunaan agregat lokal tersedia lewat AP-06; telemetry lintas pengguna belum digunakan. | P0 · S |
+| AP-01 | Penjelasan metode dan batasan | Tampilkan metode dekat peta dan di jendela detail. Jelaskan asumsi awal 1 orang, arti tingkat keterjangkauan, serta UMK sebagai acuan resmi, bukan gaji aktual. | ✅ Ringkasan metode tersedia permanen tepat di atas peta (desktop/ponsel, keyboard), dengan profil aktif, rumus cakupan, batas band dari konstanta perhitungan, dan batasan UMK; catatan lengkap di Tentang dan detail. `source`/`asOf`/`confidence` tampil untuk upah, 10 kategori biaya, dan rentang sewa narasi. Tabel sensitivitas dihitung live dan dikunci di CI; keputusan pilihan awal di [catatan kalibrasi](docs/kalibrasi-default-2026-09.md). Hitungan agregat lokal lewat AP-06; telemetry lintas pengguna belum digunakan. | P0 · S |
 | AP-02 | Versi dataset dan pemeriksaan data | Gunakan skema Zod dan CI untuk menolak data tidak valid sebelum menerima koreksi komunitas. Setelah itu, pindahkan dataset ke file JSON dengan versi dan catatan perubahan. | ✅ Pemeriksaan Zod + integritas join di CI (`src/data/schema.ts`, `dataset.test.ts`, kini membaca file yang di-ship). Dataset pindah ke JSON berversi `public/data/v2026.1/` dengan `manifest.json` dan catatan perubahan `public/data/CHANGELOG.md`; aplikasi memuatnya lewat fetch runtime (`src/data/loader.ts`). | P0 · M |
 | AP-03 | Personalisasi rumah tangga v1.1 | Tambahkan jumlah anak dan isian cicilan/KPR pada kontrol pendapatan dan 2 upah yang sudah ada. Tampilkan profil aktif dan tombol reset. | ✅ Stepper jumlah anak (0–5, berlaku juga untuk single) dan isian cicilan KPR yang menggantikan estimasi hunian; profil aktif tampil di header drawer dan chip perbandingan, tombol reset sudah ada. Unit test mencakup anak dan cicilan, termasuk menjaga angka profil Keluarga v0.1 tetap identik. | P0 · M |
-| AP-04 | Form koreksi per wilayah | Buat form Airtable "Laporkan angka ini" dengan wilayah, kategori, nilai lama/usulan, periode, jenis bukti, sumber, dan kontak opsional. Laporan masuk ke antrean pemeriksaan manual (`Status=New`), tanpa mengubah dataset otomatis. | 🟡 Form, CTA kontekstual, dan skema antrean manual ✅; pemeriksaan laporan nyata serta proses penerimaan dataset masih ❌ (lihat [panduan kanal masukan](docs/feedback-channels.md); template GitHub ✅). | P0 · M |
+| AP-04 | Form koreksi per wilayah | Buat form Airtable "Laporkan angka ini" dengan wilayah, kategori, nilai lama/usulan, periode, jenis bukti, sumber, dan kontak opsional. Laporan masuk ke antrean pemeriksaan manual (`Status=New`), tanpa mengubah dataset otomatis. | 🟡 Form, CTA kontekstual, skema antrean, serta validator proposal hasil review manual ✅ (`npm run corrections:validate`); validator memeriksa nilai lama, target, keputusan, provenance, dan integritas hasil simulasi, termasuk perubahan benchmark hunian bersama rentang sewa narasi, tanpa menulis dataset. Pemeriksaan laporan nyata serta penerimaan ke rilis masih ❌ (lihat [panduan kanal masukan](docs/feedback-channels.md); template GitHub ✅). | P0 · M |
 | AP-05 | Audit wilayah yang diperdebatkan | Periksa Kep. Meranti, Samosir, Bandung, serta biaya transportasi/logistik dan kesehatan. Bandingkan hasil model dengan laporan lokal, lalu catat keputusan tiap kasus. | 🟡 Baseline reproduktif dan pemeriksaan read-only terhadap rujukan pemerintah untuk Meranti, Samosir, dan Bandung sudah dicatat di [audit wilayah September 2026](docs/audit-wilayah-2026-09.md); rentang sewa narasi kini juga berprovenance. Bukti penggunaan lokal yang representatif dan keputusan perubahan data masih ❌. | P0 · S/M |
 | AP-06 | Kemudahan menemukan dan memakai fitur | Uji ulang Pendapatan sendiri, filter tingkat keterjangkauan, mode gelap, dan legenda di ponsel serta lewat keyboard. Perjelas tombol tindakan dan catat penggunaan tanpa data pribadi. | ✅ QA manual ponsel 375px + keyboard/focus trap untuk alur utama; CTA, status relokasi, filter, tema, dan legenda diberi label jelas. Hitungan event hanya agregat di localStorage. | P1 · S |
 | AP-07 | Perbandingan dan berbagi hasil untuk relokasi | Bagikan wilayah, asumsi, mode warna, dan filter lewat URL berversi; lalu pisahkan gaji asal dari biaya kota tujuan dan tambahkan affordance berbagi di panel hasil. | ✅ URL v2 membawa gaji asal dan tetap membaca v1; model Kota A → Kota B, biaya tujuan, UMK tujuan, provenance, status persisten, dan affordance relokasi sudah tersedia serta diuji round-trip. Embed tetap backlog terpisah. | P0 · M |
@@ -123,9 +124,9 @@ agregat lokal, sehingga belum menyediakan analitik lintas pengguna.
 
 | ID | Pekerjaan | Rencana dan prasyarat |
 | --- | --- | --- |
-| AP-08 | Lapisan data komunitas | Buat survei singkat per kategori. Tampilkan median atau rentangnya terpisah dari estimasi utama, lengkap dengan ukuran sampel, periode, confidence, dan aturan moderasi. |
+| AP-08 | Lapisan data komunitas | 🟡 Fondasi lokal tersedia: `npm run community:summary` memvalidasi observasi bulanan yang dimoderasi dan menghasilkan median/rentang terpisah per wilayah, kategori, profil, dan periode, dengan jumlah responden serta provenance `sample`; kelompok kurang dari 5 responden diterima tidak keluar. [Format dan aturan moderasi](docs/community-data.md). Survei nyata, pemeriksaan representativitas, dan tampilan di aplikasi masih ❌. |
 | AP-09 | Informasi kepatuhan UMK dan gaji aktual | Mulai dengan label kualitatif bersumber dari putusan atau berita; skor numerik belum dipakai. UMK baru bisa diganti dengan data gaji aktual jika cakupan dan metodenya memadai. Perlu tinjauan hukum dan metodologi. |
-| AP-10 | Tindak lanjut laporan sampai rilis | Setelah AP-04 berjalan, catat laporan yang diterima, ditolak, atau masih ditinjau. Agent terjadwal mengambil `Status=New` lewat PAT Airtable read-only dan Discussions baru. Jalankan harian saat ramai, berhenti bila kosong, lalu mingguan setelah reda. Agent hanya membuat draft PR; persetujuan tetap oleh manusia. |
+| AP-10 | Tindak lanjut laporan sampai rilis | 🟡 [Ledger review privat](docs/correction-ledger.md) dan `npm run corrections:summary` tersedia untuk memvalidasi keputusan, tanggal, wilayah, duplikasi, dan pencatatan rilis; keluaran hanya jumlah per status dan laporan dirilis. Pengambilan `Status=New` lewat PAT Airtable read-only, pemantauan Discussions, penjadwalan, dan pembuatan draft PR masih ❌. Persetujuan serta pembaruan status tetap oleh manusia. |
 
 ### Later — 2027 dan seterusnya
 
@@ -193,7 +194,7 @@ Nomor AP-xx merujuk ke rencana di atas.
 | --- | --- |
 | Panduan dan pemeriksaan repo (CONTRIBUTING, CoC, template, CI) | ✅ |
 | Koreksi publik dan antrean pemeriksaan | 🟡 Form, CTA, dan skema antrean ✅; operasi pemeriksaan masih ❌ (→ AP-04) |
-| Tindak lanjut laporan sampai rilis beserta catatan perubahannya | ❌ (→ AP-10) |
+| Tindak lanjut laporan sampai rilis beserta catatan perubahannya | 🟡 Ledger lokal + ringkasan status ✅; pengambilan antrean, draft PR, dan operasi rilis masih ❌ (→ AP-10) |
 | Rilis data triwulanan dan halaman metode yang dibuat otomatis dari metadata | ❌ |
 | API publik read-only dengan OpenAPI | ❌ (→ AP-13) |
 | Evaluasi dampak lewat survei singkat dan analitik yang menjaga privasi | 🟡 Hitungan event agregat lokal ✅; survei dan analitik lintas pengguna ❌ |
