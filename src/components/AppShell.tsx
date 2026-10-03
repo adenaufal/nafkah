@@ -16,6 +16,7 @@ import { Onboarding } from "./onboarding/Onboarding";
 import { ThreeStepCard } from "./onboarding/ThreeStepCard";
 import { ShareButton } from "./ShareButton";
 import { AppIcon } from "./icons";
+import { MapMethodNote } from "./MapMethodNote";
 
 // MapLibre must never run during SSR.
 const MapCanvas = dynamic(() => import("./map/MapCanvas"), {
@@ -124,6 +125,7 @@ function Shell() {
   return (
     <div className="flex h-dvh flex-col overscroll-none">
       <TopBar />
+      <MapMethodNote />
 
       {/* Map canvas is the product: it fills everything below the top bar. */}
       <main data-tour="map" className="relative flex-1 overflow-hidden">
