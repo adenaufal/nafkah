@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { digits, pct, rp, rpShort, rpSigned } from "./format";
+import { digits, pct, pctFixed, rp, rpShort, rpSigned } from "./format";
 import {
   parseRupiah,
   roundSalary,
@@ -33,6 +33,12 @@ describe("rupiah formatting (EYD: no space after Rp)", () => {
   it("formats percentages with a decimal comma", () => {
     expect(pct(97.14, 1)).toBe("97,1%");
     expect(pct(77.4)).toBe("77%");
+  });
+
+  it("keeps the decimals of a fixed percentage, for table columns", () => {
+    expect(pctFixed(87)).toBe("87,0%");
+    expect(pctFixed(100.66)).toBe("100,7%");
+    expect(pctFixed(97.4, 0)).toBe("97%");
   });
 });
 

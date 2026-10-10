@@ -1,20 +1,28 @@
 "use client";
 
+import type { ReactNode } from "react";
 import Link from "next/link";
 import { ArrowLeft, Moon, Sun } from "@phosphor-icons/react";
 
 const link =
   "inline-flex h-9 items-center rounded-[10px] px-3 text-[13.5px] font-semibold text-ink-2 hover:bg-paper-2 hover:text-ink pointer-coarse:h-11";
+const here =
+  "aria-[current=page]:text-ink aria-[current=page]:underline aria-[current=page]:decoration-accent aria-[current=page]:decoration-2 aria-[current=page]:underline-offset-[6px]";
 
-/** Slim header for the reading pages: back to the map, sibling pages, theme. */
+/**
+ * Slim header for the reading pages: back to the map, sibling pages, page
+ * actions (the booklet's print button), theme.
+ */
 export function DocHeader({
   current,
   dark,
   onToggleTheme,
+  actions,
 }: {
-  current: "metode" | "tentang";
+  current: "metode" | "tentang" | "booklet";
   dark: boolean;
   onToggleTheme: () => void;
+  actions?: ReactNode;
 }) {
   return (
     <header className="no-print sticky top-0 z-30 border-b border-rule bg-paper/92 backdrop-blur">
@@ -41,17 +49,26 @@ export function DocHeader({
           <Link
             href="/metode"
             aria-current={current === "metode" ? "page" : undefined}
-            className={`${link} aria-[current=page]:text-ink aria-[current=page]:underline aria-[current=page]:decoration-accent aria-[current=page]:decoration-2 aria-[current=page]:underline-offset-[6px]`}
+            className={`${link} ${here}`}
           >
             Metode
           </Link>
           <Link
             href="/tentang"
             aria-current={current === "tentang" ? "page" : undefined}
-            className={`${link} aria-[current=page]:text-ink aria-[current=page]:underline aria-[current=page]:decoration-accent aria-[current=page]:decoration-2 aria-[current=page]:underline-offset-[6px]`}
+            className={`${link} ${here}`}
           >
             Tentang
           </Link>
+          {/* Phones keep two links; the booklet is linked from both pages. */}
+          <Link
+            href="/booklet"
+            aria-current={current === "booklet" ? "page" : undefined}
+            className={`${link} ${here} max-sm:hidden`}
+          >
+            Booklet
+          </Link>
+          {actions}
           <button
             type="button"
             onClick={onToggleTheme}

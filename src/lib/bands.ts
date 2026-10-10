@@ -9,6 +9,15 @@ export const BAND_ORDER: AffordabilityBand[] = [
   "insufficient",
 ];
 
+/** What each band means, in one line (Metode and the booklet). */
+export const BAND_MEANING: Record<AffordabilityBand, string> = {
+  comfortable:
+    "Biaya hidup tertutup dan masih tersisa seperlimanya atau lebih.",
+  manageable: "Biaya hidup tertutup, sisanya tipis.",
+  tight: "Kurang, sampai seperlima biaya hidup.",
+  insufficient: "Kurang lebih dari seperlima biaya hidup.",
+};
+
 /** "≥ 120%", "100–119%", "80–99%", "< 80%" — derived from the constants. */
 export function bandRange(band: AffordabilityBand): string {
   const b = AFFORDABILITY_BANDS;

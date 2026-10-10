@@ -33,6 +33,29 @@ const NON_ADMINISTRATIVE_CODES = new Set([
   "71.88", // Danau (Tondano)
 ]);
 
+/**
+ * Kode wilayah of a boundary feature, or null for anything that is not a
+ * kabupaten/kota (lakes, reservoirs and protected forest carry .88/.99
+ * codes in the HDX source). The live map and the booklet's printed maps
+ * both read features through this.
+ */
+export function regionCodeOf(properties: any): string | null {
+  const p = properties ?? {};
+  const kode =
+    pcodeToKodeWilayah(String(p.adm2_pcode ?? "")) ??
+    (typeof p.kode === "string" ? p.kode : null) ??
+    (typeof p.Kode === "string" ? p.Kode : null);
+  if (
+    !kode ||
+    NON_ADMINISTRATIVE_CODES.has(kode) ||
+    kode.endsWith(".88") ||
+    kode.endsWith(".99")
+  ) {
+    return null;
+  }
+  return kode;
+}
+
 export function topologyToFeatureCollection(
   topology: any,
 ): FeatureCollection<Geometry, RegionFeatureProps> {
@@ -42,13 +65,8 @@ export function topologyToFeatureCollection(
   const features = fc.features
     .map((f: any) => {
       const p = f.properties ?? {};
-      const kode =
-        pcodeToKodeWilayah(String(p.adm2_pcode ?? "")) ??
-        (typeof p.kode === "string" ? p.kode : null) ??
-        (typeof p.Kode === "string" ? p.Kode : null);
-      if (!kode || NON_ADMINISTRATIVE_CODES.has(kode) || kode.endsWith(".88") || kode.endsWith(".99")) {
-        return null;
-      }
+      const kode = regionCodeOf(p);
+      if (!kode) return null;
       return {
         type: "Feature" as const,
         geometry: f.geometry,

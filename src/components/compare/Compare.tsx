@@ -3,9 +3,10 @@
 import { useEffect, useRef } from "react";
 import { DownloadSimple, X } from "@phosphor-icons/react";
 import { useApp } from "@/state/AppContext";
-import { categoryLabel, useComparison, wageLabel } from "@/state/derived";
+import { useComparison } from "@/state/derived";
 import { EXPENSE_CATEGORIES } from "@/data/costs";
 import { bandTheme } from "@/lib/bands";
+import { categoryLabel, wageLabel } from "@/lib/labels";
 import { pct, rp, rpShort, rpSigned } from "@/lib/format";
 import { regionLabel } from "@/lib/names";
 import { useDialogFocus } from "@/lib/useDialogFocus";

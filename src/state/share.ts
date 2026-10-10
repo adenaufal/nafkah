@@ -9,7 +9,7 @@ import type {
   TransportMode,
   WageBasis,
 } from "@/lib/types";
-import { MAX_CHILDREN, normalizeAssumptions } from "./persist";
+import { MAX_CHILDREN, MAX_PINS, normalizeAssumptions } from "./persist";
 
 /**
  * v2 adds an optional `origin` wage region for relocation comparisons. The
@@ -17,7 +17,6 @@ import { MAX_CHILDREN, normalizeAssumptions } from "./persist";
  */
 const SHARE_VERSION = "2";
 const SUPPORTED_SHARE_VERSIONS = new Set(["1", SHARE_VERSION]);
-const MAX_SHARED_REGIONS = 5;
 const REGION_CODE = /^\d{2}\.\d{2}$/;
 
 const HOUSEHOLDS: HouseholdType[] = ["single", "couple", "family"];
@@ -90,7 +89,7 @@ function regionCodes(value: string | null): string[] {
   if (!value) return [];
   return [...new Set(value.split(",").filter((code) => REGION_CODE.test(code)))].slice(
     0,
-    MAX_SHARED_REGIONS,
+    MAX_PINS,
   );
 }
 
