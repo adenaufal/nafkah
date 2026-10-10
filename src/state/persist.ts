@@ -18,6 +18,9 @@ export const STORAGE_KEY = "nafkah.v1";
 /** Batas jumlah anak (AP-03) — clamp di satu tempat agar UI & state sepakat. */
 export const MAX_CHILDREN = 5;
 
+/** Daerah yang bisa dibandingkan sekaligus (baki, tautan berbagi, booklet). */
+export const MAX_PINS = 5;
+
 /**
  * Revisi asumsi tersimpan. Naikkan bila DEFAULT_ASSUMPTIONS berubah dan state
  * lama yang masih sama dengan pilihan awal sebelumnya perlu ikut pindah.
@@ -57,7 +60,6 @@ export interface Persisted {
 }
 
 const REGION_CODE = /^\d{2}\.\d{2}$/;
-const MAX_PERSISTED_PINS = 5;
 const HOUSEHOLDS = ["single", "couple", "family"] as const;
 const LIFESTYLES = ["budget", "moderate", "comfortable"] as const;
 const HOUSING = ["room", "studio", "oneBedroom"] as const;
@@ -151,7 +153,7 @@ export function normalizePersisted(input: unknown): Persisted {
             typeof code === "string" && REGION_CODE.test(code),
         ),
       ),
-    ].slice(0, MAX_PERSISTED_PINS);
+    ].slice(0, MAX_PINS);
   }
 
   const selectedCode = optionalRegionCode(input.selectedCode);
