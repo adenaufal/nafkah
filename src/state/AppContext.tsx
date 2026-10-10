@@ -36,10 +36,6 @@ import type { FeatureCollection, Geometry } from "geojson";
 
 export const MAX_PINS = 5;
 
-/**
- * tourIdx models the guided onboarding: null = off, -1 = opening card,
- * 0..steps-1 = spotlight steps, and `steps` (== length) = closing card.
- */
 interface AppState {
   geometryStatus: LoadStatus;
   geometryError: string | null;
@@ -59,20 +55,15 @@ interface AppState {
   colorMode: ColorMode;
   legendFilter: AffordabilityBand | null;
   basemap: BasemapId;
-  basemapUserSet: boolean;
   darkMode: boolean;
   /** Bumped when the map should refit to Indonesia. */
   resetViewToken: number;
-  // Overlays (single-owner so header, mobile tab bar and about all agree).
-  asumsiOpen: boolean;
-  aboutOpen: boolean;
-  // Onboarding.
-  tourIdx: number | null;
-  onboarded: boolean;
+  /** First-visit "how to read this map" card, until dismissed. */
   onboardCardOpen: boolean;
 }
 
-const initialState: AppState = {
+/** Exported for tests. */
+export const initialState: AppState = {
   geometryStatus: "idle",
   geometryError: null,
   geometry: null,
@@ -90,13 +81,8 @@ const initialState: AppState = {
   colorMode: "coverage",
   legendFilter: null,
   basemap: "light",
-  basemapUserSet: false,
   darkMode: false,
   resetViewToken: 0,
-  asumsiOpen: false,
-  aboutOpen: false,
-  tourIdx: null,
-  onboarded: false,
   onboardCardOpen: true,
 };
 
@@ -107,7 +93,6 @@ function initState(base: AppState): AppState {
     typeof window === "undefined"
       ? null
       : decodeSharedView(window.location.search);
-  const onboarded = shared ? true : (p.onboarded ?? false);
   const basemap = p.basemap ?? base.basemap;
   const darkMode =
     basemap === "dark"
@@ -130,11 +115,8 @@ function initState(base: AppState): AppState {
       ? shared.legendFilter
       : p.legendFilter ?? base.legendFilter,
     basemap,
-    basemapUserSet: p.basemap != null,
-    onboarded,
+    // A shared link opens straight on its view; the card stays for later.
     onboardCardOpen: shared ? false : !p.onboardCardDismissed,
-    // First visit opens the guide; returning visitors land straight on the map.
-    tourIdx: onboarded ? null : -1,
   };
 }
 
@@ -163,12 +145,10 @@ type Action =
   | { type: "basemap/set"; basemap: BasemapId }
   | { type: "theme/set"; dark: boolean }
   | { type: "view/reset" }
-  | { type: "overlay/asumsi"; open: boolean }
-  | { type: "overlay/about"; open: boolean }
-  | { type: "tour/set"; idx: number | null }
   | { type: "onboardCard/set"; open: boolean };
 
-function reducer(state: AppState, action: Action): AppState {
+/** Exported for tests. */
+export function reducer(state: AppState, action: Action): AppState {
   switch (action.type) {
     case "geometry/loading":
       return { ...state, geometryStatus: "loading", geometryError: null };
@@ -212,19 +192,19 @@ function reducer(state: AppState, action: Action): AppState {
       return { ...state, assumptions: DEFAULT_ASSUMPTIONS };
     case "pin/add": {
       if (state.pinned.includes(action.code)) {
-        return { ...state, pinMessage: "Wilayah ini sudah disematkan." };
+        return { ...state, pinMessage: "Daerah ini sudah ada di perbandingan." };
       }
       if (state.pinned.length >= MAX_PINS) {
         return {
           ...state,
-          pinMessage: `Baki perbandingan maksimal ${MAX_PINS} wilayah — hapus satu dulu.`,
+          pinMessage: `Perbandingan maksimal ${MAX_PINS} daerah — keluarkan satu dulu.`,
         };
       }
       if (!state.costs.has(action.code)) {
         return {
           ...state,
           pinMessage:
-            "Wilayah ini belum punya data biaya, jadi tidak bisa disematkan.",
+            "Daerah ini belum punya data biaya, jadi belum bisa dibandingkan.",
         };
       }
       return {
@@ -255,42 +235,18 @@ function reducer(state: AppState, action: Action): AppState {
           : action.basemap === "light"
             ? false
             : state.darkMode;
-      return { ...state, basemap: action.basemap, basemapUserSet: true, darkMode };
+      return { ...state, basemap: action.basemap, darkMode };
     }
     case "theme/set": {
-      // Basemap follows the UI theme unless the user overrode it explicitly.
-      const followTheme = action.dark ? ("dark" as const) : ("light" as const);
-      const basemap = state.basemapUserSet ? state.basemap : followTheme;
+      // The paper basemap is one choice drawn in two themes, so light/dark
+      // always follow the UI theme. Keeping them paired matters: on the next
+      // visit initState reads the theme back from a light/dark basemap.
+      const paper = state.basemap === "light" || state.basemap === "dark";
+      const basemap = paper ? (action.dark ? "dark" : "light") : state.basemap;
       return { ...state, darkMode: action.dark, basemap };
     }
     case "view/reset":
       return { ...state, resetViewToken: state.resetViewToken + 1 };
-    case "overlay/asumsi":
-      // Opening one drawer closes the other and any mobile sheet owner reacts.
-      return {
-        ...state,
-        asumsiOpen: action.open,
-        aboutOpen: action.open ? false : state.aboutOpen,
-      };
-    case "overlay/about":
-      return {
-        ...state,
-        aboutOpen: action.open,
-        asumsiOpen: action.open ? false : state.asumsiOpen,
-      };
-    case "tour/set": {
-      // Leaving the intro means the user has seen onboarding at least once.
-      const onboarded = action.idx === null || action.idx >= 0;
-      return {
-        ...state,
-        tourIdx: action.idx,
-        onboarded: state.onboarded || onboarded,
-        // The tour never drives app state — it only highlights — so close any
-        // open drawer/sheet when a run starts to avoid covering its targets.
-        asumsiOpen: action.idx === null ? state.asumsiOpen : false,
-        aboutOpen: action.idx === null ? state.aboutOpen : false,
-      };
-    }
     case "onboardCard/set":
       return { ...state, onboardCardOpen: action.open };
     default:
@@ -317,19 +273,22 @@ interface AppContextValue {
   resetView: () => void;
   retryGeometry: () => void;
   retryData: () => void;
-  setAsumsiOpen: (open: boolean) => void;
-  setAboutOpen: (open: boolean) => void;
-  /** Open the guide at the intro card (? Panduan, About "replay"). */
-  openGuide: () => void;
-  /** Jump straight into the highlighted steps ("Tunjukkan caranya"). */
-  beginTourSteps: () => void;
-  setTourIdx: (idx: number | null) => void;
   setOnboardCard: (open: boolean) => void;
 }
 
 const AppContext = createContext<AppContextValue | null>(null);
 
-export function AppProvider({ children }: { children: ReactNode }) {
+/**
+ * `withGeometry={false}` skips the 0.6 MB boundary file for pages that only
+ * need the numbers (Metode); geometryStatus then stays "idle".
+ */
+export function AppProvider({
+  children,
+  withGeometry = true,
+}: {
+  children: ReactNode;
+  withGeometry?: boolean;
+}) {
   const [state, dispatch] = useReducer(reducer, initialState, initState);
 
   const loadGeo = useCallback(async () => {
@@ -359,14 +318,14 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }, []);
 
   useEffect(() => {
-    void loadGeo();
+    if (withGeometry) void loadGeo();
     void loadData();
     // Respect a saved theme; otherwise follow the OS preference on first visit.
     if (loadPersisted().darkMode == null) {
       const mq = window.matchMedia("(prefers-color-scheme: dark)");
       dispatch({ type: "theme/set", dark: mq.matches });
     }
-  }, [loadGeo, loadData]);
+  }, [loadGeo, loadData, withGeometry]);
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", state.darkMode);
@@ -398,10 +357,6 @@ export function AppProvider({ children }: { children: ReactNode }) {
   useEffect(
     () => savePersisted({ basemap: state.basemap }),
     [state.basemap],
-  );
-  useEffect(
-    () => savePersisted({ onboarded: state.onboarded }),
-    [state.onboarded],
   );
   useEffect(
     () => savePersisted({ onboardCardDismissed: !state.onboardCardOpen }),
@@ -495,11 +450,6 @@ export function AppProvider({ children }: { children: ReactNode }) {
     resetView: () => dispatch({ type: "view/reset" }),
     retryGeometry: () => void loadGeo(),
     retryData: () => void loadData(),
-    setAsumsiOpen: (open) => dispatch({ type: "overlay/asumsi", open }),
-    setAboutOpen: (open) => dispatch({ type: "overlay/about", open }),
-    openGuide: () => dispatch({ type: "tour/set", idx: -1 }),
-    beginTourSteps: () => dispatch({ type: "tour/set", idx: 0 }),
-    setTourIdx: (idx) => dispatch({ type: "tour/set", idx }),
     setOnboardCard: (open) => dispatch({ type: "onboardCard/set", open }),
   };
 

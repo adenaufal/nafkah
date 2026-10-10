@@ -99,20 +99,20 @@ const FEATURES: FeatureItem[] = [
   {
     id: "comparison-panel",
     category: "komparasi",
-    title: "Panel Komparasi Multilateral & Grafik Batang",
+    title: "Panel Komparasi Berdampingan",
     badge: "Komparasi",
     description:
-      "Bandingkan komposisi pengeluaran antar wilayah sematan lewat grafik batang bertumpuk (stacked bar chart) 10 kategori biaya secara transparan.",
-    tags: ["grafik", "recharts", "komparasi", "batang bertumpuk"],
+      "Bandingkan hingga 5 wilayah sematan berdampingan: cakupan, sisa/kurang, bilah anggaran, dan 10 kategori biaya dengan biaya tertinggi per kategori ditandai — bisa diekspor ke CSV.",
+    tags: ["komparasi", "tabel", "bilah anggaran", "csv"],
   },
   {
     id: "detail-modal",
     category: "komparasi",
-    title: "Modal Detail Wilayah & Narasi Lokal",
+    title: "Cerita Daerah & Struk Bulanan",
     badge: "Eksplorasi Data",
     description:
-      "Rincian rupiah per 10 kategori pengeluaran, perbandingan rasio upah, narasi sosio-ekonomi spesifik daerah, dan tren inflasi IHK tahunan.",
-    tags: ["detail", "modal", "narasi", "inflasi", "ihk"],
+      "Pilih daerah untuk membaca vonis cakupan, pendapatan yang dibutuhkan agar cukup, perbandingan dengan median nasional, struk bulanan 10 kategori, narasi lokal, dan posisinya di antara daerah seprovinsi.",
+    tags: ["detail", "struk", "narasi", "median", "provinsi"],
   },
   {
     id: "data-provenance",
@@ -135,11 +135,11 @@ const FEATURES: FeatureItem[] = [
   {
     id: "onboarding-tour",
     category: "aksesibilitas",
-    title: "Tur Terpandu Interaktif & Kartu 3 Langkah",
+    title: "Panduan Singkat & Halaman Metode",
     badge: "Panduan",
     description:
-      "Tur terpandu visual langkah demi langkah untuk mengenalkan fungsi peta dan asumsi bagi pengguna baru, serta kartu panduan kilat.",
-    tags: ["tur", "guide", "onboarding", "3 langkah"],
+      "Kartu panduan singkat untuk pengunjung baru (bisa dimunculkan lagi dari menu), serta halaman Metode yang menjelaskan rumus, sumber, pengali profil, dan uji sensitivitas.",
+    tags: ["panduan", "guide", "onboarding", "metode"],
   },
 ];
 
@@ -945,21 +945,21 @@ export default function BookletPage() {
 
                 <div className="rounded-xl border border-stone-200 p-4 bg-stone-50">
                   <div className="flex items-center justify-between">
-                    <h3 className="inline-flex items-center gap-1.5 font-bold text-stone-900 text-sm"><AppIcon name="chartBar" size={16} /> Grafik Batang Bertumpuk (Stacked Bar Chart)</h3>
+                    <h3 className="inline-flex items-center gap-1.5 font-bold text-stone-900 text-sm"><AppIcon name="chartBar" size={16} /> Bilah Anggaran &amp; Tabel Berdampingan</h3>
                     <span className="text-[10px] font-bold rounded bg-stone-200 px-2 py-0.5 text-stone-700">10 Kategori Biaya</span>
                   </div>
                   <p className="mt-1.5 text-xs text-stone-600 leading-relaxed">
-                    Panel perbandingan membedah total pengeluaran menjadi 10 komponen warna. Anda bisa langsung melihat apakah tingginya biaya di suatu kota diakibatkan oleh sewa hunian, pangan, atau transportasi.
+                    Panel perbandingan membedah total pengeluaran menjadi 10 kategori dan menandai biaya tertinggi per kategori. Anda bisa langsung melihat apakah tingginya biaya di suatu kota diakibatkan oleh sewa hunian, pangan, atau transportasi.
                   </p>
                 </div>
 
                 <div className="rounded-xl border border-stone-200 p-4 bg-stone-50">
                   <div className="flex items-center justify-between">
-                    <h3 className="inline-flex items-center gap-1.5 font-bold text-stone-900 text-sm"><AppIcon name="list" size={16} /> Jendela Detail Wilayah & Profil Sosio-Ekonomi</h3>
+                    <h3 className="inline-flex items-center gap-1.5 font-bold text-stone-900 text-sm"><AppIcon name="list" size={16} /> Cerita Daerah &amp; Struk Bulanan</h3>
                     <span className="text-[10px] font-bold rounded bg-stone-200 px-2 py-0.5 text-stone-700">Deep Dive</span>
                   </div>
                   <p className="mt-1.5 text-xs text-stone-600 leading-relaxed">
-                    Klik pada daerah mana pun untuk membuka modal komprehensif: narasi lokal, profil biaya hidup spesifik, serta tabel provenance data yang mencatat tanggal perolehan data dan dasar hukum SK Gubernur.
+                    Klik pada daerah mana pun untuk membuka ceritanya di panel samping: struk bulanan, narasi lokal, perbandingan dengan median nasional, serta tabel provenance data yang mencatat tanggal data dan dasar hukum SK Gubernur.
                   </p>
                 </div>
               </div>
@@ -1136,21 +1136,21 @@ export default function BookletPage() {
                   <p className="font-bold text-blue-700">Langkah 2</p>
                   <p className="font-semibold text-stone-900 mt-1">Atur Asumsi</p>
                   <p className="mt-1 text-[11px] text-stone-600">
-                    Buka tombol pengaturan Asumsi untuk memilih jenis rumah tangga, kost/rumah, dan moda transport.
+                    Buka “Ubah profil” untuk memilih jenis rumah tangga, kost/rumah, dan moda transport.
                   </p>
                 </div>
                 <div className="rounded-lg border border-stone-200 bg-stone-50 p-3">
                   <p className="font-bold text-amber-700">Langkah 3</p>
                   <p className="font-semibold text-stone-900 mt-1">Uji Gaji Anda</p>
                   <p className="mt-1 text-[11px] text-stone-600">
-                    Isi pendapatan pribadi bulanan untuk melihat status keterjangkauan spesifik Anda.
+                    Pilih Gajiku lalu ketik atau geser pendapatan bulanan untuk melihat status keterjangkauan spesifik Anda.
                   </p>
                 </div>
                 <div className="rounded-lg border border-stone-200 bg-stone-50 p-3">
                   <p className="font-bold text-emerald-700">Langkah 4</p>
                   <p className="font-semibold text-stone-900 mt-1">Bandingkan Kota</p>
                   <p className="mt-1 text-[11px] text-stone-600">
-                    Sematkan beberapa kota ke baki perbandingan untuk melihat grafik rincian 10 biaya.
+                    Sematkan beberapa kota lalu tekan Bandingkan untuk melihat rincian 10 biaya berdampingan.
                   </p>
                 </div>
               </div>

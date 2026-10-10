@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { THEME_BOOT_SCRIPT } from "@/state/themeBoot";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -53,21 +54,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="id" suppressHydrationWarning>
-      <body>
-        {/* Konten statis untuk mesin pencari (shell aplikasi dirender klien). */}
-        <div className="sr-only">
-          <h1>Nafkah — Peta Kecukupan Gaji vs Biaya Hidup Indonesia</h1>
-          <p>
-            Nafkah adalah peta interaktif yang membandingkan upah minimum
-            kabupaten/kota (UMK) dengan estimasi biaya hidup bulanan di 514
-            kabupaten/kota, 38 provinsi: dari Aceh sampai wilayah perbatasan
-            Papua. Setiap wilayah dikelompokkan ke band Nyaman, Cukup, Ketat,
-            atau Tak Cukup berdasarkan rasio upah terhadap estimasi biaya hidup
-            — lengkap dengan sumber, tanggal data, dan label keterpercayaan.
-          </p>
-        </div>
-        {children}
-      </body>
+      <head>
+        {/* Theme before first paint: no light flash for dark-mode visitors. */}
+        <script dangerouslySetInnerHTML={{ __html: THEME_BOOT_SCRIPT }} />
+      </head>
+      <body>{children}</body>
     </html>
   );
 }

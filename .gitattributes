@@ -6,3 +6,4 @@
 *.jpg binary
 *.topojson binary
 *.geojson binary
+*.zip binary
