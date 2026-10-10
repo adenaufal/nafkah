@@ -1,0 +1,40 @@
+{
+  "name": "nafkah-video",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Video promosi Nafkah (Remotion). Terpisah dari build aplikasi.",
+  "license": "MIT",
+  "scripts": {
+    "studio": "remotion studio",
+    "data": "tsx scripts/build-data.ts",
+    "shots": "node scripts/capture-ui.mjs",
+    "voice": "tsx scripts/voiceover.mts",
+    "sfx": "tsx scripts/sfx.mts",
+    "render": "remotion render Teaser out/nafkah-teaser-raw.mp4 && node scripts/master.mjs out/nafkah-teaser-raw.mp4 out/nafkah-teaser.mp4",
+    "render:nomusic": "remotion render Teaser out/nafkah-teaser-tanpa-musik-raw.mp4 --props=props-nomusic.json && node scripts/master.mjs out/nafkah-teaser-tanpa-musik-raw.mp4 out/nafkah-teaser-tanpa-musik.mp4",
+    "cover": "remotion still Cover out/nafkah-teaser-cover.png",
+    "render:16x9": "remotion render Teaser16x9 out/nafkah-teaser-16x9-raw.mp4 && node scripts/master.mjs out/nafkah-teaser-16x9-raw.mp4 out/nafkah-teaser-16x9.mp4",
+    "cover:16x9": "remotion still Cover16x9 out/nafkah-teaser-16x9-cover.png",
+    "typecheck": "tsc --noEmit",
+    "stills": "node scripts/stills.mjs"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.534",
+    "@remotion/layout-utils": "4.0.534",
+    "@remotion/transitions": "4.0.534",
+    "d3-geo": "^3.1.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "remotion": "4.0.534",
+    "topojson-client": "^3.1.0"
+  },
+  "devDependencies": {
+    "@types/d3-geo": "^3.1.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/topojson-client": "^3.1.5",
+    "playwright-core": "^1.64.0",
+    "tsx": "^4.23.15",
+    "typescript": "^5.6.3"
+  }
+}

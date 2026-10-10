@@ -1,0 +1,16 @@
+{
+ "music": "audio/music.mp3",
+ "sfx": {
+  "pop": "sfx/pop.wav",
+  "whoosh": "sfx/whoosh.wav",
+  "swoosh": "sfx/swoosh.wav",
+  "tick": "sfx/tick.wav",
+  "tap": "sfx/tap.wav",
+  "print": "sfx/print.wav",
+  "hit": "sfx/hit.wav",
+  "chime": "sfx/chime.wav",
+  "cash": "sfx/cash.wav",
+  "type": "sfx/type.wav"
+ },
+ "musicVolume": 0.15
+}

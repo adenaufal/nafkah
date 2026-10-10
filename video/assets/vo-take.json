@@ -1,0 +1,260 @@
+{
+ "voiceId": "plgKUYgnlZ1DCNh54DwJ",
+ "model": "eleven_multilingual_v2",
+ "speed": 1.08,
+ "text": "Kemarin kalian nanya: Mana yang ijo? Sekarang, pakai gajimu sendiri. Geser, lima ratus empat belas daerah langsung dihitung ulang. Udah nikah, punya dua anak? Merah lagi. Pasangan ikut kerja? Mulai biru. Klik daerahnya, keluar struk bulanan. Jogja? UMK-nya kurang delapan ratus tiga puluh dua ribu sebulan. Gaji minimum Jakarta, tapi tinggal di Jogja? Sisa dua juta. Tampilannya baru, lebih enak di HP. Gratis, tanpa login. Cek daerahmu di nafkah dot ade naufal dot com. Daerahmu warna apa?",
+ "tokens": [
+  {
+   "start": 0,
+   "end": 0.43
+  },
+  {
+   "start": 0.499,
+   "end": 0.755
+  },
+  {
+   "start": 0.789,
+   "end": 1.103
+  },
+  {
+   "start": 1.161,
+   "end": 1.37
+  },
+  {
+   "start": 1.393,
+   "end": 1.486
+  },
+  {
+   "start": 1.556,
+   "end": 1.916
+  },
+  {
+   "start": 2.02,
+   "end": 2.438
+  },
+  {
+   "start": 2.461,
+   "end": 2.67
+  },
+  {
+   "start": 2.717,
+   "end": 3.065
+  },
+  {
+   "start": 3.1,
+   "end": 3.657
+  },
+  {
+   "start": 3.855,
+   "end": 4.249
+  },
+  {
+   "start": 4.284,
+   "end": 5.271
+  },
+  {
+   "start": 5.329,
+   "end": 5.596
+  },
+  {
+   "start": 5.654,
+   "end": 5.991
+  },
+  {
+   "start": 6.026,
+   "end": 6.316
+  },
+  {
+   "start": 6.351,
+   "end": 6.722
+  },
+  {
+   "start": 6.92,
+   "end": 7.14
+  },
+  {
+   "start": 7.163,
+   "end": 7.512
+  },
+  {
+   "start": 7.535,
+   "end": 7.744
+  },
+  {
+   "start": 7.779,
+   "end": 7.953
+  },
+  {
+   "start": 7.976,
+   "end": 8.301
+  },
+  {
+   "start": 8.406,
+   "end": 8.719
+  },
+  {
+   "start": 8.754,
+   "end": 9.183
+  },
+  {
+   "start": 9.381,
+   "end": 9.776
+  },
+  {
+   "start": 9.822,
+   "end": 9.985
+  },
+  {
+   "start": 10.031,
+   "end": 10.426
+  },
+  {
+   "start": 10.495,
+   "end": 10.762
+  },
+  {
+   "start": 10.809,
+   "end": 11.18
+  },
+  {
+   "start": 11.238,
+   "end": 11.447
+  },
+  {
+   "start": 11.505,
+   "end": 11.981
+  },
+  {
+   "start": 12.04,
+   "end": 12.353
+  },
+  {
+   "start": 12.411,
+   "end": 12.62
+  },
+  {
+   "start": 12.666,
+   "end": 13.224
+  },
+  {
+   "start": 13.421,
+   "end": 13.978
+  },
+  {
+   "start": 14.176,
+   "end": 14.721
+  },
+  {
+   "start": 14.779,
+   "end": 15.058
+  },
+  {
+   "start": 15.105,
+   "end": 17.345
+  },
+  {
+   "start": 17.415,
+   "end": 18.03
+  },
+  {
+   "start": 18.437,
+   "end": 18.657
+  },
+  {
+   "start": 18.704,
+   "end": 18.994
+  },
+  {
+   "start": 19.052,
+   "end": 19.47
+  },
+  {
+   "start": 19.505,
+   "end": 19.725
+  },
+  {
+   "start": 19.76,
+   "end": 19.969
+  },
+  {
+   "start": 19.992,
+   "end": 20.042
+  },
+  {
+   "start": 20.085,
+   "end": 20.468
+  },
+  {
+   "start": 20.573,
+   "end": 20.886
+  },
+  {
+   "start": 20.956,
+   "end": 21.583
+  },
+  {
+   "start": 21.745,
+   "end": 22.245
+  },
+  {
+   "start": 22.303,
+   "end": 22.651
+  },
+  {
+   "start": 22.697,
+   "end": 22.941
+  },
+  {
+   "start": 22.965,
+   "end": 23.15
+  },
+  {
+   "start": 23.208,
+   "end": 23.258
+  },
+  {
+   "start": 23.301,
+   "end": 23.766
+  },
+  {
+   "start": 24.126,
+   "end": 24.636
+  },
+  {
+   "start": 24.66,
+   "end": 24.938
+  },
+  {
+   "start": 24.973,
+   "end": 25.379
+  },
+  {
+   "start": 25.542,
+   "end": 25.739
+  },
+  {
+   "start": 25.809,
+   "end": 26.227
+  },
+  {
+   "start": 26.285,
+   "end": 26.343
+  },
+  {
+   "start": 26.389,
+   "end": 28.421
+  },
+  {
+   "start": 28.642,
+   "end": 29.037
+  },
+  {
+   "start": 29.06,
+   "end": 29.246
+  },
+  {
+   "start": 29.269,
+   "end": 29.907
+  }
+ ]
+}
