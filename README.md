@@ -21,23 +21,31 @@ Coba di [nafkah.adenaufal.com](https://nafkah.adenaufal.com).
 Versi kode sumber saat ini adalah `v0.3.0`. Kode sumber dan dataset tersedia
 secara terbuka di [repositori GitHub](https://github.com/adenaufal/nafkah).
 
-## Fitur (v0.3.0)
+## Fitur
 
 - Peta 514 kabupaten/kota dengan warna untuk kategori Nyaman, Cukup, Ketat,
   dan Tak Cukup. Paletnya mempertimbangkan buta warna; wilayah tanpa data
   juga diberi arsir.
-- Panel asumsi untuk mengatur rumah tangga (lajang, pasangan, atau keluarga),
-  jumlah anak, gaya hidup, hunian, transportasi, cicilan KPR, tabungan, serta
-  upah kotor atau take-home.
-- Kolom "Pendapatan sendiri" untuk mencoba perhitungan dengan gajimu. Ada
-  opsi "2 upah" untuk pasangan bekerja, dengan UMK daerah sebagai pembanding.
-- Baki perbandingan untuk menyematkan hingga 5 wilayah dan melihat rincian
-  biayanya lewat grafik batang bertumpuk.
-- Jendela detail berisi grafik dan rincian kategori. Setiap angka dilengkapi
-  `source`, `asOf`, dan `confidence`.
+- Ringkasan nasional dalam satu kalimat ("Di 296 dari 514 daerah, upah minimum
+  belum menutup biaya hidup lajang"), sebaran band yang sekaligus menjadi
+  filter, plot titik 514 daerah, dan provinsi paling berat.
+- Profil rumah tangga di panel samping (peta tetap terlihat): lajang, pasangan,
+  atau keluarga, jumlah anak, gaya hidup, hunian, transportasi, cicilan KPR,
+  tabungan, serta upah kotor atau take-home.
+- "Hitung dengan": UMK tiap daerah, gajimu sendiri (slider yang mewarnai ulang
+  peta seketika), atau UMK kota asal untuk simulasi pindah kota. Ada opsi
+  "2 upah" untuk pasangan bekerja.
+- Cerita daerah: vonis cakupan, pendapatan yang dibutuhkan agar cukup/nyaman,
+  perbandingan dengan median nasional, struk bulanan 10 kategori, narasi lokal,
+  dan posisi di antara daerah seprovinsi. Setiap angka dilengkapi `source`,
+  `asOf`, dan `confidence`.
+- Perbandingan hingga 5 wilayah berdampingan, dengan biaya tertinggi per
+  kategori ditandai.
+- Pencarian (termasuk "Daerah di lokasiku" yang dicocokkan di perangkat) dan
+  pintasan `/` atau Ctrl/⌘K.
 - Peta dasar Terang, Gelap, dan Satelit tanpa API key, serta mode Offline
   tanpa tile peta.
-- Mode gelap, pencarian wilayah, legenda angka, dan filter tingkat keterjangkauan.
+- Mode gelap tanpa kedipan saat dimuat, legenda angka, dan filter tingkat keterjangkauan.
 - Mode relokasi: pisahkan gaji kota asal dari biaya kota tujuan, lalu bagikan
   hasilnya lewat tautan berversi yang memulihkan wilayah, asumsi, mode warna,
   dan filter legenda.
@@ -47,8 +55,13 @@ secara terbuka di [repositori GitHub](https://github.com/adenaufal/nafkah).
 - PWA yang menyimpan shell aplikasi, geometri, dan dataset aktif di cache
   browser setelah kunjungan online pertama; pilih basemap Offline untuk
   pengalaman peta tanpa tile eksternal.
-- Panel metode dengan tabel sensitivitas: sebaran band untuk empat profil
-  pembanding, dihitung dari dataset yang sedang dimuat.
+- Halaman [Metode](https://nafkah.adenaufal.com/metode): rumus dengan contoh
+  memakai profilmu, sumber per kategori, dasar hukum upah per provinsi, pengali
+  profil, dan tabel sensitivitas — semuanya dihitung dari dataset saat build.
+  Halaman [Tentang](https://nafkah.adenaufal.com/tentang) terpisah.
+- Tata letak mengikuti bentuk layar: ponsel dan tablet tegak memakai peta penuh
+  dengan panel bawah yang bisa ditarik; ponsel miring, tablet mendatar, dan
+  desktop memakai panel samping. Ukuran tombol mengikuti layar sentuh.
 - Navigasi keyboard, label `aria`, dan kontras AA.
 
 ## Teknologi
@@ -56,7 +69,7 @@ secara terbuka di [repositori GitHub](https://github.com/adenaufal/nafkah).
 - Next.js 15 (App Router, static export) + TypeScript + Tailwind CSS v4
 - MapLibre GL JS, dijalankan di browser lewat `next/dynamic` dengan `ssr: false`
 - Peta dasar tanpa API key dari CARTO Positron / Dark Matter (berbasis OSM) dan Esri World Imagery
-- Recharts untuk grafik di jendela detail dan baki perbandingan
+- Plus Jakarta Sans, Fraunces, dan JetBrains Mono lewat `next/font` (di-host sendiri saat build)
 - Geometri HDX COD-AB Indonesia adm2, disederhanakan menjadi TopoJSON (≈0.6 MB)
 - Cloudflare Workers Static Assets untuk deployment
 
@@ -116,8 +129,8 @@ per kategori di `src/data/multipliers.ts` dan bisa disesuaikan.
 Pilihan awal itu berbeda dari baseline dataset (`studio`, semua pengali ×1).
 Hunian awal memakai rusun/kost karena pembanding utama peta ini adalah penerima
 upah minimum lajang. Alasan, sebaran band sebelum/sesudah, dan batasannya ada di
-[catatan kalibrasi](docs/kalibrasi-default-2026-09.md); panel Tentang di aplikasi
-menampilkan tabel sensitivitasnya langsung dari dataset yang dimuat.
+[catatan kalibrasi](docs/kalibrasi-default-2026-09.md); halaman Metode di aplikasi
+menampilkan tabel sensitivitasnya, dihitung dari dataset saat build.
 
 ```text
 totalMonthlyCost   = Σ nilai kategori aktif di bawah asumsi saat ini

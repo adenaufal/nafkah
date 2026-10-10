@@ -13,7 +13,7 @@ import type {
   ColorMode,
 } from "@/lib/types";
 
-const KEY = "nafkah.v1";
+export const STORAGE_KEY = "nafkah.v1";
 
 /** Batas jumlah anak (AP-03) — clamp di satu tempat agar UI & state sepakat. */
 export const MAX_CHILDREN = 5;
@@ -228,7 +228,7 @@ export function normalizeAssumptions(
 export function loadPersisted(): Persisted {
   if (typeof window === "undefined") return {};
   try {
-    const raw = window.localStorage.getItem(KEY);
+    const raw = window.localStorage.getItem(STORAGE_KEY);
     if (!raw) return {};
     return normalizePersisted(JSON.parse(raw));
   } catch {
@@ -241,7 +241,7 @@ export function savePersisted(patch: Persisted): void {
   try {
     const current = loadPersisted();
     window.localStorage.setItem(
-      KEY,
+      STORAGE_KEY,
       // Yang ditulis versi ini selalu revisi terbaru — termasuk asumsi dari
       // tautan berbagi di browser yang belum punya storage.
       JSON.stringify(

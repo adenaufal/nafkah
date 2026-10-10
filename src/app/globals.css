@@ -16,6 +16,26 @@
   --ok: #0b7a4b;
   --danger: #a5271f;
   --on-accent: #ffffff;
+
+  /* Atlas: warm editorial paper. */
+  --paper: #f8f6f1;
+  --paper-2: #f0ece4;
+  --paper-3: #e8e2d8;
+  --ink-2: #4a433d;
+  --rule: #e2dbd0;
+  --rule-2: #cdc4b6;
+  /* Control boundaries (fields, switch track): >= 3:1 on paper. */
+  --field: #948b80;
+  --accent-ink: #a83624;
+  --shadow: 0 1px 2px rgb(30 27 24 / 0.06), 0 8px 24px rgb(30 27 24 / 0.1);
+  --shadow-lg: 0 2px 6px rgb(30 27 24 / 0.06), 0 18px 48px rgb(30 27 24 / 0.16);
+
+  /* Band fills for server-rendered swatches; mirror BAND_COLORS(_DARK) in
+     src/lib/calculations.ts (checked by src/lib/bands.test.ts). */
+  --band-comfortable: #0b7a4b;
+  --band-manageable: #56a3c4;
+  --band-tight: #e2a336;
+  --band-insufficient: #a5271f;
 }
 
 .dark {
@@ -31,20 +51,58 @@
   --danger: #ff8b80;
   /* Teks gelap di atas accent terang — kontras 5.6:1 (putih hanya 3:1). */
   --on-accent: #211a14;
+
+  --paper: #1b1815;
+  --paper-2: #23201b;
+  --paper-3: #2c2822;
+  --ink-2: #cfc7be;
+  --rule: #352f29;
+  --rule-2: #4a433b;
+  --field: #6f665c;
+  --accent-ink: #ec8b6d;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 10px 30px rgb(0 0 0 / 0.45);
+  --shadow-lg: 0 2px 6px rgb(0 0 0 / 0.35), 0 22px 56px rgb(0 0 0 / 0.55);
+
+  --band-comfortable: #2fbd7f;
+  --band-manageable: #6cb5d6;
+  --band-tight: #f0c04a;
+  --band-insufficient: #ef6a5a;
+}
+
+/* Atlas surfaces (app, Metode, Tentang). The booklet keeps the older card
+   palette, so the two tokens that differ are only re-tuned in here. */
+.atlas {
+  --accent-soft: #f6e3dc;
+  --ok: #0b6b42;
+  font-family: var(--font-jakarta), "Segoe UI", system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+}
+.dark .atlas {
+  --accent-soft: #3a211b;
+  --ok: #5fd3a0;
 }
 
 @theme inline {
   --color-accent: var(--accent);
   --color-accent-strong: var(--accent-strong);
   --color-accent-soft: var(--accent-soft);
+  --color-accent-ink: var(--accent-ink);
   --color-surface: var(--surface);
   --color-card: var(--card);
   --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
   --color-muted: var(--muted);
   --color-border: var(--border);
   --color-ok: var(--ok);
   --color-danger: var(--danger);
   --color-on-accent: var(--on-accent);
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-paper-3: var(--paper-3);
+  --color-rule: var(--rule);
+  --color-rule-2: var(--rule-2);
+  --color-field: var(--field);
 }
 
 html,
@@ -62,11 +120,40 @@ html.scrollable body {
   overflow-x: hidden !important;
 }
 
+/* Metode / Tentang: only the root scrolls. A scrolling body would become
+   the sticky containing block and the header/contents would not stick. */
+html:has(.doc-page) {
+  height: auto;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+html:has(.doc-page) body {
+  height: auto;
+  min-height: 100%;
+  overflow: visible;
+}
+
+:root {
+  color-scheme: light;
+}
+.dark {
+  color-scheme: dark;
+}
+
 body {
   background-color: var(--surface);
   color: var(--ink);
-  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  font-family:
+    "Inter",
+    "Segoe UI",
+    system-ui,
+    -apple-system,
+    sans-serif;
   -webkit-font-smoothing: antialiased;
+}
+body:has(.atlas) {
+  background-color: var(--paper);
 }
 
 :focus-visible {
@@ -75,127 +162,240 @@ body {
   border-radius: 4px;
 }
 
-/* MapLibre chrome tuning: calm, minimal, follows theme */
-@media (max-width: 1199px) {
-  /* Keep controls clear of the compact onboarding card and bottom dock. */
-  .maplibregl-ctrl-top-left {
-    top: auto;
-    right: auto;
-    bottom: 5.25rem;
-    left: 0.75rem;
+/* Text fields draw their own focus state on the field container, so the
+   global outline would double it. Checkboxes, radios and ranges keep it. */
+.atlas
+  input:not([type="checkbox"]):not([type="radio"]):not(
+    [type="range"]
+  ):focus-visible {
+  outline: none;
+}
+
+/* The legacy global ring forces a 4px radius; Atlas controls keep their own
+   shape (a pill stays a pill) by rolling back to the utility layer. */
+.atlas :focus-visible {
+  border-radius: revert-layer;
+}
+
+/* Native search clear buttons clash with the palette; the app draws its own. */
+.atlas input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Headings that receive focus programmatically (to move a screen reader to
+   the new content) are not controls; they need no ring. */
+.atlas [tabindex="-1"]:focus {
+  outline: none;
+}
+
+/* The story panel (desktop rail or phone sheet) sets its padding through
+   two variables; sticky bars inside bleed to the panel edge with them. */
+.rail-pad {
+  padding: var(--rail-pt) var(--rail-px) 3rem;
+}
+.rail-sticky {
+  margin-inline: calc(var(--rail-px) * -1);
+  margin-top: calc(var(--rail-pt) * -1);
+  padding-inline: max(0.75rem, calc(var(--rail-px) - 0.5rem));
+}
+
+/* ---------- Type ---------- */
+.f-display {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-variation-settings:
+    "SOFT" 40,
+    "opsz" 72;
+  font-variant-numeric: lining-nums;
+}
+.f-mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
+}
+.tnum {
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+/* ---------- Atlas chrome ---------- */
+.thin-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--muted) 40%, transparent) transparent;
+}
+
+.hatch-ok {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    color-mix(in srgb, var(--ok) 34%, transparent) 0 2px,
+    color-mix(in srgb, var(--ok) 12%, transparent) 2px 6px
+  );
+}
+.hatch-bad {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    color-mix(in srgb, var(--danger) 55%, transparent) 0 2px,
+    color-mix(in srgb, var(--danger) 18%, transparent) 2px 6px
+  );
+}
+
+@keyframes anim-rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes anim-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes skel-shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: 200px 0;
+  }
+}
+.anim-rise {
+  animation: anim-rise 0.32s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.anim-fade {
+  animation: anim-fade 0.2s ease-out both;
+}
+.skel {
+  background:
+    linear-gradient(
+        90deg,
+        transparent 0,
+        color-mix(in srgb, var(--muted) 14%, transparent) 50%,
+        transparent 100%
+      )
+      no-repeat,
+    color-mix(in srgb, var(--muted) 12%, transparent);
+  background-size: 200px 100%;
+  animation: skel-shimmer 1.2s linear infinite;
+  border-radius: 6px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .anim-rise,
+  .anim-fade,
+  .skel {
+    animation: none;
+  }
+  .sheet-motion {
+    transition: none !important;
   }
 }
 
-@media (min-width: 1200px) {
-  /* Keep the map controls outside the left rail, never under search. */
-  .maplibregl-ctrl-top-left {
-    left: 20.25rem;
-    top: 0.25rem;
-  }
+/* Numbered pins for regions in the comparison. */
+.map-pin {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--paper);
+  font:
+    700 11px/1 var(--font-jakarta),
+    system-ui,
+    sans-serif;
+  box-shadow:
+    0 0 0 2px var(--paper),
+    0 2px 6px rgb(0 0 0 / 0.25);
+  pointer-events: none;
 }
 
-@media (min-width: 1800px) {
-  /* The left rail grows from 296px to 340px on very wide screens. */
-  .maplibregl-ctrl-top-left {
-    left: 23rem;
-  }
-}
-
-/* Explicit drawer widths avoid custom Tailwind variants being shadowed by
-   the smaller sm: width rule at wide viewports. */
-.assumptions-drawer,
-.about-drawer {
+/* Salary slider. --fill is the filled share of the track. */
+.range-input {
+  -webkit-appearance: none;
+  appearance: none;
   width: 100%;
+  height: 28px;
+  background: transparent;
+  cursor: pointer;
+}
+.range-input:focus-visible {
+  outline: none;
+}
+.range-input::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    var(--accent) 0 var(--fill, 0%),
+    var(--rule-2) var(--fill, 0%) 100%
+  );
+}
+.range-input::-moz-range-track {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--rule-2);
+}
+.range-input::-moz-range-progress {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--accent);
+}
+.range-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  margin-top: -8px;
+  border-radius: 999px;
+  background: var(--paper);
+  border: 2px solid var(--accent);
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.18);
+}
+.range-input::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: var(--paper);
+  border: 2px solid var(--accent);
+}
+.range-input:focus-visible::-webkit-slider-thumb {
+  box-shadow:
+    0 0 0 2px var(--paper),
+    0 0 0 4px var(--accent);
+}
+.range-input:focus-visible::-moz-range-thumb {
+  box-shadow:
+    0 0 0 2px var(--paper),
+    0 0 0 4px var(--accent);
 }
 
-@media (min-width: 640px) {
-  .assumptions-drawer {
-    width: 380px;
-  }
-
-  .about-drawer {
-    width: 480px;
-  }
+/* Receipt zig-zag bottom edge. */
+.receipt-edge {
+  height: 9px;
+  background:
+    linear-gradient(-45deg, transparent 6px, var(--paper-2) 0) 0 0 / 12px 9px
+      repeat-x,
+    linear-gradient(45deg, transparent 6px, var(--paper-2) 0) 0 0 / 12px 9px
+      repeat-x;
 }
 
-@media (min-width: 768px) {
-  .assumptions-drawer {
-    width: 420px;
-  }
+/* ---------- MapLibre chrome: calm, follows theme ---------- */
+/* MapLibre clips an outside outline; draw the canvas ring inside. */
+.maplibregl-canvas:focus-visible {
+  outline-offset: -3px;
 }
 
-@media (min-width: 1024px) {
-  .assumptions-drawer {
-    width: 440px;
-  }
+/* Phones: the sheet covers the bottom of the map, so the (compact) map
+   credits move to the top-right corner, where nothing else sits. */
+.phone-map .maplibregl-ctrl-bottom-right {
+  top: 8px;
+  bottom: auto;
 }
 
-@media (min-width: 1400px) {
-  .assumptions-drawer {
-    width: 520px;
-  }
-
-  .about-drawer {
-    width: 540px;
-  }
-}
-
-@media (min-width: 1600px) {
-  .assumptions-drawer {
-    width: 580px;
-  }
-}
-
-@media (min-width: 1800px) {
-  .assumptions-drawer {
-    width: 680px;
-  }
-
-  .about-drawer {
-    width: 640px;
-  }
-}
-
-@media (min-width: 2200px) {
-  .assumptions-drawer {
-    width: 760px;
-  }
-}
-
-@media (min-width: 2560px) {
-  .assumptions-drawer {
-    width: 580px;
-  }
-
-  .about-drawer {
-    width: 720px;
-  }
-}
-
-/* The desktop comparison rail is narrow at the breakpoint boundary. Keep
-   the table readable until there is enough room for its secondary chart. */
-@media (min-width: 1200px) and (max-width: 1439px) {
-  .comparison-content {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .comparison-chart {
-    display: none;
-  }
-}
-
-.maplibregl-ctrl-group {
-  background: var(--card) !important;
-  border: 1px solid var(--border) !important;
-  border-radius: 10px !important;
-  box-shadow: 0 1px 3px rgb(0 0 0 / 0.12) !important;
-  overflow: hidden;
-}
-.maplibregl-ctrl-group button {
-  background-color: transparent !important;
-}
 .maplibregl-ctrl-attrib {
-  background: color-mix(in srgb, var(--card) 85%, transparent) !important;
+  background: color-mix(in srgb, var(--paper) 85%, transparent) !important;
   color: var(--muted) !important;
   font-size: 10px;
 }
@@ -206,23 +406,13 @@ body {
   color: var(--ink) !important;
   text-decoration: underline;
 }
-.dark .maplibregl-ctrl-attrib,
-.dark .maplibregl-ctrl-attrib a {
-  color: var(--muted) !important;
-}
-.dark .maplibregl-ctrl-attrib a:hover {
-  color: var(--ink) !important;
-}
-.dark .maplibregl-ctrl-zoom-in .maplibregl-ctrl-icon,
-.dark .maplibregl-ctrl-zoom-out .maplibregl-ctrl-icon,
-.dark .maplibregl-ctrl-compass .maplibregl-ctrl-icon,
-.dark .maplibregl-ctrl-geolocate .maplibregl-ctrl-icon {
+.dark .maplibregl-ctrl-attrib-button {
   filter: invert(1);
 }
 
 /* No-data hatch pattern is drawn as a canvas image at runtime (see map component). */
 
-/* Print-Ready Booklet Stylesheet */
+/* Print-ready booklet and documents (.no-print hides app chrome). */
 @media print {
   @page {
     size: A4 portrait;
