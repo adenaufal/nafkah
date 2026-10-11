@@ -14,8 +14,9 @@ import {
   BAND_LABEL,
   DEFAULT_ASSUMPTIONS,
 } from "@/lib/calculations";
-import { BAND_ORDER, bandRange } from "@/lib/bands";
+import { BAND_MEANING, BAND_ORDER, bandRange } from "@/lib/bands";
 import { formatDate, formatMonth, pct, rpShort } from "@/lib/format";
+import { limitations } from "@/lib/limitations";
 import { CORRECTION_FORM_URL } from "@/lib/links";
 import { profileSummary } from "@/lib/profile";
 import type { AffordabilityBand } from "@/lib/types";
@@ -47,14 +48,6 @@ const TOC: TocItem[] = [
   { id: "batasan", label: "Batasan" },
   { id: "versi", label: "Versi & koreksi" },
 ];
-
-const MEANING: Record<AffordabilityBand, string> = {
-  comfortable:
-    "Biaya hidup tertutup dan masih tersisa seperlimanya atau lebih.",
-  manageable: "Biaya hidup tertutup, sisanya tipis.",
-  tight: "Kurang, sampai seperlima biaya hidup.",
-  insufficient: "Kurang lebih dari seperlima biaya hidup.",
-};
 
 const num = (v: number) =>
   v.toLocaleString("id-ID", { maximumFractionDigits: 3 });
@@ -273,7 +266,7 @@ export default function MetodePage() {
                   <td className="tnum whitespace-nowrap py-2.5 pr-3">
                     {bandRange(band)}
                   </td>
-                  <td className="py-2.5">{MEANING[band]}</td>
+                  <td className="py-2.5">{BAND_MEANING[band]}</td>
                 </tr>
               ))}
             </tbody>
@@ -648,36 +641,7 @@ export default function MetodePage() {
 
         <Section id="batasan" n={7} title="Batasan yang perlu kamu tahu">
           <ul className="space-y-3">
-            {[
-              [
-                "Bukan survei primer.",
-                "Biaya hidup dimodelkan dari agregat; belum ada pengukuran langsung di setiap kabupaten/kota.",
-              ],
-              [
-                "Satu angka per daerah.",
-                "Biaya di pusat kota dan pinggiran bisa jauh berbeda; angka di sini adalah tipikal daerah.",
-              ],
-              [
-                "UMK bukan gaji aktual.",
-                "Banyak pekerja dibayar di atas atau di bawah upah minimum. Pakai Gajiku untuk angkamu sendiri.",
-              ],
-              [
-                "Profil adalah penyederhanaan.",
-                "Kebutuhan anak, kesehatan, atau tanggungan lain berbeda di tiap keluarga.",
-              ],
-              [
-                "Data punya tanggal.",
-                `Upah berlaku sejak ${formatDate(f.wage.asOf[0] ?? "2026-01-01")}; tanggal tiap nilai biaya tercantum di detail daerah.`,
-              ],
-              [
-                "Sampel komunitas terpisah.",
-                "Data yang dikumpulkan dari pengguna belum memengaruhi peta.",
-              ],
-              [
-                "Bukan nasihat keuangan.",
-                "Gunakan sebagai pembanding awal, bukan dasar tunggal keputusan.",
-              ],
-            ].map(([t, d]) => (
+            {limitations(f.wage.asOf[0] ?? "2026-01-01").map(([t, d]) => (
               <li key={t} className="flex gap-3">
                 <span
                   aria-hidden="true"

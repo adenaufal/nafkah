@@ -42,6 +42,14 @@ export function pct(value: number, fractionDigits = 0): string {
   return `${value.toLocaleString("id-ID", { maximumFractionDigits: fractionDigits })}%`;
 }
 
+/** "97,0%" — always the same decimals, for columns that must line up. */
+export function pctFixed(value: number, fractionDigits = 1): string {
+  return `${value.toLocaleString("id-ID", {
+    minimumFractionDigits: fractionDigits,
+    maximumFractionDigits: fractionDigits,
+  })}%`;
+}
+
 /** "1 Agustus 2026" */
 export function formatDate(iso: string): string {
   return new Date(iso).toLocaleDateString("id-ID", {

@@ -5,13 +5,29 @@ import { useEffect, useRef, useState } from "react";
 export interface TocItem {
   id: string;
   label: string;
+  /** Printed page number (the booklet). */
+  page?: number;
 }
+
+/* Literal class names per breakpoint, so Tailwind can see them. */
+const WIDE = {
+  lg: { min: 1024, column: "lg:block", chips: "lg:hidden" },
+  xl: { min: 1280, column: "xl:block", chips: "xl:hidden" },
+} as const;
 
 /**
  * Table of contents that marks the section being read. Sticky column on
- * wide screens; a scrollable chip row under the header on phones.
+ * wide screens; a scrollable chip row under the header on phones. The
+ * booklet switches at `xl`, where an A4 sheet fits beside the column.
  */
-export function Toc({ items }: { items: TocItem[] }) {
+export function Toc({
+  items,
+  breakpoint = "lg",
+}: {
+  items: TocItem[];
+  breakpoint?: keyof typeof WIDE;
+}) {
+  const wide = WIDE[breakpoint];
   const [active, setActive] = useState(items[0]?.id);
   const chips = useRef<HTMLOListElement>(null);
   // Phones: keep the chip for the current section in view.
@@ -30,7 +46,7 @@ export function Toc({ items }: { items: TocItem[] }) {
     let frame = 0;
     const update = () => {
       frame = 0;
-      const line = window.innerWidth >= 1024 ? 120 : 150;
+      const line = window.innerWidth >= wide.min ? 120 : 150;
       let current = els[0]?.id;
       for (const el of els) {
         if (el.getBoundingClientRect().top <= line) current = el.id;
@@ -55,13 +71,13 @@ export function Toc({ items }: { items: TocItem[] }) {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
     };
-  }, [items]);
+  }, [items, wide.min]);
 
   return (
     <>
       <nav
         aria-label="Daftar isi"
-        className="no-print sticky top-24 hidden self-start lg:block"
+        className={`no-print sticky top-24 hidden self-start ${wide.column}`}
       >
         <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted">
           Daftar isi
@@ -72,12 +88,17 @@ export function Toc({ items }: { items: TocItem[] }) {
               <a
                 href={`#${i.id}`}
                 aria-current={active === i.id ? "location" : undefined}
-                className={`-ml-px block border-l-2 py-1.5 pl-4 text-[13.5px] transition-colors ${
+                className={`-ml-px flex gap-2.5 border-l-2 py-1.5 pl-4 text-[13.5px] transition-colors ${
                   active === i.id
                     ? "border-accent font-semibold text-ink"
                     : "border-transparent text-muted hover:text-ink"
                 }`}
               >
+                {i.page !== undefined && (
+                  <span className="tnum w-4 shrink-0 text-right font-normal text-muted">
+                    {i.page}
+                  </span>
+                )}
                 {i.label}
               </a>
             </li>
@@ -86,7 +107,7 @@ export function Toc({ items }: { items: TocItem[] }) {
       </nav>
       <nav
         aria-label="Daftar isi"
-        className="no-print sticky top-14 z-20 -mx-5 border-b border-rule bg-paper/92 px-5 py-2 backdrop-blur lg:hidden"
+        className={`no-print sticky top-14 z-20 -mx-5 border-b border-rule bg-paper/92 px-5 py-2 backdrop-blur ${wide.chips}`}
       >
         <ol
           ref={chips}

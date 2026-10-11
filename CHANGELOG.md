@@ -5,6 +5,26 @@ Nomor versi mengikuti Semantic Versioning: `MAJOR.MINOR.PATCH`.
 
 ## [Unreleased]
 
+### Changed
+- Booklet `/booklet` disusun ulang menjadi 12 halaman A4 bergaya Atlas:
+  sampul dengan peta Indonesia, ringkasan nasional, peta per wilayah, cara
+  menghitung, profil rumah tangga, semua provinsi, peringkat, kota besar
+  (dengan gaji yang bisa diubah di layar), panduan aplikasi, serta sumber dan
+  batasan data. Semua angka, peta, dan grafik dihitung dari dataset aktif saat
+  situs dibangun, lewat rumus yang sama dengan peta.
+
+### Fixed
+- Cetak booklet kini menghasilkan tepat satu halaman A4 per lembar.
+  Sebelumnya mode "Halaman demi Halaman" hanya mencetak halaman yang sedang
+  dibuka, dan mode "Dokumen Gulir Penuh" membelah setiap lembar menjadi dua
+  halaman.
+- Contoh angka di booklet lama tidak cocok dengan dataset, misalnya Kota
+  Jakarta Pusat tertulis 115% (Cukup) padahal datanya 92% (Ketat).
+
+### Removed
+- Salinan statis `public/booklet.html`. Berkas itu tidak pernah tersaji,
+  karena rute `/booklet` menimpanya saat ekspor.
+
 ## [0.3.0] - 2026-10-03
 
 ### Added

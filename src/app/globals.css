@@ -4,7 +4,18 @@
 /* Class-based dark mode for Tailwind v4 */
 @custom-variant dark (&:where(.dark, .dark *));
 
-:root {
+/* Booklet: the sheet is drawn at A4 size — wide screens and print. Print
+   media is ~794px wide, so a min-width breakpoint alone would miss it. */
+@custom-variant paper {
+  @media (min-width: 880px), print {
+    @slot;
+  }
+}
+
+/* Light palette. Booklet sheets (.sheet) are paper, so they keep it in
+   dark mode too: what is on screen is what prints. */
+:root,
+.sheet {
   --accent: #c2452d;
   --accent-strong: #a83624;
   --accent-soft: #fbeae5;
@@ -69,11 +80,15 @@
   --band-insufficient: #ef6a5a;
 }
 
-/* Atlas surfaces (app, Metode, Tentang). The booklet keeps the older card
-   palette, so the two tokens that differ are only re-tuned in here. */
-.atlas {
+/* Atlas surfaces (app, Metode, Tentang, booklet) and the booklet's sheets
+   re-tune two tokens; :root keeps the earlier values for anything rendered
+   outside them. */
+.atlas,
+.sheet {
   --accent-soft: #f6e3dc;
   --ok: #0b6b42;
+}
+.atlas {
   font-family: var(--font-jakarta), "Segoe UI", system-ui, sans-serif;
   color: var(--ink);
   background: var(--paper);
@@ -111,17 +126,9 @@ body {
   overflow: hidden; /* app chrome scrolls internally; never the page */
 }
 
-/* Booklet and scrollable standalone documents */
-html.scrollable,
-html.scrollable body {
-  height: auto !important;
-  min-height: 100% !important;
-  overflow-y: auto !important;
-  overflow-x: hidden !important;
-}
-
-/* Metode / Tentang: only the root scrolls. A scrolling body would become
-   the sticky containing block and the header/contents would not stick. */
+/* Metode / Tentang / booklet: only the root scrolls. A scrolling body would
+   become the sticky containing block and the header/contents would not
+   stick. */
 html:has(.doc-page) {
   height: auto;
   min-height: 100%;
@@ -412,7 +419,17 @@ body:has(.atlas) {
 
 /* No-data hatch pattern is drawn as a canvas image at runtime (see map component). */
 
-/* Print-ready booklet and documents (.no-print hides app chrome). */
+/* ---------- Booklet sheets ---------- */
+/* One sheet is one A4 page (size and breaks: the paper: classes in
+   components/booklet/Sheet.tsx). */
+.sheet {
+  color-scheme: light;
+  color: var(--ink);
+  background: #fff;
+}
+
+/* Print: documents drop app chrome (.no-print). The booklet overrides the
+   page margin with 0, because each sheet carries its own margins. */
 @media print {
   @page {
     size: A4 portrait;
@@ -432,19 +449,5 @@ body:has(.atlas) {
 
   .no-print {
     display: none !important;
-  }
-
-  .print-page {
-    page-break-after: always !important;
-    break-after: page !important;
-    break-inside: avoid !important;
-    margin-bottom: 0 !important;
-    box-shadow: none !important;
-    border: none !important;
-  }
-
-  .print-avoid-break {
-    page-break-inside: avoid !important;
-    break-inside: avoid !important;
   }
 }

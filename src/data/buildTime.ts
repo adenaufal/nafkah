@@ -13,14 +13,35 @@ import type {
 } from "@/lib/types";
 
 /**
- * Build-time facts for the Metode page, read straight from the versioned
- * dataset that ships (server only — node:fs). Nothing here is typed in by
- * hand: if the data changes, the page changes with the next build.
+ * Build-time facts for the Metode page and the booklet, read straight from
+ * the versioned dataset that ships (server only — node:fs). Nothing here is
+ * typed in by hand: if the data changes, the pages change with the next
+ * build.
  */
 
 const DIR = resolve("public/data/v2026.1");
 const read = <T>(name: string): T =>
   JSON.parse(readFileSync(resolve(DIR, name), "utf8")) as T;
+
+export interface ShippedDataset {
+  manifest: { datasetVersion: string; generatedAt: string };
+  regions: Region[];
+  wages: WageRecord[];
+  costs: CostProfile[];
+}
+
+let shipped: ShippedDataset | null = null;
+
+/** The dataset files that ship with the site, read once per build. */
+export function shippedDataset(): ShippedDataset {
+  shipped ??= {
+    manifest: read("manifest.json"),
+    regions: read("regions.json"),
+    wages: read("wages.json"),
+    costs: read("costs.json"),
+  };
+  return shipped;
+}
 
 export interface CategorySource {
   key: ExpenseCategoryKey;
@@ -64,12 +85,7 @@ export interface MethodFacts {
 }
 
 export function methodFacts(): MethodFacts {
-  const manifest = read<{ datasetVersion: string; generatedAt: string }>(
-    "manifest.json",
-  );
-  const regions = read<Region[]>("regions.json");
-  const wages = read<WageRecord[]>("wages.json");
-  const costs = read<CostProfile[]>("costs.json");
+  const { manifest, regions, wages, costs } = shippedDataset();
   const byCode = new Map(regions.map((r) => [r.code, r]));
 
   const categories = EXPENSE_CATEGORIES.map((c) => {

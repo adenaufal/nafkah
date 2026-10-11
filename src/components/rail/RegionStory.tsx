@@ -15,14 +15,12 @@ import {
 import { useApp } from "@/state/AppContext";
 import {
   breakdownRows,
-  categoryLabel,
-  confidenceLabel,
   useNationalMedians,
   useRanking,
   useRegionDetail,
-  wageLabel,
 } from "@/state/derived";
 import { bandTheme } from "@/lib/bands";
+import { categoryLabel, confidenceLabel, wageLabel } from "@/lib/labels";
 import { digits, formatDate, formatMonth, pct, rpShort } from "@/lib/format";
 import {
   incomeTargets,

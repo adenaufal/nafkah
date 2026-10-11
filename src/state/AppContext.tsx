@@ -29,12 +29,12 @@ import {
   DEFAULT_ASSUMPTIONS,
 } from "@/lib/calculations";
 import { loadGeometry, loadDataset } from "@/data/loader";
-import { loadPersisted, savePersisted } from "./persist";
+import { loadPersisted, MAX_PINS, savePersisted } from "./persist";
 import { decodeSharedView } from "./share";
 import { recordUsage } from "@/lib/usage";
 import type { FeatureCollection, Geometry } from "geojson";
 
-export const MAX_PINS = 5;
+export { MAX_PINS };
 
 interface AppState {
   geometryStatus: LoadStatus;
