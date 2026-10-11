@@ -1,4 +1,4 @@
-import { DEFAULT_ASSUMPTIONS } from "@/lib/calculations";
+import { activePartnerIncome, DEFAULT_ASSUMPTIONS } from "@/lib/calculations";
 import type {
   AffordabilityBand,
   Assumptions,
@@ -140,6 +140,7 @@ export function decodeSharedView(search: string): SharedView | null {
       DEFAULT_ASSUMPTIONS.dualIncome,
     ),
     customIncome: positiveInteger(params.get("income")),
+    partnerIncome: positiveInteger(params.get("partner")),
     installmentMonthly: positiveInteger(params.get("installment")),
   });
   const selected = params.get("f");
@@ -185,6 +186,11 @@ export function buildShareUrl(baseUrl: string, view: SharedView): string {
   url.searchParams.set("dual", a.dualIncome ? "1" : "0");
   if (a.customIncome != null && a.customIncome > 0)
     url.searchParams.set("income", String(Math.floor(a.customIncome)));
+  // Only while it counts: an idle partner salary would put a number in the
+  // link that the shared view never uses.
+  const partnerIncome = activePartnerIncome(a);
+  if (partnerIncome != null)
+    url.searchParams.set("partner", String(Math.floor(partnerIncome)));
   if (a.installmentMonthly != null && a.installmentMonthly > 0)
     url.searchParams.set("installment", String(Math.floor(a.installmentMonthly)));
   url.searchParams.set("color", view.colorMode);

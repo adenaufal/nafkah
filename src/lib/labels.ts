@@ -28,21 +28,25 @@ export function categoryLabel(key: ExpenseCategoryKey, a: Assumptions): string {
 /**
  * What the income line is: own salary, the origin city's wage, or the
  * region's — UMK or UMP per its legal basis, with the after-deduction figure
- * marked as the estimate it is. `kind` belongs to the record the income
- * comes from (the origin city in relocation mode).
+ * marked as the estimate it is — plus a working partner's salary or the same
+ * minimum wage. `kind` belongs to the record the income comes from (the
+ * origin city in relocation mode).
  */
 export function wageLabel(
   m: RegionMetrics,
   a: Assumptions,
   kind: WageKind = "UMK",
 ): string {
-  const dual = a.dualIncome && a.householdType !== "single";
   const net = a.wageBasis === "takeHome" ? " setelah potongan (est.)" : "";
-  if (m.wageSource === "custom")
-    return dual ? `Gajimu + ${kind} pasangan` : "Gajimu";
-  if (m.wageSource === "origin")
-    return `${kind} kota asal${net}${dual ? " × 2" : ""}`;
-  return `${kind}${net}${dual ? " × 2" : ""}`;
+  const own =
+    m.wageSource === "custom"
+      ? "Gajimu"
+      : m.wageSource === "origin"
+        ? `${kind} kota asal${net}`
+        : `${kind}${net}`;
+  if (m.partnerWageSource == null) return own;
+  if (m.partnerWageSource === "custom") return `${own} + gaji pasangan`;
+  return m.wageSource === "custom" ? `${own} + ${kind} pasangan` : `${own} × 2`;
 }
 
 export function confidenceLabel(c: Confidence): string {

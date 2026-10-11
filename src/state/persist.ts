@@ -42,6 +42,7 @@ const V01_DEFAULT_ASSUMPTIONS: Assumptions = {
   wageBasis: "gross",
   dualIncome: false,
   customIncome: null,
+  partnerIncome: null,
   installmentMonthly: null,
 };
 
@@ -180,7 +181,8 @@ export function normalizePersisted(input: unknown): Persisted {
  *  - v0.1 → v1.1: profil "Keluarga" lama berarti pasangan + 2 anak, jadi state
  *    lama tanpa `children` dimigrasi ke 2 agar angka v0.1 tidak berubah diam-diam.
  *  - `children` di-clamp ke 0..MAX_CHILDREN.
- *  - `installmentMonthly` hanya berlaku bila angka positif; selain itu null.
+ *  - Nominal (`customIncome`, `partnerIncome`, `installmentMonthly`) hanya
+ *    berlaku bila angka positif; selain itu null.
  */
 export function normalizeAssumptions(
   input: Partial<Assumptions> | null | undefined,
@@ -220,6 +222,10 @@ export function normalizeAssumptions(
       raw.customIncome === undefined
         ? DEFAULT_ASSUMPTIONS.customIncome
         : positiveMoney(raw.customIncome),
+    partnerIncome:
+      raw.partnerIncome === undefined
+        ? DEFAULT_ASSUMPTIONS.partnerIncome
+        : positiveMoney(raw.partnerIncome),
     installmentMonthly:
       raw.installmentMonthly === undefined
         ? DEFAULT_ASSUMPTIONS.installmentMonthly

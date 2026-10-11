@@ -80,10 +80,15 @@ export interface Assumptions {
  transport: TransportMode;
  includeSavings: boolean;
  wageBasis: WageBasis;
- /** Pasangan ikut bekerja: total upah 2× UMK/UMP daerah terpilih. */
+ /** Pasangan ikut bekerja: pendapatan ditambah satu penghasilan lagi. */
  dualIncome: boolean;
  /** Pendapatan bulanan milik pengguna (Rp). null = pakai upah daerah (UMK/UMP). */
  customIncome: number | null;
+ /**
+  * Gaji bulanan pasangan (Rp), hanya berlaku saat dualIncome aktif. null =
+  * upah minimum yang sama: UMK/UMP daerah, atau kota asal saat relokasi.
+  */
+ partnerIncome: number | null;
  /** Cicilan KPR/angsuran bulanan milik pengguna (Rp). null = estimasi sewa daerah. */
  installmentMonthly: number | null;
 }
@@ -102,16 +107,18 @@ export interface AffordabilityBands {
  tightAt: number;
 }
 
+/** Asal penghasilan satu pekerja: upah tujuan, upah kota asal, atau isian. */
+export type IncomeSource = "region" | "origin" | "custom";
+
 export interface RegionMetrics {
  code: string;
  wageAmount: number;
  /** Upah daerah berbasis UMK/UMP — pembanding saat pendapatan custom aktif. */
  regionalWageAmount: number;
- /**
-  * Sumber pembagi rasio keterjangkauan: upah tujuan, gaji asal, atau
-  * pendapatan sendiri.
-  */
- wageSource: "region" | "origin" | "custom";
+ /** Sumber penghasilan pengguna sendiri. */
+ wageSource: IncomeSource;
+ /** Sumber penghasilan pasangan yang ikut bekerja; null = satu penghasilan. */
+ partnerWageSource: IncomeSource | null;
  totalMonthlyCost: number;
  coveragePercent: number;
  surplusOrDeficit: number;

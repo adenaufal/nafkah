@@ -10,7 +10,7 @@ import {
   useRanking,
 } from "@/state/derived";
 import { BAND_ORDER, bandTheme } from "@/lib/bands";
-import { VALUE_RAMP } from "@/lib/calculations";
+import { activePartnerIncome, VALUE_RAMP } from "@/lib/calculations";
 import { pct, rpShort } from "@/lib/format";
 import { provinceSummaries, valueStops } from "@/lib/insights";
 import { regionLabel } from "@/lib/names";
@@ -58,15 +58,25 @@ export function NationalStory({
     : undefined;
   const dual = a.dualIncome && a.householdType !== "single";
   const custom = (a.customIncome ?? 0) > 0;
+  const partnerPay = activePartnerIncome(a);
   const net = a.wageBasis === "takeHome" ? " setelah potongan (estimasi)" : "";
   const originKind = wageKind(
     state.originCode ? state.wages.get(state.originCode) : undefined,
   );
-  const subject = custom
-    ? `gajimu ${rpShort(a.customIncome ?? 0)}${dual ? " ditambah upah pasangan" : ""}`
-    : origin
-      ? `${dual ? `dua ${originKind}` : originKind} ${regionLabel(origin)}${net}`
-      : `${dual ? "dua upah minimum" : "upah minimum"}${net}`;
+  const wageName = origin
+    ? `${originKind} ${regionLabel(origin)}`
+    : "upah minimum";
+  const own = custom
+    ? `gajimu ${rpShort(a.customIncome ?? 0)}`
+    : `${wageName}${net}`;
+  const subject =
+    partnerPay != null
+      ? `${own} ditambah gaji pasangan ${rpShort(partnerPay)}`
+      : !dual
+        ? own
+        : custom
+          ? `${own} ditambah upah pasangan`
+          : `dua ${wageName}${net}`;
   const noun = householdNoun(a);
   // The default profile sets aside ±10% savings; say so, with the count
   // without it, instead of folding it silently into "biaya hidup".

@@ -14,7 +14,7 @@ import {
 } from "@/lib/income";
 import { regionLabel } from "@/lib/names";
 import { useRegionSearch } from "@/components/search/useRegionSearch";
-import { Seg } from "@/components/ui";
+import { MoneyField, Seg } from "@/components/ui";
 
 type IncomeMode = "umk" | "gaji" | "asal";
 
@@ -46,7 +46,7 @@ export function IncomeControl({
   /** Starting salary when switching to "Gajiku" (rounded to 100 rb). */
   seed?: number;
   compact?: boolean;
-  /** The profile editor has its own switch for this. */
+  /** The profile editor has its own switch and salary field for this. */
   showDualIncome?: boolean;
 }) {
   const { state, setOrigin } = useApp();
@@ -108,7 +108,7 @@ export function IncomeControl({
           <Chip
             on={a.dualIncome}
             onClick={() => set("dualIncome", !a.dualIncome)}
-            title="Pasangan diasumsikan bekerja dengan upah minimum daerah yang sama"
+            title="Pendapatan ditambah gaji pasangan, atau upah minimum daerah bila tidak diisi"
           >
             Pasangan ikut bekerja
           </Chip>
@@ -128,7 +128,39 @@ export function IncomeControl({
           BPJS &amp; PPh.
         </p>
       )}
+      {couple && showDualIncome && a.dualIncome && (
+        <div className="mt-3">
+          <PartnerIncomeField />
+        </div>
+      )}
     </div>
+  );
+}
+
+/**
+ * The working partner's own salary, one number for every region. Empty keeps
+ * them on the minimum wage the user's income would use: each region's UMK or
+ * UMP, or the origin city's when moving.
+ */
+export function PartnerIncomeField() {
+  const { state } = useApp();
+  const { a, set } = useAssumptionActions();
+  const id = useId();
+  return (
+    <MoneyField
+      id={`${id}-partner`}
+      label="Gaji pasangan"
+      hint={
+        a.partnerIncome
+          ? "Dipakai untuk semua daerah dan hanya tersimpan di browsermu."
+          : state.originCode
+            ? "Kosong = upah minimum kota asal."
+            : "Kosong = upah minimum (UMK/UMP) tiap daerah."
+      }
+      value={a.partnerIncome}
+      onChange={(v) => set("partnerIncome", v)}
+      placeholder="cth. 4.000.000"
+    />
   );
 }
 

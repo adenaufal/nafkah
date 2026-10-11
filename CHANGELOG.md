@@ -5,6 +5,13 @@ Nomor versi mengikuti Semantic Versioning: `MAJOR.MINOR.PATCH`.
 
 ## [Unreleased]
 
+### Added
+- Gaji pasangan bisa diisi sendiri saat "Pasangan ikut bekerja" aktif, di
+  kontrol "Hitung dengan" maupun profil rumah tangga. Bila kosong, pasangan
+  tetap memakai UMK/UMP daerah yang sama (atau kota asal saat simulasi pindah
+  kota) seperti sebelumnya. Angkanya ikut tersimpan di browser, tautan berbagi,
+  label pendapatan, dan ekspor CSV.
+
 ### Changed
 - Booklet `/booklet` disusun ulang menjadi 12 halaman A4 bergaya Atlas:
   sampul dengan peta Indonesia, ringkasan nasional, peta per wilayah, cara
@@ -20,6 +27,12 @@ Nomor versi mengikuti Semantic Versioning: `MAJOR.MINOR.PATCH`.
   halaman.
 - Contoh angka di booklet lama tidak cocok dengan dataset, misalnya Kota
   Jakarta Pusat tertulis 115% (Cukup) padahal datanya 92% (Ketat).
+- Ekspor CSV tidak lagi mencantumkan "UMK pasangan dari kota asal" sebagai
+  sumber pendapatan saat gajimu diisi dalam mode pindah kota tanpa pasangan
+  yang ikut bekerja.
+- Catatan pembanding di struk bulanan kini bertuliskan "Dua UMK daerah ini"
+  saat pasangan ikut bekerja. Sebelumnya jumlah dua upah minimum ditulis
+  sebagai "UMK daerah ini".
 
 ### Removed
 - Salinan statis `public/booklet.html`. Berkas itu tidak pernah tersaji,

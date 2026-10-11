@@ -42,6 +42,7 @@ function metric(
     wageAmount: wage,
     regionalWageAmount: wage,
     wageSource: "region",
+    partnerWageSource: null,
     totalMonthlyCost: total,
     coveragePercent: coverage,
     surplusOrDeficit: wage - total,

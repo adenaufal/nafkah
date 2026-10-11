@@ -1,10 +1,11 @@
 import { EXPENSE_CATEGORIES } from "@/data/costs";
-import { BAND_LABEL } from "@/lib/calculations";
+import { BAND_LABEL, isRegionalIncome } from "@/lib/calculations";
 import { assumptionSummary } from "@/lib/profile";
 import type {
   Assumptions,
   Confidence,
   CostProfile,
+  IncomeSource,
   Region,
   RegionMetrics,
   WageRecord,
@@ -82,6 +83,31 @@ function latestAsOf(values: string[]): string {
   return values.reduce((latest, value) => (value > latest ? value : latest));
 }
 
+/** Where one earner's income comes from: a typed salary or a wage record. */
+function incomeProvenance(
+  source: IncomeSource,
+  row: ComparisonExportRow,
+  generatedDate: string,
+): Pick<CsvRow, "source" | "asOf" | "confidence"> {
+  if (source === "custom")
+    return {
+      source: "Input pengguna (bukan dataset)",
+      asOf: generatedDate,
+      confidence: "estimate",
+    };
+  if (source === "origin" && row.originWage)
+    return {
+      source: "UMK kota asal",
+      asOf: row.originWage.asOf,
+      confidence: row.originWage.confidence,
+    };
+  return {
+    source: row.wage.source,
+    asOf: row.wage.asOf,
+    confidence: row.wage.confidence,
+  };
+}
+
 function rowsForRegion(
   row: ComparisonExportRow,
   assumptions: Assumptions,
@@ -98,46 +124,42 @@ function rowsForRegion(
   const derivedSource = "Perhitungan Nafkah dari data kategori di bawah";
   const derivedNote =
     "Dihitung dengan profil " + assumptionSummary(assumptions) + ".";
-  const wageSource =
-    metrics.wageSource === "custom"
-      ? row.originWage
-        ? "Input pengguna + UMK pasangan dari kota asal"
-        : "Input pengguna (bukan dataset)"
-      : metrics.wageSource === "origin"
-        ? "UMK kota asal"
-        : wage.source;
-  const wageAsOf =
-    metrics.wageSource === "custom"
-      ? row.originWage
-        ? latestAsOf([generatedDate, row.originWage.asOf])
-        : generatedDate
-      : metrics.wageSource === "origin" && row.originWage
-        ? row.originWage.asOf
-        : wage.asOf;
-  const wageConfidence =
-    metrics.wageSource === "custom"
-      ? combineConfidence("estimate", row.originWage?.confidence ?? "official")
-      : metrics.wageSource === "origin" && row.originWage
-        ? row.originWage.confidence
-        : wage.confidence;
+  // A partner on the same minimum wage shares the user's provenance; only a
+  // different source (a typed salary on either side) gets its own part.
+  const own = incomeProvenance(metrics.wageSource, row, generatedDate);
+  const partner =
+    metrics.partnerWageSource && metrics.partnerWageSource !== metrics.wageSource
+      ? incomeProvenance(metrics.partnerWageSource, row, generatedDate)
+      : null;
+  const parts = partner ? [own, partner] : [own];
+  const wageSource = partner
+    ? own.source + "; pasangan: " + partner.source
+    : own.source;
+  const wageAsOf = latestAsOf(parts.map((part) => part.asOf));
+  const wageConfidence = combineConfidence(
+    ...parts.map((part) => part.confidence),
+  );
+  const hasUserInput =
+    metrics.wageSource === "custom" || metrics.partnerWageSource === "custom";
 
   const rows: CsvRow[] = [
     {
-      metric:
-        metrics.wageSource === "custom"
-          ? "pendapatan_yang_dipakai"
-          : metrics.wageSource === "origin"
-            ? "gaji_asal_yang_dipakai"
-            : "upah_regional_yang_dipakai",
+      metric: hasUserInput
+        ? "pendapatan_yang_dipakai"
+        : metrics.wageSource === "origin"
+          ? "gaji_asal_yang_dipakai"
+          : "upah_regional_yang_dipakai",
       value: metrics.wageAmount,
       unit: "IDR/bulan",
       source: wageSource,
       asOf: wageAsOf,
       confidence: wageConfidence,
-      note:
-        metrics.wageSource === "custom"
-          ? "Nilai pendapatan berasal dari isian pengguna."
-          : "Basis upah mengikuti pilihan kotor atau estimasi take-home.",
+      note: !hasUserInput
+        ? "Basis upah mengikuti pilihan kotor atau estimasi take-home."
+        : partner
+          ? "Gabungan isian pengguna dan upah minimum; basis upah minimum " +
+            "mengikuti pilihan kotor atau estimasi take-home."
+          : "Nilai pendapatan berasal dari isian pengguna.",
     },
     {
       metric: "biaya_bulanan",
@@ -181,7 +203,7 @@ function rowsForRegion(
     },
   ];
 
-  if (metrics.wageSource !== "region") {
+  if (!isRegionalIncome(metrics)) {
     rows.push({
       metric: "umk_kota_tujuan_pembanding",
       value: metrics.regionalWageAmount,

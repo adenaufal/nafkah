@@ -34,7 +34,8 @@ secara terbuka di [repositori GitHub](https://github.com/adenaufal/nafkah).
   tabungan, serta upah kotor atau take-home.
 - "Hitung dengan": UMK tiap daerah, gajimu sendiri (slider yang mewarnai ulang
   peta seketika), atau UMK kota asal untuk simulasi pindah kota. Ada opsi
-  "2 upah" untuk pasangan bekerja.
+  "2 upah" untuk pasangan bekerja, dengan gaji pasangan yang bisa diisi sendiri
+  atau dibiarkan ikut UMK/UMP daerah.
 - Cerita daerah: vonis cakupan, pendapatan yang dibutuhkan agar cukup/nyaman,
   perbandingan dengan median nasional, struk bulanan 10 kategori, narasi lokal,
   dan posisi di antara daerah seprovinsi. Setiap angka dilengkapi `source`,
@@ -136,8 +137,9 @@ menampilkan tabel sensitivitasnya, dihitung dari dataset saat build.
 totalMonthlyCost   = Σ nilai kategori aktif di bawah asumsi saat ini
 wageBasisAmount    = earners × (wageBasis === 'gross' ? grossMonthly : estimatedTakeHome)
                        earners = 2 jika pasangan bekerja (default 1)
-  dengan pendapatan sendiri (customIncome > 0):
-    wageAmount     = customIncome + (earners === 2 ? upah daerah 1 pekerja : 0)
+  gaji isian (customIncome, partnerIncome > 0) menggantikan upah per orang:
+    wageAmount     = (customIncome ?? upah daerah 1 pekerja)
+                     + (earners === 2 ? partnerIncome ?? upah daerah 1 pekerja : 0)
 coveragePercent    = wageBasisAmount / totalMonthlyCost × 100
 surplusOrDeficit   = wageBasisAmount − totalMonthlyCost
 affordabilityRatio = totalMonthlyCost / wageBasisAmount
