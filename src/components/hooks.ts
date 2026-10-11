@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { useApp } from "@/state/AppContext";
 import { buildShareUrl } from "@/state/share";
+import { activePartnerIncome } from "@/lib/calculations";
 import { recordUsage } from "@/lib/usage";
 
 /** Live media query (client-only shell, so the first read is real). */
@@ -99,6 +100,7 @@ export function useShareLink() {
 
   const includesMoney =
     (state.assumptions.customIncome ?? 0) > 0 ||
+    activePartnerIncome(state.assumptions) != null ||
     (state.assumptions.installmentMonthly ?? 0) > 0;
   const label =
     status === "copied"

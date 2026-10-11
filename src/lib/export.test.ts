@@ -47,6 +47,7 @@ const metrics: RegionMetrics = {
   wageAmount: 5_000_000,
   regionalWageAmount: 5_000_000,
   wageSource: "region",
+  partnerWageSource: null,
   totalMonthlyCost: 1_000_000,
   coveragePercent: 500,
   surplusOrDeficit: 4_000_000,
@@ -74,5 +75,64 @@ describe("comparison CSV export", () => {
     expect(csv).toContain('"BPS, catatan model"');
     expect(csv).toContain("biaya_housing,100000,IDR/bulan");
     expect(csv).toContain("2026-08-01,sample");
+  });
+
+  it("names a typed partner salary beside the minimum wage it joins", () => {
+    const csv = buildComparisonCsv({
+      rows: [
+        {
+          region,
+          metrics: {
+            ...metrics,
+            wageAmount: 9_500_000,
+            regionalWageAmount: 10_000_000,
+            partnerWageSource: "custom",
+          },
+          wage,
+          costs,
+        },
+      ],
+      assumptions: {
+        ...DEFAULT_ASSUMPTIONS,
+        householdType: "couple",
+        dualIncome: true,
+        partnerIncome: 4_500_000,
+      },
+      datasetVersion: "2026.1",
+      generatedAt: "2026-09-22T00:00:00.000Z",
+    });
+
+    const lines = csv.trimEnd().split("\n");
+    expect(lines).toHaveLength(17); // + destination wage as comparator
+    expect(csv).toContain(
+      "pendapatan_yang_dipakai,9500000,IDR/bulan,," +
+        '"BPS, catatan model; pasangan: Input pengguna (bukan dataset)",' +
+        "2026-09-22,sample,",
+    );
+    expect(csv).toContain("umk_kota_tujuan_pembanding,10000000,IDR/bulan");
+  });
+
+  it("credits no partner when only the user's salary is typed", () => {
+    const csv = buildComparisonCsv({
+      rows: [
+        {
+          region,
+          metrics: { ...metrics, wageSource: "custom", wageAmount: 8_000_000 },
+          wage,
+          costs,
+          originWage: { ...wage, regionCode: "32.73", asOf: "2026-07-01" },
+        },
+      ],
+      assumptions: { ...DEFAULT_ASSUMPTIONS, customIncome: 8_000_000 },
+      datasetVersion: "2026.1",
+      origin: { ...region, code: "32.73", name: "Kota Bandung" },
+      generatedAt: "2026-09-22T00:00:00.000Z",
+    });
+
+    expect(csv).toContain(
+      "pendapatan_yang_dipakai,8000000,IDR/bulan,," +
+        "Input pengguna (bukan dataset),2026-09-22,estimate,",
+    );
+    expect(csv).not.toContain("pasangan");
   });
 });

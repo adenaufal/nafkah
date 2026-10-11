@@ -193,7 +193,8 @@ export default function MetodePage() {
             menggantinya dengan <b>gajimu</b> (satu angka yang diuji di semua
             daerah) atau dengan <b>UMK kota asal</b> untuk simulasi pindah kota
             — biayanya tetap biaya daerah tujuan. Bila pasangan ikut bekerja,
-            pendapatan ditambah satu upah minimum daerah yang sama.
+            pendapatan ditambah <b>gaji pasangan</b>; bila tidak diisi, dipakai
+            satu upah minimum lagi dari daerah yang sama.
           </p>
           <p>
             <b>Biaya hidup bulanan</b> adalah jumlah 10 kategori pengeluaran

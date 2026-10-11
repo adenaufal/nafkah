@@ -4,6 +4,7 @@ import type {
   Assumptions,
   CostProfile,
   ExpenseCategoryKey,
+  IncomeSource,
   RegionMetrics,
   WageRecord,
 } from "./types";
@@ -21,10 +22,11 @@ import {
  *   totalMonthlyCost   = Σ active category values under current assumptions
  *   wageBasisAmount    = earners × (wageBasis === 'gross' ? grossMonthly : estimatedTakeHomeMonthly)
  *                          earners = 2 jika pasangan ikut bekerja (default 1)
- *   Dengan pendapatan sendiri (customIncome > 0):
- *     wageAmount = customIncome + (earners === 2 ? upah dari kota asal 1 pekerja : 0)
+ *   Gaji isian menggantikan upah minimum per orang:
+ *     wageAmount = (customIncome ?? upah 1 pekerja)
+ *                  + (earners === 2 ? partnerIncome ?? upah 1 pekerja : 0)
  *   Dengan kota asal relokasi:
- *     wageAmount = upah kota asal × earners, sedangkan biaya tetap dari kota tujuan.
+ *     upah 1 pekerja = upah kota asal, sedangkan biaya tetap dari kota tujuan.
  *   regionalWageAmount selalu = upah daerah (pembanding & layer peta "Upah").
  *   Per-anak (AP-03): pengali rumah tangga + children × CHILD_MULTIPLIERS.
  *   Cicilan KPR (AP-03): installmentMonthly menggantikan kategori hunian.
@@ -106,8 +108,28 @@ export const DEFAULT_ASSUMPTIONS: Assumptions = {
   wageBasis: "gross",
   dualIncome: false,
   customIncome: null,
+  partnerIncome: null,
   installmentMonthly: null,
 };
+
+/**
+ * Gaji pasangan yang benar-benar ikut dihitung: pasangan ikut bekerja di
+ * rumah tangga berpasangan dan nominalnya terisi. null = pasangan memakai
+ * upah minimum, atau tidak ada penghasilan kedua.
+ */
+export function activePartnerIncome(a: Assumptions): number | null {
+  return a.dualIncome &&
+    a.householdType !== "single" &&
+    a.partnerIncome != null &&
+    a.partnerIncome > 0
+    ? a.partnerIncome
+    : null;
+}
+
+/** Pendapatan murni upah minimum daerah itu sendiri, tanpa gaji isian. */
+export function isRegionalIncome(m: RegionMetrics): boolean {
+  return m.wageSource === "region" && m.partnerWageSource !== "custom";
+}
 
 export function classify(
   coveragePercent: number,
@@ -174,8 +196,7 @@ export function computeMetrics(
   bands: AffordabilityBands = AFFORDABILITY_BANDS,
   originWage?: WageRecord,
 ): RegionMetrics {
-  // Dua penghasilan hanya untuk rumah tangga berpasangan: pasangan diasumsikan
-  // bekerja dengan upah minimum (UMK/UMP) daerah yang sama.
+  // Dua penghasilan hanya untuk rumah tangga berpasangan.
   const earners =
     assumptions.dualIncome && assumptions.householdType !== "single" ? 2 : 1;
   const regionalSingle =
@@ -188,17 +209,18 @@ export function computeMetrics(
       ? originWage.grossMonthly
       : originWage.estimatedTakeHomeMonthly
     : regionalSingle;
-  // Pendapatan sendiri menggantikan upah pengguna; dengan "2 upah", pasangan
-  // tetap diasumsikan berupah minimum (UMK/UMP) daerah yang sama.
-  const customIncomeActive =
-    assumptions.customIncome != null && assumptions.customIncome > 0;
-  let wageAmount = regionalWageAmount;
-  if (assumptions.customIncome != null && assumptions.customIncome > 0) {
-    wageAmount =
-      assumptions.customIncome + (earners === 2 ? incomeSingle : 0);
-  } else if (originWage) {
-    wageAmount = earners * incomeSingle;
-  }
+  // Gaji isian menggantikan upah minimum per orang: customIncome untuk
+  // pengguna, partnerIncome untuk pasangan. Yang kosong tetap berupah minimum
+  // (UMK/UMP) daerah yang sama, atau kota asal saat relokasi.
+  const ownIncome =
+    assumptions.customIncome != null && assumptions.customIncome > 0
+      ? assumptions.customIncome
+      : null;
+  const partnerIncome = activePartnerIncome(assumptions);
+  const minimumSource: IncomeSource = originWage ? "origin" : "region";
+  const wageAmount =
+    (ownIncome ?? incomeSingle) +
+    (earners === 2 ? (partnerIncome ?? incomeSingle) : 0);
 
   const breakdown = adjustCosts(costs, assumptions);
   const totalMonthlyCost = Object.values(breakdown).reduce((s, v) => s + v, 0);
@@ -209,7 +231,9 @@ export function computeMetrics(
     code,
     wageAmount,
     regionalWageAmount,
-    wageSource: customIncomeActive ? "custom" : originWage ? "origin" : "region",
+    wageSource: ownIncome != null ? "custom" : minimumSource,
+    partnerWageSource:
+      earners === 2 ? (partnerIncome != null ? "custom" : minimumSource) : null,
     totalMonthlyCost,
     coveragePercent,
     surplusOrDeficit: wageAmount - totalMonthlyCost,

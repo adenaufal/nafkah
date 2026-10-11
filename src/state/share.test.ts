@@ -10,6 +10,7 @@ describe("shared view URL", () => {
       children: 3,
       dualIncome: true,
       customIncome: 8_500_000,
+      partnerIncome: 4_250_000,
       installmentMonthly: 2_750_000,
     };
 
@@ -36,6 +37,33 @@ describe("shared view URL", () => {
     });
   });
 
+  it("leaves out a partner salary the view does not use", () => {
+    const idle = [
+      { householdType: "single" as const, dualIncome: true },
+      { householdType: "couple" as const, dualIncome: false },
+    ];
+    for (const overrides of idle) {
+      const url = new URL(
+        buildShareUrl("https://nafkah.example/", {
+          assumptions: {
+            ...DEFAULT_ASSUMPTIONS,
+            ...overrides,
+            partnerIncome: 4_250_000,
+          },
+          pinned: [],
+          selectedCode: null,
+          originCode: null,
+          colorMode: "coverage",
+          legendFilter: null,
+        }),
+      );
+      expect(url.searchParams.has("partner")).toBe(false);
+      expect(
+        decodeSharedView(url.search)?.assumptions.partnerIncome,
+      ).toBeNull();
+    }
+  });
+
   it("keeps reading v1 links without an origin region", () => {
     const view = decodeSharedView("?naf=1&r=31.73&f=31.73&color=coverage");
 
@@ -53,6 +81,7 @@ describe("shared view URL", () => {
     const view = decodeSharedView(
       "?naf=1&r=31.73,31.73,bad,32.73,33.73,34.71,35.78,36.71" +
         "&f=not-a-code&hh=unknown&kids=99&income=-20&installment=abc" +
+        "&partner=4.250.000" +
         "&origin=not-a-code&color=neon&band=unknown",
     );
 

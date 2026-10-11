@@ -12,7 +12,7 @@ import type {
   TransportMode,
 } from "@/lib/types";
 import { Kicker, MoneyField, Seg, Stepper, Toggle } from "@/components/ui";
-import { IncomeControl } from "./IncomeControl";
+import { IncomeControl, PartnerIncomeField } from "./IncomeControl";
 
 /**
  * Assumptions live in the rail, not a modal: the map beside it stays fully
@@ -120,6 +120,7 @@ export function ProfileEditor({ onBack }: { onBack: () => void }) {
               />
             </label>
           )}
+          {couple && a.dualIncome && <PartnerIncomeField />}
         </fieldset>
 
         <fieldset className="space-y-4">
@@ -202,7 +203,7 @@ export function ProfileEditor({ onBack }: { onBack: () => void }) {
 
         <fieldset>
           <legend className="mb-3 text-[13px] font-bold">Pendapatan</legend>
-          {/* "Pasangan juga bekerja" already has its switch above. */}
+          {/* "Pasangan juga bekerja" and the partner's salary sit above. */}
           <IncomeControl showDualIncome={false} />
         </fieldset>
       </div>

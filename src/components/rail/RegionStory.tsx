@@ -20,6 +20,7 @@ import {
   useRegionDetail,
 } from "@/state/derived";
 import { bandTheme } from "@/lib/bands";
+import { isRegionalIncome } from "@/lib/calculations";
 import { categoryLabel, confidenceLabel, wageLabel } from "@/lib/labels";
 import { digits, formatDate, formatMonth, pct, rpShort } from "@/lib/format";
 import {
@@ -49,13 +50,15 @@ function incomeSubject(
   originName: string | undefined,
   kind: WageKind,
 ): string {
-  const dual = a.dualIncome && a.householdType !== "single";
   const net = a.wageBasis === "takeHome" ? " setelah potongan (estimasi)" : "";
+  const where = m.wageSource === "origin" ? ` ${originName ?? "kota asal"}` : "";
+  if (m.partnerWageSource === "custom") {
+    const own = m.wageSource === "custom" ? "Gajimu" : `${kind}${where}${net}`;
+    return `${own} ditambah gaji pasangan`;
+  }
   if (m.wageSource === "custom")
-    return dual ? `Gajimu ditambah ${kind} pasangan` : "Gajimu";
-  if (m.wageSource === "origin")
-    return `${dual ? `Dua ${kind}` : kind} ${originName ?? "kota asal"}${net}`;
-  return `${dual ? `Dua ${kind}` : kind}${net}`;
+    return m.partnerWageSource ? `Gajimu ditambah ${kind} pasangan` : "Gajimu";
+  return `${m.partnerWageSource ? `Dua ${kind}` : kind}${where}${net}`;
 }
 
 export function RegionStory({
@@ -95,7 +98,12 @@ export function RegionStory({
   const incomeKind = wageKind(
     m?.wageSource === "region" ? d.wage : (originWage ?? d.wage),
   );
-  const netEstimate = a.wageBasis === "takeHome" && m?.wageSource !== "custom";
+  // Take-home is estimated for every minimum wage in the income, the
+  // partner's included; a typed salary is used as given.
+  const netEstimate =
+    a.wageBasis === "takeHome" &&
+    [m?.wageSource, m?.partnerWageSource].some((s) => s && s !== "custom");
+  const regionalIncome = m != null && isRegionalIncome(m);
   const rank = ranking.ranked.findIndex((r) => r.code === code) + 1;
   const provRank = peers.findIndex((r) => r.code === code) + 1;
   const originName = d.originRegion ? regionLabel(d.originRegion) : undefined;
@@ -332,14 +340,14 @@ export function RegionStory({
               metric={m}
               rows={rows}
               incomeLabel={
-                m.wageSource === "region"
+                regionalIncome
                   ? `${wageLabel(m, a, incomeKind)} ${d.wage?.year ?? ""}`.trim()
                   : wageLabel(m, a, incomeKind)
               }
               incomeNote={
-                m.wageSource !== "region"
-                  ? `${destKind} daerah ini: ${digits(m.regionalWageAmount)}`
-                  : undefined
+                regionalIncome
+                  ? undefined
+                  : `${m.partnerWageSource ? `Dua ${destKind}` : destKind} daerah ini: ${digits(m.regionalWageAmount)}`
               }
               medians={medians?.categories ?? null}
               dark={state.darkMode}
@@ -615,7 +623,7 @@ function Versus({
       ? null
       : `${pct(Math.abs(ratio * 100))} ${ratio > 0 ? "di atas" : "di bawah"}`;
 
-  if (metric.wageSource === "region") {
+  if (isRegionalIncome(metric)) {
     const rel = relative(wage.ratio, 0.05);
     lines.push({
       key: "wage",
@@ -623,7 +631,8 @@ function Versus({
       good: wage.diff > 0,
       text: (
         <>
-          <b>{kind}</b> {rpShort(metric.regionalWageAmount)} —{" "}
+          <b>{metric.partnerWageSource ? `Dua ${kind}` : kind}</b>{" "}
+          {rpShort(metric.regionalWageAmount)} —{" "}
           {rel
             ? `${rel} median nasional ${rpShort(medians.regionalWage)}`
             : "setara median nasional"}

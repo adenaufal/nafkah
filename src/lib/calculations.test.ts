@@ -1,10 +1,12 @@
 import { describe, expect, it } from "vitest";
 import {
+  activePartnerIncome,
   adjustCosts,
   AFFORDABILITY_BANDS,
   classify,
   computeMetrics,
   DEFAULT_ASSUMPTIONS,
+  isRegionalIncome,
 } from "./calculations";
 import type {
   Assumptions,
@@ -109,6 +111,7 @@ describe("computeMetrics", () => {
     expect(m.totalMonthlyCost).toBe(total);
     expect(m.wageAmount).toBe(wage.grossMonthly); // gross basis, single earner
     expect(m.wageSource).toBe("region");
+    expect(m.partnerWageSource).toBeNull();
     expect(m.coveragePercent).toBeCloseTo((wage.grossMonthly / total) * 100, 6);
     expect(m.surplusOrDeficit).toBe(wage.grossMonthly - total);
     expect(m.affordabilityRatio).toBeCloseTo(total / wage.grossMonthly, 6);
@@ -173,6 +176,7 @@ describe("computeMetrics", () => {
     });
     expect(m.regionalWageAmount).toBe(2 * wage.grossMonthly);
     expect(m.wageAmount).toBe(2 * wage.grossMonthly); // no custom income
+    expect(m.partnerWageSource).toBe("region");
   });
 
   it("adds the partner's regional wage on top of custom income (dual couple)", () => {
@@ -184,6 +188,8 @@ describe("computeMetrics", () => {
       customIncome: 50_000_000,
     });
     expect(m.wageAmount).toBe(50_000_000 + wage.grossMonthly);
+    expect(m.wageSource).toBe("custom");
+    expect(m.partnerWageSource).toBe("region");
   });
 
   it("uses the origin wage while keeping the destination wage as comparator", () => {
@@ -228,7 +234,97 @@ describe("computeMetrics", () => {
 
     expect(m.wageAmount).toBe(9_000_000);
     expect(m.wageSource).toBe("custom");
+    expect(m.partnerWageSource).toBe("origin");
     expect(m.regionalWageAmount).toBe(6_000_000);
+  });
+});
+
+/* ---------- Gaji pasangan ---------- */
+
+const DUAL_COUPLE: Assumptions = {
+  ...DEFAULT_ASSUMPTIONS,
+  householdType: "couple",
+  dualIncome: true,
+};
+
+describe("partner salary", () => {
+  it("replaces the partner's minimum wage, keeping the user's", () => {
+    const wage = makeWage();
+    const m = computeMetrics("00.00", wage, makeCosts(), {
+      ...DUAL_COUPLE,
+      partnerIncome: 4_500_000,
+    });
+    expect(m.wageAmount).toBe(wage.grossMonthly + 4_500_000);
+    expect(m.wageSource).toBe("region");
+    expect(m.partnerWageSource).toBe("custom");
+    expect(m.regionalWageAmount).toBe(2 * wage.grossMonthly); // comparator
+    expect(isRegionalIncome(m)).toBe(false);
+  });
+
+  it("adds two typed salaries when both earners have one", () => {
+    const m = computeMetrics("00.00", makeWage(), makeCosts(), {
+      ...DUAL_COUPLE,
+      householdType: "family",
+      children: 2,
+      customIncome: 8_000_000,
+      partnerIncome: 4_500_000,
+    });
+    expect(m.wageAmount).toBe(12_500_000);
+    expect(m.wageSource).toBe("custom");
+    expect(m.partnerWageSource).toBe("custom");
+  });
+
+  it("takes the partner's salary as given on a take-home basis", () => {
+    const wage = makeWage();
+    const m = computeMetrics("00.00", wage, makeCosts(), {
+      ...DUAL_COUPLE,
+      wageBasis: "takeHome",
+      partnerIncome: 4_500_000,
+    });
+    expect(m.wageAmount).toBe(wage.estimatedTakeHomeMonthly + 4_500_000);
+  });
+
+  it("pairs the origin wage with the partner's salary when moving", () => {
+    const destinationWage = makeWage(3_000_000);
+    const originWage = { ...makeWage(2_000_000), regionCode: "01.01" };
+    const m = computeMetrics(
+      "02.02",
+      destinationWage,
+      makeCosts(),
+      { ...DUAL_COUPLE, partnerIncome: 4_500_000 },
+      AFFORDABILITY_BANDS,
+      originWage,
+    );
+    expect(m.wageAmount).toBe(6_500_000);
+    expect(m.wageSource).toBe("origin");
+    expect(m.partnerWageSource).toBe("custom");
+    expect(m.regionalWageAmount).toBe(6_000_000);
+  });
+
+  it("is ignored unless a partner works", () => {
+    const wage = makeWage();
+    const idle: Assumptions[] = [
+      { ...DUAL_COUPLE, dualIncome: false, partnerIncome: 4_500_000 },
+      { ...DUAL_COUPLE, householdType: "single", partnerIncome: 4_500_000 },
+    ];
+    for (const a of idle) {
+      const m = computeMetrics("00.00", wage, makeCosts(), a);
+      expect(activePartnerIncome(a)).toBeNull();
+      expect(m.wageAmount).toBe(wage.grossMonthly);
+      expect(m.partnerWageSource).toBeNull();
+    }
+  });
+
+  it("falls back to the minimum wage when empty, zero, or negative", () => {
+    const wage = makeWage();
+    for (const partnerIncome of [null, 0, -1_000_000]) {
+      const a = { ...DUAL_COUPLE, partnerIncome };
+      const m = computeMetrics("00.00", wage, makeCosts(), a);
+      expect(activePartnerIncome(a)).toBeNull();
+      expect(m.wageAmount).toBe(2 * wage.grossMonthly);
+      expect(m.partnerWageSource).toBe("region");
+      expect(isRegionalIncome(m)).toBe(true);
+    }
   });
 });
 

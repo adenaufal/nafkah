@@ -21,6 +21,7 @@ describe("normalizeAssumptions", () => {
     const out = normalizeAssumptions(legacy);
     expect(out.children).toBe(0);
     expect(out.installmentMonthly).toBeNull();
+    expect(out.partnerIncome).toBeNull();
     expect(out.householdType).toBe("couple");
     expect(out.lifestyle).toBe("budget");
     expect(out.wageBasis).toBe(DEFAULT_ASSUMPTIONS.wageBasis);
@@ -62,6 +63,17 @@ describe("normalizeAssumptions", () => {
     ).toBeNull();
   });
 
+  it("gaji pasangan hanya valid bila angka positif", () => {
+    expect(normalizeAssumptions({ partnerIncome: 4_250_000 }).partnerIncome)
+      .toBe(4_250_000);
+    expect(
+      normalizeAssumptions({ partnerIncome: 4_250_000.9 }).partnerIncome,
+    ).toBe(4_250_000);
+    for (const partnerIncome of [0, -1, null]) {
+      expect(normalizeAssumptions({ partnerIncome }).partnerIncome).toBeNull();
+    }
+  });
+
   it("input kosong/bukan objek tetap menghasilkan asumsi default yang valid", () => {
     expect(normalizeAssumptions(null)).toEqual(DEFAULT_ASSUMPTIONS);
     expect(normalizeAssumptions(undefined)).toEqual(DEFAULT_ASSUMPTIONS);
@@ -79,6 +91,7 @@ describe("normalizeAssumptions", () => {
       dualIncome: 1,
       children: Number.POSITIVE_INFINITY,
       customIncome: Number.MAX_VALUE,
+      partnerIncome: "4000000",
       installmentMonthly: "2500000",
     } as unknown as Partial<Assumptions>;
 
