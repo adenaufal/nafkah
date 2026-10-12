@@ -37,19 +37,24 @@ describe("shared view URL", () => {
     });
   });
 
-  it("round-trips the own-home housing choice", () => {
-    const url = new URL(
-      buildShareUrl("https://nafkah.example/", {
-        assumptions: { ...DEFAULT_ASSUMPTIONS, housing: "owner" },
-        pinned: [],
-        selectedCode: null,
-        originCode: null,
-        colorMode: "coverage",
-        legendFilter: null,
-      }),
-    );
-    expect(url.searchParams.get("home")).toBe("owner");
-    expect(decodeSharedView(url.search)?.assumptions.housing).toBe("owner");
+  it("round-trips the own-home housing and the new transport choices", () => {
+    for (const transport of ["car", "walk"] as const) {
+      const url = new URL(
+        buildShareUrl("https://nafkah.example/", {
+          assumptions: { ...DEFAULT_ASSUMPTIONS, housing: "owner", transport },
+          pinned: [],
+          selectedCode: null,
+          originCode: null,
+          colorMode: "coverage",
+          legendFilter: null,
+        }),
+      );
+      expect(url.searchParams.get("home")).toBe("owner");
+      expect(url.searchParams.get("transport")).toBe(transport);
+      const decoded = decodeSharedView(url.search)?.assumptions;
+      expect(decoded?.housing).toBe("owner");
+      expect(decoded?.transport).toBe(transport);
+    }
   });
 
   it("carries family support only when it is set", () => {

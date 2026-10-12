@@ -190,12 +190,36 @@ export function ProfileEditor({ onBack }: { onBack: () => void }) {
           </div>
           <Seg<TransportMode>
             label="Transportasi"
+            showHint
+            columns={3}
             value={a.transport}
             onChange={(v) => set("transport", v)}
             options={[
-              { value: "motorcycle", label: "Motor" },
-              { value: "publicTransport", label: "Kend. umum" },
-              { value: "rideHailing", label: "Ojol" },
+              {
+                value: "motorcycle",
+                label: "Motor",
+                hint: "Baseline model · BBM, servis, pajak, parkir",
+              },
+              {
+                value: "publicTransport",
+                label: "Kend. umum",
+                hint: "±70% biaya motor",
+              },
+              {
+                value: "rideHailing",
+                label: "Ojol",
+                hint: "±190% biaya motor",
+              },
+              {
+                value: "car",
+                label: "Mobil",
+                hint: "±350% biaya motor · belum termasuk cicilan, asuransi, dan tol",
+              },
+              {
+                value: "walk",
+                label: "Jalan kaki",
+                hint: "Jalan kaki atau sepeda · ±25% biaya motor untuk sesekali angkot/ojek",
+              },
             ]}
           />
           <MoneyField

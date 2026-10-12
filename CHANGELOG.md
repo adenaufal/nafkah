@@ -20,6 +20,10 @@ Nomor versi mengikuti Semantic Versioning: `MAJOR.MINOR.PATCH`.
   pengeluaran semua daerah sebagai baris "angkamu" di struk bulanan, baki
   perbandingan, dan ekspor CSV, terpisah dari 10 kategori estimasi. Angkanya
   ikut tersimpan di browser dan tautan berbagi.
+- Pilihan transportasi "Mobil" (×3,5 biaya motor; belum termasuk cicilan,
+  asuransi, dan tol) dan "Jalan kaki" untuk jalan kaki atau sepeda (×0,25).
+  Dasar kedua pengali dicatat di `docs/pengali-transport-2026-10.md`. Setiap
+  pilihan transportasi kini menampilkan keterangan singkat di profil.
 
 ### Changed
 - Booklet `/booklet` disusun ulang menjadi 12 halaman A4 bergaya Atlas:

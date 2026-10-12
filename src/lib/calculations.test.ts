@@ -555,3 +555,26 @@ describe("tanggungan keluarga", () => {
     expect(activeFamilySupport(DEFAULT_ASSUMPTIONS)).toBe(0);
   });
 });
+
+describe("transportasi mobil dan jalan kaki/sepeda", () => {
+  it("hanya mengubah kategori transportasi, relatif terhadap motor", () => {
+    const costs = makeCosts();
+    const motor = adjustCosts(costs, DEFAULT_ASSUMPTIONS);
+    const car = adjustCosts(costs, { ...DEFAULT_ASSUMPTIONS, transport: "car" });
+    const walk = adjustCosts(costs, { ...DEFAULT_ASSUMPTIONS, transport: "walk" });
+    expect(car.transport).toBeCloseTo(motor.transport * 3.5, 6);
+    expect(walk.transport).toBeCloseTo(motor.transport * 0.25, 6);
+    for (const key of CATEGORIES.filter((k) => k !== "transport")) {
+      expect(car[key]).toBe(motor[key]);
+      expect(walk[key]).toBe(motor[key]);
+    }
+  });
+
+  it("urutan biaya: jalan kaki < kendaraan umum < motor < ojol < mobil", () => {
+    const transport = (mode: Assumptions["transport"]) =>
+      adjustCosts(makeCosts(), { ...DEFAULT_ASSUMPTIONS, transport: mode })
+        .transport;
+    const order = (["walk", "publicTransport", "motorcycle", "rideHailing", "car"] as const).map(transport);
+    expect([...order].sort((x, y) => x - y)).toEqual(order);
+  });
+});

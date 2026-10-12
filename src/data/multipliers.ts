@@ -98,9 +98,17 @@ export const HOUSING_MULTIPLIERS: Record<HousingType, number> = {
   owner: 0,
 };
 
-/** Transport mode rescales only the transport category. */
+/**
+ * Transport mode rescales only the transport category. Mobil dan jalan
+ * kaki/sepeda diturunkan dari komponen biaya motor (BBM, servis, parkir,
+ * pajak) — estimasi, bukan survei; dasar dan rentangnya dicatat di
+ * `docs/pengali-transport-2026-10.md`. Mobil belum termasuk cicilan,
+ * asuransi, dan tol.
+ */
 export const TRANSPORT_MULTIPLIERS: Record<TransportMode, number> = {
   motorcycle: 1.0,
   publicTransport: 0.7,
   rideHailing: 1.9,
+  car: 3.5,
+  walk: 0.25,
 };

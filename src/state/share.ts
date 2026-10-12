@@ -30,6 +30,8 @@ const TRANSPORT: TransportMode[] = [
   "motorcycle",
   "publicTransport",
   "rideHailing",
+  "car",
+  "walk",
 ];
 const WAGE_BASIS: WageBasis[] = ["gross", "takeHome"];
 const COLOR_MODES: ColorMode[] = ["coverage", "cost", "wage"];

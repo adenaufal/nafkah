@@ -67,6 +67,11 @@ describe("normalizeAssumptions", () => {
     expect(normalizeAssumptions({ housing: "owner" }).housing).toBe("owner");
   });
 
+  it("menerima pilihan transportasi mobil dan jalan kaki", () => {
+    expect(normalizeAssumptions({ transport: "car" }).transport).toBe("car");
+    expect(normalizeAssumptions({ transport: "walk" }).transport).toBe("walk");
+  });
+
   it("tanggungan keluarga hanya valid bila angka positif", () => {
     expect(
       normalizeAssumptions({ familySupportMonthly: 1_500_000 })

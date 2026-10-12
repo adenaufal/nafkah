@@ -65,7 +65,13 @@ const REGION_CODE = /^\d{2}\.\d{2}$/;
 const HOUSEHOLDS = ["single", "couple", "family"] as const;
 const LIFESTYLES = ["budget", "moderate", "comfortable"] as const;
 const HOUSING = ["room", "studio", "oneBedroom", "owner"] as const;
-const TRANSPORT = ["motorcycle", "publicTransport", "rideHailing"] as const;
+const TRANSPORT = [
+  "motorcycle",
+  "publicTransport",
+  "rideHailing",
+  "car",
+  "walk",
+] as const;
 const WAGE_BASES = ["gross", "takeHome"] as const;
 const COLOR_MODES: ColorMode[] = ["coverage", "cost", "wage"];
 const BANDS: AffordabilityBand[] = [

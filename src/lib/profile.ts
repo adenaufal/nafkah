@@ -22,6 +22,8 @@ export function assumptionSummary(a: Assumptions): string {
     motorcycle: "motor",
     publicTransport: "kend. umum",
     rideHailing: "ojol",
+    car: "mobil",
+    walk: "jalan kaki",
   };
   const parts = [household[a.householdType]];
   if (a.children > 0) parts.push(`${a.children} anak`);
@@ -65,6 +67,8 @@ export function profileSummary(a: Assumptions): string {
     motorcycle: "motor",
     publicTransport: "kendaraan umum",
     rideHailing: "ojol",
+    car: "mobil pribadi",
+    walk: "jalan kaki/sepeda",
   };
   const ownInstallment = (a.installmentMonthly ?? 0) > 0;
   const parts = [

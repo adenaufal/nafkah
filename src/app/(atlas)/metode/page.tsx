@@ -537,10 +537,20 @@ export default function MetodePage() {
               <dd className="tnum mt-1 text-[14px]">
                 Motor {times(TRANSPORT_MULTIPLIERS.motorcycle)} · Kend. umum{" "}
                 {times(TRANSPORT_MULTIPLIERS.publicTransport)} · Ojol{" "}
-                {times(TRANSPORT_MULTIPLIERS.rideHailing)}
+                {times(TRANSPORT_MULTIPLIERS.rideHailing)} · Mobil{" "}
+                {times(TRANSPORT_MULTIPLIERS.car)} · Jalan kaki/sepeda{" "}
+                {times(TRANSPORT_MULTIPLIERS.walk)}
               </dd>
               <dd className="mt-1 text-[13px] text-muted">
-                Tanpa tabungan, kategori dana cadangan menjadi nol.
+                Mobil belum termasuk cicilan, asuransi, dan tol; dasar
+                pengalinya ada di{" "}
+                <a
+                  href={DOC("pengali-transport-2026-10.md")}
+                  className="font-semibold text-accent-ink underline decoration-rule-2 underline-offset-2 hover:decoration-accent"
+                >
+                  catatan pengali transportasi
+                </a>
+                . Tanpa tabungan, kategori dana cadangan menjadi nol.
               </dd>
             </div>
           </dl>
