@@ -116,11 +116,14 @@ export function RegionStory({
       ? d.wage.grossMonthly
       : d.wage.estimatedTakeHomeMonthly
     : undefined;
-  // The receipt's income line, on screen and in the shared copy alike.
-  const receiptIncomeLabel = (metric: RegionMetrics) =>
-    regionalIncome
-      ? `${wageLabel(metric, a, incomeKind)} ${d.wage?.year ?? ""}`.trim()
-      : wageLabel(metric, a, incomeKind);
+  // The receipt's income line, on screen and in the shared copy alike. The
+  // year belongs to the wage: "UMP 2026 × 2", not "UMP × 2 2026".
+  const receiptIncomeLabel = (metric: RegionMetrics) => {
+    const label = wageLabel(metric, a, incomeKind);
+    return regionalIncome && d.wage
+      ? label.replace(incomeKind, `${incomeKind} ${d.wage.year}`)
+      : label;
+  };
   // Everything the shared receipt prints, provenance included.
   const receiptInput = (metric: RegionMetrics): ReceiptCardInput => {
     const wageSource = d.wageProvenance

@@ -58,6 +58,9 @@ Nomor versi mengikuti Semantic Versioning: `MAJOR.MINOR.PATCH`.
 - Catatan pembanding di struk bulanan kini bertuliskan "Dua UMK daerah ini"
   saat pasangan ikut bekerja. Sebelumnya jumlah dua upah minimum ditulis
   sebagai "UMK daerah ini".
+- Label pemasukan di struk kini menaruh tahun tepat setelah jenis upah
+  ("UMP 2026 × 2", "UMK 2026 setelah potongan (est.)"). Sebelumnya tahun
+  menempel di ujung label, misalnya "UMP × 2 2026".
 
 ### Removed
 - Salinan statis `public/booklet.html`. Berkas itu tidak pernah tersaji,
