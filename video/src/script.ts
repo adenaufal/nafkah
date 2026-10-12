@@ -24,8 +24,8 @@ export interface Token {
   cue?: string;
 }
 
-export interface Segment {
-  id: SceneId;
+export interface Segment<Id extends string = SceneId> {
+  id: Id;
   /** Caption pages: each array is shown together, word by word. */
   pages: Token[][];
   /**
@@ -36,7 +36,7 @@ export interface Segment {
 }
 
 type Word = string | Token;
-const page = (...words: Word[]): Token[] =>
+export const page = (...words: Word[]): Token[] =>
   words.map((w) => (typeof w === "string" ? { show: w } : w));
 
 export const SCRIPT: Segment[] = [
@@ -123,7 +123,7 @@ export const spoken = (t: Token): string =>
   t.say ?? t.show.replace(/[“”"]/g, "");
 
 /** Flatten to the exact TTS input and each token's character range in it. */
-export function ttsText(script: Segment[] = SCRIPT) {
+export function ttsText(script: Segment<string>[] = SCRIPT) {
   let text = "";
   const ranges: { start: number; end: number }[] = [];
   for (const seg of script) {

@@ -6,13 +6,16 @@
  *   npm run voice -- --search               Indonesian voices in the shared library
  *   npm run voice -- --voice <id> [--model eleven_multilingual_v2] [--speed 1.08] [--check]
  *   npm run voice -- --finalize             re-apply pauses to the saved take (no API call)
+ *   add --video update for the v0.4.0 update (src/update/script.ts)
  *
  * The raw take is kept in assets/vo-take.{mp3,json}; the final track (with
  * the pauses from script.ts) goes to public/audio/vo.wav + src/data/vo.json.
+ * The update keeps its own: assets/update/, update-vo.wav, update-vo.json.
  */
 import { execFileSync } from "node:child_process";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { SCRIPT, ttsText } from "../src/script.ts";
+import { SCRIPT, ttsText, type Segment } from "../src/script.ts";
+import { UPDATE_SCRIPT } from "../src/update/script.ts";
 import { el, elJson, usage } from "./elevenlabs.mts";
 
 const args = process.argv.slice(2);
@@ -68,6 +71,38 @@ if (flag("search")) {
   process.exit(0);
 }
 
+interface Target {
+  script: Segment<string>[];
+  takeMp3: string;
+  takeJson: string;
+  /** Final track, under public/. */
+  audio: string;
+  timing: string;
+  /** Prefix for the scratch files in out/. */
+  name: string;
+}
+
+const TARGETS: Record<string, Target> = {
+  teaser: {
+    script: SCRIPT,
+    takeMp3: "assets/vo-take.mp3",
+    takeJson: "assets/vo-take.json",
+    audio: "audio/vo.wav",
+    timing: "src/data/vo.json",
+    name: "vo",
+  },
+  update: {
+    script: UPDATE_SCRIPT,
+    takeMp3: "assets/update/vo-take.mp3",
+    takeJson: "assets/update/vo-take.json",
+    audio: "audio/update-vo.wav",
+    timing: "src/data/update-vo.json",
+    name: "update-vo",
+  },
+};
+const target = TARGETS[opt("video", "teaser")!];
+if (!target) throw new Error(`--video ${opt("video")} tidak dikenal (teaser, update)`);
+
 interface Timed {
   start: number;
   end: number;
@@ -80,8 +115,8 @@ interface Take {
   tokens: Timed[];
 }
 
-const TAKE_MP3 = "assets/vo-take.mp3";
-const TAKE_JSON = "assets/vo-take.json";
+const TAKE_MP3 = target.takeMp3;
+const TAKE_JSON = target.takeJson;
 
 if (!flag("finalize")) await generate();
 finalize(JSON.parse(readFileSync(TAKE_JSON, "utf8")) as Take);
@@ -91,7 +126,7 @@ const voiceId = opt("voice");
 if (!voiceId) throw new Error("Pilih suara: --voice <voice_id> (lihat --list / --search)");
 const model = opt("model", "eleven_multilingual_v2")!;
 const speed = Number(opt("speed", "1.08"));
-const { text, ranges } = ttsText();
+const { text, ranges } = ttsText(target.script);
 
 const before = await usage().catch(() => null);
 console.log(`model=${model} voice=${voiceId} speed=${speed} chars=${text.length}`);
@@ -176,10 +211,10 @@ const tokens = ranges.map((r) => {
   return { start: Math.round(start * 1000) / 1000, end: Math.round(end * 1000) / 1000 };
 });
 
-mkdirSync("assets", { recursive: true });
+mkdirSync(TAKE_MP3.slice(0, TAKE_MP3.lastIndexOf("/")), { recursive: true });
 mkdirSync("out", { recursive: true });
 writeFileSync(TAKE_MP3, audio);
-writeFileSync("out/vo-alignment.json", JSON.stringify(chars));
+writeFileSync(`out/${target.name}-alignment.json`, JSON.stringify(chars));
 writeFileSync(TAKE_JSON, JSON.stringify({ voiceId, model, speed, text, tokens } satisfies Take, null, 1));
 console.log(`take: ${tokens.length} tokens, last word ends ${tokens[tokens.length - 1].end}s`);
 
@@ -191,7 +226,7 @@ if (flag("check")) {
   form.append("language_code", "id");
   const stt = await elJson<{ text: string }>("/v1/speech-to-text", { method: "POST", body: form });
   console.log("STT:", stt.text);
-  writeFileSync("out/vo-stt.txt", stt.text);
+  writeFileSync(`out/${target.name}-stt.txt`, stt.text);
 }
 
 const after = await usage().catch(() => null);
@@ -205,13 +240,13 @@ if (before && after) {
  * next segment's first word, and shift the later word timings to match.
  */
 function finalize(take: Take) {
-  const { text } = ttsText();
+  const { text } = ttsText(target.script);
   if (take.text !== text) {
     throw new Error("script.ts berubah sejak take ini dibuat — jalankan npm run voice -- --voice <id> lagi.");
   }
   const cuts: { at: number; pause: number }[] = [];
   let i = 0;
-  for (const seg of SCRIPT) {
+  for (const seg of target.script) {
     const n = seg.pages.flat().length;
     const last = take.tokens[i + n - 1];
     const next = take.tokens[i + n];
@@ -244,10 +279,11 @@ function finalize(take: Take) {
   }
   parts.push(`${labels.join("")}concat=n=${labels.length}:v=0:a=1[out]`);
   mkdirSync("public/audio", { recursive: true });
+  const wav = `public/${target.audio}`;
   execFileSync("ffmpeg", [
     "-v", "error", "-y", "-i", TAKE_MP3,
     "-filter_complex", parts.join(";"),
-    "-map", "[out]", "-c:a", "pcm_s16le", "public/audio/vo.wav",
+    "-map", "[out]", "-c:a", "pcm_s16le", wav,
   ]);
 
   const tokens = take.tokens.map((t) => {
@@ -255,13 +291,13 @@ function finalize(take: Take) {
     return { start: Math.round((t.start + shift) * 1000) / 1000, end: Math.round((t.end + shift) * 1000) / 1000 };
   });
   const durationSec = Number(
-    execFileSync("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", "public/audio/vo.wav"])
+    execFileSync("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", wav])
       .toString()
       .trim(),
   );
   writeFileSync(
-    "src/data/vo.json",
-    JSON.stringify({ audio: "audio/vo.wav", voiceId: take.voiceId, model: take.model, speed: take.speed, durationSec, tokens }, null, 1),
+    target.timing,
+    JSON.stringify({ audio: target.audio, voiceId: take.voiceId, model: take.model, speed: take.speed, durationSec, tokens }, null, 1),
   );
-  console.log(`vo.wav ${durationSec.toFixed(2)}s (+${cuts.reduce((s, c) => s + c.pause, 0).toFixed(2)}s pauses), last word ends ${tokens[tokens.length - 1].end}s`);
+  console.log(`${target.audio} ${durationSec.toFixed(2)}s (+${cuts.reduce((s, c) => s + c.pause, 0).toFixed(2)}s pauses), last word ends ${tokens[tokens.length - 1].end}s`);
 }
