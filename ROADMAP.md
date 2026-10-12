@@ -98,9 +98,9 @@ laporan nantinya memakai agent terjadwal di luar situs. Keputusan 2 September
 
 | Status | Jumlah | Item |
 | --- | ---: | --- |
-| Selesai | 5 | AP-01, AP-02, AP-03, AP-06, AP-07 |
+| Selesai | 7 | AP-01, AP-02, AP-03, AP-06, AP-07, AP-15, AP-17 (dua terakhir menunggu rilis v0.4.0) |
 | Berjalan/sebagian | 2 | AP-04, AP-05 |
-| Belum dimulai di fase Now | 2 | AP-15, AP-17 (direncanakan untuk v0.4.0) |
+| Belum dimulai di fase Now | 0 | — |
 | Fondasi lokal fase Next | 2 | AP-08, AP-10 (belum operasional/publik) |
 
 Risiko terbesar tetap kualitas estimasi wilayah yang diperdebatkan (AP-05)
@@ -119,8 +119,8 @@ agregat lokal, sehingga belum menyediakan analitik lintas pengguna.
 | AP-05 | Audit wilayah yang diperdebatkan | Periksa Kep. Meranti, Samosir, Bandung, serta biaya transportasi/logistik dan kesehatan. Bandingkan hasil model dengan laporan lokal, lalu catat keputusan tiap kasus. | 🟡 Baseline reproduktif dan pemeriksaan read-only terhadap rujukan pemerintah untuk Meranti, Samosir, dan Bandung sudah dicatat di [audit wilayah September 2026](docs/audit-wilayah-2026-09.md); rentang sewa narasi kini juga berprovenance. Bukti penggunaan lokal yang representatif dan keputusan perubahan data masih ❌. | P0 · S/M |
 | AP-06 | Kemudahan menemukan dan memakai fitur | Uji ulang Pendapatan sendiri, filter tingkat keterjangkauan, mode gelap, dan legenda di ponsel serta lewat keyboard. Perjelas tombol tindakan dan catat penggunaan tanpa data pribadi. | ✅ QA manual ponsel 375px + keyboard/focus trap untuk alur utama; CTA, status relokasi, filter, tema, dan legenda diberi label jelas. Hitungan event hanya agregat di localStorage. | P1 · S |
 | AP-07 | Perbandingan dan berbagi hasil untuk relokasi | Bagikan wilayah, asumsi, mode warna, dan filter lewat URL berversi; lalu pisahkan gaji asal dari biaya kota tujuan dan tambahkan affordance berbagi di panel hasil. | ✅ URL v2 membawa gaji asal dan tetap membaca v1; model Kota A → Kota B, biaya tujuan, UMK tujuan, provenance, status persisten, dan affordance relokasi sudah tersedia serta diuji round-trip. Embed tetap backlog terpisah. | P0 · M |
-| AP-15 | Personalisasi dan kegunaan v1.2 | Tindak lanjut [gelombang TikTok/Instagram Oktober 2026](#masukan-komunitas-gelombang-tiktok--instagram-1112-oktober-2026): opsi hunian tanpa sewa (rumah sendiri atau ikut orang tua, biaya hunian Rp0), isian tanggungan keluarga per bulan (kiriman ke orang tua/generasi sandwich), transportasi mobil pribadi serta jalan kaki/sepeda dengan pengali yang dijelaskan dasarnya, tombol salin struk, petunjuk untuk gaji di atas 25 juta, dan QA ulang tampilan ponsel (360/390/412 px). Isian baru ikut tersimpan di browser, tautan berbagi, dan ekspor CSV. | ❌ Direncanakan untuk v0.4.0 | P0 · M |
-| AP-17 | FAQ dan "Cara dibuat" | Jawab pertanyaan yang berulang di komentar (asal angka upah dan biaya, arti estimasi, kenapa banyak daerah merah) dan jelaskan proses pembuatan di halaman Tentang: tools yang dipakai, peran AI, serta cara angka diperiksa. Ini jawaban atas persepsi "dibuat AI" tanpa desain ulang. | ❌ Direncanakan untuk v0.4.0 | P0 · S |
+| AP-15 | Personalisasi dan kegunaan v1.2 | Tindak lanjut [gelombang TikTok/Instagram Oktober 2026](#masukan-komunitas-gelombang-tiktok--instagram-1112-oktober-2026): opsi hunian tanpa sewa (rumah sendiri atau ikut orang tua, biaya hunian Rp0), isian tanggungan keluarga per bulan (kiriman ke orang tua/generasi sandwich), transportasi mobil pribadi serta jalan kaki/sepeda dengan pengali yang dijelaskan dasarnya, tombol salin struk, petunjuk untuk gaji di atas 25 juta, dan QA ulang tampilan ponsel (360/390/412 px). Isian baru ikut tersimpan di browser, tautan berbagi, dan ekspor CSV. | ✅ Hunian "Rumah sendiri" (Rp0), isian tanggungan keluarga (baris "angkamu" di struk, bar anggaran, baki, dan CSV), transportasi mobil ×3,5 serta jalan kaki/sepeda ×0,25 ([dasar pengali](docs/pengali-transport-2026-10.md)), salin struk, dan petunjuk di kedua ujung slider gaji; semuanya ikut tersimpan di browser dan tautan berbagi, dengan unit test. QA lebar 360/412 px dan ponsel miring 800×360 tidak menemukan overflow atau label terpotong; laporan "kurang responsif" belum bisa direproduksi tanpa info perangkat, dan uji sentuh di perangkat nyata masih ❌. | P0 · M |
+| AP-17 | FAQ dan "Cara dibuat" | Jawab pertanyaan yang berulang di komentar (asal angka upah dan biaya, arti estimasi, kenapa banyak daerah merah) dan jelaskan proses pembuatan di halaman Tentang: tools yang dipakai, peran AI, serta cara angka diperiksa. Ini jawaban atas persepsi "dibuat AI" tanpa desain ulang. | ✅ Halaman Tentang punya bagian "Pertanyaan yang sering muncul" (enam pertanyaan) dan "Cara dibuat" (kode bersama Claude Code dan wajib lolos CI, pencocokan upah dengan dokumen resmi, koreksi manual, video Remotion dan suara ElevenLabs). | P0 · S |
 
 ### Next — November–Desember 2026
 
@@ -210,10 +210,10 @@ Nomor AP-xx merujuk ke rencana di atas.
 | Isian pendapatan sendiri ("apakah gaji saya cukup di daerah X?") | ✅ Selesai (Sep 2026). Kolom "Pendapatan sendiri" mengubah rasio, warna peta, jendela detail, dan baki perbandingan. UMK tetap tampil sebagai pembanding. |
 | Indeks kepatuhan UMK pemberi kerja per wilayah | Ditunda (→ AP-09). Data di tingkat kabupaten/kota nyaris belum ada. Mulai dengan label kualitatif bersumber; skor numerik belum bisa dipertanggungjawabkan. |
 | Gaji pasangan yang berbeda | ✅ Selesai (Okt 2026), tampil di rilis berikutnya. Gaji pasangan bisa diisi sendiri saat "Pasangan ikut bekerja" aktif. |
-| Opsi hunian tanpa sewa (rumah sendiri atau ikut orang tua) | Direncanakan v0.4.0 (→ AP-15). Biaya hunian Rp0; kontribusi ke orang tua bisa diisi sebagai tanggungan keluarga. |
-| Kiriman bulanan ke orang tua / generasi sandwich | Direncanakan v0.4.0 (→ AP-15). |
-| Transportasi mobil pribadi, jalan kaki, dan moda campuran | Mobil serta jalan kaki/sepeda di v0.4.0 (→ AP-15); moda campuran lewat edit struk (→ AP-16). |
-| Struk yang bisa diubah dan disalin | Salin struk di v0.4.0 (→ AP-15); edit struk menyusul (→ AP-16). |
+| Opsi hunian tanpa sewa (rumah sendiri atau ikut orang tua) | ✅ Selesai (Okt 2026), tampil di rilis berikutnya (→ AP-15). Biaya hunian Rp0; kontribusi ke orang tua bisa diisi sebagai tanggungan keluarga. |
+| Kiriman bulanan ke orang tua / generasi sandwich | ✅ Selesai (Okt 2026), tampil di rilis berikutnya (→ AP-15). |
+| Transportasi mobil pribadi, jalan kaki, dan moda campuran | Mobil serta jalan kaki/sepeda ✅ (Okt 2026, → AP-15); moda campuran lewat edit struk (→ AP-16). |
+| Struk yang bisa diubah dan disalin | Salin struk ✅ (Okt 2026, → AP-15); edit struk menyusul (→ AP-16). |
 | Lebih dari dua penghasilan dan penghasilan borongan | Ditunda. Permintaan lebih dari dua penghasilan sebagian besar berupa candaan; kebutuhan seriusnya bisa ditampung kelak lewat isian penghasilan tambahan. |
 | Desil | Ditunda (→ AP-12). Yang dimaksud warganet umumnya desil bansos (DTSEN), bukan desil pengeluaran BPS; labelnya harus dibedakan. |
 
