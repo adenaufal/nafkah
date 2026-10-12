@@ -264,9 +264,14 @@ function SalaryField({
         id={`${id}-hint`}
         className="mt-1.5 text-[12px] leading-[1.5] text-muted"
       >
-        {value
-          ? "Geser atau ketik — peta menghitung ulang semua daerah. Angka ini hanya tersimpan di browsermu."
-          : "Kosong = memakai upah minimum tiap daerah. Ketik atau geser untuk mencoba gajimu."}
+        {/* The slider stops at both ends; the field above takes any amount. */}
+        {value && value >= SALARY_STEPS[LAST_STEP]
+          ? `Slider berhenti di ${rpShort(SALARY_STEPS[LAST_STEP])} — ketik angka yang lebih besar di kolom atas. Angka ini hanya tersimpan di browsermu.`
+          : value && value <= SALARY_STEPS[0]
+            ? `Slider mulai dari ${rpShort(SALARY_STEPS[0])} — ketik angka yang lebih kecil di kolom atas. Angka ini hanya tersimpan di browsermu.`
+            : value
+              ? "Geser atau ketik — peta menghitung ulang semua daerah. Angka ini hanya tersimpan di browsermu."
+              : "Kosong = memakai upah minimum tiap daerah. Ketik atau geser untuk mencoba gajimu."}
       </p>
     </div>
   );

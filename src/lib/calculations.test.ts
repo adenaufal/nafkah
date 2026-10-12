@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  activeFamilySupport,
   activePartnerIncome,
   adjustCosts,
   AFFORDABILITY_BANDS,
@@ -481,5 +482,99 @@ describe("installment override (AP-03)", () => {
     expect(withInstallment.totalMonthlyCost).toBe(
       baseline.totalMonthlyCost - baseline.breakdown.housing + 2_000_000,
     );
+  });
+});
+
+describe("rumah sendiri (owner)", () => {
+  it("menghapus biaya hunian tanpa mengubah kategori lain", () => {
+    const costs = makeCosts();
+    const room = adjustCosts(costs, DEFAULT_ASSUMPTIONS);
+    const owner = adjustCosts(costs, { ...DEFAULT_ASSUMPTIONS, housing: "owner" });
+    expect(owner.housing).toBe(0);
+    for (const key of CATEGORIES.filter((k) => k !== "housing"))
+      expect(owner[key]).toBe(room[key]);
+  });
+
+  it("tetap nol untuk pasangan dan keluarga, karena tidak ada sewa", () => {
+    const out = adjustCosts(makeCosts(), {
+      ...DEFAULT_ASSUMPTIONS,
+      householdType: "family",
+      children: 3,
+      lifestyle: "comfortable",
+      housing: "owner",
+    });
+    expect(out.housing).toBe(0);
+  });
+
+  it("cicilan yang diisi tetap menggantikan hunian rumah sendiri", () => {
+    const out = adjustCosts(makeCosts(), {
+      ...DEFAULT_ASSUMPTIONS,
+      housing: "owner",
+      installmentMonthly: 3_000_000,
+    });
+    expect(out.housing).toBe(3_000_000);
+  });
+
+  it("menurunkan total biaya sebesar biaya hunian pilihan awal", () => {
+    const costs = makeCosts();
+    const room = computeMetrics("00.00", makeWage(), costs, DEFAULT_ASSUMPTIONS);
+    const owner = computeMetrics("00.00", makeWage(), costs, {
+      ...DEFAULT_ASSUMPTIONS,
+      housing: "owner",
+    });
+    expect(owner.totalMonthlyCost).toBe(
+      room.totalMonthlyCost - room.breakdown.housing,
+    );
+    expect(owner.coveragePercent).toBeGreaterThan(room.coveragePercent);
+  });
+});
+
+describe("tanggungan keluarga", () => {
+  it("menambah total biaya tanpa mengubah 10 kategori", () => {
+    const costs = makeCosts();
+    const base = computeMetrics("00.00", makeWage(), costs, DEFAULT_ASSUMPTIONS);
+    const support = computeMetrics("00.00", makeWage(), costs, {
+      ...DEFAULT_ASSUMPTIONS,
+      familySupportMonthly: 1_500_000,
+    });
+    expect(support.breakdown).toEqual(base.breakdown);
+    expect(support.familySupport).toBe(1_500_000);
+    expect(support.totalMonthlyCost).toBe(base.totalMonthlyCost + 1_500_000);
+    expect(support.surplusOrDeficit).toBe(base.surplusOrDeficit - 1_500_000);
+    expect(support.coveragePercent).toBeLessThan(base.coveragePercent);
+  });
+
+  it("kosong, nol, atau negatif tidak dihitung", () => {
+    for (const familySupportMonthly of [null, 0, -250_000]) {
+      const m = computeMetrics("00.00", makeWage(), makeCosts(), {
+        ...DEFAULT_ASSUMPTIONS,
+        familySupportMonthly,
+      });
+      expect(m.familySupport).toBe(0);
+    }
+    expect(activeFamilySupport(DEFAULT_ASSUMPTIONS)).toBe(0);
+  });
+});
+
+describe("transportasi mobil dan jalan kaki/sepeda", () => {
+  it("hanya mengubah kategori transportasi, relatif terhadap motor", () => {
+    const costs = makeCosts();
+    const motor = adjustCosts(costs, DEFAULT_ASSUMPTIONS);
+    const car = adjustCosts(costs, { ...DEFAULT_ASSUMPTIONS, transport: "car" });
+    const walk = adjustCosts(costs, { ...DEFAULT_ASSUMPTIONS, transport: "walk" });
+    expect(car.transport).toBeCloseTo(motor.transport * 3.5, 6);
+    expect(walk.transport).toBeCloseTo(motor.transport * 0.25, 6);
+    for (const key of CATEGORIES.filter((k) => k !== "transport")) {
+      expect(car[key]).toBe(motor[key]);
+      expect(walk[key]).toBe(motor[key]);
+    }
+  });
+
+  it("urutan biaya: jalan kaki < kendaraan umum < motor < ojol < mobil", () => {
+    const transport = (mode: Assumptions["transport"]) =>
+      adjustCosts(makeCosts(), { ...DEFAULT_ASSUMPTIONS, transport: mode })
+        .transport;
+    const order = (["walk", "publicTransport", "motorcycle", "rideHailing", "car"] as const).map(transport);
+    expect([...order].sort((x, y) => x - y)).toEqual(order);
   });
 });

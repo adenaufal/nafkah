@@ -121,6 +121,14 @@ export function ProfileEditor({ onBack }: { onBack: () => void }) {
             </label>
           )}
           {couple && a.dualIncome && <PartnerIncomeField />}
+          <MoneyField
+            id="profile-family-support"
+            label="Tanggungan keluarga"
+            hint="Kiriman rutin ke orang tua atau keluarga lain. Ditambahkan ke pengeluaran semua daerah."
+            value={a.familySupportMonthly}
+            onChange={(v) => set("familySupportMonthly", v)}
+            placeholder="cth. 1.000.000"
+          />
         </fieldset>
 
         <fieldset className="space-y-4">
@@ -148,6 +156,7 @@ export function ProfileEditor({ onBack }: { onBack: () => void }) {
             <Seg<HousingType>
               label="Hunian"
               showHint
+              columns={2}
               value={a.housing}
               onChange={(v) => set("housing", v)}
               options={[
@@ -166,6 +175,11 @@ export function ProfileEditor({ onBack }: { onBack: () => void }) {
                   label: "Apartemen",
                   hint: "Menengah ke atas · ±145% anggaran hunian dasar",
                 },
+                {
+                  value: "owner",
+                  label: "Rumah sendiri",
+                  hint: "Sudah lunas atau ikut orang tua · biaya hunian Rp0; masih mencicil? Isi cicilan di bawah",
+                },
               ]}
             />
             {(a.installmentMonthly ?? 0) > 0 && (
@@ -176,12 +190,36 @@ export function ProfileEditor({ onBack }: { onBack: () => void }) {
           </div>
           <Seg<TransportMode>
             label="Transportasi"
+            showHint
+            columns={3}
             value={a.transport}
             onChange={(v) => set("transport", v)}
             options={[
-              { value: "motorcycle", label: "Motor" },
-              { value: "publicTransport", label: "Kend. umum" },
-              { value: "rideHailing", label: "Ojol" },
+              {
+                value: "motorcycle",
+                label: "Motor",
+                hint: "Baseline model · BBM, servis, pajak, parkir",
+              },
+              {
+                value: "publicTransport",
+                label: "Kend. umum",
+                hint: "±70% biaya motor",
+              },
+              {
+                value: "rideHailing",
+                label: "Ojol",
+                hint: "±190% biaya motor",
+              },
+              {
+                value: "car",
+                label: "Mobil",
+                hint: "±350% biaya motor · belum termasuk cicilan, asuransi, dan tol",
+              },
+              {
+                value: "walk",
+                label: "Jalan kaki",
+                hint: "Jalan kaki atau sepeda · ±25% biaya motor untuk sesekali angkot/ojek",
+              },
             ]}
           />
           <MoneyField

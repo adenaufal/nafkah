@@ -110,7 +110,15 @@ export const DEFAULT_ASSUMPTIONS: Assumptions = {
   customIncome: null,
   partnerIncome: null,
   installmentMonthly: null,
+  familySupportMonthly: null,
 };
+
+/** Tanggungan keluarga yang ikut dihitung: nominal positif, selain itu 0. */
+export function activeFamilySupport(a: Assumptions): number {
+  return a.familySupportMonthly != null && a.familySupportMonthly > 0
+    ? a.familySupportMonthly
+    : 0;
+}
 
 /**
  * Gaji pasangan yang benar-benar ikut dihitung: pasangan ikut bekerja di
@@ -223,7 +231,11 @@ export function computeMetrics(
     (earners === 2 ? (partnerIncome ?? incomeSingle) : 0);
 
   const breakdown = adjustCosts(costs, assumptions);
-  const totalMonthlyCost = Object.values(breakdown).reduce((s, v) => s + v, 0);
+  // Tanggungan keluarga isian ikut total, tetapi tidak masuk breakdown: breakdown
+  // tetap 10 kategori dataset yang masing-masing punya provenance.
+  const familySupport = activeFamilySupport(assumptions);
+  const totalMonthlyCost =
+    Object.values(breakdown).reduce((s, v) => s + v, 0) + familySupport;
   const coveragePercent =
     totalMonthlyCost > 0 ? (wageAmount / totalMonthlyCost) * 100 : 0;
 
@@ -241,6 +253,7 @@ export function computeMetrics(
       wageAmount > 0 ? totalMonthlyCost / wageAmount : Infinity,
     band: classify(coveragePercent, bands),
     breakdown,
+    familySupport,
   };
 }
 

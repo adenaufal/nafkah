@@ -25,6 +25,9 @@ export function categoryLabel(key: ExpenseCategoryKey, a: Assumptions): string {
   return EXPENSE_CATEGORIES.find((c) => c.key === key)?.label ?? key;
 }
 
+/** The user's own family-support line — counted in the total, not a category. */
+export const FAMILY_SUPPORT_LABEL = "Tanggungan keluarga (angkamu)";
+
 /**
  * What the income line is: own salary, the origin city's wage, or the
  * region's — UMK or UMP per its legal basis, with the after-deduction figure

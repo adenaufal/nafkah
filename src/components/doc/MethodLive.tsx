@@ -141,7 +141,11 @@ export function WorkedExample() {
           value={rp(m.wageAmount)}
         />
         <Row
-          label="Biaya hidup bulanan (10 kategori)"
+          label={
+            m.familySupport > 0
+              ? "Biaya hidup bulanan (10 kategori + tanggungan)"
+              : "Biaya hidup bulanan (10 kategori)"
+          }
           value={rp(m.totalMonthlyCost)}
           op="÷"
         />

@@ -16,11 +16,14 @@ export function assumptionSummary(a: Assumptions): string {
     room: "rusun/kost",
     studio: "rumah KPR",
     oneBedroom: "apartemen",
+    owner: "rumah sendiri",
   };
   const transport = {
     motorcycle: "motor",
     publicTransport: "kend. umum",
     rideHailing: "ojol",
+    car: "mobil",
+    walk: "jalan kaki",
   };
   const parts = [household[a.householdType]];
   if (a.children > 0) parts.push(`${a.children} anak`);
@@ -28,6 +31,9 @@ export function assumptionSummary(a: Assumptions): string {
   if (a.dualIncome && a.householdType !== "single") parts.push("2 upah");
   if (a.installmentMonthly != null && a.installmentMonthly > 0) {
     parts.push("cicilan sendiri");
+  }
+  if (a.familySupportMonthly != null && a.familySupportMonthly > 0) {
+    parts.push("tanggungan keluarga");
   }
   return parts.join(" · ");
 }
@@ -55,11 +61,14 @@ export function profileSummary(a: Assumptions): string {
     room: "rusun/kost",
     studio: "rumah KPR",
     oneBedroom: "apartemen",
+    owner: "rumah sendiri",
   };
   const transport = {
     motorcycle: "motor",
     publicTransport: "kendaraan umum",
     rideHailing: "ojol",
+    car: "mobil pribadi",
+    walk: "jalan kaki/sepeda",
   };
   const ownInstallment = (a.installmentMonthly ?? 0) > 0;
   const parts = [
@@ -69,6 +78,7 @@ export function profileSummary(a: Assumptions): string {
     transport[a.transport],
   ];
   if (a.includeSavings) parts.push("+tabungan");
+  if ((a.familySupportMonthly ?? 0) > 0) parts.push("+tanggungan keluarga");
   if (a.wageBasis === "takeHome") parts.push("setelah potongan (est.)");
   if (a.dualIncome && a.householdType !== "single") parts.push("2 upah");
   return parts.join(" · ");

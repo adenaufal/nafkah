@@ -56,7 +56,9 @@ export function Receipt({
         <Heading>Pengeluaran · estimasi</Heading>
         <ul className="mt-1" onMouseLeave={() => onHighlight(null)}>
           {rows.map((r) => {
-            const mid = medians?.[r.key];
+            // The user's own line has no national median to compare with.
+            const mid =
+              r.key === "familySupport" ? undefined : medians?.[r.key];
             const ratio = mid ? r.value / mid - 1 : null;
             return (
               <li

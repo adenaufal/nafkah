@@ -5,12 +5,39 @@ Nomor versi mengikuti Semantic Versioning: `MAJOR.MINOR.PATCH`.
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-10-12
+
 ### Added
 - Gaji pasangan bisa diisi sendiri saat "Pasangan ikut bekerja" aktif, di
   kontrol "Hitung dengan" maupun profil rumah tangga. Bila kosong, pasangan
   tetap memakai UMK/UMP daerah yang sama (atau kota asal saat simulasi pindah
   kota) seperti sebelumnya. Angkanya ikut tersimpan di browser, tautan berbagi,
   label pendapatan, dan ekspor CSV.
+- Pilihan hunian "Rumah sendiri" untuk rumah yang sudah lunas atau tinggal
+  bersama orang tua: biaya hunian dihitung Rp0 (PBB dan perawatan rumah belum
+  dihitung). Bila cicilan rumah diisi, cicilan itu tetap menggantikan biaya
+  hunian. Pilihan ini ikut tersimpan di browser, tautan berbagi, dan ekspor CSV.
+- Isian "Tanggungan keluarga" di profil rumah tangga untuk kiriman rutin ke
+  orang tua atau keluarga lain (generasi sandwich). Nominalnya ditambahkan ke
+  pengeluaran semua daerah sebagai baris "angkamu" di struk bulanan, baki
+  perbandingan, dan ekspor CSV, terpisah dari 10 kategori estimasi. Angkanya
+  ikut tersimpan di browser dan tautan berbagi.
+- Pilihan transportasi "Mobil" (×3,5 biaya motor; belum termasuk cicilan,
+  asuransi, dan tol) dan "Jalan kaki" untuk jalan kaki atau sepeda (×0,25).
+  Dasar kedua pengali dicatat di `docs/pengali-transport-2026-10.md`. Setiap
+  pilihan transportasi kini menampilkan keterangan singkat di profil.
+- Tombol "Bagikan struk" di cerita daerah membuat gambar PNG 1080×1350 dari
+  struk bulanan, lengkap dengan profil, sumber upah, tanggal data biaya, dan
+  catatan bahwa angkanya estimasi. Di ponsel gambar bisa langsung dibagikan
+  ke aplikasi lain; di desktop diunduh. Nominal rupiah tampil secara default
+  dan bisa disembunyikan sehingga hanya persentase yang terlihat. Struk juga
+  bisa disalin sebagai teks biasa untuk referensi anggaran.
+- Saat slider gaji mentok di Rp25 jt atau Rp1 jt, petunjuknya mengingatkan
+  bahwa angka yang lebih besar atau lebih kecil bisa diketik langsung.
+- Halaman Tentang mendapat bagian "Pertanyaan yang sering muncul" (asal angka,
+  profil yang dihitung, kenapa banyak daerah merah, peran AI, jadwal
+  pembaruan, dan cara melapor angka yang meleset) serta "Cara dibuat" yang
+  menjelaskan alat yang dipakai, termasuk AI, dan cara angka diperiksa.
 
 ### Changed
 - Booklet `/booklet` disusun ulang menjadi 12 halaman A4 bergaya Atlas:
@@ -33,10 +60,36 @@ Nomor versi mengikuti Semantic Versioning: `MAJOR.MINOR.PATCH`.
 - Catatan pembanding di struk bulanan kini bertuliskan "Dua UMK daerah ini"
   saat pasangan ikut bekerja. Sebelumnya jumlah dua upah minimum ditulis
   sebagai "UMK daerah ini".
+- Label pemasukan di struk kini menaruh tahun tepat setelah jenis upah
+  ("UMP 2026 × 2", "UMK 2026 setelah potongan (est.)"). Sebelumnya tahun
+  menempel di ujung label, misalnya "UMP × 2 2026".
 
 ### Removed
 - Salinan statis `public/booklet.html`. Berkas itu tidak pernah tersaji,
   karena rute `/booklet` menimpanya saat ekspor.
+
+### Dokumentasi
+
+- docs: perbarui dokumentasi untuk fitur gelombang Oktober (82fe112)
+- docs(roadmap): tandai AP-15 dan AP-17 selesai (63af99b)
+- docs(roadmap): catat masukan gelombang TikTok & Instagram Oktober 2026 (2872153)
+
+### Perbaikan
+
+- fix(ui): taruh tahun upah tepat setelah jenis upah di struk (88f07f6)
+
+### Fitur
+
+- feat(ui): bagikan struk bulanan sebagai gambar PNG (402fbcf)
+- feat(ui): tambah FAQ dan bagian "Cara dibuat" di halaman Tentang (b5df728)
+- feat(ui): tambah tombol salin struk dan petunjuk batas slider gaji (353bf52)
+- feat(profile): tambah transportasi mobil dan jalan kaki/sepeda (fc7a911)
+- feat(profile): tambah isian tanggungan keluarga (17441f2)
+- feat(profile): tambah pilihan hunian "Rumah sendiri" (757a1d1)
+- feat(income): allow a custom salary for working partners (#12) (2534e5b)
+- feat(video): tambah teaser promosi Nafkah (#11) (e4ae7ea)
+- feat(ui): susun ulang booklet jadi 12 halaman A4 dari dataset (#10) (c542daf)
+- feat(ui): terapkan desain Atlas, pisahkan Metode dan Tentang (#9) (4b04c24)
 
 ## [0.3.0] - 2026-10-03
 

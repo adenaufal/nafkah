@@ -63,6 +63,29 @@ describe("normalizeAssumptions", () => {
     ).toBeNull();
   });
 
+  it("menerima pilihan hunian rumah sendiri", () => {
+    expect(normalizeAssumptions({ housing: "owner" }).housing).toBe("owner");
+  });
+
+  it("menerima pilihan transportasi mobil dan jalan kaki", () => {
+    expect(normalizeAssumptions({ transport: "car" }).transport).toBe("car");
+    expect(normalizeAssumptions({ transport: "walk" }).transport).toBe("walk");
+  });
+
+  it("tanggungan keluarga hanya valid bila angka positif", () => {
+    expect(
+      normalizeAssumptions({ familySupportMonthly: 1_500_000 })
+        .familySupportMonthly,
+    ).toBe(1_500_000);
+    for (const familySupportMonthly of [0, -1, null, "1500000"]) {
+      expect(
+        normalizeAssumptions({
+          familySupportMonthly,
+        } as unknown as Partial<Assumptions>).familySupportMonthly,
+      ).toBeNull();
+    }
+  });
+
   it("gaji pasangan hanya valid bila angka positif", () => {
     expect(normalizeAssumptions({ partnerIncome: 4_250_000 }).partnerIncome)
       .toBe(4_250_000);

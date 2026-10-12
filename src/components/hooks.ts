@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { useApp } from "@/state/AppContext";
 import { buildShareUrl } from "@/state/share";
-import { activePartnerIncome } from "@/lib/calculations";
+import { activeFamilySupport, activePartnerIncome } from "@/lib/calculations";
 import { recordUsage } from "@/lib/usage";
 
 /** Live media query (client-only shell, so the first read is real). */
@@ -46,6 +46,29 @@ async function copyText(value: string): Promise<void> {
   const copied = document.execCommand("copy");
   input.remove();
   if (!copied) throw new Error("Browser tidak mengizinkan penyalinan tautan.");
+}
+
+/** Copy text to the clipboard, with a short-lived status for the button. */
+export function useCopy() {
+  const [status, setStatus] = useState<"idle" | "copied" | "error">("idle");
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(
+    () => () => {
+      if (timer.current) clearTimeout(timer.current);
+    },
+    [],
+  );
+  const copy = async (text: string) => {
+    try {
+      await copyText(text);
+      setStatus("copied");
+    } catch {
+      setStatus("error");
+    }
+    if (timer.current) clearTimeout(timer.current);
+    timer.current = setTimeout(() => setStatus("idle"), 2800);
+  };
+  return { status, copy };
 }
 
 /**
@@ -101,7 +124,8 @@ export function useShareLink() {
   const includesMoney =
     (state.assumptions.customIncome ?? 0) > 0 ||
     activePartnerIncome(state.assumptions) != null ||
-    (state.assumptions.installmentMonthly ?? 0) > 0;
+    (state.assumptions.installmentMonthly ?? 0) > 0 ||
+    activeFamilySupport(state.assumptions) > 0;
   const label =
     status === "copied"
       ? "Tautan disalin"
@@ -111,7 +135,7 @@ export function useShareLink() {
           ? "Gagal menyalin"
           : "Bagikan";
   const hint = includesMoney
-    ? "Tautan ikut membawa angka gaji/cicilan yang sedang kamu isi."
+    ? "Tautan ikut membawa angka gaji/cicilan/tanggungan yang sedang kamu isi."
     : "Salin tautan yang memulihkan tampilan ini.";
   return { status, share, label, hint, includesMoney };
 }

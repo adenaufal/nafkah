@@ -15,7 +15,7 @@ import {
   summarize,
   type RankedRegion,
 } from "@/lib/insights";
-import { categoryLabel } from "@/lib/labels";
+import { categoryLabel, FAMILY_SUPPORT_LABEL } from "@/lib/labels";
 import { regionLabel, regionTitle } from "@/lib/names";
 import { profileSummary } from "@/lib/profile";
 import { recordUsage } from "@/lib/usage";
@@ -119,13 +119,17 @@ export function useRegionDetail(code: string | null) {
 
 export type RegionDetail = NonNullable<ReturnType<typeof useRegionDetail>>;
 
+/** A cost line: one of the 10 dataset categories, or the user's family support. */
+export type CostLineKey = ExpenseCategoryKey | "familySupport";
+
 export interface BreakdownRow {
-  key: ExpenseCategoryKey;
+  key: CostLineKey;
   label: string;
   value: number;
   /** Share of the monthly total, 0–1. */
   share: number;
-  provenance: Provenance;
+  /** null = the user's own number, not the dataset. */
+  provenance: Provenance | null;
 }
 
 /** Cost lines with provenance, largest first; zero lines are dropped. */
@@ -137,15 +141,21 @@ export function breakdownRows(
   const costs = detail.costs;
   if (!m || !costs) return [];
   const total = m.totalMonthlyCost || 1;
-  return EXPENSE_CATEGORIES.map((c) => ({
+  const rows: BreakdownRow[] = EXPENSE_CATEGORIES.map((c) => ({
     key: c.key,
     label: categoryLabel(c.key, a),
     value: m.breakdown[c.key],
     share: m.breakdown[c.key] / total,
     provenance: costs.baseline[c.key],
-  }))
-    .filter((r) => r.value > 0)
-    .sort((a, b) => b.value - a.value);
+  }));
+  rows.push({
+    key: "familySupport",
+    label: FAMILY_SUPPORT_LABEL,
+    value: m.familySupport,
+    share: m.familySupport / total,
+    provenance: null,
+  });
+  return rows.filter((r) => r.value > 0).sort((a, b) => b.value - a.value);
 }
 
 /**

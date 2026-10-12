@@ -37,6 +37,50 @@ describe("shared view URL", () => {
     });
   });
 
+  it("round-trips the own-home housing and the new transport choices", () => {
+    for (const transport of ["car", "walk"] as const) {
+      const url = new URL(
+        buildShareUrl("https://nafkah.example/", {
+          assumptions: { ...DEFAULT_ASSUMPTIONS, housing: "owner", transport },
+          pinned: [],
+          selectedCode: null,
+          originCode: null,
+          colorMode: "coverage",
+          legendFilter: null,
+        }),
+      );
+      expect(url.searchParams.get("home")).toBe("owner");
+      expect(url.searchParams.get("transport")).toBe(transport);
+      const decoded = decodeSharedView(url.search)?.assumptions;
+      expect(decoded?.housing).toBe("owner");
+      expect(decoded?.transport).toBe(transport);
+    }
+  });
+
+  it("carries family support only when it is set", () => {
+    const view = (familySupportMonthly: number | null) =>
+      new URL(
+        buildShareUrl("https://nafkah.example/", {
+          assumptions: { ...DEFAULT_ASSUMPTIONS, familySupportMonthly },
+          pinned: [],
+          selectedCode: null,
+          originCode: null,
+          colorMode: "coverage",
+          legendFilter: null,
+        }),
+      );
+    const withSupport = view(1_250_000);
+    expect(withSupport.searchParams.get("support")).toBe("1250000");
+    expect(
+      decodeSharedView(withSupport.search)?.assumptions.familySupportMonthly,
+    ).toBe(1_250_000);
+    const without = view(null);
+    expect(without.searchParams.has("support")).toBe(false);
+    expect(
+      decodeSharedView(without.search)?.assumptions.familySupportMonthly,
+    ).toBeNull();
+  });
+
   it("leaves out a partner salary the view does not use", () => {
     const idle = [
       { householdType: "single" as const, dualIncome: true },

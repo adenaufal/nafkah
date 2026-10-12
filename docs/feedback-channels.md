@@ -90,7 +90,7 @@ Pengaturan form:
 - Buat automation *record created → Send email* ke maintainer agar laporan
   baru tetap diketahui di antara jadwal agent.
 - Pasang tautan form di footer atau tombol "Laporkan angka", serta bio atau
-  postingan Threads.
+  postingan Threads, TikTok, dan Instagram.
 
 ---
 
@@ -104,6 +104,27 @@ Aktifkan Discussions di repo, lalu buat kategori berikut:
 - 🙏 Tanya / diskusi
 
 Arahkan pengguna nonteknis ke form Airtable dan developer ke Discussions.
+
+---
+
+## Gelombang komentar media sosial
+
+Komentar di Threads, TikTok, dan Instagram bukan antrean resmi, tetapi tiap
+gelombang (misalnya setelah video promosi) tetap dibaca sekali secara utuh:
+
+1. Kumpulkan semua komentar dan balasan. Salinan mentahnya memuat nama akun,
+   jadi simpan di luar repo atau di `_private/`.
+2. Kelompokkan per jenis dan per tema, lalu hitung jumlahnya. Jumlah per tema
+   menjadi baseline untuk gelombang berikutnya.
+3. Tulis ringkasan anonim di bagian "Masukan komunitas" di
+   [roadmap](../ROADMAP.md), tanpa nama akun atau kutipan pribadi, lengkap
+   dengan keputusan dan item AP yang terkait.
+4. Koreksi angka yang muncul di komentar tetap diarahkan ke form Airtable.
+5. Catat janji yang sempat dibalas di kolom komentar, lalu tutup dengan
+   pengumuman saat fiturnya dirilis.
+
+Contohnya gelombang Threads (1 September 2026) dan TikTok/Instagram
+(11–12 Oktober 2026).
 
 ---
 

@@ -198,7 +198,9 @@ export default function MetodePage() {
           </p>
           <p>
             <b>Biaya hidup bulanan</b> adalah jumlah 10 kategori pengeluaran
-            daerah itu setelah dikalikan faktor profil (bagian 5).
+            daerah itu setelah dikalikan faktor profil (bagian 5). Bila kamu
+            mengisi <b>tanggungan keluarga</b>, misalnya kiriman ke orang tua,
+            angka itu ditambahkan apa adanya ke semua daerah.
           </p>
           <WorkedExample />
         </Section>
@@ -521,11 +523,13 @@ export default function MetodePage() {
               <dd className="tnum mt-1 text-[14px]">
                 Rusun/kost {times(HOUSING_MULTIPLIERS.room)} · Rumah KPR{" "}
                 {times(HOUSING_MULTIPLIERS.studio)} · Apartemen{" "}
-                {times(HOUSING_MULTIPLIERS.oneBedroom)}
+                {times(HOUSING_MULTIPLIERS.oneBedroom)} · Rumah sendiri{" "}
+                {times(HOUSING_MULTIPLIERS.owner)}
               </dd>
               <dd className="mt-1 text-[13px] text-muted">
-                Cicilan sendiri menggantikan seluruh kategori hunian dengan
-                angkamu.
+                Rumah sendiri (lunas atau ikut orang tua) tanpa sewa; PBB dan
+                perawatan rumah belum dihitung. Cicilan sendiri menggantikan
+                seluruh kategori hunian dengan angkamu.
               </dd>
             </div>
             <div className="rounded-[14px] border border-rule p-4">
@@ -533,10 +537,20 @@ export default function MetodePage() {
               <dd className="tnum mt-1 text-[14px]">
                 Motor {times(TRANSPORT_MULTIPLIERS.motorcycle)} · Kend. umum{" "}
                 {times(TRANSPORT_MULTIPLIERS.publicTransport)} · Ojol{" "}
-                {times(TRANSPORT_MULTIPLIERS.rideHailing)}
+                {times(TRANSPORT_MULTIPLIERS.rideHailing)} · Mobil{" "}
+                {times(TRANSPORT_MULTIPLIERS.car)} · Jalan kaki/sepeda{" "}
+                {times(TRANSPORT_MULTIPLIERS.walk)}
               </dd>
               <dd className="mt-1 text-[13px] text-muted">
-                Tanpa tabungan, kategori dana cadangan menjadi nol.
+                Mobil belum termasuk cicilan, asuransi, dan tol; dasar
+                pengalinya ada di{" "}
+                <a
+                  href={DOC("pengali-transport-2026-10.md")}
+                  className="font-semibold text-accent-ink underline decoration-rule-2 underline-offset-2 hover:decoration-accent"
+                >
+                  catatan pengali transportasi
+                </a>
+                . Tanpa tabungan, kategori dana cadangan menjadi nol.
               </dd>
             </div>
           </dl>

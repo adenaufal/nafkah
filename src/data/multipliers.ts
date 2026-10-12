@@ -85,16 +85,30 @@ export const LIFESTYLE_MULTIPLIERS: Record<
   },
 };
 
-/** Housing choice rescales only the housing category. */
+/**
+ * Housing choice rescales only the housing category. `owner` (rumah sendiri:
+ * lunas atau ikut orang tua) tidak membayar sewa, jadi kategori hunian nol —
+ * PBB dan perawatan rumah belum dihitung. Cicilan isian tetap menggantikan
+ * kategori ini (lihat adjustCosts).
+ */
 export const HOUSING_MULTIPLIERS: Record<HousingType, number> = {
   room: 0.55,
   studio: 1.0,
   oneBedroom: 1.45,
+  owner: 0,
 };
 
-/** Transport mode rescales only the transport category. */
+/**
+ * Transport mode rescales only the transport category. Mobil dan jalan
+ * kaki/sepeda diturunkan dari komponen biaya motor (BBM, servis, parkir,
+ * pajak) — estimasi, bukan survei; dasar dan rentangnya dicatat di
+ * `docs/pengali-transport-2026-10.md`. Mobil belum termasuk cicilan,
+ * asuransi, dan tol.
+ */
 export const TRANSPORT_MULTIPLIERS: Record<TransportMode, number> = {
   motorcycle: 1.0,
   publicTransport: 0.7,
   rideHailing: 1.9,
+  car: 3.5,
+  walk: 0.25,
 };

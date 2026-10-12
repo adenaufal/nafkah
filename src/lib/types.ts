@@ -67,8 +67,15 @@ export interface CostProfile {
 
 export type HouseholdType = "single" | "couple" | "family";
 export type LifestyleLevel = "budget" | "moderate" | "comfortable";
-export type HousingType = "room" | "studio" | "oneBedroom";
-export type TransportMode = "motorcycle" | "publicTransport" | "rideHailing";
+/** `owner`: rumah lunas atau tinggal bersama keluarga — tanpa sewa/cicilan. */
+export type HousingType = "room" | "studio" | "oneBedroom" | "owner";
+/** `walk`: jalan kaki atau sepeda, sesekali angkot/ojek. */
+export type TransportMode =
+  | "motorcycle"
+  | "publicTransport"
+  | "rideHailing"
+  | "car"
+  | "walk";
 export type WageBasis = "gross" | "takeHome";
 
 export interface Assumptions {
@@ -91,6 +98,11 @@ export interface Assumptions {
  partnerIncome: number | null;
  /** Cicilan KPR/angsuran bulanan milik pengguna (Rp). null = estimasi sewa daerah. */
  installmentMonthly: number | null;
+ /**
+  * Tanggungan keluarga per bulan (Rp), mis. kiriman ke orang tua — sama untuk
+  * semua daerah dan di luar 10 kategori dataset. null = tidak ada.
+  */
+ familySupportMonthly: number | null;
 }
 
 /* ---------- Derived ---------- */
@@ -119,12 +131,16 @@ export interface RegionMetrics {
  wageSource: IncomeSource;
  /** Sumber penghasilan pasangan yang ikut bekerja; null = satu penghasilan. */
  partnerWageSource: IncomeSource | null;
+ /** Σ breakdown + familySupport. */
  totalMonthlyCost: number;
  coveragePercent: number;
  surplusOrDeficit: number;
  affordabilityRatio: number;
  band: AffordabilityBand;
+ /** 10 kategori dataset setelah pengali profil (cicilan isian menggantikan hunian). */
  breakdown: Record<ExpenseCategoryKey, number>;
+ /** Tanggungan keluarga isian pengguna (Rp), bukan kategori dataset; 0 = tidak ada. */
+ familySupport: number;
 }
 
 export type ColorMode = "coverage" | "cost" | "wage";

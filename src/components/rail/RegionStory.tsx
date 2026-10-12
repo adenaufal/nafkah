@@ -20,7 +20,7 @@ import {
   useRegionDetail,
 } from "@/state/derived";
 import { bandTheme } from "@/lib/bands";
-import { isRegionalIncome } from "@/lib/calculations";
+import { BAND_LABEL, isRegionalIncome } from "@/lib/calculations";
 import { categoryLabel, confidenceLabel, wageLabel } from "@/lib/labels";
 import { digits, formatDate, formatMonth, pct, rpShort } from "@/lib/format";
 import {
@@ -33,15 +33,18 @@ import {
 import { CORRECTION_FORM_URL } from "@/lib/links";
 import { tierLabel, regionLabel } from "@/lib/names";
 import { profileSummary } from "@/lib/profile";
+import type { ReceiptCardInput } from "@/lib/receipt";
 import { recordUsage } from "@/lib/usage";
 import type { Assumptions, RegionMetrics } from "@/lib/types";
 import { wageKind, type WageKind } from "@/lib/wages";
 import { useShareLink } from "@/components/hooks";
 import { BandChip, BudgetBar, Kicker, SectionTitle } from "@/components/ui";
+import manifest from "../../../public/data/v2026.1/manifest.json";
 import { DotStrip } from "./DotStrip";
 import { IncomeControl } from "./IncomeControl";
 import { ProvincePeers } from "./ProvincePeers";
 import { Receipt } from "./Receipt";
+import { ReceiptShareDialog } from "./ReceiptShare";
 
 /** "UMP", "Gajimu", "Dua UMK Kota Bandung"… — the income in a sentence. */
 function incomeSubject(
@@ -77,6 +80,7 @@ export function RegionStory({
   const ranking = useRanking();
   const medians = useNationalMedians();
   const share = useShareLink();
+  const [receiptShare, setReceiptShare] = useState(false);
   const [hl, setHl] = useState<string | null>(null);
 
   const peers = useMemo(
@@ -112,6 +116,45 @@ export function RegionStory({
       ? d.wage.grossMonthly
       : d.wage.estimatedTakeHomeMonthly
     : undefined;
+  // The receipt's income line, on screen and in the shared copy alike. The
+  // year belongs to the wage: "UMP 2026 × 2", not "UMP × 2 2026".
+  const receiptIncomeLabel = (metric: RegionMetrics) => {
+    const label = wageLabel(metric, a, incomeKind);
+    return regionalIncome && d.wage
+      ? label.replace(incomeKind, `${incomeKind} ${d.wage.year}`)
+      : label;
+  };
+  // Everything the shared receipt prints, provenance included.
+  const receiptInput = (metric: RegionMetrics): ReceiptCardInput => {
+    const wageSource = d.wageProvenance
+      ? `${metric.wageSource === "origin" ? `${incomeKind} kota asal` : incomeKind} ${d.wageProvenance.year}: ${d.wageProvenance.source}.`
+      : "";
+    const incomeSource =
+      metric.wageSource === "custom"
+        ? `Pendapatan: isian pengguna, bukan dataset.${metric.partnerWageSource && metric.partnerWageSource !== "custom" ? ` Pasangan: ${wageSource}` : ""}`
+        : `${wageSource}${metric.partnerWageSource === "custom" ? " Gaji pasangan: isian pengguna." : ""}`;
+    return {
+      place: `${d.label}, ${d.province}`,
+      region: d.label,
+      province: d.province,
+      profile: profileSummary(a),
+      incomeLabel: receiptIncomeLabel(metric),
+      income: metric.wageAmount,
+      lines: rows.map((r) => ({ label: r.label, value: r.value })),
+      total: metric.totalMonthlyCost,
+      surplusOrDeficit: metric.surplusOrDeficit,
+      coveragePercent: metric.coveragePercent,
+      band: metric.band,
+      bandLabel: BAND_LABEL[metric.band],
+      incomeSource,
+      costAsOf: rows.reduce(
+        (latest, r) =>
+          r.provenance && r.provenance.asOf > latest ? r.provenance.asOf : latest,
+        "",
+      ),
+      datasetVersion: manifest.datasetVersion,
+    };
+  };
 
   return (
     <article className="anim-rise" aria-labelledby="region-title">
@@ -339,11 +382,7 @@ export function RegionStory({
             <Receipt
               metric={m}
               rows={rows}
-              incomeLabel={
-                regionalIncome
-                  ? `${wageLabel(m, a, incomeKind)} ${d.wage?.year ?? ""}`.trim()
-                  : wageLabel(m, a, incomeKind)
-              }
+              incomeLabel={receiptIncomeLabel(m)}
               incomeNote={
                 regionalIncome
                   ? undefined
@@ -356,15 +395,37 @@ export function RegionStory({
             />
             <p className="mt-3 flex items-start justify-between gap-3 text-[12.5px] leading-[1.5] text-muted">
               <span>Profil: {profileSummary(a)}</span>
-              <button
-                type="button"
-                onClick={onEditProfile}
-                className="inline-flex shrink-0 items-center gap-1 font-semibold text-accent-ink hover:underline"
-              >
-                <PencilSimple size={13} weight="bold" aria-hidden="true" />
-                Ubah profil
-              </button>
+              <span className="flex shrink-0 flex-col items-end gap-1.5">
+                <button
+                  type="button"
+                  onClick={() => setReceiptShare(true)}
+                  className="inline-flex items-center gap-1 font-semibold text-accent-ink hover:underline"
+                >
+                  <ShareNetwork size={13} weight="bold" aria-hidden="true" />
+                  Bagikan struk
+                </button>
+                <button
+                  type="button"
+                  onClick={onEditProfile}
+                  className="inline-flex items-center gap-1 font-semibold text-accent-ink hover:underline"
+                >
+                  <PencilSimple size={13} weight="bold" aria-hidden="true" />
+                  Ubah profil
+                </button>
+              </span>
             </p>
+            {receiptShare && (
+              <ReceiptShareDialog
+                input={receiptInput(m)}
+                personal={
+                  m.wageSource === "custom" ||
+                  m.partnerWageSource === "custom" ||
+                  (a.installmentMonthly ?? 0) > 0 ||
+                  m.familySupport > 0
+                }
+                onClose={() => setReceiptShare(false)}
+              />
+            )}
           </section>
 
           {d.narrative && (
@@ -506,15 +567,23 @@ export function RegionStory({
                     asOf={d.wageProvenance.asOf}
                   />
                 )}
-                {rows.map((r) => (
-                  <ProvRow
-                    key={r.key}
-                    label={r.label}
-                    source={r.provenance.source}
-                    confidence={r.provenance.confidence}
-                    asOf={r.provenance.asOf}
-                  />
-                ))}
+                {rows.map((r) =>
+                  r.provenance ? (
+                    <ProvRow
+                      key={r.key}
+                      label={r.label}
+                      source={r.provenance.source}
+                      confidence={r.provenance.confidence}
+                      asOf={r.provenance.asOf}
+                    />
+                  ) : (
+                    <ProvRow
+                      key={r.key}
+                      label={r.label}
+                      source="Isianmu, bukan dataset; sama untuk semua daerah."
+                    />
+                  ),
+                )}
                 {d.narrative && (
                   <ProvRow
                     label="Rentang sewa tipikal"
@@ -724,6 +793,7 @@ function Versus({
   );
 }
 
+/** One provenance line; without confidence it is the user's own number. */
 function ProvRow({
   label,
   source,
@@ -732,8 +802,8 @@ function ProvRow({
 }: {
   label: string;
   source: string;
-  confidence: Parameters<typeof confidenceLabel>[0];
-  asOf: string;
+  confidence?: Parameters<typeof confidenceLabel>[0];
+  asOf?: string;
 }) {
   return (
     <tr className="border-t border-rule align-top">
@@ -742,14 +812,16 @@ function ProvRow({
       </th>
       <td className="py-2 pr-2 text-ink-2">{source}</td>
       <td className="whitespace-nowrap py-2">
-        {confidenceLabel(confidence)}
-        <time
-          dateTime={asOf}
-          className="block text-muted"
-          title={formatDate(asOf)}
-        >
-          {asOf.slice(0, 7)}
-        </time>
+        {confidence ? confidenceLabel(confidence) : "Isianmu"}
+        {asOf && (
+          <time
+            dateTime={asOf}
+            className="block text-muted"
+            title={formatDate(asOf)}
+          >
+            {asOf.slice(0, 7)}
+          </time>
+        )}
       </td>
     </tr>
   );

@@ -23,6 +23,7 @@ function metric(
     breakdown: Object.fromEntries(
       EXPENSE_CATEGORIES.map((category) => [category.key, 0]),
     ) as RegionMetrics["breakdown"],
+    familySupport: 0,
   };
 }
 
