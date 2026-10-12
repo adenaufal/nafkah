@@ -29,6 +29,10 @@ Nomor versi mengikuti Semantic Versioning: `MAJOR.MINOR.PATCH`.
   dijadikan referensi anggaran.
 - Saat slider gaji mentok di Rp25 jt atau Rp1 jt, petunjuknya mengingatkan
   bahwa angka yang lebih besar atau lebih kecil bisa diketik langsung.
+- Halaman Tentang mendapat bagian "Pertanyaan yang sering muncul" (asal angka,
+  profil yang dihitung, kenapa banyak daerah merah, peran AI, jadwal
+  pembaruan, dan cara melapor angka yang meleset) serta "Cara dibuat" yang
+  menjelaskan alat yang dipakai, termasuk AI, dan cara angka diperiksa.
 
 ### Changed
 - Booklet `/booklet` disusun ulang menjadi 12 halaman A4 bergaya Atlas:

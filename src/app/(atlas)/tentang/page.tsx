@@ -8,7 +8,7 @@ import pkg from "../../../../package.json";
 export const metadata: Metadata = {
   title: "Tentang",
   description:
-    "Nafkah adalah peta terbuka yang menyandingkan upah minimum dengan estimasi biaya hidup di 514 kabupaten/kota Indonesia. Untuk siapa, cara pakai, privasi, dan cara ikut memperbaiki datanya.",
+    "Nafkah adalah peta terbuka yang menyandingkan upah minimum dengan estimasi biaya hidup di 514 kabupaten/kota Indonesia. Untuk siapa, cara pakai, pertanyaan umum, cara dibuat, privasi, dan cara ikut memperbaiki datanya.",
   alternates: { canonical: "/tentang" },
 };
 
@@ -127,6 +127,108 @@ export default function TentangPage() {
           <ShowGuideButton />
         </Block>
 
+        <Block id="tanya" title="Pertanyaan yang sering muncul">
+          <dl className="space-y-5">
+            {[
+              {
+                q: "Angkanya dari mana?",
+                a: (
+                  <>
+                    Upah minimum memakai penetapan resmi 2026: UMK dari SK atau
+                    Kepgub tiap daerah, atau UMP provinsi bila daerahnya tidak
+                    menetapkan UMK. Biaya hidup adalah estimasi model dari
+                    agregat Susenas, Indeks Harga Konsumen BPS, dan acuan harga
+                    lokal, karena survei biaya hidup BPS hanya ada di kota
+                    sampel. Di detail setiap daerah, semua angka membawa sumber,
+                    tanggal, dan status keyakinannya.
+                  </>
+                ),
+              },
+              {
+                q: "Biaya hidupnya untuk siapa?",
+                a: (
+                  <>
+                    Untuk profil yang sedang kamu pilih. Pilihan awalnya lajang,
+                    gaya hidup standar, tinggal di rusun/kost, naik motor, dan
+                    menyisihkan tabungan sekitar 10%. Ubah profil rumah tangga
+                    untuk mengatur pasangan, anak, hunian, transportasi,
+                    cicilan, atau tanggungan keluarga.
+                  </>
+                ),
+              },
+              {
+                q: "Kenapa banyak daerah merah?",
+                a: (
+                  <>
+                    Upah minimum adalah batas bawah resmi, bukan gaji rata-rata,
+                    dan biaya hidup di sini sudah termasuk tabungan. Warnanya
+                    juga bergantung pada profil: satu pilihan bisa menggeser
+                    ratusan daerah. Baca warna sebagai hasil asumsi, bukan sifat
+                    tetap sebuah daerah; tabel sensitivitas di{" "}
+                    <Link href="/metode#keyakinan" className={linkCls}>
+                      Metode
+                    </Link>{" "}
+                    menunjukkan seberapa jauh pergeserannya.
+                  </>
+                ),
+              },
+              {
+                q: "Apakah Nafkah dibuat dengan AI?",
+                a: (
+                  <>
+                    Ya. Kode aplikasi dan video promosinya dibuat dengan bantuan
+                    AI; prosesnya dijelaskan di{" "}
+                    <a href="#cara-dibuat" className={linkCls}>
+                      Cara dibuat
+                    </a>
+                    . Datanya tidak diambil begitu saja: upah mengacu pada
+                    dokumen penetapan resmi, sumber yang diduga rekaan ditolak,
+                    dan koreksi dari pengguna diperiksa manual.
+                  </>
+                ),
+              },
+              {
+                q: "Kapan datanya diperbarui?",
+                a: (
+                  <>
+                    Upah mengikuti penetapan UMK tahunan, yang biasanya keluar
+                    November–Desember; UMK 2027 direncanakan masuk setelah
+                    ditetapkan. Biaya hidup disesuaikan dengan inflasi IHK.
+                    Versi dataset dan tanggal setiap angka tercantum di{" "}
+                    <Link href="/metode#versi" className={linkCls}>
+                      Metode
+                    </Link>
+                    .
+                  </>
+                ),
+              },
+              {
+                q: "Angka di daerahku meleset. Bagaimana?",
+                a: (
+                  <>
+                    Kirim lewat{" "}
+                    <a
+                      href={CORRECTION_FORM_URL}
+                      target="_blank"
+                      rel="noreferrer"
+                      className={linkCls}
+                    >
+                      form koreksi
+                    </a>
+                    . Setiap laporan diperiksa manual dan tidak mengubah data
+                    secara otomatis.
+                  </>
+                ),
+              },
+            ].map(({ q, a }) => (
+              <div key={q}>
+                <dt className="font-semibold text-ink">{q}</dt>
+                <dd className="mt-1">{a}</dd>
+              </div>
+            ))}
+          </dl>
+        </Block>
+
         <Block id="terbuka" title="Terbuka & bisa diperiksa">
           <p>
             Kode sumbernya terbuka (MIT) dan datanya berlisensi CC BY 4.0. Angka
@@ -177,6 +279,50 @@ export default function TentangPage() {
           </ul>
         </Block>
 
+        <Block id="cara-dibuat" title="Cara dibuat">
+          <p>
+            Nafkah dibuat dan dirawat oleh satu orang dengan bantuan AI. Supaya
+            jelas mana yang dikerjakan alat dan mana yang diperiksa:
+          </p>
+          <ul className="space-y-3">
+            {[
+              [
+                "Kode.",
+                "Next.js, TypeScript, Tailwind CSS, dan MapLibre GL untuk peta. Banyak bagian kode ditulis bersama Claude Code, asisten pemrograman AI, lalu harus lolos typecheck, unit test perhitungan, dan build otomatis sebelum dirilis.",
+              ],
+              [
+                "Data.",
+                "Upah dicocokkan dengan SK/Kepgub dan rekap UMP Kemnaker; sumber yang diduga memuat angka rekaan ditolak dan dicatat di repo. Skema data dan kecocokan antarberkas diperiksa otomatis setiap ada perubahan, dan koreksi dari pengguna diperiksa manual sebelum masuk dataset.",
+              ],
+              [
+                "Peta.",
+                "Batas 514 kabupaten/kota dari HDX COD-AB yang disederhanakan; peta dasar dari CARTO dan Esri.",
+              ],
+              [
+                "Video promosi.",
+                "Dibuat dari kode dengan Remotion; suaranya dari ElevenLabs.",
+              ],
+            ].map(([t, d]) => (
+              <li key={t} className="flex gap-3">
+                <span
+                  aria-hidden="true"
+                  className="mt-[0.7em] h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
+                />
+                <span>
+                  <b>{t}</b> {d}
+                </span>
+              </li>
+            ))}
+          </ul>
+          <p>
+            Semua kode, data, dan catatan keputusannya bisa diperiksa di{" "}
+            <a href={REPO} target="_blank" rel="noreferrer" className={linkCls}>
+              GitHub
+            </a>
+            .
+          </p>
+        </Block>
+
         <Block id="privasi" title="Privasi">
           <ul className="space-y-3">
             {[
@@ -185,7 +331,7 @@ export default function TentangPage() {
                 "Aplikasi hanya menyimpan hitungan event agregat di browser ini. URL, kode wilayah, nilai asumsi, dan angka finansial tidak dicatat atau dikirim ke mana pun.",
               ],
               [
-                "Gaji dan cicilanmu tetap di perangkatmu.",
+                "Gaji, cicilan, dan tanggunganmu tetap di perangkatmu.",
                 "Angka itu baru ikut ke tautan kalau kamu sendiri memilih Bagikan.",
               ],
               [
