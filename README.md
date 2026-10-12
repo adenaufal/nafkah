@@ -18,7 +18,7 @@ kebutuhanmu.
 
 Coba di [nafkah.adenaufal.com](https://nafkah.adenaufal.com).
 
-Versi kode sumber saat ini adalah `v0.3.0`. Kode sumber dan dataset tersedia
+Versi kode sumber saat ini adalah `v0.4.0`. Kode sumber dan dataset tersedia
 secara terbuka di [repositori GitHub](https://github.com/adenaufal/nafkah).
 
 ## Fitur

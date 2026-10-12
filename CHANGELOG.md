@@ -5,6 +5,8 @@ Nomor versi mengikuti Semantic Versioning: `MAJOR.MINOR.PATCH`.
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-10-12
+
 ### Added
 - Gaji pasangan bisa diisi sendiri saat "Pasangan ikut bekerja" aktif, di
   kontrol "Hitung dengan" maupun profil rumah tangga. Bila kosong, pasangan
@@ -65,6 +67,29 @@ Nomor versi mengikuti Semantic Versioning: `MAJOR.MINOR.PATCH`.
 ### Removed
 - Salinan statis `public/booklet.html`. Berkas itu tidak pernah tersaji,
   karena rute `/booklet` menimpanya saat ekspor.
+
+### Dokumentasi
+
+- docs: perbarui dokumentasi untuk fitur gelombang Oktober (82fe112)
+- docs(roadmap): tandai AP-15 dan AP-17 selesai (63af99b)
+- docs(roadmap): catat masukan gelombang TikTok & Instagram Oktober 2026 (2872153)
+
+### Perbaikan
+
+- fix(ui): taruh tahun upah tepat setelah jenis upah di struk (88f07f6)
+
+### Fitur
+
+- feat(ui): bagikan struk bulanan sebagai gambar PNG (402fbcf)
+- feat(ui): tambah FAQ dan bagian "Cara dibuat" di halaman Tentang (b5df728)
+- feat(ui): tambah tombol salin struk dan petunjuk batas slider gaji (353bf52)
+- feat(profile): tambah transportasi mobil dan jalan kaki/sepeda (fc7a911)
+- feat(profile): tambah isian tanggungan keluarga (17441f2)
+- feat(profile): tambah pilihan hunian "Rumah sendiri" (757a1d1)
+- feat(income): allow a custom salary for working partners (#12) (2534e5b)
+- feat(video): tambah teaser promosi Nafkah (#11) (e4ae7ea)
+- feat(ui): susun ulang booklet jadi 12 halaman A4 dari dataset (#10) (c542daf)
+- feat(ui): terapkan desain Atlas, pisahkan Metode dan Tentang (#9) (4b04c24)
 
 ## [0.3.0] - 2026-10-03
 
