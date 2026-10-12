@@ -42,6 +42,9 @@ Setiap observasi mempunyai:
 - `profile`: `householdSize` integer 1–10, `lifestyle` (`budget`, `moderate`,
   `comfortable`), `housing` (`room`, `studio`, `oneBedroom`, `owner`), dan
   `transport` (`motorcycle`, `publicTransport`, `rideHailing`, `none`).
+  Sejak v0.4.0, `owner` sama dengan pilihan hunian "Rumah sendiri" di aplikasi,
+  dan `none` paling dekat dengan pilihan transportasi "Jalan kaki" (`walk`).
+  Pilihan "Mobil" (`car`) di aplikasi belum punya padanan di skema ini.
 - `status`: `Pending`, `Accepted`, atau `Rejected`.
 - `review`: wajib untuk `Accepted` dan `Rejected`, dilarang untuk `Pending`.
   Berisi `reviewer` dan `reason` yang tidak kosong serta `reviewedAt` berupa

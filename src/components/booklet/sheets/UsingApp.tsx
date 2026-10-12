@@ -49,7 +49,7 @@ export function UsingApp({ f }: { f: BookletFacts }) {
     ...STEPS,
     [
       "Bandingkan & bagikan",
-      `Sematkan sampai ${MAX_PINS} daerah untuk dibandingkan berdampingan, ekspor CSV lengkap dengan sumber tiap angka, atau salin tautan yang memulihkan tampilan yang sama.`,
+      `Sematkan sampai ${MAX_PINS} daerah untuk dibandingkan berdampingan, ekspor CSV lengkap dengan sumber tiap angka, bagikan struk daerah sebagai gambar, atau salin tautan yang memulihkan tampilan yang sama.`,
     ],
   ];
   return (

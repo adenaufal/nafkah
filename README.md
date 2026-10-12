@@ -30,8 +30,10 @@ secara terbuka di [repositori GitHub](https://github.com/adenaufal/nafkah).
   belum menutup biaya hidup lajang"), sebaran band yang sekaligus menjadi
   filter, plot titik 514 daerah, dan provinsi paling berat.
 - Profil rumah tangga di panel samping (peta tetap terlihat): lajang, pasangan,
-  atau keluarga, jumlah anak, gaya hidup, hunian, transportasi, cicilan KPR,
-  tabungan, serta upah kotor atau take-home.
+  atau keluarga, jumlah anak, gaya hidup, hunian (rusun/kost, rumah KPR,
+  apartemen, atau rumah sendiri tanpa sewa), transportasi (motor, kendaraan
+  umum, ojol, mobil, atau jalan kaki/sepeda), cicilan KPR, tanggungan keluarga
+  seperti kiriman ke orang tua, tabungan, serta upah kotor atau take-home.
 - "Hitung dengan": UMK tiap daerah, gajimu sendiri (slider yang mewarnai ulang
   peta seketika), atau UMK kota asal untuk simulasi pindah kota. Ada opsi
   "2 upah" untuk pasangan bekerja, dengan gaji pasangan yang bisa diisi sendiri
@@ -40,6 +42,9 @@ secara terbuka di [repositori GitHub](https://github.com/adenaufal/nafkah).
   perbandingan dengan median nasional, struk bulanan 10 kategori, narasi lokal,
   dan posisi di antara daerah seprovinsi. Setiap angka dilengkapi `source`,
   `asOf`, dan `confidence`.
+- Bagikan struk sebagai gambar PNG 1080×1350 yang membawa profil, sumber upah,
+  tanggal data, dan catatan estimasi. Nominal rupiah bisa disembunyikan, dan
+  struk juga bisa disalin sebagai teks.
 - Perbandingan hingga 5 wilayah berdampingan, dengan biaya tertinggi per
   kategori ditandai.
 - Pencarian (termasuk "Daerah di lokasiku" yang dicocokkan di perangkat) dan
@@ -59,7 +64,8 @@ secara terbuka di [repositori GitHub](https://github.com/adenaufal/nafkah).
 - Halaman [Metode](https://nafkah.adenaufal.com/metode): rumus dengan contoh
   memakai profilmu, sumber per kategori, dasar hukum upah per provinsi, pengali
   profil, dan tabel sensitivitas — semuanya dihitung dari dataset saat build.
-  Halaman [Tentang](https://nafkah.adenaufal.com/tentang) terpisah.
+  Halaman [Tentang](https://nafkah.adenaufal.com/tentang) terpisah, dengan
+  pertanyaan yang sering muncul dan cara aplikasi ini dibuat.
 - Tata letak mengikuti bentuk layar: ponsel dan tablet tegak memakai peta penuh
   dengan panel bawah yang bisa ditarik; ponsel miring, tablet mendatar, dan
   desktop memakai panel samping. Ukuran tombol mengikuti layar sentuh.
@@ -125,7 +131,10 @@ ini untuk fork atau domain lain.
 Perhitungan awal memakai profil
 `single · moderate · room · motorcycle · savings included`.
 Faktor pengali untuk rumah tangga, gaya hidup, hunian, dan transportasi tersimpan
-per kategori di `src/data/multipliers.ts` dan bisa disesuaikan.
+per kategori di `src/data/multipliers.ts` dan bisa disesuaikan. Dasar pengali
+transportasi mobil (×3,5) dan jalan kaki/sepeda (×0,25) ada di
+[catatan pengali transportasi](docs/pengali-transport-2026-10.md); hunian
+"Rumah sendiri" memakai pengali ×0 karena tidak ada sewa atau cicilan.
 
 Pilihan awal itu berbeda dari baseline dataset (`studio`, semua pengali ×1).
 Hunian awal memakai rusun/kost karena pembanding utama peta ini adalah penerima

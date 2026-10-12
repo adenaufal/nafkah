@@ -108,7 +108,7 @@ export default function TentangPage() {
               ],
               [
                 "Bandingkan & bagikan.",
-                "Sematkan sampai 5 daerah untuk dibandingkan berdampingan, ekspor CSV, atau salin tautan yang memulihkan tampilan yang sama.",
+                "Sematkan sampai 5 daerah untuk dibandingkan berdampingan, ekspor CSV, bagikan struk sebagai gambar, atau salin tautan yang memulihkan tampilan yang sama.",
               ],
             ].map(([t, d], i) => (
               <li key={t} className="flex gap-3">
