@@ -7,7 +7,6 @@ import {
   CaretDown,
   CaretUp,
   Check,
-  Copy,
   MapPinLine,
   PencilSimple,
   Plus,
@@ -34,16 +33,18 @@ import {
 import { CORRECTION_FORM_URL } from "@/lib/links";
 import { tierLabel, regionLabel } from "@/lib/names";
 import { profileSummary } from "@/lib/profile";
-import { receiptText } from "@/lib/receipt";
+import type { ReceiptCardInput } from "@/lib/receipt";
 import { recordUsage } from "@/lib/usage";
 import type { Assumptions, RegionMetrics } from "@/lib/types";
 import { wageKind, type WageKind } from "@/lib/wages";
-import { useCopy, useShareLink } from "@/components/hooks";
+import { useShareLink } from "@/components/hooks";
 import { BandChip, BudgetBar, Kicker, SectionTitle } from "@/components/ui";
+import manifest from "../../../public/data/v2026.1/manifest.json";
 import { DotStrip } from "./DotStrip";
 import { IncomeControl } from "./IncomeControl";
 import { ProvincePeers } from "./ProvincePeers";
 import { Receipt } from "./Receipt";
+import { ReceiptShareDialog } from "./ReceiptShare";
 
 /** "UMP", "Gajimu", "Dua UMK Kota Bandung"… — the income in a sentence. */
 function incomeSubject(
@@ -79,7 +80,7 @@ export function RegionStory({
   const ranking = useRanking();
   const medians = useNationalMedians();
   const share = useShareLink();
-  const receiptCopy = useCopy();
+  const [receiptShare, setReceiptShare] = useState(false);
   const [hl, setHl] = useState<string | null>(null);
 
   const peers = useMemo(
@@ -115,11 +116,42 @@ export function RegionStory({
       ? d.wage.grossMonthly
       : d.wage.estimatedTakeHomeMonthly
     : undefined;
-  // The receipt's income line, on screen and in the copied text alike.
+  // The receipt's income line, on screen and in the shared copy alike.
   const receiptIncomeLabel = (metric: RegionMetrics) =>
     regionalIncome
       ? `${wageLabel(metric, a, incomeKind)} ${d.wage?.year ?? ""}`.trim()
       : wageLabel(metric, a, incomeKind);
+  // Everything the shared receipt prints, provenance included.
+  const receiptInput = (metric: RegionMetrics): ReceiptCardInput => {
+    const wageSource = d.wageProvenance
+      ? `${metric.wageSource === "origin" ? `${incomeKind} kota asal` : incomeKind} ${d.wageProvenance.year}: ${d.wageProvenance.source}.`
+      : "";
+    const incomeSource =
+      metric.wageSource === "custom"
+        ? `Pendapatan: isian pengguna, bukan dataset.${metric.partnerWageSource && metric.partnerWageSource !== "custom" ? ` Pasangan: ${wageSource}` : ""}`
+        : `${wageSource}${metric.partnerWageSource === "custom" ? " Gaji pasangan: isian pengguna." : ""}`;
+    return {
+      place: `${d.label}, ${d.province}`,
+      region: d.label,
+      province: d.province,
+      profile: profileSummary(a),
+      incomeLabel: receiptIncomeLabel(metric),
+      income: metric.wageAmount,
+      lines: rows.map((r) => ({ label: r.label, value: r.value })),
+      total: metric.totalMonthlyCost,
+      surplusOrDeficit: metric.surplusOrDeficit,
+      coveragePercent: metric.coveragePercent,
+      band: metric.band,
+      bandLabel: BAND_LABEL[metric.band],
+      incomeSource,
+      costAsOf: rows.reduce(
+        (latest, r) =>
+          r.provenance && r.provenance.asOf > latest ? r.provenance.asOf : latest,
+        "",
+      ),
+      datasetVersion: manifest.datasetVersion,
+    };
+  };
 
   return (
     <article className="anim-rise" aria-labelledby="region-title">
@@ -363,35 +395,11 @@ export function RegionStory({
               <span className="flex shrink-0 flex-col items-end gap-1.5">
                 <button
                   type="button"
-                  onClick={() =>
-                    receiptCopy.copy(
-                      receiptText({
-                        place: `${d.label}, ${d.province}`,
-                        profile: profileSummary(a),
-                        incomeLabel: receiptIncomeLabel(m),
-                        income: m.wageAmount,
-                        lines: rows,
-                        total: m.totalMonthlyCost,
-                        surplusOrDeficit: m.surplusOrDeficit,
-                        coveragePercent: m.coveragePercent,
-                        bandLabel: BAND_LABEL[m.band],
-                      }),
-                    )
-                  }
+                  onClick={() => setReceiptShare(true)}
                   className="inline-flex items-center gap-1 font-semibold text-accent-ink hover:underline"
                 >
-                  {receiptCopy.status === "copied" ? (
-                    <Check size={13} weight="bold" aria-hidden="true" />
-                  ) : (
-                    <Copy size={13} weight="bold" aria-hidden="true" />
-                  )}
-                  <span aria-live="polite">
-                    {receiptCopy.status === "copied"
-                      ? "Struk disalin"
-                      : receiptCopy.status === "error"
-                        ? "Gagal menyalin"
-                        : "Salin struk"}
-                  </span>
+                  <ShareNetwork size={13} weight="bold" aria-hidden="true" />
+                  Bagikan struk
                 </button>
                 <button
                   type="button"
@@ -403,6 +411,18 @@ export function RegionStory({
                 </button>
               </span>
             </p>
+            {receiptShare && (
+              <ReceiptShareDialog
+                input={receiptInput(m)}
+                personal={
+                  m.wageSource === "custom" ||
+                  m.partnerWageSource === "custom" ||
+                  (a.installmentMonthly ?? 0) > 0 ||
+                  m.familySupport > 0
+                }
+                onClose={() => setReceiptShare(false)}
+              />
+            )}
           </section>
 
           {d.narrative && (

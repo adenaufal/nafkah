@@ -24,9 +24,12 @@ Nomor versi mengikuti Semantic Versioning: `MAJOR.MINOR.PATCH`.
   asuransi, dan tol) dan "Jalan kaki" untuk jalan kaki atau sepeda (×0,25).
   Dasar kedua pengali dicatat di `docs/pengali-transport-2026-10.md`. Setiap
   pilihan transportasi kini menampilkan keterangan singkat di profil.
-- Tombol "Salin struk" di cerita daerah menyalin struk bulanan sebagai teks
-  biasa (pemasukan, setiap pos pengeluaran, total, dan hasilnya) untuk
-  dijadikan referensi anggaran.
+- Tombol "Bagikan struk" di cerita daerah membuat gambar PNG 1080×1350 dari
+  struk bulanan, lengkap dengan profil, sumber upah, tanggal data biaya, dan
+  catatan bahwa angkanya estimasi. Di ponsel gambar bisa langsung dibagikan
+  ke aplikasi lain; di desktop diunduh. Nominal rupiah tampil secara default
+  dan bisa disembunyikan sehingga hanya persentase yang terlihat. Struk juga
+  bisa disalin sebagai teks biasa untuk referensi anggaran.
 - Saat slider gaji mentok di Rp25 jt atau Rp1 jt, petunjuknya mengingatkan
   bahwa angka yang lebih besar atau lebih kecil bisa diketik langsung.
 - Halaman Tentang mendapat bagian "Pertanyaan yang sering muncul" (asal angka,
