@@ -100,7 +100,7 @@ laporan nantinya memakai agent terjadwal di luar situs. Keputusan 2 September
 | --- | ---: | --- |
 | Selesai | 5 | AP-01, AP-02, AP-03, AP-06, AP-07 |
 | Berjalan/sebagian | 2 | AP-04, AP-05 |
-| Belum dimulai di fase Now | 0 | — |
+| Belum dimulai di fase Now | 2 | AP-15, AP-17 (direncanakan untuk v0.4.0) |
 | Fondasi lokal fase Next | 2 | AP-08, AP-10 (belum operasional/publik) |
 
 Risiko terbesar tetap kualitas estimasi wilayah yang diperdebatkan (AP-05)
@@ -119,6 +119,8 @@ agregat lokal, sehingga belum menyediakan analitik lintas pengguna.
 | AP-05 | Audit wilayah yang diperdebatkan | Periksa Kep. Meranti, Samosir, Bandung, serta biaya transportasi/logistik dan kesehatan. Bandingkan hasil model dengan laporan lokal, lalu catat keputusan tiap kasus. | 🟡 Baseline reproduktif dan pemeriksaan read-only terhadap rujukan pemerintah untuk Meranti, Samosir, dan Bandung sudah dicatat di [audit wilayah September 2026](docs/audit-wilayah-2026-09.md); rentang sewa narasi kini juga berprovenance. Bukti penggunaan lokal yang representatif dan keputusan perubahan data masih ❌. | P0 · S/M |
 | AP-06 | Kemudahan menemukan dan memakai fitur | Uji ulang Pendapatan sendiri, filter tingkat keterjangkauan, mode gelap, dan legenda di ponsel serta lewat keyboard. Perjelas tombol tindakan dan catat penggunaan tanpa data pribadi. | ✅ QA manual ponsel 375px + keyboard/focus trap untuk alur utama; CTA, status relokasi, filter, tema, dan legenda diberi label jelas. Hitungan event hanya agregat di localStorage. | P1 · S |
 | AP-07 | Perbandingan dan berbagi hasil untuk relokasi | Bagikan wilayah, asumsi, mode warna, dan filter lewat URL berversi; lalu pisahkan gaji asal dari biaya kota tujuan dan tambahkan affordance berbagi di panel hasil. | ✅ URL v2 membawa gaji asal dan tetap membaca v1; model Kota A → Kota B, biaya tujuan, UMK tujuan, provenance, status persisten, dan affordance relokasi sudah tersedia serta diuji round-trip. Embed tetap backlog terpisah. | P0 · M |
+| AP-15 | Personalisasi dan kegunaan v1.2 | Tindak lanjut [gelombang TikTok/Instagram Oktober 2026](#masukan-komunitas-gelombang-tiktok--instagram-1112-oktober-2026): opsi hunian tanpa sewa (rumah sendiri atau ikut orang tua, biaya hunian Rp0), isian tanggungan keluarga per bulan (kiriman ke orang tua/generasi sandwich), transportasi mobil pribadi serta jalan kaki/sepeda dengan pengali yang dijelaskan dasarnya, tombol salin struk, petunjuk untuk gaji di atas 25 juta, dan QA ulang tampilan ponsel (360/390/412 px). Isian baru ikut tersimpan di browser, tautan berbagi, dan ekspor CSV. | ❌ Direncanakan untuk v0.4.0 | P0 · M |
+| AP-17 | FAQ dan "Cara dibuat" | Jawab pertanyaan yang berulang di komentar (asal angka upah dan biaya, arti estimasi, kenapa banyak daerah merah) dan jelaskan proses pembuatan di halaman Tentang: tools yang dipakai, peran AI, serta cara angka diperiksa. Ini jawaban atas persepsi "dibuat AI" tanpa desain ulang. | ❌ Direncanakan untuk v0.4.0 | P0 · S |
 
 ### Next — November–Desember 2026
 
@@ -127,6 +129,7 @@ agregat lokal, sehingga belum menyediakan analitik lintas pengguna.
 | AP-08 | Lapisan data komunitas | 🟡 Fondasi lokal tersedia: `npm run community:summary` memvalidasi observasi bulanan yang dimoderasi dan menghasilkan median/rentang terpisah per wilayah, kategori, profil, dan periode, dengan jumlah responden serta provenance `sample`; kelompok kurang dari 5 responden diterima tidak keluar. [Format dan aturan moderasi](docs/community-data.md). Survei nyata, pemeriksaan representativitas, dan tampilan di aplikasi masih ❌. |
 | AP-09 | Informasi kepatuhan UMK dan gaji aktual | Mulai dengan label kualitatif bersumber dari putusan atau berita; skor numerik belum dipakai. UMK baru bisa diganti dengan data gaji aktual jika cakupan dan metodenya memadai. Perlu tinjauan hukum dan metodologi. |
 | AP-10 | Tindak lanjut laporan sampai rilis | 🟡 [Ledger review privat](docs/correction-ledger.md) dan `npm run corrections:summary` tersedia untuk memvalidasi keputusan, tanggal, wilayah, duplikasi, dan pencatatan rilis; keluaran hanya jumlah per status dan laporan dirilis. Pengambilan `Status=New` lewat PAT Airtable read-only, pemantauan Discussions, penjadwalan, dan pembuatan draft PR masih ❌. Persetujuan serta pembaruan status tetap oleh manusia. |
+| AP-16 | Edit struk | Ubah nominal per kategori, matikan kategori yang tidak relevan (misalnya pendidikan & kursus untuk rumah tangga tanpa anak), dan tambah pos rutin sendiri (listrik, air, iuran warga, SPP, UKT, kesehatan non-BPJS, pajak kendaraan, moda transportasi campuran). Setiap isian diberi label "angkamu" agar tidak tertukar dengan estimasi. Dikerjakan setelah AP-15. |
 
 ### Later — 2027 dan seterusnya
 
@@ -139,10 +142,11 @@ agregat lokal, sehingga belum menyediakan analitik lintas pengguna.
 
 ### Urutan eksekusi untuk satu maintainer
 
-1. Pastikan kanal kontribusi publik tetap berfungsi: pantau form Airtable dan Discussions, lalu operasionalkan antrean pemeriksaan (AP-04).
-2. Kumpulkan bukti lokal untuk audit Meranti, Samosir, Bandung, biaya transportasi, dan kesehatan; catat keputusan per kasus (AP-05).
-3. Setelah AP-04 berjalan, tindak lanjuti laporan sampai rilis dengan draft PR dan persetujuan manusia (AP-10) — file JSON berversi sudah ✅ (`public/data/v2026.1/` + catatan perubahan).
-4. Pertahankan QA aksesibilitas dan kompatibilitas URL v2/v1; pekerjaan lanjutan berikutnya adalah lapisan komunitas (AP-08) dan kepatuhan/gaji aktual (AP-09).
+1. Rilis v0.4.0 dengan AP-15 dan AP-17 dari gelombang masukan Oktober, lalu umumkan tindak lanjutnya di kanal tempat masukan itu muncul.
+2. Pastikan kanal kontribusi publik tetap berfungsi: pantau form Airtable dan Discussions, lalu operasionalkan antrean pemeriksaan (AP-04).
+3. Kumpulkan bukti lokal untuk audit Meranti, Samosir, Bandung, biaya transportasi, dan kesehatan; catat keputusan per kasus (AP-05).
+4. Setelah AP-04 berjalan, tindak lanjuti laporan sampai rilis dengan draft PR dan persetujuan manusia (AP-10) — file JSON berversi sudah ✅ (`public/data/v2026.1/` + catatan perubahan).
+5. Pertahankan QA aksesibilitas dan kompatibilitas URL v2/v1; pekerjaan lanjutan berikutnya adalah edit struk (AP-16), lapisan komunitas (AP-08), dan kepatuhan/gaji aktual (AP-09).
 
 ---
 
@@ -205,6 +209,13 @@ Nomor AP-xx merujuk ke rencana di atas.
 | --- | --- |
 | Isian pendapatan sendiri ("apakah gaji saya cukup di daerah X?") | ✅ Selesai (Sep 2026). Kolom "Pendapatan sendiri" mengubah rasio, warna peta, jendela detail, dan baki perbandingan. UMK tetap tampil sebagai pembanding. |
 | Indeks kepatuhan UMK pemberi kerja per wilayah | Ditunda (→ AP-09). Data di tingkat kabupaten/kota nyaris belum ada. Mulai dengan label kualitatif bersumber; skor numerik belum bisa dipertanggungjawabkan. |
+| Gaji pasangan yang berbeda | ✅ Selesai (Okt 2026), tampil di rilis berikutnya. Gaji pasangan bisa diisi sendiri saat "Pasangan ikut bekerja" aktif. |
+| Opsi hunian tanpa sewa (rumah sendiri atau ikut orang tua) | Direncanakan v0.4.0 (→ AP-15). Biaya hunian Rp0; kontribusi ke orang tua bisa diisi sebagai tanggungan keluarga. |
+| Kiriman bulanan ke orang tua / generasi sandwich | Direncanakan v0.4.0 (→ AP-15). |
+| Transportasi mobil pribadi, jalan kaki, dan moda campuran | Mobil serta jalan kaki/sepeda di v0.4.0 (→ AP-15); moda campuran lewat edit struk (→ AP-16). |
+| Struk yang bisa diubah dan disalin | Salin struk di v0.4.0 (→ AP-15); edit struk menyusul (→ AP-16). |
+| Lebih dari dua penghasilan dan penghasilan borongan | Ditunda. Permintaan lebih dari dua penghasilan sebagian besar berupa candaan; kebutuhan seriusnya bisa ditampung kelak lewat isian penghasilan tambahan. |
+| Desil | Ditunda (→ AP-12). Yang dimaksud warganet umumnya desil bansos (DTSEN), bukan desil pengeluaran BPS; labelnya harus dibedakan. |
 
 ---
 
@@ -254,6 +265,63 @@ kalibrasi](docs/kalibrasi-default-2026-09.md).
 - Form koreksi membantu memperbaiki data, tetapi menambah pekerjaan moderasi. Mulai dengan antrean manual dan kategori utama.
 - Personalisasi membuat perhitungan lebih sesuai kebutuhan pengguna, tetapi bisa memberi kesan hasilnya terlalu pasti. Tampilkan asumsi dan gunakan rentang jika nilainya belum pasti.
 - Data gaji aktual berguna, tetapi kebutuhan data dan metodenya paling berat. Penjelasan metode, koreksi data, dan personalisasi tetap bisa dikerjakan lebih dulu.
+
+---
+
+## Masukan komunitas (gelombang TikTok & Instagram, 11–12 Oktober 2026)
+
+Video teaser Nafkah diunggah ke TikTok dan Instagram pada 11 Oktober 2026.
+Sehari kemudian, video TikTok mendapat sekitar 12 ribu suka, 2,1 ribu
+bagikan, dan 129 komentar; postingan Instagram mendapat sekitar 9,3 ribu suka
+dan 84 komentar. Catatan ini merangkum 197 dari 213 komentar yang bisa dibaca
+(115 komentar utama dan 82 balasan); sisanya disaring platform atau tidak
+tampil. Seperti gelombang Threads, masukan ini dipakai untuk menentukan arah,
+bukan sebagai survei yang mewakili seluruh pengguna. Ringkasannya anonim, tanpa
+nama akun atau kutipan pribadi.
+
+| Jenis komentar utama | Jumlah |
+| --- | ---: |
+| Pujian, termasuk konfirmasi bahwa hitungannya masuk akal | 28 |
+| Permintaan fitur atau koreksi | 26 |
+| Reaksi terhadap warna daerahnya ("merah semua", "ijo semua") | 17 |
+| Pertanyaan atau kritik soal sumber data dan metode | 5 |
+| Pertanyaan soal tools pembuatan (video, suara, library peta) | 5 |
+| Kendala tampilan atau kemungkinan bug | 3 |
+| Persepsi "dibuat AI" | 3 |
+| Meminta pemerintah melihat data ini | 3 |
+| Ingin ikut berkontribusi | 1 |
+| Lainnya (mention, tautan, candaan) | 24 |
+
+Target gelombang Threads, yaitu pertanyaan berulang soal estimasi, jumlah orang,
+serta UMK dan gaji nyata turun 50%, belum bisa dibandingkan karena jumlah per
+tema di gelombang Threads tidak dicatat. Di gelombang ini, 5 dari 115 komentar
+utama (4%) mempertanyakan sumber data atau metode, tidak ada yang bertanya soal
+jumlah orang, dan tidak ada yang mempertanyakan UMK sebagai patokan; dua
+komentar setengah bercanda menanyakan penghasilan di bawah 1,5 juta. Angka ini
+menjadi baseline gelombang berikutnya. Platform dan audiensnya berbeda, jadi
+perbandingannya tetap kasar.
+
+| Tema | Masukan | Tindak lanjut |
+| --- | --- | --- |
+| Hunian tanpa sewa | 6 komentar meminta opsi rumah sendiri atau tinggal bersama orang tua. Cicilan Rp0 belum bisa diisi, sehingga biaya hunian selalu terhitung. | AP-15: opsi hunian dengan biaya hunian Rp0 |
+| Tanggungan keluarga | 3 komentar meminta kiriman bulanan ke orang tua atau kondisi generasi sandwich. Salah satunya permintaan dengan suka terbanyak (sekitar 100). | AP-15: isian tanggungan keluarga per bulan |
+| Pengeluaran sendiri | 6 komentar menilai pos pengeluaran perlu bisa diatur: menambah pos rutin (listrik, air, iuran warga, SPP, UKT, kesehatan non-BPJS, pajak kendaraan) dan mematikan pos yang tidak relevan, misalnya baris pendidikan & kursus pada pasangan tanpa anak. Struk juga diminta bisa disalin. | AP-16: edit struk; salin struk di AP-15 |
+| Transportasi | 4 komentar meminta mobil pribadi, jalan kaki, atau moda campuran (ojol, KRL/TransJakarta, dan kendaraan pribadi). | AP-15: mobil pribadi serta jalan kaki/sepeda; moda campuran lewat AP-16 |
+| Penghasilan | Gaji pasangan yang berbeda, penghasilan borongan, lebih dari dua penghasilan (sebagian besar candaan), dan penghasilan di bawah 1,5 juta. | Gaji pasangan ✅ (rilis berikutnya); sisanya ditunda |
+| Data dan metode | Data diminta mengikuti UMK dan inflasi terbaru (sekitar 50 suka). Pengguna menanyakan standar biaya hidup dan cara data dikumpulkan. Sewa dinilai 20–25% dari gaji, sementara satu komentar menilai hasilnya terlalu aman. | Pembaruan UMK 2027 dan IHK saat penetapan November–Desember; FAQ di AP-17; audit sewa kost kabupaten di AP-05 |
+| Persepsi "dibuat AI" | Komentar terpopuler di TikTok (sekitar 350 suka) menilai font dan warnanya khas Claude. Sebagian balasan melompat ke keraguan atas validitas data. Kritik ini tidak muncul di Instagram, yang justru memuji tampilannya. | AP-17: bagian "Cara dibuat" di halaman Tentang, tanpa desain ulang |
+| Tampilan dan bug | Tampilan ponsel dinilai kurang responsif (tanpa info perangkat), warna peta dilaporkan tidak berubah (perlu repro), dan slider gaji berhenti di 25 juta padahal kolom ketik menerima angka lebih besar. | AP-15: QA ponsel dan petunjuk gaji di atas 25 juta |
+| Data lanjutan | Desil, garis kemiskinan Bank Dunia, harga per barang seperti Numbeo, dan pasangan yang tinggal berjauhan (LDM). Desil yang dimaksud umumnya desil bansos (DTSEN), bukan desil pengeluaran BPS. | AP-12 (label desil harus dibedakan), AP-08; LDM ditunda |
+| Posisi dan komunitas | Komentar terpopuler di Instagram (sekitar 880 suka) membandingkan Nafkah dengan aplikasi buatan pemerintah. Beberapa komentar menandai Kemnaker dan DPR, dan satu orang ingin fork serta berkontribusi. | Jaga independensi dan provenance; issue `good first issue` menunggu persetujuan maintainer |
+
+Satu komentar bisa masuk lebih dari satu tema.
+
+### Keputusan 12 Oktober 2026
+
+- Persepsi "dibuat AI" dijawab dengan transparansi lewat bagian "Cara dibuat" (AP-17). Desain Atlas tetap dipakai.
+- v0.4.0 berfokus pada AP-15 dan AP-17. Edit struk (AP-16) menyusul setelahnya.
+- Opsi hunian rumah sendiri atau ikut orang tua memakai biaya hunian Rp0. Kalau ada kontribusi ke orang tua, nilainya bisa diisi sebagai tanggungan keluarga.
+- Balasan publik yang menjanjikan tindak lanjut (data terbaru, tanggungan keluarga, salin struk, koreksi sewa, tampilan ponsel, gaji pasangan, dan perbandingan dengan Numbeo) ditutup dengan pengumuman saat rilis.
 
 ---
 
