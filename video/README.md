@@ -22,7 +22,7 @@ cd video
 npm install
 
 npm run data      # peta SVG + angka per adegan -> src/data/{map,numbers}.json
-npm run shots -- ../out            # screenshot UI asli dari hasil `npm run build` di root
+npm run shots -- ../out            # screenshot UI asli dari hasil `npm run build` di root (+ docs/hero.png)
 npm run voice -- --voice plgKUYgnlZ1DCNh54DwJ --check   # VO ElevenLabs (Dakocan) + timing per kata
 npm run voice -- --finalize        # pasang ulang jeda antaradegan dari take yang tersimpan
 npm run sfx -- --music             # efek suara (+ musik latar) ElevenLabs

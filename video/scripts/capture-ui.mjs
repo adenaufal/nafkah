@@ -1,6 +1,7 @@
 // Screenshot UI asli Nafkah (hasil `next build`) dalam ukuran ponsel @3x,
-// untuk adegan mockup di video. State diatur lewat tautan berbagi (?naf=2)
-// supaya tiap tangkapan bisa diulang persis.
+// untuk adegan mockup di video, plus hero desktop untuk README
+// (`docs/hero.png`). State diatur lewat tautan berbagi (?naf=2) supaya tiap
+// tangkapan bisa diulang persis.
 //
 //   node scripts/capture-ui.mjs [folder-out] [chrome-exe]
 import { mkdir } from "node:fs/promises";
@@ -79,6 +80,8 @@ const SHOTS_TO_TAKE = [
   },
   // Perbandingan tiga daerah.
   { name: "compare", path: `/?${DEFAULT_QS}&r=31.71,36.74,32.75` },
+  // Hero README: beranda desktop @1x.
+  { name: "hero", path: `/?${DEFAULT_QS}`, desktop: true, file: resolve("../docs/hero.png") },
 ];
 
 await mkdir(SHOTS, { recursive: true });
@@ -91,10 +94,10 @@ const browser = await chromium.launch({
 try {
   for (const shot of SHOTS_TO_TAKE) {
     const context = await browser.newContext({
-      viewport: { width: 390, height: 844 },
-      deviceScaleFactor: 3,
-      isMobile: true,
-      hasTouch: true,
+      viewport: shot.desktop ? { width: 1440, height: 900 } : { width: 390, height: 844 },
+      deviceScaleFactor: shot.desktop ? 1 : 3,
+      isMobile: !shot.desktop,
+      hasTouch: !shot.desktop,
       locale: "id-ID",
       colorScheme: shot.dark ? "dark" : "light",
     });
@@ -127,7 +130,7 @@ try {
       }
     }
     if (shot.prepare) await shot.prepare(page);
-    const file = join(SHOTS, `${shot.name}.png`);
+    const file = shot.file ?? join(SHOTS, `${shot.name}.png`);
     await page.screenshot({ path: file });
     console.log("saved", file);
     await context.close();
