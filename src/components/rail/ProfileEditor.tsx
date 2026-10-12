@@ -148,6 +148,7 @@ export function ProfileEditor({ onBack }: { onBack: () => void }) {
             <Seg<HousingType>
               label="Hunian"
               showHint
+              columns={2}
               value={a.housing}
               onChange={(v) => set("housing", v)}
               options={[
@@ -165,6 +166,11 @@ export function ProfileEditor({ onBack }: { onBack: () => void }) {
                   value: "oneBedroom",
                   label: "Apartemen",
                   hint: "Menengah ke atas · ±145% anggaran hunian dasar",
+                },
+                {
+                  value: "owner",
+                  label: "Rumah sendiri",
+                  hint: "Sudah lunas atau ikut orang tua · biaya hunian Rp0; masih mencicil? Isi cicilan di bawah",
                 },
               ]}
             />

@@ -483,3 +483,47 @@ describe("installment override (AP-03)", () => {
     );
   });
 });
+
+describe("rumah sendiri (owner)", () => {
+  it("menghapus biaya hunian tanpa mengubah kategori lain", () => {
+    const costs = makeCosts();
+    const room = adjustCosts(costs, DEFAULT_ASSUMPTIONS);
+    const owner = adjustCosts(costs, { ...DEFAULT_ASSUMPTIONS, housing: "owner" });
+    expect(owner.housing).toBe(0);
+    for (const key of CATEGORIES.filter((k) => k !== "housing"))
+      expect(owner[key]).toBe(room[key]);
+  });
+
+  it("tetap nol untuk pasangan dan keluarga, karena tidak ada sewa", () => {
+    const out = adjustCosts(makeCosts(), {
+      ...DEFAULT_ASSUMPTIONS,
+      householdType: "family",
+      children: 3,
+      lifestyle: "comfortable",
+      housing: "owner",
+    });
+    expect(out.housing).toBe(0);
+  });
+
+  it("cicilan yang diisi tetap menggantikan hunian rumah sendiri", () => {
+    const out = adjustCosts(makeCosts(), {
+      ...DEFAULT_ASSUMPTIONS,
+      housing: "owner",
+      installmentMonthly: 3_000_000,
+    });
+    expect(out.housing).toBe(3_000_000);
+  });
+
+  it("menurunkan total biaya sebesar biaya hunian pilihan awal", () => {
+    const costs = makeCosts();
+    const room = computeMetrics("00.00", makeWage(), costs, DEFAULT_ASSUMPTIONS);
+    const owner = computeMetrics("00.00", makeWage(), costs, {
+      ...DEFAULT_ASSUMPTIONS,
+      housing: "owner",
+    });
+    expect(owner.totalMonthlyCost).toBe(
+      room.totalMonthlyCost - room.breakdown.housing,
+    );
+    expect(owner.coveragePercent).toBeGreaterThan(room.coveragePercent);
+  });
+});

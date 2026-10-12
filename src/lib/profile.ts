@@ -16,6 +16,7 @@ export function assumptionSummary(a: Assumptions): string {
     room: "rusun/kost",
     studio: "rumah KPR",
     oneBedroom: "apartemen",
+    owner: "rumah sendiri",
   };
   const transport = {
     motorcycle: "motor",
@@ -55,6 +56,7 @@ export function profileSummary(a: Assumptions): string {
     room: "rusun/kost",
     studio: "rumah KPR",
     oneBedroom: "apartemen",
+    owner: "rumah sendiri",
   };
   const transport = {
     motorcycle: "motor",

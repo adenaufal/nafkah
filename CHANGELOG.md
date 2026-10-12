@@ -11,6 +11,10 @@ Nomor versi mengikuti Semantic Versioning: `MAJOR.MINOR.PATCH`.
   tetap memakai UMK/UMP daerah yang sama (atau kota asal saat simulasi pindah
   kota) seperti sebelumnya. Angkanya ikut tersimpan di browser, tautan berbagi,
   label pendapatan, dan ekspor CSV.
+- Pilihan hunian "Rumah sendiri" untuk rumah yang sudah lunas atau tinggal
+  bersama orang tua: biaya hunian dihitung Rp0 (PBB dan perawatan rumah belum
+  dihitung). Bila cicilan rumah diisi, cicilan itu tetap menggantikan biaya
+  hunian. Pilihan ini ikut tersimpan di browser, tautan berbagi, dan ekspor CSV.
 
 ### Changed
 - Booklet `/booklet` disusun ulang menjadi 12 halaman A4 bergaya Atlas:

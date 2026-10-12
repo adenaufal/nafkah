@@ -63,6 +63,10 @@ describe("normalizeAssumptions", () => {
     ).toBeNull();
   });
 
+  it("menerima pilihan hunian rumah sendiri", () => {
+    expect(normalizeAssumptions({ housing: "owner" }).housing).toBe("owner");
+  });
+
   it("gaji pasangan hanya valid bila angka positif", () => {
     expect(normalizeAssumptions({ partnerIncome: 4_250_000 }).partnerIncome)
       .toBe(4_250_000);

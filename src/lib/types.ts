@@ -67,7 +67,8 @@ export interface CostProfile {
 
 export type HouseholdType = "single" | "couple" | "family";
 export type LifestyleLevel = "budget" | "moderate" | "comfortable";
-export type HousingType = "room" | "studio" | "oneBedroom";
+/** `owner`: rumah lunas atau tinggal bersama keluarga — tanpa sewa/cicilan. */
+export type HousingType = "room" | "studio" | "oneBedroom" | "owner";
 export type TransportMode = "motorcycle" | "publicTransport" | "rideHailing";
 export type WageBasis = "gross" | "takeHome";
 

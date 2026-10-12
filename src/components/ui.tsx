@@ -55,6 +55,7 @@ export function Seg<T extends string>({
   hideLabel = false,
   showHint = false,
   size = "md",
+  columns,
 }: {
   label: string;
   value: T;
@@ -64,6 +65,8 @@ export function Seg<T extends string>({
   /** Print the selected option's hint under the control. */
   showHint?: boolean;
   size?: "sm" | "md";
+  /** Options per row; defaults to one row. Wrap long lists on narrow rails. */
+  columns?: number;
 }) {
   const refs = useRef<(HTMLButtonElement | null)[]>([]);
   const idx = Math.max(
@@ -96,7 +99,7 @@ export function Seg<T extends string>({
         onKeyDown={onKey}
         className="grid rounded-[10px] bg-paper-2 p-[3px]"
         style={{
-          gridTemplateColumns: `repeat(${options.length}, minmax(0, 1fr))`,
+          gridTemplateColumns: `repeat(${columns ?? options.length}, minmax(0, 1fr))`,
         }}
       >
         {options.map((o, i) => {

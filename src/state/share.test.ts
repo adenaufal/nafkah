@@ -37,6 +37,21 @@ describe("shared view URL", () => {
     });
   });
 
+  it("round-trips the own-home housing choice", () => {
+    const url = new URL(
+      buildShareUrl("https://nafkah.example/", {
+        assumptions: { ...DEFAULT_ASSUMPTIONS, housing: "owner" },
+        pinned: [],
+        selectedCode: null,
+        originCode: null,
+        colorMode: "coverage",
+        legendFilter: null,
+      }),
+    );
+    expect(url.searchParams.get("home")).toBe("owner");
+    expect(decodeSharedView(url.search)?.assumptions.housing).toBe("owner");
+  });
+
   it("leaves out a partner salary the view does not use", () => {
     const idle = [
       { householdType: "single" as const, dualIncome: true },

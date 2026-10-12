@@ -15,7 +15,7 @@ const STEPS: [string, string][] = [
   ],
   [
     "Ubah profil",
-    "Rumah tangga dan jumlah anak; gaya hidup Hemat, Standar, atau Longgar; hunian Rusun/kost, Rumah KPR, atau Apartemen; Motor, Kend. umum, atau Ojol; cicilan rumah sendiri; tabungan; upah kotor atau setelah potongan. Peta menghitung ulang seketika.",
+    "Rumah tangga dan jumlah anak; gaya hidup Hemat, Standar, atau Longgar; hunian Rusun/kost, Rumah KPR, Apartemen, atau Rumah sendiri; Motor, Kend. umum, atau Ojol; cicilan rumah sendiri; tabungan; upah kotor atau setelah potongan. Peta menghitung ulang seketika.",
   ],
 ];
 

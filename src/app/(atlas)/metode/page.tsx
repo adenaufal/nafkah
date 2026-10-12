@@ -521,11 +521,13 @@ export default function MetodePage() {
               <dd className="tnum mt-1 text-[14px]">
                 Rusun/kost {times(HOUSING_MULTIPLIERS.room)} · Rumah KPR{" "}
                 {times(HOUSING_MULTIPLIERS.studio)} · Apartemen{" "}
-                {times(HOUSING_MULTIPLIERS.oneBedroom)}
+                {times(HOUSING_MULTIPLIERS.oneBedroom)} · Rumah sendiri{" "}
+                {times(HOUSING_MULTIPLIERS.owner)}
               </dd>
               <dd className="mt-1 text-[13px] text-muted">
-                Cicilan sendiri menggantikan seluruh kategori hunian dengan
-                angkamu.
+                Rumah sendiri (lunas atau ikut orang tua) tanpa sewa; PBB dan
+                perawatan rumah belum dihitung. Cicilan sendiri menggantikan
+                seluruh kategori hunian dengan angkamu.
               </dd>
             </div>
             <div className="rounded-[14px] border border-rule p-4">

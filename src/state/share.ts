@@ -21,7 +21,7 @@ const REGION_CODE = /^\d{2}\.\d{2}$/;
 
 const HOUSEHOLDS: HouseholdType[] = ["single", "couple", "family"];
 const LIFESTYLES: LifestyleLevel[] = ["budget", "moderate", "comfortable"];
-const HOUSING: HousingType[] = ["room", "studio", "oneBedroom"];
+const HOUSING: HousingType[] = ["room", "studio", "oneBedroom", "owner"];
 const TRANSPORT: TransportMode[] = [
   "motorcycle",
   "publicTransport",
