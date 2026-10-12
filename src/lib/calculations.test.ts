@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  activeFamilySupport,
   activePartnerIncome,
   adjustCosts,
   AFFORDABILITY_BANDS,
@@ -525,5 +526,32 @@ describe("rumah sendiri (owner)", () => {
       room.totalMonthlyCost - room.breakdown.housing,
     );
     expect(owner.coveragePercent).toBeGreaterThan(room.coveragePercent);
+  });
+});
+
+describe("tanggungan keluarga", () => {
+  it("menambah total biaya tanpa mengubah 10 kategori", () => {
+    const costs = makeCosts();
+    const base = computeMetrics("00.00", makeWage(), costs, DEFAULT_ASSUMPTIONS);
+    const support = computeMetrics("00.00", makeWage(), costs, {
+      ...DEFAULT_ASSUMPTIONS,
+      familySupportMonthly: 1_500_000,
+    });
+    expect(support.breakdown).toEqual(base.breakdown);
+    expect(support.familySupport).toBe(1_500_000);
+    expect(support.totalMonthlyCost).toBe(base.totalMonthlyCost + 1_500_000);
+    expect(support.surplusOrDeficit).toBe(base.surplusOrDeficit - 1_500_000);
+    expect(support.coveragePercent).toBeLessThan(base.coveragePercent);
+  });
+
+  it("kosong, nol, atau negatif tidak dihitung", () => {
+    for (const familySupportMonthly of [null, 0, -250_000]) {
+      const m = computeMetrics("00.00", makeWage(), makeCosts(), {
+        ...DEFAULT_ASSUMPTIONS,
+        familySupportMonthly,
+      });
+      expect(m.familySupport).toBe(0);
+    }
+    expect(activeFamilySupport(DEFAULT_ASSUMPTIONS)).toBe(0);
   });
 });

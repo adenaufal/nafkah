@@ -67,6 +67,20 @@ describe("normalizeAssumptions", () => {
     expect(normalizeAssumptions({ housing: "owner" }).housing).toBe("owner");
   });
 
+  it("tanggungan keluarga hanya valid bila angka positif", () => {
+    expect(
+      normalizeAssumptions({ familySupportMonthly: 1_500_000 })
+        .familySupportMonthly,
+    ).toBe(1_500_000);
+    for (const familySupportMonthly of [0, -1, null, "1500000"]) {
+      expect(
+        normalizeAssumptions({
+          familySupportMonthly,
+        } as unknown as Partial<Assumptions>).familySupportMonthly,
+      ).toBeNull();
+    }
+  });
+
   it("gaji pasangan hanya valid bila angka positif", () => {
     expect(normalizeAssumptions({ partnerIncome: 4_250_000 }).partnerIncome)
       .toBe(4_250_000);

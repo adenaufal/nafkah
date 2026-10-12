@@ -56,6 +56,7 @@ const metrics: RegionMetrics = {
   breakdown: Object.fromEntries(
     EXPENSE_CATEGORIES.map((category) => [category.key, 100_000]),
   ) as RegionMetrics["breakdown"],
+  familySupport: 0,
 };
 
 describe("comparison CSV export", () => {
@@ -134,5 +135,38 @@ describe("comparison CSV export", () => {
         "Input pengguna (bukan dataset),2026-09-22,estimate,",
     );
     expect(csv).not.toContain("pasangan");
+  });
+
+  it("adds the user's family support as its own row, marked as user input", () => {
+    const withSupport = (familySupport: number) =>
+      buildComparisonCsv({
+        rows: [
+          {
+            region,
+            metrics: {
+              ...metrics,
+              familySupport,
+              totalMonthlyCost: metrics.totalMonthlyCost + familySupport,
+            },
+            wage,
+            costs,
+          },
+        ],
+        assumptions: {
+          ...DEFAULT_ASSUMPTIONS,
+          familySupportMonthly: familySupport || null,
+        },
+        datasetVersion: "2026.1",
+        generatedAt: "2026-09-22T00:00:00.000Z",
+      });
+
+    const csv = withSupport(1_500_000);
+    expect(csv.trimEnd().split("\n")).toHaveLength(17);
+    expect(csv).toContain(
+      "biaya_tanggungan_keluarga,1500000,IDR/bulan,Nyaman," +
+        "Input pengguna (bukan dataset),2026-09-22,estimate,",
+    );
+    expect(csv).toContain("biaya_bulanan,2500000,IDR/bulan");
+    expect(withSupport(0)).not.toContain("biaya_tanggungan_keluarga");
   });
 });

@@ -198,7 +198,9 @@ export default function MetodePage() {
           </p>
           <p>
             <b>Biaya hidup bulanan</b> adalah jumlah 10 kategori pengeluaran
-            daerah itu setelah dikalikan faktor profil (bagian 5).
+            daerah itu setelah dikalikan faktor profil (bagian 5). Bila kamu
+            mengisi <b>tanggungan keluarga</b>, misalnya kiriman ke orang tua,
+            angka itu ditambahkan apa adanya ke semua daerah.
           </p>
           <WorkedExample />
         </Section>

@@ -6,7 +6,7 @@ import { useApp } from "@/state/AppContext";
 import { useComparison } from "@/state/derived";
 import { EXPENSE_CATEGORIES } from "@/data/costs";
 import { bandTheme } from "@/lib/bands";
-import { categoryLabel, wageLabel } from "@/lib/labels";
+import { categoryLabel, FAMILY_SUPPORT_LABEL, wageLabel } from "@/lib/labels";
 import { pct, rp, rpShort, rpSigned } from "@/lib/format";
 import { regionLabel } from "@/lib/names";
 import { useDialogFocus } from "@/lib/useDialogFocus";
@@ -286,11 +286,18 @@ export function CompareSheet({
                   metric={metric}
                   dark={state.darkMode}
                   wageText={rpShort(metric.wageAmount)}
-                  rows={EXPENSE_CATEGORIES.map((c) => ({
-                    key: c.key,
-                    label: categoryLabel(c.key, state.assumptions),
-                    value: metric.breakdown[c.key],
-                  })).sort((x, y) => y.value - x.value)}
+                  rows={[
+                    ...EXPENSE_CATEGORIES.map((c) => ({
+                      key: c.key,
+                      label: categoryLabel(c.key, state.assumptions),
+                      value: metric.breakdown[c.key],
+                    })),
+                    {
+                      key: "familySupport",
+                      label: FAMILY_SUPPORT_LABEL,
+                      value: metric.familySupport,
+                    },
+                  ].sort((x, y) => y.value - x.value)}
                 />
               </div>
             ))}
@@ -339,6 +346,14 @@ export function CompareSheet({
               })}
             </Row>
           ))}
+          {/* Same number in every column: the user's own, not the region's. */}
+          {items.some(({ metric }) => metric.familySupport > 0) && (
+            <Row label={FAMILY_SUPPORT_LABEL} muted>
+              {items.map(({ code, metric }) => (
+                <Cell key={code}>{rp(metric.familySupport)}</Cell>
+              ))}
+            </Row>
+          )}
         </div>
       </div>
       <footer className="border-t border-rule px-5 py-2.5 text-[12px] text-muted max-md:px-4">

@@ -232,6 +232,21 @@ function rowsForRegion(
     });
   }
 
+  if (metrics.familySupport > 0) {
+    rows.push({
+      metric: "biaya_tanggungan_keluarga",
+      value: metrics.familySupport,
+      unit: "IDR/bulan",
+      band: BAND_LABEL[metrics.band],
+      source: "Input pengguna (bukan dataset)",
+      asOf: generatedDate,
+      confidence: "estimate",
+      note:
+        "Tanggungan keluarga per bulan yang diisi pengguna; sama untuk semua " +
+        "daerah dan sudah termasuk di biaya_bulanan.",
+    });
+  }
+
   return rows;
 }
 

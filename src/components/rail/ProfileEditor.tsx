@@ -121,6 +121,14 @@ export function ProfileEditor({ onBack }: { onBack: () => void }) {
             </label>
           )}
           {couple && a.dualIncome && <PartnerIncomeField />}
+          <MoneyField
+            id="profile-family-support"
+            label="Tanggungan keluarga"
+            hint="Kiriman rutin ke orang tua atau keluarga lain. Ditambahkan ke pengeluaran semua daerah."
+            value={a.familySupportMonthly}
+            onChange={(v) => set("familySupportMonthly", v)}
+            placeholder="cth. 1.000.000"
+          />
         </fieldset>
 
         <fieldset className="space-y-4">

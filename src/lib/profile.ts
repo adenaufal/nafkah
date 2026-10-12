@@ -30,6 +30,9 @@ export function assumptionSummary(a: Assumptions): string {
   if (a.installmentMonthly != null && a.installmentMonthly > 0) {
     parts.push("cicilan sendiri");
   }
+  if (a.familySupportMonthly != null && a.familySupportMonthly > 0) {
+    parts.push("tanggungan keluarga");
+  }
   return parts.join(" · ");
 }
 
@@ -71,6 +74,7 @@ export function profileSummary(a: Assumptions): string {
     transport[a.transport],
   ];
   if (a.includeSavings) parts.push("+tabungan");
+  if ((a.familySupportMonthly ?? 0) > 0) parts.push("+tanggungan keluarga");
   if (a.wageBasis === "takeHome") parts.push("setelah potongan (est.)");
   if (a.dualIncome && a.householdType !== "single") parts.push("2 upah");
   return parts.join(" · ");

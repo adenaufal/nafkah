@@ -506,15 +506,23 @@ export function RegionStory({
                     asOf={d.wageProvenance.asOf}
                   />
                 )}
-                {rows.map((r) => (
-                  <ProvRow
-                    key={r.key}
-                    label={r.label}
-                    source={r.provenance.source}
-                    confidence={r.provenance.confidence}
-                    asOf={r.provenance.asOf}
-                  />
-                ))}
+                {rows.map((r) =>
+                  r.provenance ? (
+                    <ProvRow
+                      key={r.key}
+                      label={r.label}
+                      source={r.provenance.source}
+                      confidence={r.provenance.confidence}
+                      asOf={r.provenance.asOf}
+                    />
+                  ) : (
+                    <ProvRow
+                      key={r.key}
+                      label={r.label}
+                      source="Isianmu, bukan dataset; sama untuk semua daerah."
+                    />
+                  ),
+                )}
                 {d.narrative && (
                   <ProvRow
                     label="Rentang sewa tipikal"
@@ -724,6 +732,7 @@ function Versus({
   );
 }
 
+/** One provenance line; without confidence it is the user's own number. */
 function ProvRow({
   label,
   source,
@@ -732,8 +741,8 @@ function ProvRow({
 }: {
   label: string;
   source: string;
-  confidence: Parameters<typeof confidenceLabel>[0];
-  asOf: string;
+  confidence?: Parameters<typeof confidenceLabel>[0];
+  asOf?: string;
 }) {
   return (
     <tr className="border-t border-rule align-top">
@@ -742,14 +751,16 @@ function ProvRow({
       </th>
       <td className="py-2 pr-2 text-ink-2">{source}</td>
       <td className="whitespace-nowrap py-2">
-        {confidenceLabel(confidence)}
-        <time
-          dateTime={asOf}
-          className="block text-muted"
-          title={formatDate(asOf)}
-        >
-          {asOf.slice(0, 7)}
-        </time>
+        {confidence ? confidenceLabel(confidence) : "Isianmu"}
+        {asOf && (
+          <time
+            dateTime={asOf}
+            className="block text-muted"
+            title={formatDate(asOf)}
+          >
+            {asOf.slice(0, 7)}
+          </time>
+        )}
       </td>
     </tr>
   );

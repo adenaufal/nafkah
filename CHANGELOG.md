@@ -15,6 +15,11 @@ Nomor versi mengikuti Semantic Versioning: `MAJOR.MINOR.PATCH`.
   bersama orang tua: biaya hunian dihitung Rp0 (PBB dan perawatan rumah belum
   dihitung). Bila cicilan rumah diisi, cicilan itu tetap menggantikan biaya
   hunian. Pilihan ini ikut tersimpan di browser, tautan berbagi, dan ekspor CSV.
+- Isian "Tanggungan keluarga" di profil rumah tangga untuk kiriman rutin ke
+  orang tua atau keluarga lain (generasi sandwich). Nominalnya ditambahkan ke
+  pengeluaran semua daerah sebagai baris "angkamu" di struk bulanan, baki
+  perbandingan, dan ekspor CSV, terpisah dari 10 kategori estimasi. Angkanya
+  ikut tersimpan di browser dan tautan berbagi.
 
 ### Changed
 - Booklet `/booklet` disusun ulang menjadi 12 halaman A4 bergaya Atlas:

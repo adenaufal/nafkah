@@ -1,4 +1,8 @@
-import { activePartnerIncome, DEFAULT_ASSUMPTIONS } from "@/lib/calculations";
+import {
+  activeFamilySupport,
+  activePartnerIncome,
+  DEFAULT_ASSUMPTIONS,
+} from "@/lib/calculations";
 import type {
   AffordabilityBand,
   Assumptions,
@@ -142,6 +146,7 @@ export function decodeSharedView(search: string): SharedView | null {
     customIncome: positiveInteger(params.get("income")),
     partnerIncome: positiveInteger(params.get("partner")),
     installmentMonthly: positiveInteger(params.get("installment")),
+    familySupportMonthly: positiveInteger(params.get("support")),
   });
   const selected = params.get("f");
 
@@ -193,6 +198,9 @@ export function buildShareUrl(baseUrl: string, view: SharedView): string {
     url.searchParams.set("partner", String(Math.floor(partnerIncome)));
   if (a.installmentMonthly != null && a.installmentMonthly > 0)
     url.searchParams.set("installment", String(Math.floor(a.installmentMonthly)));
+  const familySupport = activeFamilySupport(a);
+  if (familySupport > 0)
+    url.searchParams.set("support", String(Math.floor(familySupport)));
   url.searchParams.set("color", view.colorMode);
   if (view.legendFilter) url.searchParams.set("band", view.legendFilter);
 

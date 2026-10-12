@@ -135,6 +135,7 @@ menampilkan tabel sensitivitasnya, dihitung dari dataset saat build.
 
 ```text
 totalMonthlyCost   = Σ nilai kategori aktif di bawah asumsi saat ini
+                     + tanggungan keluarga isian (familySupportMonthly > 0)
 wageBasisAmount    = earners × (wageBasis === 'gross' ? grossMonthly : estimatedTakeHome)
                        earners = 2 jika pasangan bekerja (default 1)
   gaji isian (customIncome, partnerIncome > 0) menggantikan upah per orang:

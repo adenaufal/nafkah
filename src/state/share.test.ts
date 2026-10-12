@@ -52,6 +52,30 @@ describe("shared view URL", () => {
     expect(decodeSharedView(url.search)?.assumptions.housing).toBe("owner");
   });
 
+  it("carries family support only when it is set", () => {
+    const view = (familySupportMonthly: number | null) =>
+      new URL(
+        buildShareUrl("https://nafkah.example/", {
+          assumptions: { ...DEFAULT_ASSUMPTIONS, familySupportMonthly },
+          pinned: [],
+          selectedCode: null,
+          originCode: null,
+          colorMode: "coverage",
+          legendFilter: null,
+        }),
+      );
+    const withSupport = view(1_250_000);
+    expect(withSupport.searchParams.get("support")).toBe("1250000");
+    expect(
+      decodeSharedView(withSupport.search)?.assumptions.familySupportMonthly,
+    ).toBe(1_250_000);
+    const without = view(null);
+    expect(without.searchParams.has("support")).toBe(false);
+    expect(
+      decodeSharedView(without.search)?.assumptions.familySupportMonthly,
+    ).toBeNull();
+  });
+
   it("leaves out a partner salary the view does not use", () => {
     const idle = [
       { householdType: "single" as const, dualIncome: true },

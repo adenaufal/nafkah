@@ -49,6 +49,7 @@ function metric(
     affordabilityRatio: total / wage,
     band: classify(coverage, AFFORDABILITY_BANDS),
     breakdown: full,
+    familySupport: 0,
   };
 }
 
