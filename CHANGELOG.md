@@ -24,6 +24,11 @@ Nomor versi mengikuti Semantic Versioning: `MAJOR.MINOR.PATCH`.
   asuransi, dan tol) dan "Jalan kaki" untuk jalan kaki atau sepeda (×0,25).
   Dasar kedua pengali dicatat di `docs/pengali-transport-2026-10.md`. Setiap
   pilihan transportasi kini menampilkan keterangan singkat di profil.
+- Tombol "Salin struk" di cerita daerah menyalin struk bulanan sebagai teks
+  biasa (pemasukan, setiap pos pengeluaran, total, dan hasilnya) untuk
+  dijadikan referensi anggaran.
+- Saat slider gaji mentok di Rp25 jt atau Rp1 jt, petunjuknya mengingatkan
+  bahwa angka yang lebih besar atau lebih kecil bisa diketik langsung.
 
 ### Changed
 - Booklet `/booklet` disusun ulang menjadi 12 halaman A4 bergaya Atlas:

@@ -48,6 +48,29 @@ async function copyText(value: string): Promise<void> {
   if (!copied) throw new Error("Browser tidak mengizinkan penyalinan tautan.");
 }
 
+/** Copy text to the clipboard, with a short-lived status for the button. */
+export function useCopy() {
+  const [status, setStatus] = useState<"idle" | "copied" | "error">("idle");
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(
+    () => () => {
+      if (timer.current) clearTimeout(timer.current);
+    },
+    [],
+  );
+  const copy = async (text: string) => {
+    try {
+      await copyText(text);
+      setStatus("copied");
+    } catch {
+      setStatus("error");
+    }
+    if (timer.current) clearTimeout(timer.current);
+    timer.current = setTimeout(() => setStatus("idle"), 2800);
+  };
+  return { status, copy };
+}
+
 /**
  * Copy (or natively share, on touch devices) the versioned link that restores
  * this exact view. Financial inputs only travel when the user shares.

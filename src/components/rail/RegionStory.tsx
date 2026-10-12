@@ -7,6 +7,7 @@ import {
   CaretDown,
   CaretUp,
   Check,
+  Copy,
   MapPinLine,
   PencilSimple,
   Plus,
@@ -20,7 +21,7 @@ import {
   useRegionDetail,
 } from "@/state/derived";
 import { bandTheme } from "@/lib/bands";
-import { isRegionalIncome } from "@/lib/calculations";
+import { BAND_LABEL, isRegionalIncome } from "@/lib/calculations";
 import { categoryLabel, confidenceLabel, wageLabel } from "@/lib/labels";
 import { digits, formatDate, formatMonth, pct, rpShort } from "@/lib/format";
 import {
@@ -33,10 +34,11 @@ import {
 import { CORRECTION_FORM_URL } from "@/lib/links";
 import { tierLabel, regionLabel } from "@/lib/names";
 import { profileSummary } from "@/lib/profile";
+import { receiptText } from "@/lib/receipt";
 import { recordUsage } from "@/lib/usage";
 import type { Assumptions, RegionMetrics } from "@/lib/types";
 import { wageKind, type WageKind } from "@/lib/wages";
-import { useShareLink } from "@/components/hooks";
+import { useCopy, useShareLink } from "@/components/hooks";
 import { BandChip, BudgetBar, Kicker, SectionTitle } from "@/components/ui";
 import { DotStrip } from "./DotStrip";
 import { IncomeControl } from "./IncomeControl";
@@ -77,6 +79,7 @@ export function RegionStory({
   const ranking = useRanking();
   const medians = useNationalMedians();
   const share = useShareLink();
+  const receiptCopy = useCopy();
   const [hl, setHl] = useState<string | null>(null);
 
   const peers = useMemo(
@@ -112,6 +115,11 @@ export function RegionStory({
       ? d.wage.grossMonthly
       : d.wage.estimatedTakeHomeMonthly
     : undefined;
+  // The receipt's income line, on screen and in the copied text alike.
+  const receiptIncomeLabel = (metric: RegionMetrics) =>
+    regionalIncome
+      ? `${wageLabel(metric, a, incomeKind)} ${d.wage?.year ?? ""}`.trim()
+      : wageLabel(metric, a, incomeKind);
 
   return (
     <article className="anim-rise" aria-labelledby="region-title">
@@ -339,11 +347,7 @@ export function RegionStory({
             <Receipt
               metric={m}
               rows={rows}
-              incomeLabel={
-                regionalIncome
-                  ? `${wageLabel(m, a, incomeKind)} ${d.wage?.year ?? ""}`.trim()
-                  : wageLabel(m, a, incomeKind)
-              }
+              incomeLabel={receiptIncomeLabel(m)}
               incomeNote={
                 regionalIncome
                   ? undefined
@@ -356,14 +360,48 @@ export function RegionStory({
             />
             <p className="mt-3 flex items-start justify-between gap-3 text-[12.5px] leading-[1.5] text-muted">
               <span>Profil: {profileSummary(a)}</span>
-              <button
-                type="button"
-                onClick={onEditProfile}
-                className="inline-flex shrink-0 items-center gap-1 font-semibold text-accent-ink hover:underline"
-              >
-                <PencilSimple size={13} weight="bold" aria-hidden="true" />
-                Ubah profil
-              </button>
+              <span className="flex shrink-0 flex-col items-end gap-1.5">
+                <button
+                  type="button"
+                  onClick={() =>
+                    receiptCopy.copy(
+                      receiptText({
+                        place: `${d.label}, ${d.province}`,
+                        profile: profileSummary(a),
+                        incomeLabel: receiptIncomeLabel(m),
+                        income: m.wageAmount,
+                        lines: rows,
+                        total: m.totalMonthlyCost,
+                        surplusOrDeficit: m.surplusOrDeficit,
+                        coveragePercent: m.coveragePercent,
+                        bandLabel: BAND_LABEL[m.band],
+                      }),
+                    )
+                  }
+                  className="inline-flex items-center gap-1 font-semibold text-accent-ink hover:underline"
+                >
+                  {receiptCopy.status === "copied" ? (
+                    <Check size={13} weight="bold" aria-hidden="true" />
+                  ) : (
+                    <Copy size={13} weight="bold" aria-hidden="true" />
+                  )}
+                  <span aria-live="polite">
+                    {receiptCopy.status === "copied"
+                      ? "Struk disalin"
+                      : receiptCopy.status === "error"
+                        ? "Gagal menyalin"
+                        : "Salin struk"}
+                  </span>
+                </button>
+                <button
+                  type="button"
+                  onClick={onEditProfile}
+                  className="inline-flex items-center gap-1 font-semibold text-accent-ink hover:underline"
+                >
+                  <PencilSimple size={13} weight="bold" aria-hidden="true" />
+                  Ubah profil
+                </button>
+              </span>
             </p>
           </section>
 
