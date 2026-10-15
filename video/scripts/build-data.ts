@@ -3,7 +3,7 @@
  * sama (src/lib/calculations.ts) supaya setiap angka di video cocok dengan
  * yang tampil di nafkah.adenaufal.com.
  *
- *   npm run data   ->  src/data/map.json, src/data/numbers.json
+ *   npm run data   ->  src/data/map.json, src/data/numbers.json, src/data/update.json
  */
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { geoMercator, geoPath } from "d3-geo";
@@ -12,10 +12,13 @@ import type { Feature, FeatureCollection, Geometry } from "geojson";
 import {
   AFFORDABILITY_BANDS,
   DEFAULT_ASSUMPTIONS,
+  classify,
   computeMetrics,
 } from "@/lib/calculations";
 import { EXPENSE_CATEGORIES } from "@/data/costs";
+import { FAMILY_SUPPORT_LABEL, categoryLabel } from "@/lib/labels";
 import { regionLabel } from "@/lib/names";
+import { profileSummary } from "@/lib/profile";
 import type {
   AffordabilityBand,
   Assumptions,
@@ -143,9 +146,9 @@ const salaryCounts = Object.fromEntries(
   ]),
 );
 
-function receiptOf(code: string, origin?: WageRecord) {
+function receiptOf(code: string, origin?: WageRecord, a: Assumptions = DEFAULT_ASSUMPTIONS) {
   const r = byCode.get(code)!;
-  const m = computeMetrics(code, wages.get(code)!, costs.get(code)!, DEFAULT_ASSUMPTIONS, AFFORDABILITY_BANDS, origin);
+  const m = computeMetrics(code, wages.get(code)!, costs.get(code)!, a, AFFORDABILITY_BANDS, origin);
   const total = m.totalMonthlyCost;
   return {
     code,
@@ -156,23 +159,33 @@ function receiptOf(code: string, origin?: WageRecord) {
     coverage: Math.round(m.coveragePercent * 10) / 10,
     surplus: Math.round(m.surplusOrDeficit),
     band: m.band,
-    rows: EXPENSE_CATEGORIES.map((c) => ({
-      key: c.key,
-      // Sama dengan categoryLabel() untuk profil tanpa anak.
-      label: c.key === "education" ? "Pendidikan & kursus" : c.label,
-      value: Math.round(m.breakdown[c.key]),
-      share: m.breakdown[c.key] / total,
-    }))
+    // Sama dengan breakdownRows() di src/state/derived.ts.
+    rows: [
+      ...EXPENSE_CATEGORIES.map((c) => ({
+        key: c.key as string,
+        label: categoryLabel(c.key, a),
+        value: Math.round(m.breakdown[c.key]),
+        share: m.breakdown[c.key] / total,
+      })),
+      {
+        key: "familySupport",
+        label: FAMILY_SUPPORT_LABEL,
+        value: Math.round(m.familySupport),
+        share: m.familySupport / total,
+      },
+    ]
       .filter((x) => x.value > 0)
-      .sort((a, b) => b.value - a.value),
+      .sort((x, y) => y.value - x.value),
   };
 }
 
 const jogja = byLabel("Kota Yogyakarta");
 const jaksel = byLabel("Kota Jakarta Selatan");
 
+const numbersSource = "public/data/v2026.1 · src/lib/calculations.ts";
+
 const numbers = {
-  source: "public/data/v2026.1 · src/lib/calculations.ts",
+  source: numbersSource,
   bands: AFFORDABILITY_BANDS,
   defaultCounts: counts(base),
   familyCounts: counts(family),
@@ -183,6 +196,62 @@ const numbers = {
   jogjaWithJakselWage: receiptOf(jogja.code, wages.get(jaksel.code)!),
   jaksel: { code: jaksel.code, label: regionLabel(jaksel), umk: wages.get(jaksel.code)!.grossMonthly },
 };
+
+/* ---------- Update v0.4.0 ---------- */
+
+// Profil awal aplikasi, lalu dua pilihan baru: hunian "Rumah sendiri" dan
+// tanggungan keluarga sebesar contoh di aplikasi ("cth. 1.000.000").
+const SUPPORT = 1_000_000;
+const OWNER: Assumptions = { ...DEFAULT_ASSUMPTIONS, housing: "owner" };
+const OWNER_SUPPORT: Assumptions = { ...OWNER, familySupportMonthly: SUPPORT };
+const owner = metricsFor(OWNER);
+const ownerSupport = metricsFor(OWNER_SUPPORT);
+
+const update = {
+  source: numbersSource,
+  support: SUPPORT,
+  profiles: {
+    room: profileSummary(DEFAULT_ASSUMPTIONS),
+    owner: profileSummary(OWNER),
+    ownerSupport: profileSummary(OWNER_SUPPORT),
+  },
+  counts: {
+    room: counts(base),
+    owner: counts(owner),
+    ownerSupport: counts(ownerSupport),
+  },
+  // Cakupan per frame = UMK / biaya; tanggungan menambah SUPPORT ke total
+  // setiap daerah, persis seperti computeMetrics.
+  perRegion: Object.fromEntries(
+    regions.map((r) => [
+      r.code,
+      {
+        umk: wages.get(r.code)!.grossMonthly,
+        cost: base.get(r.code)!.totalMonthlyCost,
+        costOwner: owner.get(r.code)!.totalMonthlyCost,
+      },
+    ]),
+  ),
+  jogja: receiptOf(jogja.code, undefined, OWNER_SUPPORT),
+};
+
+// Video mewarnai peta dari perRegion; pastikan hasilnya sama dengan aplikasi.
+for (const [name, ms, extra] of [
+  ["room", base, 0],
+  ["owner", owner, 0],
+  ["ownerSupport", ownerSupport, SUPPORT],
+] as const) {
+  const c: Counts = { comfortable: 0, manageable: 0, tight: 0, insufficient: 0 };
+  for (const r of regions) {
+    const v = update.perRegion[r.code];
+    const cost = (name === "room" ? v.cost : v.costOwner) + extra;
+    c[classify((v.umk / cost) * 100, AFFORDABILITY_BANDS)]++;
+  }
+  const want = counts(ms);
+  if (JSON.stringify(c) !== JSON.stringify(want)) {
+    throw new Error(`perRegion ${name} ${JSON.stringify(c)} != ${JSON.stringify(want)}`);
+  }
+}
 
 const map = {
   width: MAP_W,
@@ -198,6 +267,7 @@ const map = {
 mkdirSync(OUT, { recursive: true });
 writeFileSync(`${OUT}/map.json`, JSON.stringify(map));
 writeFileSync(`${OUT}/numbers.json`, JSON.stringify(numbers, null, 1));
+writeFileSync(`${OUT}/update.json`, JSON.stringify(update, null, 1));
 
 console.log(`map: ${mapRegions.length} daerah, ${MAP_W}x${MAP_H}`);
 console.log("default", numbers.defaultCounts);
@@ -205,3 +275,5 @@ console.log("keluarga 2 anak", numbers.familyCounts, "+2 upah", numbers.familyDu
 console.log("gaji", salaryCounts);
 console.log("jogja", numbers.jogja.wage, numbers.jogja.total, numbers.jogja.coverage, numbers.jogja.surplus);
 console.log("jogja (upah jaksel)", numbers.jogjaWithJakselWage.wage, numbers.jogjaWithJakselWage.coverage, numbers.jogjaWithJakselWage.surplus);
+console.log("v0.4.0 rusun/kost", update.counts.room, "rumah sendiri", update.counts.owner, "+tanggungan", update.counts.ownerSupport);
+console.log("v0.4.0 jogja", update.jogja.wage, update.jogja.total, update.jogja.coverage, update.jogja.surplus);

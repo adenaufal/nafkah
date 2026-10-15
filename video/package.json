@@ -15,6 +15,9 @@
     "cover": "remotion still Cover out/nafkah-teaser-cover.png",
     "render:16x9": "remotion render Teaser16x9 out/nafkah-teaser-16x9-raw.mp4 && node scripts/master.mjs out/nafkah-teaser-16x9-raw.mp4 out/nafkah-teaser-16x9.mp4",
     "cover:16x9": "remotion still Cover16x9 out/nafkah-teaser-16x9-cover.png",
+    "render:update": "remotion render Update out/nafkah-v040-raw.mp4 && node scripts/master.mjs out/nafkah-v040-raw.mp4 out/nafkah-v040.mp4",
+    "render:update:nomusic": "remotion render Update out/nafkah-v040-tanpa-musik-raw.mp4 --props=props-nomusic.json && node scripts/master.mjs out/nafkah-v040-tanpa-musik-raw.mp4 out/nafkah-v040-tanpa-musik.mp4 --gain-from out/nafkah-v040-raw.mp4",
+    "stills:update": "node scripts/update-stills.mjs",
     "typecheck": "tsc --noEmit",
     "stills": "node scripts/stills.mjs"
   },

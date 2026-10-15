@@ -1,0 +1,382 @@
+{
+ "hunian-room": {
+  "file": "shots/v040/hunian-room.png",
+  "w": 370,
+  "h": 165.5,
+  "targets": {
+   "owner": {
+    "x": 271,
+    "y": 106.5
+   }
+  }
+ },
+ "hunian-owner": {
+  "file": "shots/v040/hunian-owner.png",
+  "w": 370,
+  "h": 183.5,
+  "targets": {
+   "owner": {
+    "x": 271,
+    "y": 106.5
+   }
+  }
+ },
+ "support-0": {
+  "file": "shots/v040/support-0.png",
+  "w": 370,
+  "h": 133.5,
+  "targets": {
+   "input": {
+    "x": 200.2,
+    "y": 59.5
+   }
+  }
+ },
+ "support-1": {
+  "file": "shots/v040/support-1.png",
+  "w": 370,
+  "h": 133.5,
+  "targets": {
+   "input": {
+    "x": 182.2,
+    "y": 59.5
+   }
+  }
+ },
+ "support-2": {
+  "file": "shots/v040/support-2.png",
+  "w": 370,
+  "h": 133.5,
+  "targets": {
+   "input": {
+    "x": 182.2,
+    "y": 59.5
+   }
+  }
+ },
+ "support-3": {
+  "file": "shots/v040/support-3.png",
+  "w": 370,
+  "h": 133.5,
+  "targets": {
+   "input": {
+    "x": 182.2,
+    "y": 59.5
+   }
+  }
+ },
+ "support-4": {
+  "file": "shots/v040/support-4.png",
+  "w": 370,
+  "h": 133.5,
+  "targets": {
+   "input": {
+    "x": 182.2,
+    "y": 59.5
+   }
+  }
+ },
+ "support-5": {
+  "file": "shots/v040/support-5.png",
+  "w": 370,
+  "h": 133.5,
+  "targets": {
+   "input": {
+    "x": 182.2,
+    "y": 59.5
+   }
+  }
+ },
+ "support-6": {
+  "file": "shots/v040/support-6.png",
+  "w": 370,
+  "h": 133.5,
+  "targets": {
+   "input": {
+    "x": 182.2,
+    "y": 59.5
+   }
+  }
+ },
+ "support-7": {
+  "file": "shots/v040/support-7.png",
+  "w": 370,
+  "h": 133.5,
+  "targets": {
+   "input": {
+    "x": 182.2,
+    "y": 59.5
+   }
+  }
+ },
+ "transport-motor": {
+  "file": "shots/v040/transport-motor.png",
+  "w": 370,
+  "h": 165.5,
+  "targets": {
+   "car": {
+    "x": 70.3,
+    "y": 106.5
+   },
+   "walk": {
+    "x": 185,
+    "y": 106.5
+   }
+  }
+ },
+ "transport-car": {
+  "file": "shots/v040/transport-car.png",
+  "w": 370,
+  "h": 165.5,
+  "targets": {
+   "car": {
+    "x": 70.3,
+    "y": 106.5
+   },
+   "walk": {
+    "x": 185,
+    "y": 106.5
+   }
+  }
+ },
+ "transport-walk": {
+  "file": "shots/v040/transport-walk.png",
+  "w": 370,
+  "h": 183.5,
+  "targets": {
+   "car": {
+    "x": 70.3,
+    "y": 106.5
+   },
+   "walk": {
+    "x": 185,
+    "y": 106.5
+   }
+  }
+ },
+ "partner-off": {
+  "file": "shots/v040/partner-off.png",
+  "w": 370,
+  "h": 44,
+  "targets": {
+   "toggle": {
+    "x": 340,
+    "y": 22
+   }
+  }
+ },
+ "partner-on": {
+  "file": "shots/v040/partner-on.png",
+  "w": 370,
+  "h": 155.5,
+  "targets": {
+   "toggle": {
+    "x": 340,
+    "y": 22
+   },
+   "input": {
+    "x": 200.2,
+    "y": 99.5
+   }
+  }
+ },
+ "partner-1": {
+  "file": "shots/v040/partner-1.png",
+  "w": 370,
+  "h": 173.5,
+  "targets": {
+   "toggle": {
+    "x": 340,
+    "y": 22
+   },
+   "input": {
+    "x": 182.2,
+    "y": 99.5
+   }
+  }
+ },
+ "partner-2": {
+  "file": "shots/v040/partner-2.png",
+  "w": 370,
+  "h": 173.5,
+  "targets": {
+   "toggle": {
+    "x": 340,
+    "y": 22
+   },
+   "input": {
+    "x": 182.2,
+    "y": 99.5
+   }
+  }
+ },
+ "partner-3": {
+  "file": "shots/v040/partner-3.png",
+  "w": 370,
+  "h": 173.5,
+  "targets": {
+   "toggle": {
+    "x": 340,
+    "y": 22
+   },
+   "input": {
+    "x": 182.2,
+    "y": 99.5
+   }
+  }
+ },
+ "partner-4": {
+  "file": "shots/v040/partner-4.png",
+  "w": 370,
+  "h": 173.5,
+  "targets": {
+   "toggle": {
+    "x": 340,
+    "y": 22
+   },
+   "input": {
+    "x": 182.2,
+    "y": 99.5
+   }
+  }
+ },
+ "partner-5": {
+  "file": "shots/v040/partner-5.png",
+  "w": 370,
+  "h": 173.5,
+  "targets": {
+   "toggle": {
+    "x": 340,
+    "y": 22
+   },
+   "input": {
+    "x": 182.2,
+    "y": 99.5
+   }
+  }
+ },
+ "partner-6": {
+  "file": "shots/v040/partner-6.png",
+  "w": 370,
+  "h": 173.5,
+  "targets": {
+   "toggle": {
+    "x": 340,
+    "y": 22
+   },
+   "input": {
+    "x": 182.2,
+    "y": 99.5
+   }
+  }
+ },
+ "partner-7": {
+  "file": "shots/v040/partner-7.png",
+  "w": 370,
+  "h": 173.5,
+  "targets": {
+   "toggle": {
+    "x": 340,
+    "y": 22
+   },
+   "input": {
+    "x": 182.2,
+    "y": 99.5
+   }
+  }
+ },
+ "partner-done": {
+  "file": "shots/v040/partner-done.png",
+  "w": 370,
+  "h": 173.5,
+  "targets": {
+   "toggle": {
+    "x": 340,
+    "y": 22
+   },
+   "input": {
+    "x": 182.2,
+    "y": 99.5
+   }
+  }
+ },
+ "receipt": {
+  "file": "shots/v040/receipt.png",
+  "w": 370,
+  "h": 665.5,
+  "targets": {
+   "share": {
+    "x": 310.8,
+    "y": 608.6
+   }
+  }
+ },
+ "toggle-on": {
+  "file": "shots/v040/toggle-on.png",
+  "w": 330,
+  "h": 84,
+  "targets": {
+   "toggle": {
+    "x": 300,
+    "y": 22
+   }
+  }
+ },
+ "footer": {
+  "file": "shots/v040/footer.png",
+  "w": 350,
+  "h": 121,
+  "targets": {
+   "copy": {
+    "x": 76.2,
+    "y": 87
+   }
+  }
+ },
+ "struk-on": {
+  "file": "shots/v040/struk-on.png",
+  "w": 1080,
+  "h": 1350,
+  "targets": {}
+ },
+ "toggle-off": {
+  "file": "shots/v040/toggle-off.png",
+  "w": 330,
+  "h": 84,
+  "targets": {
+   "toggle": {
+    "x": 300,
+    "y": 22
+   }
+  }
+ },
+ "struk-off": {
+  "file": "shots/v040/struk-off.png",
+  "w": 1080,
+  "h": 1350,
+  "targets": {}
+ },
+ "footer-copied": {
+  "file": "shots/v040/footer-copied.png",
+  "w": 350,
+  "h": 121,
+  "targets": {
+   "copy": {
+    "x": 76.2,
+    "y": 87
+   }
+  }
+ },
+ "about-source": {
+  "file": "shots/v040/about-source.png",
+  "w": 370,
+  "h": 313.8,
+  "targets": {}
+ },
+ "about-made": {
+  "file": "shots/v040/about-made.png",
+  "w": 370,
+  "h": 726.7,
+  "targets": {}
+ }
+}

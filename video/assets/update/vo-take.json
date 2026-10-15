@@ -1,0 +1,296 @@
+{
+ "voiceId": "plgKUYgnlZ1DCNh54DwJ",
+ "model": "eleven_multilingual_v2",
+ "speed": 1.08,
+ "text": "Kemarin kalian minta. Sekarang sudah ada. Tinggal di rumah sendiri atau ikut orang tua? Biaya huniannya nol. Tapi rutin kirim ke orang tua? Isi tanggungan keluarga. Yang cukup tinggal lima puluh tiga daerah. Ada juga mobil, jalan kaki atau sepeda, dan gaji pasangan yang beda. Struknya bisa dibagikan jadi gambar. Nominalnya bisa disembunyikan, atau salin jadi teks. Angkanya dari mana, bikinnya pakai apa? Ada di halaman Tentang. Cek di nafkah dot ade naufal dot com. Apa lagi yang kurang?",
+ "tokens": [
+  {
+   "start": 0,
+   "end": 0.418
+  },
+  {
+   "start": 0.476,
+   "end": 0.72
+  },
+  {
+   "start": 0.778,
+   "end": 1.126
+  },
+  {
+   "start": 1.231,
+   "end": 1.556
+  },
+  {
+   "start": 1.579,
+   "end": 1.765
+  },
+  {
+   "start": 1.788,
+   "end": 2.067
+  },
+  {
+   "start": 2.264,
+   "end": 2.589
+  },
+  {
+   "start": 2.624,
+   "end": 2.674
+  },
+  {
+   "start": 2.717,
+   "end": 2.926
+  },
+  {
+   "start": 2.949,
+   "end": 3.297
+  },
+  {
+   "start": 3.367,
+   "end": 3.611
+  },
+  {
+   "start": 3.669,
+   "end": 3.878
+  },
+  {
+   "start": 3.924,
+   "end": 4.11
+  },
+  {
+   "start": 4.145,
+   "end": 4.458
+  },
+  {
+   "start": 4.656,
+   "end": 4.934
+  },
+  {
+   "start": 4.969,
+   "end": 5.399
+  },
+  {
+   "start": 5.457,
+   "end": 5.828
+  },
+  {
+   "start": 5.968,
+   "end": 6.293
+  },
+  {
+   "start": 6.397,
+   "end": 6.699
+  },
+  {
+   "start": 6.757,
+   "end": 6.989
+  },
+  {
+   "start": 7.047,
+   "end": 7.097
+  },
+  {
+   "start": 7.129,
+   "end": 7.349
+  },
+  {
+   "start": 7.396,
+   "end": 7.779
+  },
+  {
+   "start": 7.999,
+   "end": 8.348
+  },
+  {
+   "start": 8.417,
+   "end": 8.87
+  },
+  {
+   "start": 8.94,
+   "end": 9.451
+  },
+  {
+   "start": 9.59,
+   "end": 9.764
+  },
+  {
+   "start": 9.81,
+   "end": 10.066
+  },
+  {
+   "start": 10.112,
+   "end": 10.356
+  },
+  {
+   "start": 10.379,
+   "end": 11.018
+  },
+  {
+   "start": 11.064,
+   "end": 11.482
+  },
+  {
+   "start": 11.68,
+   "end": 11.854
+  },
+  {
+   "start": 11.9,
+   "end": 12.086
+  },
+  {
+   "start": 12.132,
+   "end": 12.574
+  },
+  {
+   "start": 12.632,
+   "end": 12.876
+  },
+  {
+   "start": 12.934,
+   "end": 13.178
+  },
+  {
+   "start": 13.236,
+   "end": 13.445
+  },
+  {
+   "start": 13.479,
+   "end": 13.932
+  },
+  {
+   "start": 14.048,
+   "end": 14.199
+  },
+  {
+   "start": 14.257,
+   "end": 14.443
+  },
+  {
+   "start": 14.478,
+   "end": 14.791
+  },
+  {
+   "start": 14.826,
+   "end": 14.919
+  },
+  {
+   "start": 14.954,
+   "end": 15.325
+  },
+  {
+   "start": 15.441,
+   "end": 15.883
+  },
+  {
+   "start": 15.918,
+   "end": 16.068
+  },
+  {
+   "start": 16.103,
+   "end": 16.568
+  },
+  {
+   "start": 16.637,
+   "end": 16.835
+  },
+  {
+   "start": 16.881,
+   "end": 17.322
+  },
+  {
+   "start": 17.578,
+   "end": 18.089
+  },
+  {
+   "start": 18.135,
+   "end": 18.298
+  },
+  {
+   "start": 18.332,
+   "end": 19.006
+  },
+  {
+   "start": 19.041,
+   "end": 19.226
+  },
+  {
+   "start": 19.273,
+   "end": 19.528
+  },
+  {
+   "start": 19.575,
+   "end": 19.737
+  },
+  {
+   "start": 19.795,
+   "end": 20.178
+  },
+  {
+   "start": 20.376,
+   "end": 20.736
+  },
+  {
+   "start": 20.782,
+   "end": 20.933
+  },
+  {
+   "start": 20.979,
+   "end": 21.246
+  },
+  {
+   "start": 21.281,
+   "end": 21.548
+  },
+  {
+   "start": 21.595,
+   "end": 21.804
+  },
+  {
+   "start": 21.839,
+   "end": 22.129
+  },
+  {
+   "start": 22.233,
+   "end": 22.547
+  },
+  {
+   "start": 22.605,
+   "end": 22.686
+  },
+  {
+   "start": 22.733,
+   "end": 23.081
+  },
+  {
+   "start": 23.127,
+   "end": 23.615
+  },
+  {
+   "start": 23.812,
+   "end": 23.998
+  },
+  {
+   "start": 24.044,
+   "end": 24.094
+  },
+  {
+   "start": 24.137,
+   "end": 26.076
+  },
+  {
+   "start": 26.239,
+   "end": 26.425
+  },
+  {
+   "start": 26.459,
+   "end": 26.622
+  },
+  {
+   "start": 26.645,
+   "end": 26.75
+  },
+  {
+   "start": 26.773,
+   "end": 27.4
+  }
+ ]
+}

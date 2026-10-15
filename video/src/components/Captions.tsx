@@ -1,7 +1,8 @@
+import { useMemo } from "react";
 import { useCurrentFrame } from "remotion";
 import { useFormat, type Format } from "../format";
 import { POP, springAt } from "../motion";
-import type { Emphasis, SceneId } from "../script";
+import type { Emphasis } from "../script";
 import { C, FONT } from "../theme";
 import { TOKENS, type TimedToken } from "../timeline";
 
@@ -12,29 +13,26 @@ const EM_BG: Record<Emphasis, string> = {
   blue: "#22698a",
 };
 
-/** Pages already spelled out large on screen. */
-const SILENT: [SceneId, number][] = [
-  ["cta", 1],
-  ["cta", 2],
-];
-
 interface Page {
   key: string;
-  tokens: TimedToken[];
+  tokens: TimedToken<string>[];
   start: number;
   end: number;
 }
 
-const PAGES: Page[] = [];
-for (const t of TOKENS) {
-  const key = `${t.seg}:${t.page}`;
-  const last = PAGES[PAGES.length - 1];
-  if (last?.key === key) {
-    last.tokens.push(t);
-    last.end = t.end;
-  } else {
-    PAGES.push({ key, tokens: [t], start: t.start, end: t.end });
+function pagesOf(tokens: TimedToken<string>[]): Page[] {
+  const pages: Page[] = [];
+  for (const t of tokens) {
+    const key = `${t.seg}:${t.page}`;
+    const last = pages[pages.length - 1];
+    if (last?.key === key) {
+      last.tokens.push(t);
+      last.end = t.end;
+    } else {
+      pages.push({ key, tokens: [t], start: t.start, end: t.end });
+    }
   }
+  return pages;
 }
 
 /**
@@ -46,18 +44,22 @@ const PLACE: Record<Format, { y: number; left: number; right: number; size: numb
   landscape: { y: 962, left: 160, right: 160, size: 70 },
 };
 
-/** Word-by-word captions, TikTok style, in the app's type. */
-export function Captions() {
+/**
+ * Word-by-word captions, TikTok style, in the app's type. `silent` lists
+ * pages ("seg:page") already spelled out large on screen.
+ */
+export function CaptionTrack({ tokens, silent = [] }: { tokens: TimedToken<string>[]; silent?: string[] }) {
   const frame = useCurrentFrame();
   const place = PLACE[useFormat()];
-  const idx = PAGES.findIndex((p, i) => {
-    const next = PAGES[i + 1];
+  const pages = useMemo(() => pagesOf(tokens), [tokens]);
+  const idx = pages.findIndex((p, i) => {
+    const next = pages[i + 1];
     const until = Math.min(next ? next.start : Infinity, p.end + 14);
     return frame >= p.start && frame < until;
   });
   if (idx < 0) return null;
-  const page = PAGES[idx];
-  if (SILENT.some(([s, n]) => page.key === `${s}:${n}`)) return null;
+  const page = pages[idx];
+  if (silent.includes(page.key)) return null;
   return (
     <div
       style={{
@@ -103,4 +105,9 @@ export function Captions() {
       })}
     </div>
   );
+}
+
+/** The teaser's captions; the address and closing question are on screen. */
+export function Captions() {
+  return <CaptionTrack tokens={TOKENS} silent={["cta:1", "cta:2"]} />;
 }
