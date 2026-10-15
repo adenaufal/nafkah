@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import {
   Copy,
   DownloadSimple,
@@ -106,7 +107,10 @@ export function ReceiptShareDialog({
   const button =
     "inline-flex h-10 items-center gap-1.5 rounded-[10px] px-3.5 text-[13.5px] font-semibold transition-colors disabled:opacity-50 pointer-coarse:h-11";
 
-  return (
+  // On <body>, not in the rail: the region story keeps the identity transform
+  // left by .anim-rise, and the tablet sheet is centred with a transform. Either
+  // would make this fixed overlay cover that box instead of the viewport.
+  return createPortal(
     <div
       className="anim-fade fixed inset-0 z-[70] flex items-end justify-center bg-ink/45 sm:items-center sm:p-6"
       onMouseDown={(e) => {
@@ -206,6 +210,7 @@ export function ReceiptShareDialog({
           </button>
         </footer>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
