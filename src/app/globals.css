@@ -18,17 +18,14 @@
 .sheet {
   --accent: #c2452d;
   --accent-strong: #a83624;
-  --accent-soft: #fbeae5;
-  --surface: #f5f4f1;
-  --card: #ffffff;
+  --accent-soft: #f6e3dc;
   --ink: #1e1b18;
   --muted: #6b6660;
-  --border: #e3dfd9;
-  --ok: #0b7a4b;
+  --ok: #0b6b42;
   --danger: #a5271f;
   --on-accent: #ffffff;
 
-  /* Atlas: warm editorial paper. */
+  /* Warm editorial paper. */
   --paper: #f8f6f1;
   --paper-2: #f0ece4;
   --paper-3: #e8e2d8;
@@ -53,12 +50,9 @@
   --accent: #e0704f;
   --accent-strong: #ec8b6d;
   --accent-soft: #3a211b;
-  --surface: #16130f;
-  --card: #201c18;
   --ink: #f0ece7;
   --muted: #a8a09a;
-  --border: #38332d;
-  --ok: #64c99b;
+  --ok: #5fd3a0;
   --danger: #ff8b80;
   /* Teks gelap di atas accent terang — kontras 5.6:1 (putih hanya 3:1). */
   --on-accent: #211a14;
@@ -80,22 +74,12 @@
   --band-insufficient: #ef6a5a;
 }
 
-/* Atlas surfaces (app, Metode, Tentang, booklet) and the booklet's sheets
-   re-tune two tokens; :root keeps the earlier values for anything rendered
-   outside them. */
-.atlas,
-.sheet {
-  --accent-soft: #f6e3dc;
-  --ok: #0b6b42;
-}
+/* Every page (app, Metode, Tentang, booklet, 404) renders inside .atlas,
+   which carries the self-hosted fonts from src/app/fonts.ts. */
 .atlas {
   font-family: var(--font-jakarta), "Segoe UI", system-ui, sans-serif;
   color: var(--ink);
   background: var(--paper);
-}
-.dark .atlas {
-  --accent-soft: #3a211b;
-  --ok: #5fd3a0;
 }
 
 @theme inline {
@@ -103,12 +87,9 @@
   --color-accent-strong: var(--accent-strong);
   --color-accent-soft: var(--accent-soft);
   --color-accent-ink: var(--accent-ink);
-  --color-surface: var(--surface);
-  --color-card: var(--card);
   --color-ink: var(--ink);
   --color-ink-2: var(--ink-2);
   --color-muted: var(--muted);
-  --color-border: var(--border);
   --color-ok: var(--ok);
   --color-danger: var(--danger);
   --color-on-accent: var(--on-accent);
@@ -149,24 +130,15 @@ html:has(.doc-page) body {
 }
 
 body {
-  background-color: var(--surface);
-  color: var(--ink);
-  font-family:
-    "Inter",
-    "Segoe UI",
-    system-ui,
-    -apple-system,
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-}
-body:has(.atlas) {
   background-color: var(--paper);
+  color: var(--ink);
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
-  border-radius: 4px;
 }
 
 /* Text fields draw their own focus state on the field container, so the
@@ -176,12 +148,6 @@ body:has(.atlas) {
     [type="range"]
   ):focus-visible {
   outline: none;
-}
-
-/* The legacy global ring forces a 4px radius; Atlas controls keep their own
-   shape (a pill stays a pill) by rolling back to the utility layer. */
-.atlas :focus-visible {
-  border-radius: revert-layer;
 }
 
 /* Native search clear buttons clash with the palette; the app draws its own. */
